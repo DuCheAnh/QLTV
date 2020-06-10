@@ -1,0 +1,5 @@
+C:\Users\User\Desktop\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.dll
+C:\Users\User\Desktop\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.csprojAssemblyReference.cache
+C:\Users\User\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.dll
+C:\Users\User\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.pdb

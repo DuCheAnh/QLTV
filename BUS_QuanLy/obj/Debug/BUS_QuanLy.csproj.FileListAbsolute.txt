@@ -1,0 +1,10 @@
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\bin\Debug\BUS_QuanLy.dll
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\bin\Debug\BUS_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\bin\Debug\DAL_QuanLy.dll
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\bin\Debug\DTO_QuanLy.dll
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\bin\Debug\DAL_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\bin\Debug\DTO_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.csprojAssemblyReference.cache
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.csproj.CopyComplete
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.dll
+C:\Users\User\Desktop\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.pdb

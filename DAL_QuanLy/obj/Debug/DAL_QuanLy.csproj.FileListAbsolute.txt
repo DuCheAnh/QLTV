@@ -1,0 +1,8 @@
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\bin\Debug\DAL_QuanLy.dll
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\bin\Debug\DAL_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\bin\Debug\DTO_QuanLy.dll
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\bin\Debug\DTO_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\obj\Debug\DAL_QuanLy.csprojAssemblyReference.cache
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\obj\Debug\DAL_QuanLy.csproj.CopyComplete
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\obj\Debug\DAL_QuanLy.dll
+C:\Users\User\Desktop\QLTV\DAL_QuanLy\obj\Debug\DAL_QuanLy.pdb
