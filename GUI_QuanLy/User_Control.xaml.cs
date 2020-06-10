@@ -25,6 +25,7 @@ namespace GUI_QuanLy
         User_Control_BUS User = new User_Control_BUS();
         bool Clicked = false;
         List<User> Updated_Users = new List<User>();
+
         public Window1()
         {
             InitializeComponent();
@@ -37,6 +38,12 @@ namespace GUI_QuanLy
             Clicked = true;
         }
 
+        /// <summary>
+        /// 1) check xem thu nut get info bam chua
+        /// 2) roi thi truyen xuong bus
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void User_Update_Info_button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -53,6 +60,13 @@ namespace GUI_QuanLy
 
         }
 
+
+        /// <summary>
+        /// 1) check thu hanh dong co phai la edit cell trong grid khong
+        /// 2) neu hanh dong da dc commit thi lay item la 1 user truyen vao list updated user 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void User_Info_Datagrid_CellEditEnding(object sender, DataGridCellEditEndingEventArgs e)
         {
             if (e.EditAction == DataGridEditAction.Commit)
