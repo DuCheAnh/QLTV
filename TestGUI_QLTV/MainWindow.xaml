@@ -7,57 +7,45 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="QLTV" Height="720" Width="1280" MinHeight="720" MinWidth="1280">
-    <Window.Resources>
-        <Storyboard x:Key="MenuOpen">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="spMenu" >
-                <EasingDoubleKeyFrame KeyTime="0" Value="0"  />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="200" />
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-        <Storyboard x:Key="MenuClose">
-            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Width)" Storyboard.TargetName="spMenu">
-                <EasingDoubleKeyFrame KeyTime="0" Value="200" />
-                <EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0" />
-            </DoubleAnimationUsingKeyFrames>
-        </Storyboard>
-    </Window.Resources>
-
-    <Window.Triggers>
-        <EventTrigger RoutedEvent="ToggleButton.Checked" SourceName="tbMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuOpen}"></BeginStoryboard>
-        </EventTrigger>
-        <EventTrigger RoutedEvent="ToggleButton.Unchecked" SourceName="tbMenu">
-            <BeginStoryboard Storyboard="{StaticResource MenuClose}"></BeginStoryboard>
-        </EventTrigger>
-    </Window.Triggers>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="60" x:Name="grMenu">
-            </RowDefinition>
-            <RowDefinition Height="*"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="auto"></ColumnDefinition>
-            <ColumnDefinition Width="*" ></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid x:Name="pControl" Grid.Row="0" Grid.ColumnSpan="2"   Background="#ffc400" VerticalAlignment="Top" HorizontalAlignment="Stretch" >
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" MinWidth="50"></ColumnDefinition>
-                <ColumnDefinition Width="*" MinWidth="50"></ColumnDefinition>
-                <ColumnDefinition Width="4*"></ColumnDefinition>
-                <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
-                <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
-                <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
-                <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <ToggleButton x:Name="tbMenu" Height="60" Width="60" Background="#ffc400" VerticalAlignment="Stretch" HorizontalAlignment="Center" IsChecked="True"  Style="{DynamicResource MaterialDesignHamburgerToggleButton}" />
-            <Button Grid.Column="1" Width="70" Height="50" HorizontalAlignment="Center" VerticalAlignment="Center" 
-                     Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                     Click="Button_Click"
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Background="#ffc400"></Grid>
+            <materialDesign:DrawerHost Grid.RowSpan="2" Panel.ZIndex="2">
+                <materialDesign:DrawerHost.LeftDrawerContent  >
+                    <StackPanel x:Name="spMenu" Width="200" Background="LightGray">
+                        
+                    </StackPanel>
+                </materialDesign:DrawerHost.LeftDrawerContent>
+
+                <Button Grid.Row="0" Height="55" Width="100" Background="#ffc400" Command= "{x:Static materialDesign:DrawerHost.OpenDrawerCommand}" CommandParameter= "{x:Static Dock.Left}" HorizontalAlignment="Left" VerticalAlignment="Top" Style="{DynamicResource MaterialDesignToolForegroundButton}">
+                    <materialDesign:PackIcon Width="55" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" Kind="Menu"   />
+                </Button>
+            </materialDesign:DrawerHost>
+
+
+
+            <Grid x:Name="pControl" Grid.Row="0" Background="#ffc400" VerticalAlignment="Top" HorizontalAlignment="Stretch" Panel.ZIndex="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150" MinWidth="50"></ColumnDefinition>
+                    <ColumnDefinition Width="*" MinWidth="50"></ColumnDefinition>
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
+                    <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
+                    <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
+                    <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="1" Width="auto" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                    Click="Button_Click"
                     >
-                <materialDesign:PackIcon Kind="Home" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            </Button>
-            <materialDesign:ColorZone
+                    <materialDesign:PackIcon Kind="Home" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Button>
+                <materialDesign:ColorZone
                 Grid.Column="2"
                 MaxWidth="500"
                 Mode="Standard"
@@ -66,19 +54,19 @@
                 Panel.ZIndex="1"
                 Margin="20 12 0 5"
                 materialDesign:ShadowAssist.ShadowDepth="Depth1">
-                
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="auto" />
-                    </Grid.ColumnDefinitions>
-                    <Button Width="30" Height="30"
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button Width="30" Height="30"
                             Style="{DynamicResource MaterialDesignToolButton}"
                             Margin="10 0 10 0">
-                        <materialDesign:PackIcon Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Kind="Magnify" Opacity=".56" />
-                    </Button>
-                    <TextBox
+                            <materialDesign:PackIcon Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Kind="Magnify" Opacity=".56" />
+                        </Button>
+                        <TextBox
                         Grid.Column="1"
                         Margin="0 5 15 2"
                         Height="30"
@@ -89,52 +77,46 @@
                         VerticalAlignment="Center"
                         HorizontalAlignment="Center"/>
 
-                </Grid>
-            </materialDesign:ColorZone>
-            <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
-                <Button Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    </Grid>
+                </materialDesign:ColorZone>
+                <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                    <Button Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}"
                     >
-                <materialDesign:PackIcon Kind="BellRing" Width="35" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Button>
-            </materialDesign:Badged>
-            <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
-                <Button Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        <materialDesign:PackIcon Kind="BellRing" Width="35" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button>
+                </materialDesign:Badged>
+                <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
+                    <Button Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}"
                     >
-                    <materialDesign:PackIcon Kind="Cart" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                </Button>
-            </materialDesign:Badged>
-            <Button Grid.Column="5" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" 
+                        <materialDesign:PackIcon Kind="Cart" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Button>
+                </materialDesign:Badged>
+                <Button Grid.Column="5" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" 
                             Style="{DynamicResource MaterialDesignToolForegroundButton}"
                             
                             Panel.ZIndex="0">
-                <materialDesign:PackIcon Kind="Account" Width="45" Height="45" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            </Button>
-            <Button Grid.Column="6" Width="50" Height="50" VerticalAlignment="Stretch" HorizontalAlignment="Center"
+                    <materialDesign:PackIcon Kind="Account" Width="45" Height="45" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Button Grid.Column="6" Width="50" Height="50" VerticalAlignment="Stretch" HorizontalAlignment="Center"
                              Style="{DynamicResource MaterialDesignToolForegroundButton}"
                             
                             Panel.ZIndex="0" FlowDirection="RightToLeft">
-                <materialDesign:PackIcon Kind="Logout" Width="45" Height="45" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
-            </Button>
+                    <materialDesign:PackIcon Kind="Logout" Width="45" Height="45" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1" Background="LightGray">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" MaxWidth="240"></ColumnDefinition>
+                    <ColumnDefinition MinWidth="1280" MaxWidth="1440" Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*" MaxWidth="240"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <StackPanel Name="spMain" Grid.Column="1" Background="White" HorizontalAlignment="Stretch" >
+                    
+
+                </StackPanel>
+            </Grid>
         </Grid>
-        <StackPanel Name="spMenu" Grid.Column="0" Grid.Row="1" Background="#ffc400" HorizontalAlignment="Left" Width="200" >
-        </StackPanel>
-        <Grid Grid.Row="1" Grid.Column="1" Background="LightGray">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="1080"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Name="spMain" Grid.Column="1" Background="White">
-                <!--<Grid.RowDefinitions>
-                    <RowDefinition Height="100"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                    <RowDefinition Height="75"></RowDefinition>
-                </Grid.RowDefinitions>-->
-                
-            </StackPanel>
-        </Grid>
-                   
     </Grid>
 </Window>
