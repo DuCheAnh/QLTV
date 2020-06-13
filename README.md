@@ -36,7 +36,7 @@
 ## Phase 3 (18/6/2020-28/6/2020)
   * Phần mềm với đầy đủ chức năng theo dự kiếm ban đầu.
   
-## Phase 4 (28/6/2020 - after)
+## Phase 4 (28/6/2020 - Ever after)
   * Kiểm tra sản phẩm, đưa ra kiểm thử ở các khu vực khác nhau
 
 # Thành viên
