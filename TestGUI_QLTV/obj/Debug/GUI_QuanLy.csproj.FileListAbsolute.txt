@@ -24,7 +24,6 @@ C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainWindow.baml
 C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.g.resources
 C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.Properties.Resources.resources
 C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.GenerateResource.cache
-C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.CoreCompileInputs.cache
 C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.CopyComplete
 C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.exe
 C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.pdb
