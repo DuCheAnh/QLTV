@@ -20,13 +20,13 @@ namespace GUI_QuanLy
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Admin_Control_Page : UserControl
     {
-        User_Control_BUS User = new User_Control_BUS();
-        bool Clicked = false;
+        Admin_Control_BUS User = new Admin_Control_BUS();
+        bool Is_Datagrid_Filled = false;
         List<User> Updated_Users = new List<User>();
-
-        public Window1()
+    
+        public Admin_Control_Page()
         {
             InitializeComponent();
         }
@@ -35,7 +35,10 @@ namespace GUI_QuanLy
         private void User_Get_Info_button_Click(object sender, RoutedEventArgs e)
         {
             User.Get_User_Info(User_Info_Datagrid);
-            Clicked = true;
+            Is_Datagrid_Filled = true;
+            //User_Control_Page xPage = new User_Control_Page();
+            //sp.Children.Add(xPage);
+
         }
 
         /// <summary>
@@ -47,7 +50,7 @@ namespace GUI_QuanLy
         private void User_Update_Info_button_Click(object sender, RoutedEventArgs e)
         {
 
-            if (Clicked)
+            if (Is_Datagrid_Filled)
             {
                 User.Update_User_Info(Updated_Users);
                 //MessageBox.Show(User.Update_User_Info(User_Info_Datagrid));
@@ -74,5 +77,6 @@ namespace GUI_QuanLy
                 Updated_Users.Add(User_Info_Datagrid.SelectedItem as User);
             }
         }
+
     }
 }

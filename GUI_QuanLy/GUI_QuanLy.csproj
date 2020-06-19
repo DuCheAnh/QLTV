@@ -59,8 +59,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="User_Control.xaml.cs">
-      <DependentUpon>User_Control.xaml</DependentUpon>
+    <Compile Include="Admin_Control_Page.xaml.cs">
+      <DependentUpon>Admin_Control_Page.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Control_Page.xaml.cs">
+      <DependentUpon>User_Control_Page.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -100,7 +103,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="User_Control.xaml">
+    <Page Include="Admin_Control_Page.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User_Control_Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="GUI_QuanLy.User_Control_Page"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:GUI_QuanLy"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Canvas Grid.Column="0"
+                Background="Black"
+                Width="100" Height="100"
+                VerticalAlignment="Top"
+                Margin="40,40,0,0" >
+        </Canvas>
+        <StackPanel Margin="0,0 ,0,0" Grid.Column="1" >
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type FrameworkElement}">
+                    <!-- Shared Setters -->
+                    <Setter Property="Margin" Value="0,25,0,0" ></Setter>
+                </Style>
+
+                <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
+                <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
+            </StackPanel.Resources>
+            <Label Name="UserName_label"
+                   Content="{Binding Path=Name}"
+                   FontSize="20"
+                   Margin="0 ,100 ,0,0">
+            </Label>
+            <TextBox Name="UserMail_label"
+                   Text="{Binding Path=Email, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                   FontSize="20">
+            </TextBox>
+            <Label Name="UserPhoneNumber_label"
+                   Content="{Binding Path=PhoneNumber}"
+                   FontSize="20">
+            </Label>
+            <Label Name="UserAddress_label"
+                   Content="{Binding Path=Address}"
+                   FontSize="20">
+            </Label>
+            <Label Name="UserDOB_label"
+                   Content="{Binding Path=DOB}"
+                   FontSize="20">
+            </Label>
+        </StackPanel>
+    </Grid>
+</UserControl>

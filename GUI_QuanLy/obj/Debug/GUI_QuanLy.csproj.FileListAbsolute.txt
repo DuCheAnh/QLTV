@@ -15,7 +15,9 @@ C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\GUI_QuanLy.csproj.GenerateResour
 C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\GUI_QuanLy.csproj.CopyComplete
 C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\GUI_QuanLy.exe
 C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\GUI_QuanLy.pdb
-C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\User_Control.g.cs
-C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\User_Control.baml
 C:\Users\User\Desktop\QLTV\GUI_QuanLy\bin\Debug\DAL_QuanLy.dll
 C:\Users\User\Desktop\QLTV\GUI_QuanLy\bin\Debug\DAL_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\User_Control_Page.g.cs
+C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\User_Control_Page.baml
+C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\Admin_Control_Page.g.cs
+C:\Users\User\Desktop\QLTV\GUI_QuanLy\obj\Debug\Admin_Control_Page.baml
