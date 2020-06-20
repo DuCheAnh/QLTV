@@ -53,11 +53,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataClass\Account_Data.cs" />
     <Compile Include="DAL_Account.cs" />
     <Compile Include="DAL_Libcard.cs" />
     <Compile Include="DB_connect.cs" />
-    <Compile Include="DataClass\LibCard_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

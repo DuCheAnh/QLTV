@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using FireSharp.Response;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using DTO_QuanLy;
 namespace DAL_QuanLy
 {
     class DAL_Libcard : DB_connect
