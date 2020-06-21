@@ -8,7 +8,7 @@ using FireSharp.Response;
 using FireSharp.Interfaces;
 namespace DAL_QuanLy
 {
-    class DB_connect
+    public class DB_connect
     {
         public IFirebaseConfig config = new FirebaseConfig
         {

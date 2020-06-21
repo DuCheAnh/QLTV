@@ -9,7 +9,7 @@ using FireSharp.Interfaces;
 using DTO_QuanLy;
 namespace DAL_QuanLy
 {
-    class DAL_Libcard : DB_connect
+    public class DAL_Libcard : DB_connect
     {
         #region variables
         //variables
