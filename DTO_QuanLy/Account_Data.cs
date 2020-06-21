@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL_QuanLy
+namespace DTO_QuanLy
 {
-    class Account_Data
+    public class Account_Data
     {
         public string UID { get; set; }
         public string account { get; set; }
@@ -33,6 +33,8 @@ namespace DAL_QuanLy
             this.account_type = sAccountType;
             
         }
+
+        public Account_Data() { }
     }
 
 }

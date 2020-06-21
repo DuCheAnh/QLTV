@@ -57,3 +57,42 @@ C:\Users\ACER\Desktop\QLTV - Copy\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.CoreC
 C:\Users\ACER\Desktop\QLTV - Copy\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.CopyComplete
 C:\Users\ACER\Desktop\QLTV - Copy\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.exe
 C:\Users\ACER\Desktop\QLTV - Copy\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\TestGUI_QLTV.exe.config
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\TestGUI_QLTV.exe
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\TestGUI_QLTV.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\BUS_QuanLy.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\DTO_QuanLy.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\MaterialDesignColors.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\MaterialDesignThemes.Wpf.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\BUS_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\DTO_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\MaterialDesignColors.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\MaterialDesignThemes.Wpf.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\MaterialDesignThemes.Wpf.xml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csprojAssemblyReference.cache
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainMenu.g.cs
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainPage.g.cs
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainWindow.g.cs
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\App.g.cs
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV_MarkupCompile.cache
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV_MarkupCompile.lref
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\App.baml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainMenu.baml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainPage.baml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\MainWindow.baml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.g.resources
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.Properties.Resources.resources
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.GenerateResource.cache
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GUI_QuanLy.csproj.CopyComplete
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.exe
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\TestGUI_QLTV.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\Admin_Control_Page.g.cs
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\User_Control_Page.g.cs
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\DAL_QuanLy.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\FireSharp.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\RestSharp.dll
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\DAL_QuanLy.pdb
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\bin\Debug\RestSharp.xml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\Admin_Control_Page.baml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\User_Control_Page.baml
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\GeneratedInternalTypeHelper.g.cs

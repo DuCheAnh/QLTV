@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using FireSharp.Response;
 using FireSharp.Config;
 using FireSharp.Interfaces;
+using DTO_QuanLy;
+
 namespace DAL_QuanLy
 {
-    class DAL_Account : DB_connect
+    public class DAL_Account : DB_connect
     {
         #region variables
         //variables
@@ -71,10 +73,20 @@ namespace DAL_QuanLy
         //retrieve Account_data from table by UID
         public Account_Data retrieve_user_data(string sUID)
         {
-            var retrieve_response = client.Get(sAccountTable_path + sUID);
-            Account_Data data = retrieve_response.ResultAs<Account_Data>();
+            Account_Data data = new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!");
+/*            var retrieve_response = client.Get(sAccountTable_path + sUID);
+            Account_Data data = retrieve_response.ResultAs<Account_Data>();*/
             return data;
         }
         #endregion
+
+        public List<Account_Data> retrieve_all_user_data()
+        {
+            List<Account_Data> data = new List<Account_Data>();
+
+            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
+
+            return data;
+        }
     }
 }

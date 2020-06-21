@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\obj\Debug\
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\obj\Debug\
 TestGUI_QLTV
 none
 false
 DEBUG;TRACE
-C:\Users\ACER\Desktop\QLTV\TestGUI_QLTV\App.xaml
-31319333313
+C:\Users\User\Desktop\QLTV\TestGUI_QLTV\App.xaml
+518296255
 
-8641696263
-17329149247
-MainMenu.xaml;MainPage.xaml;MainWindow.xaml;
+10-642467508
+17-363134044
+Admin_Control_Page.xaml;MainMenu.xaml;MainPage.xaml;MainWindow.xaml;User_Control_Page.xaml;
 
 False
 

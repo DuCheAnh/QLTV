@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL_QuanLy
+namespace DTO_QuanLy
 {
-    class LibCard_Data
+    public class LibCard_Data
     {
         public string LCID { get; set; }
         public string PIN { get; set; }
