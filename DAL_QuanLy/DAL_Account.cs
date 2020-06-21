@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +7,6 @@ using FireSharp.Response;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using DTO_QuanLy;
-
 namespace DAL_QuanLy
 {
     public class DAL_Account : DB_connect

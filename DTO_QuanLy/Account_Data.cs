@@ -33,7 +33,6 @@ namespace DTO_QuanLy
             this.account_type = sAccountType;
             
         }
-
         public Account_Data() { }
     }
 
