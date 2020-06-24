@@ -72,9 +72,9 @@ namespace DAL_QuanLy
         //retrieve Account_data from table by UID
         public Account_Data retrieve_user_data(string sUID)
         {
-            Account_Data data = new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!");
-/*            var retrieve_response = client.Get(sAccountTable_path + sUID);
-            Account_Data data = retrieve_response.ResultAs<Account_Data>();*/
+             //Account_Data data = new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!");
+            var retrieve_response = client.Get(sAccountTable_path + sUID);
+            Account_Data data = retrieve_response.ResultAs<Account_Data>();
             return data;
         }
         #endregion
