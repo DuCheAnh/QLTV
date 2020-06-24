@@ -7,10 +7,37 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="200">
     <Grid>
-
-        <StackPanel>
-            
-            <Button Background="Gray" Content="Action" Width="190" Height="50" ></Button>
-        </StackPanel>
+        <TreeView Width="200">
+            <TreeViewItem Header="Văn Học">
+                <TreeViewItem Header="Tiểu Thuyết"/>
+                <TreeViewItem Header="Truyện ngắn"/>
+                <TreeViewItem Header="Ngôn Tình"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Kinh Tế">
+                <TreeViewItem Header="Bài Học Kinh Doanh"/>
+                <TreeViewItem Header="Quản Trị - Lãnh Đạo"/>
+                <TreeViewItem Header="Marketing"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Đời Sống">
+                <TreeViewItem Header="Kỹ Năng Sống"/>
+                <TreeViewItem Header="Tâm Lý Tuổi Mới Lớn"/>
+                <TreeViewItem Header="Rèn Luyện Nhân Cách"/>
+                <TreeViewItem Header="Văn Hóa - Tôn Giáo"/>
+                <TreeViewItem Header="Ẩm Thực"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Học Tập - Tham Khảo">
+                <TreeViewItem Header="Luyện Thi Đại Học"/>
+                <TreeViewItem Header="Triết Học" />
+                <TreeViewItem Header="Tiểu Sử - Hồi Ký"/>
+            </TreeViewItem>
+            <TreeViewItem Header="Ngoại Ngữ">
+                <TreeViewItem Header="Tiếng Anh"/>
+                <TreeViewItem Header="Tiếng Nhật"/>
+                <TreeViewItem Header="Tiếng Pháp"/>
+                <TreeViewItem Header="Tiếng Đức"/>
+                <TreeViewItem Header="Tiếng Trung"/>
+                <TreeViewItem Header="Tiếng Hàn"/>
+            </TreeViewItem>
+        </TreeView>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GUI_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,8 @@ namespace TestGUI_QLTV
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+        private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
             MainPage mPage = new MainPage();
@@ -33,7 +35,33 @@ namespace TestGUI_QLTV
             spMenu.Children.Clear();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
+        }
 
-        }       
+        private void bthSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnBell_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnCart_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUser_Click(object sender, RoutedEventArgs e)
+        {
+            spMain.Children.Clear();
+            User_Control_Page UCUser = new User_Control_Page();
+            spMain.Children.Add(UCUser);
+        }
+
+        private void btnLogout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
