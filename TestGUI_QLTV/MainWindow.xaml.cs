@@ -49,7 +49,9 @@ namespace TestGUI_QLTV
 
         private void btnCart_Click(object sender, RoutedEventArgs e)
         {
-
+            spMain.Children.Clear();
+            BookPage bPage = new BookPage();
+            spMain.Children.Add(bPage);
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
