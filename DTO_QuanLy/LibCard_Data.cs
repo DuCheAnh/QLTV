@@ -28,6 +28,9 @@ namespace DTO_QuanLy
             this.gender = bGender;
             this.expired = dExpired;
         }
+        public LibCard_Data()
+        {
+        }
 
     }
 }
