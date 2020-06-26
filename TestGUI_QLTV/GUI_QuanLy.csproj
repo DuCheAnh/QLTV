@@ -69,7 +69,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Account_data_Processor.cs" />
+    <Compile Include="Processor\Account_data_Processor.cs" />
     <Compile Include="APIInit.cs" />
     <Compile Include="User_Control_Page.xaml.cs" />
     <Page Include="Admin_Control_Page.xaml">

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +17,7 @@ using System.Windows.Shapes;
 using BUS_QuanLy;
 using DTO_QuanLy;
 using TestGUI_QLTV;
+using TestGUI_QLTV.Processor;
 
 namespace GUI_QuanLy
 {
@@ -24,6 +26,7 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
+
         string sUID = "1";
         Account_Data tempdata = new Account_Data();
         User_Control_BUS User_BUS = new User_Control_BUS();
@@ -34,7 +37,6 @@ namespace GUI_QuanLy
             //Account_Data tempdata = await Account_data_Processor.LoadAccount();
             InitializeComponent();
             APIInit.InitClient();
-
         }
 
         private async Task binding_user()
