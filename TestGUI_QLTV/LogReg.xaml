@@ -1,0 +1,98 @@
+﻿<Window x:Class="TestGUI_QLTV.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestGUI_QLTV"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:iconPacks="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="LogReg" Height="450" Width="800"
+        AllowsTransparency="True" Background="Transparent"
+        WindowStyle="None" ResizeMode="NoResize"
+        MouseDown="Window_MouseDown"
+        >
+    <!--Panel-->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border CornerRadius="10" Grid.ColumnSpan="2">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientStop Color="#ffc400" Offset="0.0"/>
+                    <GradientStop Color="#f04590" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+        </Border>
+        <StackPanel VerticalAlignment="Center">
+            <TextBlock Text="TeamWorkFTW"
+                           FontWeight="Light"
+                           FontFamily="helvetica"
+                           FontSize="22"
+                           Foreground="Black"
+                           HorizontalAlignment="Center"/>
+        </StackPanel>
+        <!--Nut X-->
+
+        <StackPanel Grid.Column="1">
+            <!--Username-->
+            <StackPanel  Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" Height="50" Margin="0,150,0,0">
+                    <TextBox
+  materialDesign:HintAssist.Hint="Username"
+                        FontFamily="Comic Sans MS"
+                        FontWeight="Light"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
+                        Foreground="Black"
+                        HorizontalContentAlignment="Stretch"
+                        Opacity="0.5"
+                        Height="44"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,-0.4" Width="397" BorderBrush="Black"  />
+
+                </StackPanel>
+                <!--Password-->
+                <StackPanel>
+                    <PasswordBox
+  x:Name="Password"
+                FontFamily="Comic Sans MS"
+                        FontWeight="Light"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        Foreground="Black"
+                        HorizontalContentAlignment="Stretch"
+                        Opacity="0.5"
+                        Height="44"
+  materialDesign:HintAssist.Hint="Password"
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="400" BorderBrush="Black" />
+                </StackPanel>
+                <!--Log,Reg,Forgot-->
+                <StackPanel  Orientation="Vertical" Margin="0,0,0,0">
+                    <Button
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    ToolTip="Resource name: MaterialDesignRaisedButton" Margin="244,0,10,0" Background="Transparent" BorderBrush="Transparent"
+                        >
+                        _Forget password ?
+
+                    </Button>
+                    <Canvas  Margin="0,60,0,0">
+                        <Button Canvas.Bottom="0" Canvas.Left="0"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    ToolTip="Resource name: MaterialDesignRaisedButton"  Background="Transparent" BorderBrush="Transparent" Width="100" Canvas.Top="-32"
+                        >
+                            _Login
+                        </Button>
+                        <Button Canvas.Bottom="0" Canvas.Right="0"
+    Style="{StaticResource MaterialDesignRaisedButton}"
+    ToolTip="Resource name: MaterialDesignRaisedButton"  Background="Transparent" BorderBrush="Transparent" Height="36" Width="100" Canvas.Left="276" Canvas.Top="-36"
+                        >
+                            _Sign up
+                        </Button>
+                    </Canvas>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
