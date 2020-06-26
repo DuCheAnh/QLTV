@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TestGUI_QLTV"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             StartupUri="MainWindow.xaml">
+             StartupUri="User_Control_Page.xaml">
     <Application.Resources>
          <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
