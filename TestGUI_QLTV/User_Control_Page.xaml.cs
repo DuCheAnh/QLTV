@@ -37,6 +37,7 @@ namespace GUI_QuanLy
         private void Borrowed_Book(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
+            Window.GetWindow(this).Topmost = true;
             borrowedPage.Owner = Window.GetWindow(this);
             borrowedPage.Show();
         }

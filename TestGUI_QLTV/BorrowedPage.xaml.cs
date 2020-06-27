@@ -26,11 +26,11 @@ namespace TestGUI_QLTV
 
         protected override void OnDeactivated(EventArgs e)
         {
-            base.OnDeactivated(e);
-            Close();
-            Owner.Topmost = true;
-            Owner.Topmost = false;
-            Owner.Focus();
+            //this.OnDeactivated(e);
+            //Owner.Topmost = true;
+            this.Close();
+            //Owner.Topmost = false;
+            //Owner.Focus();
         }
     }
 }

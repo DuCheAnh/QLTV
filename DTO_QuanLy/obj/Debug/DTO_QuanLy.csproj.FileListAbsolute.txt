@@ -1,0 +1,6 @@
+C:\Users\ACER\Desktop\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.dll
+C:\Users\ACER\Desktop\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.pdb
+C:\Users\ACER\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.csprojAssemblyReference.cache
+C:\Users\ACER\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.csproj.CoreCompileInputs.cache
+C:\Users\ACER\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.dll
+C:\Users\ACER\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.pdb
