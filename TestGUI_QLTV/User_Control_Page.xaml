@@ -56,5 +56,10 @@
             </TextBox>
 
         </StackPanel>
+        <Button Margin="30,200,30,210" Height="Auto" Click="Borrowed_Book">
+            <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS">
+                BORROWED BOOK
+            </TextBlock>
+        </Button>
     </Grid>
 </UserControl>

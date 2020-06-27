@@ -1,0 +1,53 @@
+﻿<Window x:Class="TestGUI_QLTV.BorrowedPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestGUI_QLTV"
+        mc:Ignorable="d"
+        Title="BorrowedPage"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner" Height="600" Width="1000">
+    <Grid Margin="20" Background="white">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="button" Margin="5" Height="Auto">
+            <DockPanel LastChildFill="True" Height="260" Width="auto">
+                <Image DockPanel.Dock="Top" Source="a.png" Height="200" Width="auto"/>
+                <Label DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" 
+            VerticalAlignment="Bottom" Height="39">
+                    <TextBlock Height="auto" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Width="144" >
+                        Chicken with a Knife
+                    </TextBlock>
+                </Label>
+            </DockPanel>
+        </Button>
+        <Button Margin="5" Grid.Column="1" Height="Auto">
+            <DockPanel LastChildFill="True" Height="auto" Width="auto">
+                <Image DockPanel.Dock="Top" Source="a.png" Height="200" Width="auto"/>
+                <Label DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" 
+            VerticalAlignment="Bottom" Height="auto">
+                    <TextBlock Height="auto" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Width="143" >
+                        Chicken with a Knife (copy)
+                    </TextBlock>
+                </Label>
+            </DockPanel>
+        </Button>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+        </Grid.Effect>
+
+    </Grid>
+</Window>

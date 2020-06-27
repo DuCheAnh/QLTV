@@ -33,6 +33,13 @@ namespace GUI_QuanLy
             this.DataContext = tempdata;
             InitializeComponent();
         }
+
+        private void Borrowed_Book(object sender, RoutedEventArgs e)
+        {
+            TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
+            borrowedPage.Owner = Window.GetWindow(this);
+            borrowedPage.Show();
+        }
     }
 
     public class BooltoGenderConverter : IValueConverter
