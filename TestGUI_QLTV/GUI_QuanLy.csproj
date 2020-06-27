@@ -66,6 +66,9 @@
     <Compile Include="BookPage.xaml.cs">
       <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BorrowedPage.xaml.cs">
+      <DependentUpon>BorrowedPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="User_Control_Page.xaml.cs" />
     <Page Include="Admin_Control_Page.xaml">
@@ -75,6 +78,10 @@
     <Page Include="BookPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BorrowedPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="LogReg.xaml">
       <Generator>MSBuild:Compile</Generator>
