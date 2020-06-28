@@ -15,19 +15,15 @@ using System.Windows.Shapes;
 namespace TestGUI_QLTV
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Window2.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window2 : Window
     {
-        public Window1()
+        public Window2()
         {
             InitializeComponent();
         }
 
-        private void TextBox_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
-
-        }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -48,13 +44,11 @@ namespace TestGUI_QLTV
             }
         }
 
-        private void OpenForm(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
-            Window2 Rg = new Window2();
+            Window1 Rg =new Window1();
             Rg.Show();
             this.Close();
         }
     }
-  
-    
 }

@@ -67,6 +67,7 @@
       <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="LogReg.xaml.cs" />
+    <Compile Include="Register.xaml.cs" />
     <Compile Include="User_Control_Page.xaml.cs" />
     <Page Include="Admin_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -107,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="User_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
