@@ -1,0 +1,14 @@
+D:\QLTV\BUS_QuanLy\bin\Debug\BUS_QuanLy.dll
+D:\QLTV\BUS_QuanLy\bin\Debug\BUS_QuanLy.pdb
+D:\QLTV\BUS_QuanLy\bin\Debug\DAL_QuanLy.dll
+D:\QLTV\BUS_QuanLy\bin\Debug\DTO_QuanLy.dll
+D:\QLTV\BUS_QuanLy\bin\Debug\FireSharp.dll
+D:\QLTV\BUS_QuanLy\bin\Debug\RestSharp.dll
+D:\QLTV\BUS_QuanLy\bin\Debug\DAL_QuanLy.pdb
+D:\QLTV\BUS_QuanLy\bin\Debug\DTO_QuanLy.pdb
+D:\QLTV\BUS_QuanLy\bin\Debug\RestSharp.xml
+D:\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.csprojAssemblyReference.cache
+D:\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.csproj.CoreCompileInputs.cache
+D:\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.csproj.CopyComplete
+D:\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.dll
+D:\QLTV\BUS_QuanLy\obj\Debug\BUS_QuanLy.pdb

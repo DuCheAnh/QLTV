@@ -22,7 +22,7 @@ namespace TestGUI_QLTV
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {
+        {        
             InitializeComponent();
         }
 
@@ -63,7 +63,7 @@ namespace TestGUI_QLTV
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

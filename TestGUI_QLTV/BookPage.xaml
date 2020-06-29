@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestGUI_QLTV"
              >
-    <Grid Background="White" MinHeight="516" MinWidth="1024">
+    <Grid Background="White" Height="660" Width="1280">
         <Grid.RowDefinitions>
             <RowDefinition Height="280"/>
             <RowDefinition Height="2*"/>
