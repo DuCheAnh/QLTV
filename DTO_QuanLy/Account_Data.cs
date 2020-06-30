@@ -18,6 +18,7 @@ namespace DTO_QuanLy
         public string email { get; set; }
         public string identity_card { get; set; }
         public string account_type { get; set; }
+        public string libcard_pin { get; set; }
         public Account_Data(string sUID,string sAccount,string sPassword, string sProfilePicture,string sName,
                             DateTime dDOB, bool bGender, string sEmail, string sIdentityCard, string sAccountType)
         {
@@ -31,7 +32,6 @@ namespace DTO_QuanLy
             this.email = sEmail;
             this.identity_card = sIdentityCard;
             this.account_type = sAccountType;
-            
         }
         public Account_Data() { }
     }
