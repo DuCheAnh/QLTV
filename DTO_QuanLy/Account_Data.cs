@@ -18,20 +18,25 @@ namespace DTO_QuanLy
         public string email { get; set; }
         public string identity_card { get; set; }
         public string account_type { get; set; }
-        public string libcard_pin { get; set; }
-        public Account_Data(string sUID,string sAccount,string sPassword, string sProfilePicture,string sName,
-                            DateTime dDOB, bool bGender, string sEmail, string sIdentityCard, string sAccountType)
+        public string LCID { get; set; }
+        public Account_Data(string sAccount,string sPassword,string sEmail)
         {
-            this.UID = sUID;
             this.account = sAccount;
             this.password = sPassword;
-            this.profile_picture = sProfilePicture;
-            this.name = sName;
-            this.DOB = dDOB;
-            this.gender = bGender;
             this.email = sEmail;
-            this.identity_card = sIdentityCard;
+        }
+        public Account_Data(string sName, DateTime dtDOB, bool bGender, string sIdentifyCard,
+                            string sAccountType)
+        {
+            this.name = sName;
+            this.DOB = dtDOB;
+            this.gender = bGender;
+            this.identity_card = sIdentifyCard;
             this.account_type = sAccountType;
+        }
+        public Account_Data (string sLCID)
+        {
+            this.LCID = sLCID;
         }
         public Account_Data() { }
     }

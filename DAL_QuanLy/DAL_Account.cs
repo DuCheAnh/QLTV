@@ -21,71 +21,208 @@ namespace DAL_QuanLy
         {
             client = new FireSharp.FirebaseClient(config);
         }
-        #region using values
-        //insert values into table, string by string
 
-        public async void insert_values_to_table(
-                    string sUID, string sAccount, string sPassword, 
-                    string sProfilePicture, string sName, DateTime sDOB, bool bGender, string sEmail,
-                    string sIdentity, string sAccountType)
+
+        #region function
+        /// <summary>
+        /// Create a new user using Sign up info (account,password,email)
+        /// <list type="bullet">
+        /// <item>UserID are automatically generated</item>
+        /// <item>Account and password must not be null and acquire certain requirements</item>
+        /// <item>Email can be set to null</item>
+        /// </list>
+        /// </summary>
+        /// <param name="sAccount"></param>
+        /// <param name="sPassword"></param>
+        /// <param name="sEmail"></param>
+        public bool Create_new_user(string sAccount, string sPassword, string sEmail)
         {
-            var data = new Account_Data(sUID, sAccount, sPassword, sProfilePicture,
-                                       sName, sDOB, bGender, sEmail, sIdentity, sAccountType);
-                SetResponse response = await client.SetTaskAsync(sAccountTable_path + sUID, data);
+            try
+            {
+                //generate user id
+                string sUID = "U" + DateTime.Now.Ticks.ToString();
+                var data = new Account_Data(sAccount, sPassword, sEmail);
+                data.UID = sUID;
+                //add a new user info
+                SetResponse response = client.Set(sAccountTable_path + sUID, data);
                 Account_Data result = response.ResultAs<Account_Data>();
-            
+                if (result != null) return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            return false;
         }
 
-        //update values into table, string by string
-        public async void update_values_to_table(string sUID, string sAccount, string sPassword,
-                   string sProfilePicture, string sName, DateTime sDOB, bool bGender, string sEmail,
-                   string sIdentity, string sAccountType)
+
+        /// <summary>
+        /// Update users password by uid and password
+        /// <list type="bullet">
+        /// <item>Password must be valid</item>
+        /// </list>
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <param name="sPassword"></param>
+        public bool Update_user_password(string sUID,string sPassword)
         {
-            var data = new Account_Data(sUID, sAccount, sPassword, sProfilePicture,
-                                       sName, sDOB, bGender, sEmail, sIdentity, sAccountType);
-            FirebaseResponse response = await client.UpdateTaskAsync(sAccountTable_path + sUID, data);
-            Account_Data result = response.ResultAs<Account_Data>();
+            try
+            {
+                //get user from suid
+                Account_Data data = retrieve_user_data(sUID);
+                data.password = sPassword;
+                //update users info
+                FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
+                Account_Data result = update_response.ResultAs<Account_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            return false;
         }
 
-        #endregion
-        #region using Account_data
-        // Insert Account_data to table
-        public async void insert_data_to_table(Account_Data data)
+
+        /// <summary>
+        /// Update users email by uid and email
+        /// <list type="bullet">
+        /// <item>Email must be valid</item>
+        /// </list>
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <param name="sEmail"></param>
+        public bool Update_user_email(string sUID, string sEmail)
         {
-            SetResponse response = await client.SetTaskAsync(sAccountTable_path + data.UID, data);
-            Account_Data result = response.ResultAs<Account_Data>();
+            try
+            {
+                //get user from suid
+                Account_Data data = retrieve_user_data(sUID);
+                data.email = sEmail;
+                //update users info
+                FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
+                Account_Data result = update_response.ResultAs<Account_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception) { }
+            return false;
         }
 
-        //Delete data from table by UID
-        public async void delete_from_table(string sUID)
-        {           
-                FirebaseResponse delete_response = await client.DeleteTaskAsync(sAccountTable_path + sUID);            
-        }
 
-        // update Account_data to table
-        public async void update_data_to_table(Account_Data data)
+        /// <summary>
+        /// Update users password by uid and profile picture
+        /// <list type="bullet">
+        /// <item>Profile picture must be valid</item>
+        /// </list>
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <param name="sProfilePicture"></param>
+        public bool Update_user_profile(string sUID, string sProfilePicture)
         {
-            FirebaseResponse response = await client.UpdateTaskAsync(sAccountTable_path + data.UID, data);
-            Account_Data result = response.ResultAs<Account_Data>();
+            try
+            {
+                //get user from suid
+                Account_Data data = retrieve_user_data(sUID);
+                data.profile_picture = sProfilePicture;
+                //update users info
+                FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
+                Account_Data result = update_response.ResultAs<Account_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception) { }
+            return false;
         }
 
-        //retrieve Account_data from table by UID
+
+        /// <summary>
+        /// Delete user from the database by UID
+        /// </summary>
+        /// <param name="sUID"></param>
+        public bool Delete_user(string sUID)
+        {
+            try
+            {
+                FirebaseResponse delete_response = client.Delete(sAccountTable_path + sUID);             
+                if (delete_response!=null) return true;
+            }
+            catch (Exception) { }
+            return false;
+        }
+
+
+        /// <summary>
+        /// Retrieve users data by UID, the function return Account_Data class
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <returns></returns>
         public Account_Data retrieve_user_data(string sUID)
         {
-            Account_Data data = new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!");
-/*            var retrieve_response = client.Get(sAccountTable_path + sUID);
-            Account_Data data = retrieve_response.ResultAs<Account_Data>();*/
+            var retrieve_response = client.Get(sAccountTable_path + sUID);
+            Account_Data data = retrieve_response.ResultAs<Account_Data>();
             return data;
+        }
+
+
+        /// <summary>
+        /// transfer libcard data to users and send it to the database
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <param name="sLCID"></param>
+        public bool set_libcard_to_user(string sUID, string sLCID)
+        {
+            try
+            {
+                DAL_Libcard Libcard_rep = new DAL_Libcard();
+                //get user            
+                Account_Data user_data = retrieve_user_data(sUID);
+                //get libcard
+                var libcard_response = client.Get(Libcard_rep.sLibCardTable_path + sLCID);
+                LibCard_Data libcard_data = libcard_response.ResultAs<LibCard_Data>();
+                //set new data
+                user_data.name = libcard_data.name;
+                user_data.DOB = libcard_data.DOB;
+                user_data.gender = libcard_data.gender;
+                user_data.identity_card = libcard_data.identity_card;
+                user_data.account_type = libcard_data.account_type;
+                //send it to the database
+                FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, user_data);
+                Account_Data result = update_response.ResultAs<Account_Data>();
+                if (result!=null) return true;
+            }
+            catch (Exception) { }
+            return false;
+        }
+        
+
+        /// <summary>
+        /// Remove libcard info from user
+        /// </summary>
+        /// <param name="sUID"></param>
+        public bool remove_libcard(string sUID)
+        {
+            try
+            {
+                Account_Data data = retrieve_user_data(sUID);
+                Account_Data data1 = new Account_Data(data.account, data.password, data.email);
+                FirebaseResponse remove_response = client.Set(sAccountTable_path + sUID, data1);
+                Account_Data result = remove_response.ResultAs<Account_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception)
+            {
+
+            }
+            return false;
         }
         #endregion
 
-        public List<Account_Data> retrieve_all_user_data()
-        {
-            List<Account_Data> data = new List<Account_Data>();
+        //public List<Account_Data> retrieve_all_user_data()
+        //{
+        //    List<Account_Data> data = new List<Account_Data>();
 
-            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
+        //    //data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
 
-            return data;
-        }
+        //    return data;
+        //}
     }
 }

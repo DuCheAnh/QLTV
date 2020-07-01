@@ -14,7 +14,7 @@ namespace DAL_QuanLy
         #region variables
         //variables
         public IFirebaseClient client;
-        string sLibCardTable_path = "LibCards/";
+        public string sLibCardTable_path = "LibCards/";
         #endregion
         //Connect to the database, run this before all the funcs below
         public void init_client()
