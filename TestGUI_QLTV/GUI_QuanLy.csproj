@@ -71,7 +71,9 @@
     </Compile>
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="Products.cs" />
-    <Compile Include="User_Control_Page.xaml.cs" />
+    <Compile Include="User_Control_Page.xaml.cs">
+      <DependentUpon>User_Control_Page.xaml</DependentUpon>
+    </Compile>
     <Page Include="Admin_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

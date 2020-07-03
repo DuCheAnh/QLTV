@@ -12,42 +12,62 @@
         Background="Transparent"
         WindowStartupLocation="CenterOwner" Height="600" Width="1000">
     <Grid Margin="20" Background="white">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Button x:Name="button" Margin="5" Height="Auto">
-            <DockPanel LastChildFill="True" Height="260" Width="auto">
-                <Image DockPanel.Dock="Top" Source="a.png" Height="200" Width="auto"/>
-                <Label DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" 
-            VerticalAlignment="Bottom" Height="39">
-                    <TextBlock Height="auto" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Width="144" >
-                        Chicken with a Knife
-                    </TextBlock>
-                </Label>
-            </DockPanel>
-        </Button>
-        <Button Margin="5" Grid.Column="1" Height="Auto">
-            <DockPanel LastChildFill="True" Height="auto" Width="auto">
-                <Image DockPanel.Dock="Top" Source="a.png" Height="200" Width="auto"/>
-                <Label DockPanel.Dock="Bottom" HorizontalContentAlignment="Center" 
-            VerticalAlignment="Bottom" Height="auto">
-                    <TextBlock Height="auto" FontSize="15" TextWrapping="Wrap" TextAlignment="Center" Width="143" >
-                        Chicken with a Knife (copy)
-                    </TextBlock>
-                </Label>
-            </DockPanel>
+        <StackPanel x:Name="bookList" Grid.Row="0">
+            <ItemsControl x:Name="IBook" ItemsSource="{Binding Products}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="300" Height="165" Background="White" Margin="10 10">
+                            <Button Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Button_Click" >
+                                <Canvas Height="155" Width="260">
+                                    <StackPanel Height="155" Width="100" Canvas.Left="0" Canvas.Top="0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="{Binding bImage}"></ImageBrush>
+                                        </StackPanel.Background>
+                                    </StackPanel>
+                                    <Label Name="lbBookName" Content="{Binding bName}" Canvas.Left="95" FontSize="16"/>
+                                    <Label Content="{Binding bActor}" Canvas.Left="95" Canvas.Top="30"/>
+                                </Canvas>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <!--<Grid Width="1280" Height="600">
+                <StackPanel x:Name="dpBook"></StackPanel>
+            </Grid> -->
+        </StackPanel>
+        <Button Width="25" Height="25" HorizontalAlignment="Stretch" Margin="935,0,0,535" Click="Close" VerticalAlignment="Bottom" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Source="a.png" />
         </Button>
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
         </Grid.Effect>
-
     </Grid>
 </Window>
