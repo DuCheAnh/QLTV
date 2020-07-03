@@ -7,6 +7,8 @@ using FireSharp.Response;
 using FireSharp.Config;
 using FireSharp.Interfaces;
 using DTO_QuanLy;
+using Microsoft.Win32;
+
 namespace DAL_QuanLy
 {
     public class DAL_Account : DB_connect
@@ -213,6 +215,37 @@ namespace DAL_QuanLy
 
             }
             return false;
+        }
+
+        /// <summary>
+        /// Get all users data, then add them all to a list
+        /// </summary>
+        /// <returns></returns>
+        public List<Account_Data> retrieve_all_user()
+        {
+            //create a list to store data
+            List<Account_Data> account_list = new List<Account_Data>();
+            //get all the data, then transfer them to a dictionnary variable
+            FirebaseResponse response = client.Get(sAccountTable_path);
+            Dictionary<string, Account_Data> all_data = response.ResultAs<Dictionary<string, Account_Data>>();
+            foreach(var user in all_data)
+            {
+                account_list.Add(user.Value);
+            }
+            return account_list;
+        }
+
+
+        public Account_Data search_for_username(string sAccount)
+        {
+            foreach (Account_Data user in retrieve_all_user())
+            {
+                if (sAccount == user.account)
+                {
+                    return user;
+                }
+            }
+            return null;
         }
         #endregion
 
