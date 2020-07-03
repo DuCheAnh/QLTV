@@ -16,6 +16,14 @@ namespace DAL_QuanLy
         public IFirebaseClient client;
         string sAccountTable_path = "LibAccounts/";
         #endregion
+
+        //constructor
+        public DAL_Account()
+        {
+            init_client();
+        }
+
+
         //Connect to the database, run this before all the funcs below
         public void init_client()
         {
@@ -50,10 +58,17 @@ namespace DAL_QuanLy
         #endregion
         #region using Account_data
         // Insert Account_data to table
-        public async void insert_data_to_table(Account_Data data)
+        public async Task<bool> insert_data_to_table(Account_Data data)
         {
             SetResponse response = await client.SetTaskAsync(sAccountTable_path + data.UID, data);
             Account_Data result = response.ResultAs<Account_Data>();
+
+            if (result != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         //Delete data from table by UID
@@ -63,18 +78,25 @@ namespace DAL_QuanLy
         }
 
         // update Account_data to table
-        public async void update_data_to_table(Account_Data data)
-        {
+        public async Task<bool> update_data_to_table(Account_Data data)
+        { 
             FirebaseResponse response = await client.UpdateTaskAsync(sAccountTable_path + data.UID, data);
             Account_Data result = response.ResultAs<Account_Data>();
+
+            if (result == null)
+            {
+                return false;
+            }
+
+            return true;
         }
 
         //retrieve Account_data from table by UID
         public Account_Data retrieve_user_data(string sUID)
         {
-             Account_Data data = new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!");
-/*            var retrieve_response = client.Get(sAccountTable_path + sUID);
-            Account_Data data = retrieve_response.ResultAs<Account_Data>();*/
+            // Account_Data data = new Account_Data("1", "cuong do", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!");
+            var retrieve_response = client.Get(sAccountTable_path + sUID);
+            Account_Data data = retrieve_response.ResultAs<Account_Data>();
             return data;
         }
         #endregion
@@ -82,11 +104,10 @@ namespace DAL_QuanLy
         public List<Account_Data> retrieve_all_user_data()
         {
             List<Account_Data> data = new List<Account_Data>();
+            
+            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
+            data.Add(new Account_Data("123", "chuong", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
 
-            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
-            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
-            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
-            data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
             return data;
         }
     }

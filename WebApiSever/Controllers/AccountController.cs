@@ -18,34 +18,24 @@ namespace WebApiSever.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        DAL_Account DAL_method = new DAL_Account();
-
-        private readonly IJwtAuthenticationManager jwtAuthenticationmanager;
-            
-        public AccountController(IJwtAuthenticationManager jwtAuthenticationManager)
-        {
-            this.jwtAuthenticationmanager = jwtAuthenticationManager;
-        }
+        BUS_Account BUS_method = new BUS_Account();
 
         // GET: api/Account
         //get all account
         [HttpGet]
         public IEnumerable<Account_Data> Get()
         {
-            DAL_method.init_client();
-
-            IEnumerable<Account_Data> Accounts = DAL_method.retrieve_all_user_data();
+            IEnumerable<Account_Data> Accounts = BUS_method.retrieve_all_user_data();
             return Accounts;
         }
 
         // GET: api/Account/5
         // get specific account /by id
         [HttpGet("{id}", Name = "Get")]
-        public IActionResult Get(int id)
+        public IActionResult Get(string id)
         {
-            DAL_method.init_client();
 
-            Account_Data account = DAL_method.retrieve_user_data(id.ToString());
+            Account_Data account = BUS_method.retrieve_user_data(id.ToString());
 
             if (account == null)
                 return NotFound();
@@ -58,15 +48,13 @@ namespace WebApiSever.Controllers
         [HttpPost]
         public string Post([FromBody] Account_Data data)
         {
-            DAL_method.init_client();
-
+            bool created = BUS_method.Create_new_account(data);
             //DAL_method.insert_data_to_table(data);// need bool
-            if (false /*cant create account*/)
+            if (created)
             {
-                return "cant create account";
+                return "successfully created";
             }
-
-            return "successfully created";
+            return "cant create account";
         }
 
         //POST: api/account/{id}
@@ -83,10 +71,11 @@ namespace WebApiSever.Controllers
         // PUT: api/Account/5
         // update specific account
         [HttpPut("{id}")]
-        public void Put([FromBody] Account_Data account)
+        public IActionResult Put([FromBody] Account_Data account)
         {
-            DAL_method.init_client();
-            DAL_method.update_data_to_table(account);// need bool
+
+            BUS_method.Update_account(account);// need bool
+            return Ok(BUS_method.Update_account(account));
 
             // need return value
         }
@@ -96,8 +85,7 @@ namespace WebApiSever.Controllers
         [HttpDelete("{id}")]
         public void Delete(string id)
         {
-            DAL_method.init_client();
-            DAL_method.delete_from_table(id); // need bool
+            BUS_method.Delete_specific_account(id); // need bool
 
             //need return value
         }
@@ -106,6 +94,15 @@ namespace WebApiSever.Controllers
         // DELETE : api/account
         //delete all account
         /*undone*/
+
+        #region authentication
+        private readonly IJwtAuthenticationManager jwtAuthenticationmanager;
+
+        public AccountController(IJwtAuthenticationManager jwtAuthenticationManager)
+        {
+            this.jwtAuthenticationmanager = jwtAuthenticationManager;
+        }
+
 
         // POST: api/account/authenticate
         // Authenticate before use
@@ -119,7 +116,10 @@ namespace WebApiSever.Controllers
                 return Unauthorized();
             }
 
+
             return Ok(token);
         }
+        #endregion
+
     }
 }

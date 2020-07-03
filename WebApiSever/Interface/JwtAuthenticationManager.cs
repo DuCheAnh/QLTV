@@ -7,25 +7,36 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using WebApiSever.Interface;
-
+using DAL_QuanLy;
+using DTO_QuanLy;
 namespace WebApiSever
 {
     public class JwtAuthenticationManager : IJwtAuthenticationManager
     {
-        private readonly IDictionary<string, string> users = new Dictionary<string, string>
-        {
-            {"test1" , "password1" } , {"test2", "password2"}
-        };
+        private DAL_Account Dal_method = new DAL_Account();
+
+        private List<Account_Data> accounts = new List<Account_Data>();
+
         private readonly string key;
+
+        private void Getdictionary()
+        {
+            Dal_method.init_client();
+            accounts = Dal_method.retrieve_all_user_data();
+        }
 
         public JwtAuthenticationManager(string key)
         {
             this.key = key;
         }
 
-        public string Authenticate(string username, string password)
+        
+
+        public Model.UserToken Authenticate(string username, string password)
         {
-            if (!users.Any(u => u.Key == username && u.Value == password) /*false*/)
+            Getdictionary();
+
+            if (!accounts.Any(u => u.account == username && u.password == password))
             {
                 return null;
             }
@@ -44,8 +55,19 @@ namespace WebApiSever
                 SecurityAlgorithms.HmacSha512)
             };
 
+
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+            Model.UserToken Uto = new Model.UserToken();
+            Uto.token = tokenHandler.WriteToken(token);
+
+
+            foreach (Account_Data account in accounts)
+            {
+                if (account.account == username && account.password == password)
+                    Uto.ID = account.UID;
+            }
+
+            return Uto;
         }
 
 
