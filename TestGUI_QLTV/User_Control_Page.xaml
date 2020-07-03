@@ -5,15 +5,20 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_QuanLy"
              mc:Ignorable="d" 
+             Loaded="UserControl_Loaded"
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="3*"></ColumnDefinition>
+            <ColumnDefinition Width="2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="2*"></RowDefinition>
+        </Grid.RowDefinitions>
         <Canvas Name ="Profile_picture" Grid.Column="0"
-                Background="Black"
                 Width="100" Height="100"
+                Background="AliceBlue"
                 VerticalAlignment="Top"
                 Margin="40,40,0,0" >
         </Canvas>

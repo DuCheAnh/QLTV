@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,6 +16,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BUS_QuanLy;
 using DTO_QuanLy;
+using TestGUI_QLTV;
+using TestGUI_QLTV.Processor;
 
 namespace GUI_QuanLy
 {
@@ -24,14 +27,32 @@ namespace GUI_QuanLy
     public partial class User_Control_Page : UserControl
     {
         string sUID = "U637292539878671903";
+
+        Account_Data tempdata = new Account_Data();
         User_Control_BUS User_BUS = new User_Control_BUS();
 
         public User_Control_Page()
         {
-            Account_Data tempdata = User_BUS.Get_Single_UserInfo(sUID);
-
-            this.DataContext = tempdata;
+            
+            //Account_Data tempdata = await Account_data_Processor.LoadAccount();
             InitializeComponent();
+            APIInit.InitClient();
+
+            var Books = new List<Book_Data>();
+            Books.Add(new Book_Data("1", "One Hundred Years of Solitude", "Gabriel Marquez", new DateTime(2000,2,28), "Philosophy", "nothing much i just loved it", "NULL but by string", 1, 1, "me", "no"));
+
+            BorrowingBooks.Children.Add(new BorrowingBooks(Books));
+        }
+
+        private async Task binding_user()
+        {
+            tempdata = await Account_data_Processor.GetAccount(sUID);
+            this.DataContext = tempdata;
+        }
+
+        private async void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            await binding_user();
         }
 
         private void Borrowed_Book(object sender, RoutedEventArgs e)
@@ -41,6 +62,8 @@ namespace GUI_QuanLy
             borrowedPage.Show();
         }
     }
+
+
 
     public class BooltoGenderConverter : IValueConverter
     {
