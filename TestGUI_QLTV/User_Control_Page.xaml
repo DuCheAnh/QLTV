@@ -17,7 +17,7 @@
                 VerticalAlignment="Top"
                 Margin="40,40,0,0" >
         </Canvas>
-        <StackPanel Margin="0,0 ,0,0" Grid.Column="1" >
+        <StackPanel Margin="0,0 ,0,0" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
             <StackPanel.Resources>
                 <local:BooltoGenderConverter x:Key="BooltoGenderConverter"></local:BooltoGenderConverter>
                 <Style TargetType="{x:Type FrameworkElement}">
@@ -29,32 +29,74 @@
                 <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
             </StackPanel.Resources>
-            <Label Name="UserAccount_label"
-                   Content="{Binding Path=account}"
-                   FontSize="20"
-                   Margin="0 ,100 ,0,0">
-            </Label>
-            <Label Name="UserName_label"
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Name:"
+                    FontSize="20"
+                    Margin="0 ,100 ,0,0">
+                </Label>
+                <Label Name="UserName_label"
                    Content="{Binding Path=name}"
+                   Margin="0 ,100 ,0,0"
                    FontSize="20">
-            </Label>
-            <PasswordBox Name="UserPassword_PasswordBox"
+                </Label>
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="UserName:"
+                    FontSize="20">
+                </Label>
+                <Label Name="UserAccount_label"
+                   Content="{Binding Path=account}"
+                   FontSize="20">
+                </Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Password:"
+                    FontSize="20">
+                </Label>
+                <PasswordBox Name="UserPassword_PasswordBox"
                          DataContext="{Binding Path=password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         FontSize="20">
-            </PasswordBox>
-            <Label Name="UserGender_Label"
-                   Content="{Binding Path=gender, Converter={StaticResource BooltoGenderConverter}}"
+                         FontSize="20" >
+                </PasswordBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Email:"
+                    FontSize="20">
+                </Label>
+                <TextBox Name="UserMail_label"
+                   Text="{Binding Path=email, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
+                         Width="400"
                    FontSize="20">
-            </Label>
-            <Label Name="UserDOB_label"
+                </TextBox>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Gender:"
+                    FontSize="20">
+                </Label>
+                <Label Name="UserGender_label"
+                   Content = "{Binding Path=gender, Converter={StaticResource BooltoGenderConverter}}"
+                   FontSize="20">
+                </Label>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="DOB:"
+                    FontSize="20">
+                </Label>
+                <Label Name="UserDOB_label"
                    Content="{Binding Path=DOB}"
                    FontSize="20">
-            </Label>
-            <TextBox Name="UserMail_label"
-                   Text="{Binding Path=email, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
-                   FontSize="20">
-            </TextBox>
+                </Label>
+            </StackPanel>
 
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Account_Type:"
+                    FontSize="20">
+                </Label>
+                <Label Name="UserAccountType_label"
+                   Content="{Binding Path=account_type}"
+                   FontSize="20">
+                </Label>
+            </StackPanel>
         </StackPanel>
         <Button Margin="30,200,30,210" Height="Auto" Click="Borrowed_Book">
             <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS">
