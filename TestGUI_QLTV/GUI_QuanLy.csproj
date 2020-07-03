@@ -69,9 +69,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BorrowingBooks.xaml.cs">
-      <DependentUpon>BorrowingBooks.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Processor\Account_data_Processor.cs" />
     <Compile Include="APIInit.cs" />
     <Compile Include="BookPage.xaml.cs">

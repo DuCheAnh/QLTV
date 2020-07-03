@@ -15,7 +15,7 @@ namespace BUS_QuanLy
         public IEnumerable<Account_Data> retrieve_all_user_data()
         {
             DAL_method.init_client();
-            IEnumerable<Account_Data> accounts = DAL_method.retrieve_all_user_data();
+            IEnumerable<Account_Data> accounts = DAL_method.retrieve_all_user();
             return accounts;
         }
 
@@ -29,13 +29,16 @@ namespace BUS_QuanLy
         public bool Create_new_account(Account_Data account)
         {
             DAL_method.init_client();
-            return DAL_method.insert_data_to_table(account).Result;
+            return DAL_method.Create_new_user(account.account, account.password, account.email);
         }
 
         public bool Update_account(Account_Data account)
         {
             DAL_method.init_client();
-            return DAL_method.update_data_to_table(account).Result;
+            if (DAL_method.Update_user_email(account.UID, account.email) || DAL_method.Update_user_password(account.UID, account.password))
+                return false;
+            return true;
+
         }
 
         public void Update_all_account(IEnumerable<Account_Data> accounts)
@@ -43,7 +46,8 @@ namespace BUS_QuanLy
             DAL_method.init_client();
             foreach (Account_Data account in accounts)
             {
-                DAL_method.update_data_to_table(account);
+                DAL_method.Update_user_email(account.UID, account.email);
+                DAL_method.Update_user_password(account.UID, account.password);
             }
             
 
@@ -52,7 +56,7 @@ namespace BUS_QuanLy
         public void Delete_specific_account(string id)
         {
             DAL_method.init_client();
-            DAL_method.delete_from_table(id);
+            DAL_method.Delete_user(id);
         }
     }
 }

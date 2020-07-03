@@ -22,7 +22,7 @@ namespace WebApiSever
         private void Getdictionary()
         {
             Dal_method.init_client();
-            accounts = Dal_method.retrieve_all_user_data();
+            accounts = Dal_method.retrieve_all_user();
         }
 
         public JwtAuthenticationManager(string key)

@@ -41,7 +41,6 @@ namespace GUI_QuanLy
             var Books = new List<Book_Data>();
             Books.Add(new Book_Data("1", "One Hundred Years of Solitude", "Gabriel Marquez", new DateTime(2000,2,28), "Philosophy", "nothing much i just loved it", "NULL but by string", 1, 1, "me", "no"));
 
-            BorrowingBooks.Children.Add(new BorrowingBooks(Books));
         }
 
         private async Task binding_user()
