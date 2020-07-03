@@ -7,14 +7,14 @@
              FontFamily="Comic Sans MS">
     <Grid Height="630" Width="1280">
         <Grid.RowDefinitions>
-            <RowDefinition Height="600"></RowDefinition>
-            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="580"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="bookList" Grid.Row="0" Width="1260" Height="600">
+        <StackPanel x:Name="bookList" Grid.Row="0" Width="1260" Height="580" Margin="0 0 0 0">
             <ItemsControl x:Name="IBook" ItemsSource="{Binding Products}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="280" Height="130" Background="White" Margin="15 10">
+                        <StackPanel Width="280" Height="130" Background="White" Margin="15 5">
                             <Button Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Button_Click" >
                                 <Canvas Height="120" Width="260">
                                     <StackPanel Height="120" Width="90" Canvas.Left="0" Canvas.Top="0">
@@ -35,11 +35,12 @@
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-            <!--<Grid Width="1280" Height="600">
-                <StackPanel x:Name="dpBook"></StackPanel>
-            </Grid> -->
         </StackPanel>
-        <Button x:Name="btnNextPage" Grid.Row="1" Click="btnNextPage_Click"></Button>
-       
+        <Canvas Grid.Row="1">
+            <Button  x:Name="btnNextPage" Width="150" Content="Trang sau" Canvas.Right="450" Click="btnNextPage_Click" />
+            <Button x:Name="btnPreviousPage" Width="150" Content="Trang trước" Canvas.Left="450" Click="btnPreviousPage_Click"></Button>
+        </Canvas>
+
+
     </Grid>
 </UserControl>

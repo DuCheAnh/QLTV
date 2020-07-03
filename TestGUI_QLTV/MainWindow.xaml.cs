@@ -24,6 +24,10 @@ namespace TestGUI_QLTV
         public MainWindow()
         {        
             InitializeComponent();
+            MainMenu mMenu = new MainMenu();
+            spMenu.Children.Add(mMenu);
+            MainPage mPage = new MainPage();
+            spMain.Children.Add(mPage);
         }
 
 

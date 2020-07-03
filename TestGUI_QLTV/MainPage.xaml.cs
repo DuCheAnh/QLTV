@@ -56,5 +56,10 @@ namespace TestGUI_QLTV
             
             MessageBox.Show("cacc");
         }
+
+        private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
