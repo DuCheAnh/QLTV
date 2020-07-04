@@ -10,19 +10,28 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TestGUI_QLTV
 {
     /// <summary>
-    /// Interaction logic for Book.xaml
+    /// Interaction logic for ChangeEmail.xaml
     /// </summary>
-    public partial class Book : UserControl
+    public partial class ChangeEmail : Window
     {
-        public Book()
+        public ChangeEmail()
         {
             InitializeComponent();
+        }
+
+        private void Close(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
+
+        private void Save(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
