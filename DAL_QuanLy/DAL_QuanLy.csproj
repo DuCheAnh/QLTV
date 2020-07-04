@@ -54,6 +54,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DAL_Account.cs" />
+    <Compile Include="DAL_Book.cs" />
+    <Compile Include="DAL_Borrow.cs" />
     <Compile Include="DAL_Libcard.cs" />
     <Compile Include="DB_connect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

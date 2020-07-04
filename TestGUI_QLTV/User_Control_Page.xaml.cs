@@ -23,7 +23,7 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
-        string sUID = "U637293424189421998";
+        string sUID = "U637294537098180579";
 
         User_Control_BUS User_BUS = new User_Control_BUS();
 
