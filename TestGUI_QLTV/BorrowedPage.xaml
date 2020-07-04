@@ -1,0 +1,73 @@
+﻿<Window x:Class="TestGUI_QLTV.BorrowedPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestGUI_QLTV"
+        mc:Ignorable="d"
+        Title="BorrowedPage"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        AllowsTransparency="True"
+        Background="Transparent"
+        WindowStartupLocation="CenterOwner" Height="600" Width="1000">
+    <Grid Margin="20" Background="white">
+        <StackPanel x:Name="bookList" Grid.Row="0">
+            <ItemsControl x:Name="IBook" ItemsSource="{Binding Products}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="300" Height="165" Background="White" Margin="10 10">
+                            <Button Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Button_Click" >
+                                <Canvas Height="155" Width="260">
+                                    <StackPanel Height="155" Width="100" Canvas.Left="0" Canvas.Top="0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="{Binding bImage}"></ImageBrush>
+                                        </StackPanel.Background>
+                                    </StackPanel>
+                                    <Label Name="lbBookName" Content="{Binding bName}" Canvas.Left="95" FontSize="16"/>
+                                    <Label Content="{Binding bActor}" Canvas.Left="95" Canvas.Top="30"/>
+                                </Canvas>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+            <!--<Grid Width="1280" Height="600">
+                <StackPanel x:Name="dpBook"></StackPanel>
+            </Grid> -->
+        </StackPanel>
+        <Button Width="25" Height="25" HorizontalAlignment="Stretch" Margin="935,0,0,535" Click="Close" VerticalAlignment="Bottom" >
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Source="a.png" />
+        </Button>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+        </Grid.Effect>
+    </Grid>
+</Window>

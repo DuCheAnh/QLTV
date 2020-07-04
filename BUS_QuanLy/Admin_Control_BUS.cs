@@ -21,7 +21,7 @@ namespace BUS_QuanLy
         public void Get_User_Info(DataGrid Info_grid)
         {
             Account_DAL.init_client();
-            Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
+           // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
         }
 
         /// <summary>

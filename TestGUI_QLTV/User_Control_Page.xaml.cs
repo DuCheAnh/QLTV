@@ -23,7 +23,8 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
-        string sUID = "1";
+        string sUID = "U637293424189421998";
+
         User_Control_BUS User_BUS = new User_Control_BUS();
 
         public User_Control_Page()
@@ -32,6 +33,13 @@ namespace GUI_QuanLy
 
             this.DataContext = tempdata;
             InitializeComponent();
+        }
+
+        private void Borrowed_Book(object sender, RoutedEventArgs e)
+        {
+            TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
+            borrowedPage.Owner = Window.GetWindow(this);
+            borrowedPage.Show();
         }
     }
 

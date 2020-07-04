@@ -6,14 +6,14 @@
         xmlns:local="clr-namespace:TestGUI_QLTV"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="QLTV" Height="720" Width="1280" MinHeight="576" MinWidth="1024">
+        ResizeMode="NoResize"
+        Title="QLTV" Height="720" Width="1280">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Grid Grid.Row="0" Background="#ffc400"></Grid>
             <materialDesign:DrawerHost Grid.RowSpan="2" Panel.ZIndex="2">
                 <materialDesign:DrawerHost.LeftDrawerContent  >
                     <StackPanel x:Name="spMenu" Width="200" Background="LightGray">
@@ -27,7 +27,8 @@
 
 
 
-            <Grid x:Name="pControl" Grid.Row="0" Background="#ffc400" VerticalAlignment="Top" HorizontalAlignment="Stretch" Panel.ZIndex="1">
+            <Grid x:Name="pControl" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Panel.ZIndex="1">
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" MinWidth="50"></ColumnDefinition>
                     <ColumnDefinition Width="*" MinWidth="50"></ColumnDefinition>
@@ -37,7 +38,14 @@
                     <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
                     <ColumnDefinition Width="*" MinWidth="60"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
+                <Border Grid.Column="0" Grid.ColumnSpan="10" BorderBrush="Black" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="#ffc400" Offset="0.0"/>
+                            <GradientStop Color="#f04590" Offset="1"/>
+                        </LinearGradientBrush>
+                    </Border.Background>
+                </Border>
                 <Button x:Name="btnHome" Grid.Column="1" Width="auto" Height="55" HorizontalAlignment="Center" VerticalAlignment="Center" 
                     Style="{DynamicResource MaterialDesignToolForegroundButton}"
                     Click="btnHome_Click"
@@ -108,12 +116,7 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="1" Grid.Column="1" Background="LightGray">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" MaxWidth="240"></ColumnDefinition>
-                    <ColumnDefinition MinWidth="1024" MaxWidth="1360" Width="1000*"></ColumnDefinition>
-                    <ColumnDefinition Width="*" MaxWidth="240"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <StackPanel Name="spMain" Grid.Column="1" Background="White" HorizontalAlignment="Stretch">
+                <StackPanel Name="spMain"  Background="White" Height="660">
 
                 </StackPanel>
             </Grid>

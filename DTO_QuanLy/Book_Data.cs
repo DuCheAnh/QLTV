@@ -8,17 +8,17 @@ namespace DTO_QuanLy
 {
     public class Book_Data
     {
-        public string BID;
-        public string name;
-        public string author;
-        public DateTime release_date;
-        public string category;
-        public string description;
-        public string cover_page;
-        public int price;
-        public int amount;
-        public string added_by;
-        public string add_date;
+        public string BID { get; set; }
+        public string name { get; set; }
+        public string author { get; set; }
+        public DateTime release_date { get; set; }
+        public string category { get; set; }
+        public string description { get; set; }
+        public string cover_page { get; set; }
+        public int price { get; set; }
+        public int amount { get; set; }
+        public string added_by { get; set; }
+        public string add_date { get; set; }
         public Book_Data()
         {
         }

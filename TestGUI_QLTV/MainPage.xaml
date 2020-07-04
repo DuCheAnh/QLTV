@@ -4,11 +4,43 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestGUI_QLTV"
-             mc:Ignorable="d" 
-             d:DesignHeight="400" d:DesignWidth="1080">
-    <Grid>
-        <Grid Background="White">
-           
-        </Grid>
+             FontFamily="Comic Sans MS">
+    <Grid Height="630" Width="1280">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="580"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel x:Name="bookList" Grid.Row="0" Width="1260" Height="580" Margin="0 0 0 0">
+            <ItemsControl x:Name="IBook" ItemsSource="{Binding Products}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Width="280" Height="130" Background="White" Margin="15 5">
+                            <Button Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Button_Click" >
+                                <Canvas Height="120" Width="260">
+                                    <StackPanel Height="120" Width="90" Canvas.Left="0" Canvas.Top="0">
+                                        <StackPanel.Background>
+                                            <ImageBrush ImageSource="{Binding bImage}"></ImageBrush>
+                                        </StackPanel.Background>
+                                    </StackPanel>
+                                    <Label Name="lbBookName" Content="{Binding bName}" Canvas.Left="95" FontSize="16"/>
+                                    <Label Content="{Binding bActor}" Canvas.Left="95" Canvas.Top="30"/>
+                                </Canvas>
+                            </Button>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+        </StackPanel>
+        <Canvas Grid.Row="1">
+            <Button  x:Name="btnNextPage" Width="150" Content="Trang sau" Canvas.Right="450" Click="btnNextPage_Click" />
+            <Button x:Name="btnPreviousPage" Width="150" Content="Trang trước" Canvas.Left="450" Click="btnPreviousPage_Click"></Button>
+        </Canvas>
+
+
     </Grid>
 </UserControl>
