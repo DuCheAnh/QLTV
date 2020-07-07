@@ -24,13 +24,13 @@ namespace GUI_QuanLy
     public partial class User_Control_Page : UserControl
     {
         string sUID = "U637294537098180579";
-
         User_Control_BUS User_BUS = new User_Control_BUS();
 
         public User_Control_Page()
         {
             Account_Data tempdata = User_BUS.Get_Single_UserInfo(sUID);
-
+            PasswordBox passwordBox = new PasswordBox();
+            passwordBox.IsEnabled = false;
             this.DataContext = tempdata;
             InitializeComponent();
         }
@@ -40,6 +40,34 @@ namespace GUI_QuanLy
             TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
             borrowedPage.Owner = Window.GetWindow(this);
             borrowedPage.Show();
+        }
+
+        private void Change_Email(object sender, RoutedEventArgs e)
+        {
+            TestGUI_QLTV.ChangeEmail changeEmail = new TestGUI_QLTV.ChangeEmail();
+            changeEmail.Owner = Window.GetWindow(this);
+            changeEmail.Show();
+        }
+
+        private void Change_Password(object sender, RoutedEventArgs e)
+        {
+            TestGUI_QLTV.ChangePassword changePassword = new TestGUI_QLTV.ChangePassword();
+            changePassword.Owner = Window.GetWindow(this);
+            changePassword.Show();
+        }
+
+        private void TextBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.IsReadOnly = false;
+            //textBox.CaretIndex = textBox.Text.Count();
+            textBox.Select(50, 50);
+        }
+
+        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            textBox.IsReadOnly = true;
         }
     }
 
