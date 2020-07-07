@@ -11,28 +11,21 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using DTO_QuanLy;
 using BUS_QuanLy;
-using MaterialDesignThemes.Wpf;
 
 namespace TestGUI_QLTV
 {
-
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for Window2.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class Window2 : Window
     {
-        private Login Bus_method = new Login();
-        public Window1()
+        Register Bus_register = new Register();
+        public Window2()
         {
             InitializeComponent();
-
         }
-        private void TextBox_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
-        {
 
-        }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -53,31 +46,22 @@ namespace TestGUI_QLTV
             }
         }
 
-        private void OpenForm(object sender, RoutedEventArgs e)
+        private void Back(object sender, RoutedEventArgs e)
         {
-            Window2 Rg = new Window2();
+            Window1 Rg =new Window1();
             Rg.Show();
-            this.Hide();
+            this.Close();
         }
 
-        private void OpenMain(object sender, RoutedEventArgs e)
+        private void Register(object sender, RoutedEventArgs e)
         {
-            if(Bus_method.LoginMethod(Username.Text, Password.Password))
+            if (Bus_register.RegisterIn(Username.Text, Password.Password,Email.Text))
             {
-                MainWindow mn = new MainWindow();
-                mn.Show();
-                this.Close();
+                MessageBox.Show("Dang ki thanh cong");
+                this.Back(sender,e);
+                
             }
 
-            else
-            {
-                MessageBox.Show("sai tai khoan hoac khong co");
-            }
-            
         }
-
-       
     }
-  
-    
 }

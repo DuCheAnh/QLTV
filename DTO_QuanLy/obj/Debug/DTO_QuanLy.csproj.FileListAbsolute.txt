@@ -1,0 +1,11 @@
+C:\Users\Admin\Desktop\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.dll
+C:\Users\Admin\Desktop\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.pdb
+C:\Users\Admin\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.dll
+C:\Users\Admin\Desktop\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.pdb
+C:\Users\Admin\Desktop\New folder\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.dll
+C:\Users\Admin\Desktop\New folder\QLTV\DTO_QuanLy\bin\Debug\DTO_QuanLy.pdb
+C:\Users\Admin\Desktop\New folder\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\New folder\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.dll
+C:\Users\Admin\Desktop\New folder\QLTV\DTO_QuanLy\obj\Debug\DTO_QuanLy.pdb
