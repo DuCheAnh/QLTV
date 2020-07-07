@@ -20,9 +20,9 @@
                     <Image Source="a.png"/>
                 </ControlTemplate>
             </Button.Template>
-        </Button>
-        
+        </Button>     
         <StackPanel Margin="0,0 ,0,0" Grid.Column="1" Grid.Row="0">
+
             <StackPanel.Resources>
                 <local:BooltoGenderConverter x:Key="BooltoGenderConverter"></local:BooltoGenderConverter>
                 <Style TargetType="{x:Type FrameworkElement}">
@@ -33,8 +33,7 @@
                 <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
                 <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
-            </StackPanel.Resources>
-            
+            </StackPanel.Resources>            
             <StackPanel Orientation="Horizontal" Height="140">
                 <Label Content="Name:"
                     FontSize="20" Width="130" Margin="0,100,0,0" VerticalAlignment="Top"/>
