@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestGUI_QLTV
 {
-    class Products
+    public class Products
     {
         public string bName { get; set; }
         public string bImage { get; set; }
@@ -17,6 +17,7 @@ namespace TestGUI_QLTV
             bName = name;
             bImage = image;
             bActor = actor;
+
         }
     }
 }

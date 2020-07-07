@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -19,6 +20,8 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class ChangePassword : Window
     {
+        bool MatchCheck = false;
+        User_Control_BUS BUS_method = new User_Control_BUS();
         public ChangePassword()
         {
             InitializeComponent();
@@ -31,7 +34,22 @@ namespace TestGUI_QLTV
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            if (MatchCheck)
+            {
+                BUS_method.change_user_password(Data_Context.currentUID, New_password_Txb.Text);
+            }
             Close();
+        }
+
+        private void Check(object sender, RoutedEventArgs e)
+        {
+            if (BUS_method.Checking(Data_Context.currentUID, Old_password_txb.Text))
+            {
+                MessageBox.Show("Match!");
+                MatchCheck = true;
+            }
+            else
+                MessageBox.Show("WrongPassword");
         }
     }
 }

@@ -75,6 +75,7 @@
     <Compile Include="ChangePassword.xaml.cs">
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Data_Context.cs" />
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="User_Control_Page.xaml.cs">

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_QuanLy"
              mc:Ignorable="d" 
+             xmlns:ff="clr-namespace:GUI_QuanLy"
              d:DesignHeight="660" d:DesignWidth="1280">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -55,9 +56,10 @@
             <StackPanel Orientation="Horizontal">
                 <Label Content="Password:"
                     FontSize="20" Width="130"/>
-                <PasswordBox x:Name="UserPassword_PasswordBox" IsEnabled="False"
-                         DataContext="{Binding password, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
-                         FontSize="20" Width="600" />
+                <PasswordBox x:Name="PasswordBox" IsEnabled="False"
+                     ff:PasswordBoxAssistant.BindPassword="true" 
+                     ff:PasswordBoxAssistant.BoundPassword="{Binding Path=password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Width="600"/>
                 <Button Margin="0" Width="200" VerticalAlignment="Bottom" Click="Change_Password">
                     <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Change Password"/></TextBlock>
                 </Button>
@@ -88,6 +90,7 @@
                     FontSize="20" Width="130"/>
                 <Label x:Name="UserDOB_label"
                    Content="{Binding DOB}"
+                   ContentStringFormat="dd MMM yyyy"
                    FontSize="20" Width="600"/>
             </StackPanel>
             
@@ -99,11 +102,12 @@
                    FontSize="20" Width="600"/>
             </StackPanel>
         </StackPanel>
-        
+
         <Button Margin="30,280,30,0" Height="40" Click="Borrowed_Book" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS">
                 BORROWED BOOK
             </TextBlock>
         </Button>
+        
     </Grid>
 </UserControl>
