@@ -56,33 +56,35 @@
             <StackPanel  Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Height="50" Margin="0,150,0,0">
                     <!--Mail-->
-                    <PasswordBox
-  x:Name="Email"
-                FontFamily="Comic Sans MS"
+                    <TextBox 
+                        x:Name="Email"
+  materialDesign:HintAssist.Hint="Email"
+                        FontFamily="Comic Sans MS"
                         FontWeight="Light"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
                         Foreground="Black"
                         HorizontalContentAlignment="Stretch"
                         Opacity="0.5"
                         Height="44"
-  materialDesign:HintAssist.Hint="Email"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="400" BorderBrush="Black" />
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,-0.4" 
+                        Width="397" BorderBrush="Black"  />
                 </StackPanel>
                 <!--Username-->
                 <StackPanel>
-                    <PasswordBox
-  x:Name="Username"
-                FontFamily="Comic Sans MS"
+                    <TextBox 
+                        x:Name="Username"
+  materialDesign:HintAssist.Hint="Username"
+                        FontFamily="Comic Sans MS"
                         FontWeight="Light"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
                         Foreground="Black"
                         HorizontalContentAlignment="Stretch"
                         Opacity="0.5"
                         Height="44"
-  materialDesign:HintAssist.Hint="Username"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="400" BorderBrush="Black" />
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,-0.4" 
+                        Width="397" BorderBrush="Black"  />
                 </StackPanel>
                 <StackPanel>
                     <PasswordBox
@@ -122,6 +124,7 @@
                                 Canvas.Left="266" 
                                 Canvas.Top="-36" 
                                 FontSize="25"
+                                Click="Register"
                         >
                         _Sign up
                     </Button>

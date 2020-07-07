@@ -11,6 +11,7 @@
         AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
         MouseDown="Window_MouseDown"
+        
         >
     <!--Panel-->
     <Grid>
@@ -54,22 +55,24 @@
                                      VerticalAlignment="Stretch"/>
         </Button>
         <StackPanel Grid.Column="1">
-            
+
             <StackPanel  Orientation="Vertical">
                 <StackPanel Orientation="Horizontal" Height="50" Margin="0,150,0,0">
                     <!--Username-->
-                    <PasswordBox
-  x:Name="Username"
-                FontFamily="Comic Sans MS"
+
+                    <TextBox 
+                        x:Name="Username"
+  materialDesign:HintAssist.Hint="Username"
+                        FontFamily="Comic Sans MS"
                         FontWeight="Light"
-                        FontSize="20"
-                        HorizontalAlignment="Left"
+                        FontSize="15"
+                        HorizontalAlignment="Center"
                         Foreground="Black"
                         HorizontalContentAlignment="Stretch"
                         Opacity="0.5"
                         Height="44"
-  materialDesign:HintAssist.Hint="Username"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="400" BorderBrush="Black" />
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,-0.4" 
+                        Width="397" BorderBrush="Black"  />
                 </StackPanel>
                 <!--Password-->
                 <StackPanel>
@@ -88,7 +91,7 @@
                 </StackPanel>
                 <!--Log,Reg,Forgot-->
                 <StackPanel  Orientation="Vertical" Margin="0,0,0,0">
-                    <Button
+                   <!-- <Button
     Style="{StaticResource MaterialDesignRaisedButton}"
     ToolTip="Resource name: MaterialDesignRaisedButton" 
                         Margin="203,0,0,0" 
@@ -100,8 +103,8 @@
                         >
                         _Forget password ?
 
-                    </Button>
-                    <Canvas  Margin="0,60,0,0">
+                    </Button>-->
+                    <Canvas  Margin="0,100,0,0">
                         <Button Canvas.Bottom="0" Canvas.Left="0"
     Style="{StaticResource MaterialDesignRaisedButton}"
     ToolTip="Resource name: MaterialDesignRaisedButton"  
@@ -111,6 +114,8 @@
                                 Width="130" 
                                 Canvas.Top="-36" 
                                 FontSize="25" 
+                                Click="OpenMain"
+                                IsDefault="True"
                         >
                             _Login
                         </Button>

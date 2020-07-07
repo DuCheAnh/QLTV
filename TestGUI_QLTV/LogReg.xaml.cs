@@ -11,19 +11,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DTO_QuanLy;
+using BUS_QuanLy;
+using MaterialDesignThemes.Wpf;
 
 namespace TestGUI_QLTV
 {
+
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
     public partial class Window1 : Window
     {
+        private Login Bus_method = new Login();
         public Window1()
         {
             InitializeComponent();
-        }
 
+        }
         private void TextBox_ColorChanged(object sender, RoutedPropertyChangedEventArgs<Color> e)
         {
 
@@ -52,8 +57,26 @@ namespace TestGUI_QLTV
         {
             Window2 Rg = new Window2();
             Rg.Show();
-            this.Close();
+            this.Hide();
         }
+
+        private void OpenMain(object sender, RoutedEventArgs e)
+        {
+            if(Bus_method.LoginMethod(Username.Text, Password.Password))
+            {
+                MainWindow mn = new MainWindow();
+                mn.Show();
+                this.Close();
+            }
+
+            else
+            {
+                MessageBox.Show("sai tai khoan hoac khong co");
+            }
+            
+        }
+
+       
     }
   
     
