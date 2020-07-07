@@ -13,6 +13,7 @@ namespace BUS_QuanLy
     public class Admin_Control_BUS
     {
         DAL_Account Account_DAL = new DAL_Account();
+        DAL_Libcard Libcard_DAL = new DAL_Libcard();
 
         /// <summary>
         /// gan data tu DAl => grid trong GUI
@@ -34,5 +35,12 @@ namespace BUS_QuanLy
             Account_DAL.init_client();
             //Acount_DAL.Update_Users_data(Updated_Users);
         }
+        public bool create_new_libcard(string sAccountType, string sIdentityCard
+                    , string sName, DateTime dDOB, bool bGender)
+        {
+            Libcard_DAL.init_client();
+            return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);
+        }
+
     }
 }
