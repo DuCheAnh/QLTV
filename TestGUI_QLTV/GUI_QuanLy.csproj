@@ -78,7 +78,6 @@
     <Compile Include="Data_Context.cs" />
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="Register.xaml.cs" />
-    <Compile Include="User_Control_Page.xaml.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="User_Control_Page.xaml.cs">
       <DependentUpon>User_Control_Page.xaml</DependentUpon>
