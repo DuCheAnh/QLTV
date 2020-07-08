@@ -69,6 +69,13 @@
     <Compile Include="BorrowedPage.xaml.cs">
       <DependentUpon>BorrowedPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeEmail.xaml.cs">
+      <DependentUpon>ChangeEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data_Context.cs" />
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="Register.xaml.cs" />
     <Compile Include="User_Control_Page.xaml.cs" />
@@ -87,6 +94,14 @@
     <Page Include="BorrowedPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChangeEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LogReg.xaml">
       <Generator>MSBuild:Compile</Generator>

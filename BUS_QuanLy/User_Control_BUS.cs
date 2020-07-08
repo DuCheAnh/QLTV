@@ -31,6 +31,22 @@ namespace BUS_QuanLy
         {
             return UserData.retrieve_user_data(sUID).password;
         }
+
+        public bool Checking(string UID, string OldPassword)
+        {
+            UserData.init_client();
+            Account_Data data =  UserData.retrieve_user_data(UID);
+            if (data.password == OldPassword)
+                return true;
+            return false;
+        }
+
+        public void change_user_Email(string currentUID, string newEmail)
+        {
+            UserData.init_client();
+            UserData.update_user_email(currentUID, newEmail);
+        }
+
         /// <summary>
         /// Get account password for signing in by user account
         /// <list type="bullet">

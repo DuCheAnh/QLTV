@@ -5,19 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_QuanLy"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             xmlns:ff="clr-namespace:GUI_QuanLy"
+             d:DesignHeight="660" d:DesignWidth="1280">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition/>
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Canvas Name ="Profile_picture" Grid.Column="0"
+        
+        <Button Name ="Profile_picture" Grid.Column="0"
                 Background="Black"
-                Width="100" Height="100"
-                VerticalAlignment="Top"
-                Margin="40,40,0,0" >
-        </Canvas>
-        <StackPanel Margin="0,0 ,0,0" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2">
+                Margin="50,50,50,0" Height="{Binding ElementName=Profile_picture, Path=ActualWidth}" VerticalAlignment="Top">
+            <Button.Template>
+                <ControlTemplate>
+                    <Image Source="a.png"/>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>     
+        <StackPanel Margin="0,0 ,0,0" Grid.Column="1" Grid.Row="0">
+
             <StackPanel.Resources>
                 <local:BooltoGenderConverter x:Key="BooltoGenderConverter"></local:BooltoGenderConverter>
                 <Style TargetType="{x:Type FrameworkElement}">
@@ -28,80 +34,80 @@
                 <Style TargetType="{x:Type TextBox}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
                 <Style TargetType="{x:Type Label}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type FrameworkElement}}" />
-            </StackPanel.Resources>
-            <StackPanel Orientation="Horizontal">
+            </StackPanel.Resources>            
+            <StackPanel Orientation="Horizontal" Height="140">
                 <Label Content="Name:"
-                    FontSize="20"
-                    Margin="0 ,100 ,0,0">
+                    FontSize="20" Width="130" Margin="0,100,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="UserName_label"
+                   Content="{Binding name}"
+                   Margin="0,100,0,0" Width="600"
+                   FontSize="20" VerticalAlignment="Top" Height="40">
                 </Label>
-                <Label Name="UserName_label"
-                   Content="{Binding Path=name}"
-                   Margin="0 ,100 ,0,0"
-                   FontSize="20">
-                </Label>
-
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="UserName:"
-                    FontSize="20">
-                </Label>
-                <Label Name="UserAccount_label"
-                   Content="{Binding Path=account}"
-                   FontSize="20">
-                </Label>
+                    FontSize="20" Width="130"/>
+                <Label x:Name="UserAccount_label"
+                   Content="{Binding account}"
+                   FontSize="20" Width="600"/>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="Password:"
-                    FontSize="20">
-                </Label>
-                <PasswordBox Name="UserPassword_PasswordBox"
-                         DataContext="{Binding Path=password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                         FontSize="20" >
-                </PasswordBox>
+                    FontSize="20" Width="130"/>
+                <PasswordBox x:Name="PasswordBox" IsEnabled="False"
+                     ff:PasswordBoxAssistant.BindPassword="true" 
+                     ff:PasswordBoxAssistant.BoundPassword="{Binding Path=password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             Width="600"/>
+                <Button Margin="0" Width="200" VerticalAlignment="Bottom" Click="Change_Password">
+                    <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Change Password"/></TextBlock>
+                </Button>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="Email:"
-                    FontSize="20">
-                </Label>
-                <TextBox Name="UserMail_label"
-                   Text="{Binding Path=email, Mode=TwoWay , UpdateSourceTrigger=PropertyChanged}"
-                         Width="400"
-                   FontSize="20">
-                </TextBox>
+                    FontSize="20" Width="130" VerticalAlignment="Center" Height="40"/>
+                <Label x:Name="UserMail_label"
+                   Content="{Binding email, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                         Width="600" VerticalAlignment="Bottom" Height="35"
+                   FontSize="20"/>
+                <Button Margin="0" Width="200" VerticalAlignment="Bottom" Click="Change_Email">
+                    <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Change Email"/></TextBlock>
+                </Button>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="Gender:"
-                    FontSize="20">
-                </Label>
-                <Label Name="UserGender_label"
-                   Content = "{Binding Path=gender, Converter={StaticResource BooltoGenderConverter}}"
-                   FontSize="20">
-                </Label>
+                    FontSize="20" Width="130"/>
+                <Label x:Name="UserGender_label"
+                   Content = "{Binding gender, Converter={StaticResource BooltoGenderConverter}}"
+                   FontSize="20" Width="600"/>
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="DOB:"
-                    FontSize="20">
-                </Label>
-                <Label Name="UserDOB_label"
-                   Content="{Binding Path=DOB}"
-                   FontSize="20">
-                </Label>
+                    FontSize="20" Width="130"/>
+                <Label x:Name="UserDOB_label"
+                   Content="{Binding DOB}"
+                   ContentStringFormat="dd MMM yyyy"
+                   FontSize="20" Width="600"/>
             </StackPanel>
-
+            
             <StackPanel Orientation="Horizontal">
                 <Label Content="Account_Type:"
-                    FontSize="20">
-                </Label>
-                <Label Name="UserAccountType_label"
-                   Content="{Binding Path=account_type}"
-                   FontSize="20">
-                </Label>
+                    FontSize="20" Width="130"/>
+                <Label x:Name="UserAccountType_label"
+                   Content="{Binding account_type}"
+                   FontSize="20" Width="600"/>
             </StackPanel>
         </StackPanel>
-        <Button Margin="30,200,30,210" Height="Auto" Click="Borrowed_Book">
+
+        <Button Margin="30,280,30,0" Height="40" Click="Borrowed_Book" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS">
                 BORROWED BOOK
             </TextBlock>
         </Button>
+        
     </Grid>
 </UserControl>
