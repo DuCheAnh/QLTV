@@ -63,30 +63,30 @@
                 <ColumnDefinition Width="100"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="1">
-                <ListView>
-                    ItemsSource="{Binding Items1}">
+                <ListView x:Name="lvBooksData">
+                    
                     <ListView.View>
-                        <GridView>
+                        <GridView >
                             <GridViewColumn Width="100"
-                            DisplayMemberBinding="{Binding Code}"
+                            DisplayMemberBinding="{Binding BID}"
                             Header="Mã Sách" />
                             <GridViewColumn Width="300"
-                            DisplayMemberBinding="{Binding Name}"
+                            DisplayMemberBinding="{Binding name}"
                             Header="Tên Sách" />
                             <GridViewColumn Width="150"
-                            DisplayMemberBinding="{Binding Actor}"
+                            DisplayMemberBinding="{Binding author}"
                             Header="Tác Giả" />
                             <GridViewColumn Width="200"
-                            DisplayMemberBinding="{Binding Type}"
+                            DisplayMemberBinding="{Binding category}"
                             Header="Thể Loại" />
                             <GridViewColumn Width="100"
-                            DisplayMemberBinding="{Binding numBorrowed}"
-                            Header="Đã Mượn" />
+                            DisplayMemberBinding="{Binding price}"
+                            Header="Giá" />
                             <GridViewColumn Width="100"
-                            DisplayMemberBinding="{Binding numLeft}"
+                            DisplayMemberBinding="{Binding left}"
                             Header="Còn lại" />
                             <GridViewColumn Width="100"
-                            DisplayMemberBinding="{Binding numAll}"
+                            DisplayMemberBinding="{Binding amount}"
                             Header="Tổng" />
                         </GridView>
                     </ListView.View>

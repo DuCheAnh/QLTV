@@ -253,6 +253,24 @@ namespace DAL_QuanLy
             return null;
         }
 
+
+        /// <summary>
+        /// update user base on new account data
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <param name="sProfilePicture"></param>
+        /// <returns></returns>
+        public bool update_user(Account_Data account,string sUID)
+        {
+            try
+            {
+                FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, account);
+                Account_Data result = update_response.ResultAs<Account_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception) { }
+            return false;
+        }
         #endregion
     }
 }

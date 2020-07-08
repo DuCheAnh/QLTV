@@ -83,6 +83,9 @@
     </Compile>
     <Compile Include="Data_Context.cs" />
     <Compile Include="LogReg.xaml.cs" />
+    <Compile Include="PopUpWindow.xaml.cs">
+      <DependentUpon>PopUpWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="UserDataUI.xaml.cs">
@@ -150,6 +153,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PopUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Register.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

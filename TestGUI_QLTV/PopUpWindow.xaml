@@ -1,0 +1,28 @@
+﻿<Window x:Class="TestGUI_QLTV.PopUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestGUI_QLTV"
+        mc:Ignorable="d"
+        Title="PopUpWindow" 
+        Height="255.343" 
+        Width="486.26"
+        ShowInTaskbar="False"
+        WindowStartupLocation="CenterOwner"
+        FontFamily="Comic Sans MS" 
+        Closing="Window_Closing" 
+        VerticalAlignment="Center" 
+        HorizontalAlignment="Center" 
+        WindowStyle="None" 
+        ResizeMode="NoResize"
+        Background="White"
+        BorderBrush="Black">
+        
+    <Grid>
+        <StackPanel Margin="50">
+            <TextBlock x:Name="PopUpTB" Text="Done" FontSize="30" Margin="20" HorizontalAlignment="Center"/>
+            <Button x:Name="OkayButton" FontSize="20" Click="OkayButton_Click" Content="Okay" Margin="60 0 60 0" />
+        </StackPanel>
+    </Grid>
+</Window>

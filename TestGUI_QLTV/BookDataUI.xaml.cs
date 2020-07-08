@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,15 +21,19 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class BookDataUI : UserControl
     {
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BookDataUI()
         {
+            
             InitializeComponent();
+            lvBooksData.ItemsSource = admin_control.all_books_data();
         }
 
         private void btnAddBook(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.AddBookGUI addBookGUI = new TestGUI_QLTV.AddBookGUI();
             addBookGUI.Owner = Window.GetWindow(this);
+            Window.GetWindow(this).IsHitTestVisible = false;
             addBookGUI.Show();
         }
     }
