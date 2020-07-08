@@ -63,6 +63,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBookGUI.xaml.cs">
+      <DependentUpon>AddBookGUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookDataUI.xaml.cs">
+      <DependentUpon>BookDataUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="BookPage.xaml.cs">
       <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
@@ -79,12 +85,23 @@
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="Register.xaml.cs" />
     <Compile Include="Products.cs" />
+    <Compile Include="UserDataUI.xaml.cs">
+      <DependentUpon>UserDataUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="User_Control_Page.xaml.cs">
       <DependentUpon>User_Control_Page.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddBookGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BookDataUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookPage.xaml">
       <SubType>Designer</SubType>
@@ -136,6 +153,10 @@
     <Page Include="Register.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserDataUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="User_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>

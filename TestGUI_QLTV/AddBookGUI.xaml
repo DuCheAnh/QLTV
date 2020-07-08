@@ -1,0 +1,85 @@
+﻿<Window x:Class="TestGUI_QLTV.AddBookGUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:TestGUI_QLTV"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False"
+        Background="White"
+        Title="Thêm Sách"
+        WindowStartupLocation="CenterOwner" Height="600" Width="1000"
+        FontFamily="Comic Sans MS">
+    <Grid>
+        <Canvas>
+            <Grid Width="180" Height="240" Canvas.Top="50" Canvas.Left="50">
+                <Grid.Background>
+                    <ImageBrush ImageSource="a.png"></ImageBrush>
+                </Grid.Background>
+            </Grid>
+            <Button Width="200" Height="50" 
+                    Canvas.Left="40" Canvas.Top="320"
+                    Content="CHOOSE PICTURE" FontWeight="Bold" FontSize="18"/>
+            <TextBox Width="400" Height="60"
+                     Canvas.Left="350" Canvas.Top="50"
+                     materialDesign:HintAssist.Hint="Tên Sách"
+                     materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                     materialDesign:HintAssist.FloatingScale="0.50"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="25" FontWeight="Bold"/>
+            <TextBox Width="250" Height="50"
+                     Canvas.Left="350" Canvas.Top="140"
+                     materialDesign:HintAssist.Hint="Tác Giả"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"/>
+            <ComboBox
+                Canvas.Top="220" Canvas.Left="350"
+                Width="300" FontSize="18"
+                IsEditable="True"
+                materialDesign:HintAssist.Hint="Thể Loại"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                <ComboBoxItem Content="Tiểu Thuyết"/>
+                <ComboBoxItem Content="Truyện Ngắn"/>
+                <ComboBoxItem Content="Ngôn Tình"/>
+                <ComboBoxItem Content="Bài Học Kinh Doanh"/>
+                <ComboBoxItem Content="Quản Trị - Lãnh Đạo"/>
+                <ComboBoxItem Content="Marketing"/>
+                <ComboBoxItem Content="Kỹ Năng Sống"/>
+                <ComboBoxItem Content="Tâm Lý Tuổi Mới Lớn"/>
+                <ComboBoxItem Content="Rèn Luyện Nhân Cách"/>
+                <ComboBoxItem Content="Văn Hóa - Tôn Giáo"/>
+                <ComboBoxItem Content="Ẩm Thực"/>
+                <ComboBoxItem Content="Luyện Thi Đại Học"/>
+                <ComboBoxItem Content="Triết Học"/>
+                <ComboBoxItem Content="Tiểu Sử - Hồi ký"/>
+                <ComboBoxItem Content="Tiếng Anh"/>
+                <ComboBoxItem Content="Tiếng Nhật"/>
+                <ComboBoxItem Content="Tiếng Pháp"/>
+                <ComboBoxItem Content="Tiếng Đức"/>
+                <ComboBoxItem Content="Tiếng Trung"/>
+                <ComboBoxItem Content="Tiếng Hàn"/>
+            </ComboBox>
+            <TextBox Width="150" Height="50"
+                     Canvas.Left="350" Canvas.Bottom="30"
+                     materialDesign:HintAssist.Hint="Số Lượng"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"/>
+            <TextBox Canvas.Top="300" Canvas.Left="350"
+                     Width="600" Height="180"
+                     FontSize="18" TextWrapping="Wrap"
+                     VerticalAlignment="Stretch"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     materialDesign:HintAssist.Hint="Giới Thiệu">
+            </TextBox>
+            <Button Width="120" Height="50"
+                    Canvas.Bottom="20" Canvas.Right="20"
+                    Content="ADD BOOK" FontWeight="Bold" FontSize="15"
+                    >
+
+            </Button>
+
+        </Canvas>
+    </Grid>
+</Window>
