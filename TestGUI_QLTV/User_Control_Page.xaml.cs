@@ -23,7 +23,7 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
-        string sUID = "U637294537098180579";
+        string sUID = Data_Context.currentUID;
         User_Control_BUS User_BUS = new User_Control_BUS();
         TestGUI_QLTV.ChangePassword changePassword = new TestGUI_QLTV.ChangePassword();
         TestGUI_QLTV.ChangeEmail changeEmail = new TestGUI_QLTV.ChangeEmail();
