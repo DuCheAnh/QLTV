@@ -57,12 +57,22 @@ namespace BUS_QuanLy
         /// <returns></returns>
         public string get_account_password(string sAccount)
         {
+            UserData.init_client();
             if (UserData.search_for_account(sAccount) != null)
             {
                 return UserData.search_for_account(sAccount).password;
             }
             else return null;
         }
+
+
+        public Account_Data search_for_account(string sAccount)
+        {
+            UserData.init_client();
+
+            return UserData.search_for_account(sAccount);
+        }
+
         /// <summary>
         /// change users password to a new one, return true if succeeded, false if not
         /// </summary>
@@ -71,6 +81,8 @@ namespace BUS_QuanLy
         /// <returns></returns>
         public bool change_user_password(string sUID,string sNewPassword)
         {
+            UserData.init_client();
+
             return UserData.update_user_password(sUID, sNewPassword);
         }
     }

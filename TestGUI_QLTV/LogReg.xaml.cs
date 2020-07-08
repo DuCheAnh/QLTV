@@ -64,6 +64,9 @@ namespace TestGUI_QLTV
         {
             if(Bus_method.LoginMethod(Username.Text, Password.Password))
             {
+                User_Control_BUS UserData = new User_Control_BUS();
+                Data_Context.currentAccount = UserData.search_for_account(Username.Text);
+                Data_Context.currentUID = UserData.search_for_account(Username.Text).UID;
                 MainWindow mn = new MainWindow();
                 mn.Show();
                 this.Close();

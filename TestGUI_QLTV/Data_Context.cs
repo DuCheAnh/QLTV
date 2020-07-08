@@ -8,8 +8,7 @@ namespace TestGUI_QLTV
 {
     public static class Data_Context
     {
-        public static string currentUID = "";
-
+        public static string currentUID { get; set; }
         public static Account_Data currentAccount;
     }
 }
