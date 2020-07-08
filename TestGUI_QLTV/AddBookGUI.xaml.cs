@@ -23,5 +23,10 @@ namespace TestGUI_QLTV
         {
             InitializeComponent();
         }
+
+        private void btnClose(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

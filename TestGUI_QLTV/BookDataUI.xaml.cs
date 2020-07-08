@@ -24,5 +24,12 @@ namespace TestGUI_QLTV
         {
             InitializeComponent();
         }
+
+        private void btnAddBook(object sender, RoutedEventArgs e)
+        {
+            TestGUI_QLTV.AddBookGUI addBookGUI = new TestGUI_QLTV.AddBookGUI();
+            addBookGUI.Owner = Window.GetWindow(this);
+            addBookGUI.Show();
+        }
     }
 }

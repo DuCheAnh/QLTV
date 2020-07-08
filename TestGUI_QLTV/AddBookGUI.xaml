@@ -6,12 +6,46 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:TestGUI_QLTV"
         ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
         ShowInTaskbar="False"
-        Background="White"
         Title="Thêm Sách"
         WindowStartupLocation="CenterOwner" Height="600" Width="1000"
         FontFamily="Comic Sans MS">
-    <Grid>
+    <Grid Margin="20" Background="White">
+        <Button Width="25" 
+                HorizontalAlignment="Stretch" 
+                Margin="935,0,0,535"
+                Height="25"
+                VerticalAlignment="Bottom" 
+                Click="btnClose">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" 
+                                        BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Source="a.png" />
+        </Button>
         <Canvas>
             <Grid Width="180" Height="240" Canvas.Top="50" Canvas.Left="50">
                 <Grid.Background>
@@ -77,9 +111,10 @@
                     Canvas.Bottom="20" Canvas.Right="20"
                     Content="ADD BOOK" FontWeight="Bold" FontSize="15"
                     >
-
             </Button>
-
         </Canvas>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+        </Grid.Effect>
     </Grid>
 </Window>
