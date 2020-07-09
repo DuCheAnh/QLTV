@@ -260,11 +260,11 @@ namespace DAL_QuanLy
         /// <param name="sUID"></param>
         /// <param name="sProfilePicture"></param>
         /// <returns></returns>
-        public bool update_user(Account_Data account,string sUID)
+        public bool update_user_data(Account_Data account)
         {
             try
             {
-                FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, account);
+                FirebaseResponse update_response = client.Update(sAccountTable_path + account.UID, account);
                 Account_Data result = update_response.ResultAs<Account_Data>();
                 if (result != null) return true;
             }
