@@ -71,5 +71,10 @@ namespace TestGUI_QLTV
         {
 
         }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        { 
+            Environment.Exit(Environment.ExitCode);
+        }
     }
 }
