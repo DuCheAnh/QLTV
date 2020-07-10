@@ -10,8 +10,8 @@
             <RowDefinition Height="580"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
-        <StackPanel x:Name="bookList" Grid.Row="0" Width="1260" Height="580" Margin="0 0 0 0">
-            <ItemsControl x:Name="IBook" ItemsSource="{Binding Products}">
+        <StackPanel x:Name="bookList" Grid.Row="0" Width="1260" Height="580" Margin="0 0 0 0" CanVerticallyScroll="True">
+            <ItemsControl x:Name="IBook" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <StackPanel Width="280" Height="130" Background="White" Margin="15 5">
@@ -22,8 +22,8 @@
                                             <ImageBrush ImageSource="{Binding bImage}"></ImageBrush>
                                         </StackPanel.Background>
                                     </StackPanel>
-                                    <Label Name="lbBookName" Content="{Binding bName}" Canvas.Left="95" FontSize="16"/>
-                                    <Label Content="{Binding bActor}" Canvas.Left="95" Canvas.Top="30"/>
+                                    <Label Name="lbBookName" Content="{Binding name}" Canvas.Left="95" FontSize="16"/>
+                                    <Label Content="{Binding author}" Canvas.Left="95" Canvas.Top="30"/>
                                 </Canvas>
                             </Button>
                         </StackPanel>

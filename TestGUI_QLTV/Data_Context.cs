@@ -10,5 +10,7 @@ namespace TestGUI_QLTV
     {
         public static string currentUID { get; set; }
         public static Account_Data currentAccount;
+
+        public static List<Book_Data> currentHomePageBook;
     }
 }

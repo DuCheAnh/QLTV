@@ -12,7 +12,7 @@ namespace BUS_QuanLy
     public class User_Control_BUS
     {
         DAL_Account UserData = new DAL_Account();
-
+        DAL_Book bookdata = new DAL_Book();
         public User_Control_BUS()
         {
         }
@@ -32,6 +32,13 @@ namespace BUS_QuanLy
             return UserData.retrieve_user_data(sUID).password;
         }
 
+        public List<Book_Data> Get_all_Books()
+        {
+            bookdata.init_client();
+            List<Book_Data> Books = bookdata.retrieve_all_books();
+            return Books;
+        }
+
         public bool Checking(string UID, string OldPassword)
         {
             UserData.init_client();
@@ -45,6 +52,19 @@ namespace BUS_QuanLy
         {
             UserData.init_client();
             UserData.update_user_email(currentUID, newEmail);
+        }
+
+        public List<Book_Data> Search_for_book(string text)
+        {
+            bookdata.init_client();
+            List<Book_Data> bookdatas = bookdata.retrieve_all_books();
+            List<Book_Data> searchingBooks = new List<Book_Data>();
+            foreach(Book_Data books in bookdatas)
+            {
+                if (books.name.Contains(text) || books.author.Contains(text) || books.category.Contains(text) || books.description.Contains(text))
+                    searchingBooks.Add(books);
+            }
+            return searchingBooks;
         }
 
         /// <summary>
