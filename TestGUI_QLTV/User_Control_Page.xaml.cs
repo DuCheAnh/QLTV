@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,6 +17,8 @@ using System.Windows.Shapes;
 using BUS_QuanLy;
 using DTO_QuanLy;
 using TestGUI_QLTV;
+using TestGUI_QLTV.Processor;
+
 namespace GUI_QuanLy
 {
     /// <summary>
@@ -24,6 +27,9 @@ namespace GUI_QuanLy
     public partial class User_Control_Page : UserControl
     {
         string sUID = Data_Context.currentUID;
+        string sUID = "U637292539878671903";
+
+        Account_Data tempdata = new Account_Data();
         User_Control_BUS User_BUS = new User_Control_BUS();
         TestGUI_QLTV.ChangePassword changePassword = new TestGUI_QLTV.ChangePassword();
         TestGUI_QLTV.ChangeEmail changeEmail = new TestGUI_QLTV.ChangeEmail();

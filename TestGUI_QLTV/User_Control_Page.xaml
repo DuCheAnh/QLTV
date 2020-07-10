@@ -23,7 +23,6 @@
             </Button.Template>
         </Button>     
         <StackPanel Margin="0,0 ,0,0" Grid.Column="1" Grid.Row="0">
-
             <StackPanel.Resources>
                 <local:BooltoGenderConverter x:Key="BooltoGenderConverter"></local:BooltoGenderConverter>
                 <Style TargetType="{x:Type FrameworkElement}">
