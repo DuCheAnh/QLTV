@@ -45,7 +45,7 @@ namespace DAL_QuanLy
         /// <param name="sAccount"></param>
         /// <param name="sPassword"></param>
         /// <param name="sEmail"></param>
-        public bool Create_new_user(string sAccount, string sPassword, string sEmail)
+        public bool create_new_user(string sAccount, string sPassword, string sEmail)
         {
             try
             {
@@ -74,7 +74,7 @@ namespace DAL_QuanLy
         /// </summary>
         /// <param name="sUID"></param>
         /// <param name="sPassword"></param>
-        public bool Update_user_password(string sUID,string sPassword)
+        public bool update_user_password(string sUID, string sPassword)
         {
             try
             {
@@ -102,7 +102,7 @@ namespace DAL_QuanLy
         /// </summary>
         /// <param name="sUID"></param>
         /// <param name="sEmail"></param>
-        public bool Update_user_email(string sUID, string sEmail)
+        public bool update_user_email(string sUID, string sEmail)
         {
             try
             {
@@ -127,7 +127,7 @@ namespace DAL_QuanLy
         /// </summary>
         /// <param name="sUID"></param>
         /// <param name="sProfilePicture"></param>
-        public bool Update_user_profile(string sUID, string sProfilePicture)
+        public bool update_user_profile(string sUID, string sProfilePicture)
         {
             try
             {
@@ -148,12 +148,12 @@ namespace DAL_QuanLy
         /// Delete user from the database by UID
         /// </summary>
         /// <param name="sUID"></param>
-        public bool Delete_user(string sUID)
+        public bool delete_user(string sUID)
         {
             try
             {
-                FirebaseResponse delete_response = client.Delete(sAccountTable_path + sUID);             
-                if (delete_response!=null) return true;
+                FirebaseResponse delete_response = client.Delete(sAccountTable_path + sUID);
+                if (delete_response != null) return true;
             }
             catch (Exception) { }
             return false;
@@ -197,12 +197,12 @@ namespace DAL_QuanLy
                 //send it to the database
                 FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, user_data);
                 Account_Data result = update_response.ResultAs<Account_Data>();
-                if (result!=null) return true;
+                if (result != null) return true;
             }
             catch (Exception) { }
             return false;
         }
-        
+
 
         /// <summary>
         /// Remove libcard info from user
@@ -236,7 +236,7 @@ namespace DAL_QuanLy
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sAccountTable_path);
             Dictionary<string, Account_Data> all_data = response.ResultAs<Dictionary<string, Account_Data>>();
-            foreach(var user in all_data)
+            foreach (var user in all_data)
             {
                 account_list.Add(user.Value);
             }
@@ -244,7 +244,12 @@ namespace DAL_QuanLy
         }
 
 
-        public Account_Data search_for_username(string sAccount)
+        /// <summary>
+        /// Search for username, if found return user as account_data, if not return null
+        /// </summary>
+        /// <param name="sAccount"></param>
+        /// <returns></returns>
+        public Account_Data search_for_account(string sAccount)
         {
             foreach (Account_Data user in retrieve_all_user())
             {
@@ -255,15 +260,25 @@ namespace DAL_QuanLy
             }
             return null;
         }
+
+
+        /// <summary>
+        /// update user base on new account data
+        /// </summary>
+        /// <param name="sUID"></param>
+        /// <param name="sProfilePicture"></param>
+        /// <returns></returns>
+        public bool update_user_data(Account_Data account)
+        {
+            try
+            {
+                FirebaseResponse update_response = client.Update(sAccountTable_path + account.UID, account);
+                Account_Data result = update_response.ResultAs<Account_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception) { }
+            return false;
+        }
         #endregion
-
-        //public List<Account_Data> retrieve_all_user_data()
-        //{
-        //    List<Account_Data> data = new List<Account_Data>();
-
-        //    //data.Add(new Account_Data("1", "trdayken", "123", "none", "cuong", new DateTime(2000, 2, 28), true, "trdayken@gmail.com", "identity?", "im VIP Baby!!!"));
-
-        //    return data;
-        //}
     }
 }

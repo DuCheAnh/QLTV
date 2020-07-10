@@ -69,6 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddBookGUI.xaml.cs">
+      <DependentUpon>AddBookGUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BookDataUI.xaml.cs">
+      <DependentUpon>BookDataUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Processor\Account_data_Processor.cs" />
     <Compile Include="APIInit.cs" />
     <Compile Include="BookPage.xaml.cs">
@@ -77,12 +83,36 @@
     <Compile Include="BorrowedPage.xaml.cs">
       <DependentUpon>BorrowedPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ChangeEmail.xaml.cs">
+      <DependentUpon>ChangeEmail.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword.xaml.cs">
+      <DependentUpon>ChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Data_Context.cs" />
     <Compile Include="LogReg.xaml.cs" />
+    <Compile Include="PopUpWindow.xaml.cs">
+      <DependentUpon>PopUpWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Register.xaml.cs" />
     <Compile Include="Products.cs" />
-    <Compile Include="User_Control_Page.xaml.cs" />
+    <Compile Include="UserDataUI.xaml.cs">
+      <DependentUpon>UserDataUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User_Control_Page.xaml.cs">
+      <DependentUpon>User_Control_Page.xaml</DependentUpon>
+    </Compile>
+    <Page Include="AddBookGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Admin_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BookDataUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BookPage.xaml">
       <SubType>Designer</SubType>
@@ -91,6 +121,14 @@
     <Page Include="BorrowedPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChangeEmail.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="LogReg.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -123,6 +161,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PopUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Register.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserDataUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="User_Control_Page.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

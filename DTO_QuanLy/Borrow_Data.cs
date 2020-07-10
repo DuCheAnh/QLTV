@@ -18,14 +18,11 @@ namespace DTO_QuanLy
         public Borrow_Data()
         {
         }
-        public Borrow_Data(string sBrID, string sBID, DateTime dBorrowDate, DateTime dReturnDate, int nOverdueBy, bool bReturned )
+        public Borrow_Data(string sBID, string sUID,DateTime dtBorrowDate)
         {
-            this.BrID = sBrID;
             this.BID = sBID;
-            this.borrow_date = dBorrowDate;
-            this.return_date = dReturnDate;
-            this.overdue_by = nOverdueBy;
-            this.returned = bReturned;
+            this.UID = sUID;
+            this.borrow_date = dtBorrowDate;
         }
     }
 }

@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Account_Data.cs" />
     <Compile Include="Book_Data.cs" />
+    <Compile Include="Borrow_Count.cs" />
     <Compile Include="Borrow_Data.cs" />
     <Compile Include="LibCard_Data.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -19,7 +19,8 @@ namespace DTO_QuanLy
         public string identity_card { get; set; }
         public string account_type { get; set; }
         public string LCID { get; set; }
-        public Account_Data(string sAccount,string sPassword,string sEmail)
+        public List<string> BrID { get; set; }
+        public Account_Data(string sAccount, string sPassword, string sEmail)
         {
             this.account = sAccount;
             this.password = sPassword;
@@ -34,7 +35,7 @@ namespace DTO_QuanLy
             this.identity_card = sIdentifyCard;
             this.account_type = sAccountType;
         }
-        public Account_Data (string sLCID)
+        public Account_Data(string sLCID)
         {
             this.LCID = sLCID;
         }

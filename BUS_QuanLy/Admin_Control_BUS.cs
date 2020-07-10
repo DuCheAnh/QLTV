@@ -13,7 +13,8 @@ namespace BUS_QuanLy
     public class Admin_Control_BUS
     {
         DAL_Account Account_DAL = new DAL_Account();
-
+        DAL_Libcard Libcard_DAL = new DAL_Libcard();
+        DAL_Book Book_DAL = new DAL_Book();
         /// <summary>
         /// gan data tu DAl => grid trong GUI
         /// </summary>
@@ -33,6 +34,34 @@ namespace BUS_QuanLy
         {
             Account_DAL.init_client();
             //Account_DAL.Update_Users_data(Updated_Users);
+        }
+
+        /// <summary>
+        /// Create a new libcard
+        /// </summary>
+        /// <param name="sAccountType"></param>
+        /// <param name="sIdentityCard"></param>
+        /// <param name="sName"></param>
+        /// <param name="dDOB"></param>
+        /// <param name="bGender"></param>
+        /// <returns></returns>
+        public bool create_new_libcard(string sAccountType, string sIdentityCard
+                    , string sName, DateTime dDOB, bool bGender)
+        {
+            Libcard_DAL.init_client();
+            return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);
+        }
+
+        public bool add_new_book(string sName, string sAuthor, DateTime dReleaseDate, string sCategory,
+                                 string sDescription, string sCoverPage, int nPrice, int nAmount)
+        {
+            Book_DAL.init_client();
+            return Book_DAL.add_new_book(sName, sAuthor, dReleaseDate, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+        }
+        public List<Book_Data> all_books_data()
+        {
+            Book_DAL.init_client();
+            return Book_DAL.retrieve_all_books();
         }
     }
 }

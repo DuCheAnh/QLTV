@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -21,9 +22,17 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class MainWindow : Window
     {
+        User_Control_BUS Bus_method = new User_Control_BUS();
+
+
         public MainWindow()
-        {        
+        {   
             InitializeComponent();
+            Data_Context.currentHomePageBook = Bus_method.Get_all_Books();
+            MainMenu mMenu = new MainMenu();
+            spMenu.Children.Add(mMenu);
+            MainPage mPage = new MainPage();
+            spMain.Children.Add(mPage);
         }
 
 
@@ -39,12 +48,20 @@ namespace TestGUI_QLTV
 
         private void bthSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            Data_Context.currentHomePageBook = Bus_method.Search_for_book(Search_box.Text);
+            spMain.Children.Clear();
+            if (Data_Context.currentHomePageBook.Count != 0)
+            {
+                MainPage mPage = new MainPage();
+                spMain.Children.Add(mPage);
+            }
         }
 
         private void btnBell_Click(object sender, RoutedEventArgs e)
         {
-
+            spMain.Children.Clear();
+            BookDataUI bData = new BookDataUI();
+            spMain.Children.Add(bData);
         }
 
         private void btnCart_Click(object sender, RoutedEventArgs e)
@@ -63,7 +80,12 @@ namespace TestGUI_QLTV
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            
+
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        { 
+            Environment.Exit(Environment.ExitCode);
         }
     }
 }
