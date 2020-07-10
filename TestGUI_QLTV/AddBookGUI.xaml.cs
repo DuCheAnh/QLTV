@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace TestGUI_QLTV
 {
@@ -33,7 +34,8 @@ namespace TestGUI_QLTV
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            admin_control.add_new_book(tbName.Text, tbAuthor.Text, DateTime.Today, cbCategory.Text, tbDescription.Text, "", 1, Convert.ToInt32(tbAmount.Text));
+            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, DateTime.Today, CategoryComboBox.Text, DescTextBox.Text, "", 1, Convert.ToInt32(AmountTextBox.Text));
+            //create a new popup window to notify success
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
             popup.PopUpTB.Text = "Added a new book";
             popup.Owner = Window.GetWindow(this);
@@ -41,9 +43,33 @@ namespace TestGUI_QLTV
             popup.Show();
         }
 
+
+        //allow it's owner to be clickable
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Window.GetWindow(this).Owner.IsHitTestVisible = true;
+        }
+
+
+
+        #region only accept number input {AmountTextBox}
+        private void AmountTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space) e.Handled = true;
+        }
+
+        private void AmountTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
+        #endregion
+
+        private void NameTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (NameTextBox.Text == "" || NameTextBox.Text.Trim() == "")
+                AddButton.IsEnabled = false;
         }
     }
 }

@@ -55,21 +55,22 @@
             <Button Width="200" Height="50" 
                     Canvas.Left="40" Canvas.Top="320"
                     Content="CHOOSE PICTURE" FontWeight="Bold" FontSize="18"/>
-            <TextBox x:Name="tbName" Width="400" Height="60"
-                     Canvas.Left="350" Canvas.Top="50"
+            <TextBox x:Name="NameTextBox" Width="400" Height="60"
+                     Canvas.Left="350" Canvas.Top="30"
                      materialDesign:HintAssist.Hint="Tên Sách"
                      materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
                      materialDesign:HintAssist.FloatingScale="0.50"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     FontSize="25" FontWeight="Bold"/>
-            <TextBox x:Name="tbAuthor" Width="250" Height="50"
-                     Canvas.Left="350" Canvas.Top="140"
+                     FontSize="25" FontWeight="Bold" LostFocus="NameTextBox_LostFocus"
+                     />
+            <TextBox x:Name="AuthorTextBox" Width="250" Height="50"
+                     Canvas.Left="350" Canvas.Top="120"
                      materialDesign:HintAssist.Hint="Tác Giả"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontSize="18"/>
             <ComboBox
-                x:Name="cbCategory"
-                Canvas.Top="220" Canvas.Left="350"
+                x:Name="CategoryComboBox"
+                Canvas.Top="200" Canvas.Left="350"
                 Width="300" FontSize="18"
                 IsEditable="True"
                 materialDesign:HintAssist.Hint="Thể Loại"
@@ -95,12 +96,7 @@
                 <ComboBoxItem Content="Tiếng Trung"/>
                 <ComboBoxItem Content="Tiếng Hàn"/>
             </ComboBox>
-            <TextBox x:Name="tbAmount" Width="150" Height="50"
-                     Canvas.Left="350" Canvas.Bottom="30"
-                     materialDesign:HintAssist.Hint="Số Lượng"
-                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     FontSize="18"/>
-            <TextBox x:Name="tbDescription" Canvas.Top="300" Canvas.Left="350"
+            <TextBox x:Name="DescTextBox" Canvas.Top="280" Canvas.Left="350"
                      Width="600" Height="180"
                      FontSize="18" TextWrapping="Wrap"
                      VerticalAlignment="Stretch"
@@ -108,11 +104,25 @@
                      VerticalScrollBarVisibility="Auto"
                      materialDesign:HintAssist.Hint="Giới Thiệu">
             </TextBox>
+            <TextBox x:Name="AmountTextBox" Width="150" Height="50"
+                     Canvas.Left="351" Canvas.Bottom="30"
+                     materialDesign:HintAssist.Hint="Số Lượng"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     PreviewKeyDown="AmountTextBox_PreviewKeyDown"
+                     PreviewTextInput="AmountTextBox_PreviewTextInput" Canvas.Top="460"/>
             <Button x:Name="AddButton" Width="120" Height="50"
                     Canvas.Bottom="20" Canvas.Right="20"
                     Content="ADD BOOK" FontWeight="Bold" FontSize="15" Click="AddButton_Click"
                     >
             </Button>
+            <TextBlock Text="Không để trống các ô thông tin"                       
+                       Canvas.Bottom="30" 
+                       Canvas.Left="350" 
+                       Canvas.Top="527"
+                       FontWeight="Bold"
+                       FontSize="15"
+                       Visibility="Hidden"/>
         </Canvas>
         <Grid.Effect>
             <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>

@@ -45,19 +45,26 @@ namespace DAL_QuanLy
         /// <param name="sBID"></param>
         /// <param name="sUID"></param>
         /// <returns></returns>
-        public bool add_new_borrow(string sBID, string sUID)
+        public bool add_new_borrow(string sBID, string sUID,DateTime dtBorrowDate)
         {
             try
             {
-                var data = new Borrow_Data(sBID, sUID);
+                //setups
+                var data = new Borrow_Data(sBID, sUID,dtBorrowDate);
                 DAL_Account account = new DAL_Account();
                 DAL_Book book = new DAL_Book();
                 data.borrow_date = DateTime.Now;
                 data.BrID = create_new_id();
-                account.retrieve_user_data(sUID).BrID.Add(data.BrID);
-                account.update_user(account.retrieve_user_data(sUID),sUID);
-            //add a new user info
-                   SetResponse response = client.Set(sBorrowTable_path + data.BrID, data);
+                //minus 1 book from the database
+                Book_Data bookdata = book.retrieve_book_data(sBID);
+                bookdata.amount -= 1;
+                book.update_book_data(bookdata);
+                //update user brid
+                Account_Data user = account.retrieve_user_data(sUID);
+                user.BrID.Add(data.BrID);
+                account.update_user_data(user);
+                //add new borrow info
+                SetResponse response = client.Set(sBorrowTable_path + data.BrID, data);
                 Borrow_Data result = response.ResultAs<Borrow_Data>();
                 if (result != null) return true;
             }

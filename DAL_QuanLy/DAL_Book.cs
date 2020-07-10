@@ -113,6 +113,18 @@ namespace DAL_QuanLy
 
 
         /// <summary>
+        /// update book info by a new book_data
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public bool update_book_data(Book_Data data)
+        {
+            FirebaseResponse response = client.Update(sBookTable_path + data.BID, data);
+            Book_Data result = response.ResultAs<Book_Data>();
+            if (result != null) return true;
+            else return false;
+        }
+        /// <summary>
         /// Delete a single book info desired by its BID
         /// </summary>
         /// <param name="sBID"></param>

@@ -18,10 +18,11 @@ namespace DTO_QuanLy
         public Borrow_Data()
         {
         }
-        public Borrow_Data(string sBID, string sUID)
+        public Borrow_Data(string sBID, string sUID,DateTime dtBorrowDate)
         {
             this.BID = sBID;
             this.UID = sUID;
+            this.borrow_date = dtBorrowDate;
         }
     }
 }
