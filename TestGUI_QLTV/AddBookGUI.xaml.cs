@@ -21,6 +21,8 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class AddBookGUI : Window
     {
+        bool[] array=new bool[7];
+        int count = -1;
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public AddBookGUI()
         {
@@ -52,13 +54,13 @@ namespace TestGUI_QLTV
 
 
 
-        #region only accept number input {AmountTextBox}
-        private void AmountTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        #region only accept number input {AmountTextBox,ReleaseDateTextBox,PriceTextBox}
+        private void TextBox_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space) e.Handled = true;
         }
 
-        private void AmountTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        private void TextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
@@ -66,10 +68,69 @@ namespace TestGUI_QLTV
 
         #endregion
 
-        private void NameTextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            if (NameTextBox.Text == "" || NameTextBox.Text.Trim() == "")
-                AddButton.IsEnabled = false;
+
+        #region Enable and disable add button base on input
+
+       
+        private void enable_add_button()
+        {         
+                bool bCheck = true;
+                for (int i = 0; i < 7;i++)
+                {
+                    if (array[i] == false) bCheck = false;
+                }
+            if (bCheck == true) AddButton.IsEnabled = true;
+            else AddButton.IsEnabled = false;
         }
+        private bool check_string_availability(string value)
+        {
+            if (value == "" || value.Trim() == "")
+                return false;
+            else return true;
+        }
+
+        private void NameTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            array[0] = check_string_availability(NameTextBox.Text);
+            enable_add_button();
+        }
+
+        private void AuthorTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            array[1] = check_string_availability(AuthorTextBox.Text);
+            enable_add_button();
+        }
+
+        private void ReleaseDateTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            array[2] = check_string_availability(ReleaseDateTextBox.Text);
+            enable_add_button();
+        }
+
+        private void CategoryComboBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            array[3] = check_string_availability(CategoryComboBox.Text);
+            enable_add_button();
+        }
+
+        private void DescTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            array[4] = check_string_availability(DescTextBox.Text);
+            enable_add_button();
+        }
+
+        private void PriceTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            array[5] = check_string_availability(PriceTextBox.Text);
+            enable_add_button();
+        }
+
+        private void AmountTextBox_TextChanged(object sender, RoutedEventArgs e)
+        {
+            array[6] = check_string_availability(AmountTextBox.Text);
+            enable_add_button();
+        }
+        #endregion
+
     }
 }

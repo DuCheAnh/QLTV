@@ -61,20 +61,32 @@
                      materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
                      materialDesign:HintAssist.FloatingScale="0.50"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     FontSize="25" FontWeight="Bold" LostFocus="NameTextBox_LostFocus"
+                     FontSize="25" FontWeight="Bold" 
+                     TextChanged="NameTextBox_TextChanged"
                      />
             <TextBox x:Name="AuthorTextBox" Width="250" Height="50"
-                     Canvas.Left="350" Canvas.Top="120"
+                     Canvas.Left="350" Canvas.Top="100"
                      materialDesign:HintAssist.Hint="Tác Giả"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     FontSize="18"/>
+                     FontSize="18"
+                     TextChanged="AuthorTextBox_TextChanged"/>
+            <TextBox x:Name="ReleaseDateTextBox" Width="250" Height="50"
+                     Canvas.Left="350" Canvas.Top="160"
+                     materialDesign:HintAssist.Hint="Năm xuất bản"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     TextChanged="ReleaseDateTextBox_TextChanged"
+                     PreviewKeyDown="TextBox_PreviewKeyDown"
+                     PreviewTextInput="TextBox_PreviewTextInput"/>
             <ComboBox
                 x:Name="CategoryComboBox"
-                Canvas.Top="200" Canvas.Left="350"
+                Canvas.Top="220" Canvas.Left="350"
                 Width="300" FontSize="18"
-                IsEditable="True"
+                IsEditable="False"
                 materialDesign:HintAssist.Hint="Thể Loại"
-                Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                LostFocus="CategoryComboBox_LostFocus" 
+                >
                 <ComboBoxItem Content="Tiểu Thuyết"/>
                 <ComboBoxItem Content="Truyện Ngắn"/>
                 <ComboBoxItem Content="Ngôn Tình"/>
@@ -97,24 +109,36 @@
                 <ComboBoxItem Content="Tiếng Hàn"/>
             </ComboBox>
             <TextBox x:Name="DescTextBox" Canvas.Top="280" Canvas.Left="350"
-                     Width="600" Height="180"
+                     Width="590" Height="140"
                      FontSize="18" TextWrapping="Wrap"
                      VerticalAlignment="Stretch"
                      AcceptsReturn="True"
                      VerticalScrollBarVisibility="Auto"
-                     materialDesign:HintAssist.Hint="Giới Thiệu">
+                     materialDesign:HintAssist.Hint="Giới Thiệu"
+                     TextChanged="DescTextBox_TextChanged">
             </TextBox>
+            <TextBox x:Name="PriceTextBox" Width="150" Height="50"
+                     Canvas.Left="351" Canvas.Bottom="30"
+                     Canvas.Top="430"
+                     materialDesign:HintAssist.Hint="Giá"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     TextChanged="PriceTextBox_TextChanged"
+                     PreviewKeyDown="TextBox_PreviewKeyDown"
+                     PreviewTextInput="TextBox_PreviewTextInput" />
             <TextBox x:Name="AmountTextBox" Width="150" Height="50"
                      Canvas.Left="351" Canvas.Bottom="30"
+                     Canvas.Top="490"
                      materialDesign:HintAssist.Hint="Số Lượng"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontSize="18"
-                     PreviewKeyDown="AmountTextBox_PreviewKeyDown"
-                     PreviewTextInput="AmountTextBox_PreviewTextInput" Canvas.Top="460"/>
+                     TextChanged="AmountTextBox_TextChanged"
+                     PreviewKeyDown="TextBox_PreviewKeyDown"
+                     PreviewTextInput="TextBox_PreviewTextInput" />
             <Button x:Name="AddButton" Width="120" Height="50"
                     Canvas.Bottom="20" Canvas.Right="20"
                     Content="ADD BOOK" FontWeight="Bold" FontSize="15" Click="AddButton_Click"
-                    >
+                    IsEnabled="False">
             </Button>
             <TextBlock Text="Không để trống các ô thông tin"                       
                        Canvas.Bottom="30" 
