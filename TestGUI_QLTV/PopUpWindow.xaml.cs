@@ -19,6 +19,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class PopUpWindow : Window
     {
+        
         public PopUpWindow()
         {
             InitializeComponent();

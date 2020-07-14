@@ -43,7 +43,7 @@ namespace DAL_QuanLy
         {
             string part1 = get_first_letters(book.name);
             string part2 = get_first_letters(book.author);
-            string part3 = book.release_date.Year.ToString();
+            string part3 = book.release_year.ToString();
             string result = part1 + part2 + part3;
             return result;
         }
@@ -55,19 +55,19 @@ namespace DAL_QuanLy
         /// </summary>
         /// <param name="sName"></param>
         /// <param name="sAuthor"></param>
-        /// <param name="dReleaseDate"></param>
+        /// <param name="nReleaseYear"></param>
         /// <param name="sCategory"></param>
         /// <param name="sDescription"></param>
         /// <param name="sCoverPage"></param>
         /// <param name="nPrice"></param>
         /// <param name="nAmount"></param>
         /// <returns></returns>
-        public bool add_new_book(string sName, string sAuthor, DateTime dReleaseDate, string sCategory,
+        public bool add_new_book(string sName, string sAuthor, int nReleaseYear, string sCategory,
                                 string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
             try
             {
-                var data = new Book_Data(sName, sAuthor, dReleaseDate, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+                var data = new Book_Data(sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
                 data.BID = create_new_bid(data);
                 SetResponse response = client.Set(sBookTable_path + data.BID, data);
                 Book_Data result = response.ResultAs<Book_Data>();
@@ -87,19 +87,19 @@ namespace DAL_QuanLy
         /// <param name="sBID"></param>
         /// <param name="sName"></param>
         /// <param name="sAuthor"></param>
-        /// <param name="dReleaseDate"></param>
+        /// <param name="nReleaseYear"></param>
         /// <param name="sCategory"></param>
         /// <param name="sDescription"></param>
         /// <param name="sCoverPage"></param>
         /// <param name="nPrice"></param>
         /// <param name="nAmount"></param>
         /// <returns></returns>
-        public bool update_book_info(string sBID, string sName, string sAuthor, DateTime dReleaseDate, string sCategory,
+        public bool update_book_info(string sBID, string sName, string sAuthor, int nReleaseYear, string sCategory,
                                         string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
             try
             {
-                var data = new Book_Data(sName, sAuthor, dReleaseDate, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+                var data = new Book_Data(sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
                 FirebaseResponse response = client.Update(sBookTable_path + sBID, data);
                 Book_Data result = response.ResultAs<Book_Data>();
                 if (result != null) return true;

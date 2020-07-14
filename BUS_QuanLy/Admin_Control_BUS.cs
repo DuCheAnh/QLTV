@@ -37,7 +37,7 @@ namespace BUS_QuanLy
         }
 
         /// <summary>
-        /// Create a new libcard
+        /// Create a new libcards
         /// </summary>
         /// <param name="sAccountType"></param>
         /// <param name="sIdentityCard"></param>
@@ -52,16 +52,32 @@ namespace BUS_QuanLy
             return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);
         }
 
-        public bool add_new_book(string sName, string sAuthor, DateTime dReleaseDate, string sCategory,
+        public bool add_new_book(string sName, string sAuthor, int nReleaseYear, string sCategory,
                                  string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
             Book_DAL.init_client();
-            return Book_DAL.add_new_book(sName, sAuthor, dReleaseDate, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+            return Book_DAL.add_new_book(sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+        }
+        public bool update_book_info(string sBID, string sName, string sAuthor, int nReleaseYear, string sCategory,
+                                        string sDescription, string sCoverPage, int nPrice, int nAmount)
+        {
+            Book_DAL.init_client();
+            return Book_DAL.update_book_info(sBID,sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+        }
+        public bool delete_book(string sBID)
+        {
+            Book_DAL.init_client();
+            return Book_DAL.delete_book(sBID);
         }
         public List<Book_Data> all_books_data()
         {
             Book_DAL.init_client();
             return Book_DAL.retrieve_all_books();
+        }
+        public bool update_book_data(Book_Data data)
+        {
+            Book_DAL.init_client();
+            return Book_DAL.update_book_data(data);
         }
     }
 }

@@ -1,0 +1,155 @@
+﻿<Window x:Class="TestGUI_QLTV.EditBookGUI"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:TestGUI_QLTV"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        WindowStyle="None"
+        ShowInTaskbar="False"
+        Title="Thêm Sách"
+        WindowStartupLocation="CenterOwner" Height="600" Width="1000"
+        FontFamily="Comic Sans MS" Closing="Window_Closing">
+    <Grid Margin="20" Background="White">
+        <Button Width="25" 
+                HorizontalAlignment="Stretch" 
+                Margin="935,0,0,535"
+                Height="25"
+                VerticalAlignment="Bottom" 
+                Click="btnClose">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type Button}">
+                                <Border Background="{TemplateBinding Background}" 
+                                        BorderBrush="Black" BorderThickness="0">
+                                    <ContentPresenter HorizontalAlignment="Center" 
+                                                      VerticalAlignment="Center"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="Gray"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="DarkGray"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Image Source="a.png" />
+        </Button>
+        <Canvas>
+            <Grid Width="180" Height="240" Canvas.Top="50" Canvas.Left="50">
+                <Grid.Background>
+                    <ImageBrush ImageSource="a.png"></ImageBrush>
+                </Grid.Background>
+            </Grid>
+            <Button Width="200" Height="50" 
+                    Canvas.Left="40" Canvas.Top="320"
+                    Content="CHOOSE PICTURE" FontWeight="Bold" FontSize="18"/>
+            <TextBox x:Name="NameTextBox" Width="400" Height="60"
+                     Canvas.Left="350" Canvas.Top="30"
+                     materialDesign:HintAssist.Hint="Tên Sách"
+                     materialDesign:TextFieldAssist.TextBoxViewMargin="1 0 1 0"
+                     materialDesign:HintAssist.FloatingScale="0.50"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="25" FontWeight="Bold" 
+                     TextChanged="NameTextBox_TextChanged"
+                     />
+            <TextBox x:Name="AuthorTextBox" Width="250" Height="50"
+                     Canvas.Left="350" Canvas.Top="100"
+                     materialDesign:HintAssist.Hint="Tác Giả"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     TextChanged="AuthorTextBox_TextChanged"/>
+            <TextBox x:Name="ReleaseYearTextBox" Width="250" Height="50"
+                     Canvas.Left="350" Canvas.Top="160"
+                     materialDesign:HintAssist.Hint="Năm xuất bản"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     TextChanged="ReleaseDateTextBox_TextChanged"
+                     PreviewKeyDown="TextBox_PreviewKeyDown"
+                     PreviewTextInput="TextBox_PreviewTextInput"/>
+            <ComboBox
+                x:Name="CategoryComboBox"
+                Canvas.Top="220" Canvas.Left="350"
+                Width="300" FontSize="18"
+                IsEditable="False"
+                materialDesign:HintAssist.Hint="Thể Loại"
+                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                LostFocus="CategoryComboBox_LostFocus" 
+                >
+                <ComboBoxItem Content="Tiểu Thuyết"/>
+                <ComboBoxItem Content="Truyện Ngắn"/>
+                <ComboBoxItem Content="Ngôn Tình"/>
+                <ComboBoxItem Content="Bài Học Kinh Doanh"/>
+                <ComboBoxItem Content="Quản Trị - Lãnh Đạo"/>
+                <ComboBoxItem Content="Marketing"/>
+                <ComboBoxItem Content="Kỹ Năng Sống"/>
+                <ComboBoxItem Content="Tâm Lý Tuổi Mới Lớn"/>
+                <ComboBoxItem Content="Rèn Luyện Nhân Cách"/>
+                <ComboBoxItem Content="Văn Hóa - Tôn Giáo"/>
+                <ComboBoxItem Content="Ẩm Thực"/>
+                <ComboBoxItem Content="Luyện Thi Đại Học"/>
+                <ComboBoxItem Content="Triết Học"/>
+                <ComboBoxItem Content="Tiểu Sử - Hồi ký"/>
+                <ComboBoxItem Content="Tiếng Anh"/>
+                <ComboBoxItem Content="Tiếng Nhật"/>
+                <ComboBoxItem Content="Tiếng Pháp"/>
+                <ComboBoxItem Content="Tiếng Đức"/>
+                <ComboBoxItem Content="Tiếng Trung"/>
+                <ComboBoxItem Content="Tiếng Hàn"/>
+            </ComboBox>
+            <TextBox x:Name="DescTextBox" Canvas.Top="280" Canvas.Left="350"
+                     Width="590" Height="140"
+                     FontSize="18" TextWrapping="Wrap"
+                     VerticalAlignment="Stretch"
+                     AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"
+                     materialDesign:HintAssist.Hint="Giới Thiệu"
+                     TextChanged="DescTextBox_TextChanged">
+            </TextBox>
+            <TextBox x:Name="PriceTextBox" Width="150" Height="50"
+                     Canvas.Left="351" Canvas.Bottom="30"
+                     Canvas.Top="430"
+                     materialDesign:HintAssist.Hint="Giá"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     TextChanged="PriceTextBox_TextChanged"
+                     PreviewKeyDown="TextBox_PreviewKeyDown"
+                     PreviewTextInput="TextBox_PreviewTextInput" />
+            <TextBox x:Name="AmountTextBox" Width="150" Height="50"
+                     Canvas.Left="351" Canvas.Bottom="30"
+                     Canvas.Top="490"
+                     materialDesign:HintAssist.Hint="Số Lượng"
+                     Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                     FontSize="18"
+                     TextChanged="AmountTextBox_TextChanged"
+                     PreviewKeyDown="TextBox_PreviewKeyDown"
+                     PreviewTextInput="TextBox_PreviewTextInput" />
+            <Button x:Name="EditButton" Width="120" Height="50"
+                    Canvas.Bottom="20" Canvas.Right="20"
+                    Content="EDIT BOOK" FontWeight="Bold" FontSize="15" Click="EditButton_Click"
+                    IsEnabled="False">
+            </Button>
+            <TextBlock Text="Không để trống các ô thông tin"                       
+                       Canvas.Bottom="30" 
+                       Canvas.Left="350" 
+                       Canvas.Top="527"
+                       FontWeight="Bold"
+                       FontSize="15"
+                       Visibility="Hidden"/>
+        </Canvas>
+        <Grid.Effect>
+            <DropShadowEffect BlurRadius="10" Direction="-90" RenderingBias="Quality" ShadowDepth="2"/>
+        </Grid.Effect>
+    </Grid>
+</Window>

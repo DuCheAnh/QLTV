@@ -61,7 +61,6 @@ namespace GUI_QuanLy
         private void Change_Email(object sender, RoutedEventArgs e)
         {
             changePassword.Hide();
-            changeEmail.Close();
             changeEmail = new TestGUI_QLTV.ChangeEmail();
             changeEmail.Owner = Window.GetWindow(this);
             changeEmail.Show();
@@ -71,7 +70,6 @@ namespace GUI_QuanLy
         {
 
             changeEmail.Hide();
-            changePassword.Close();
             changePassword = new TestGUI_QLTV.ChangePassword();
             changePassword.Owner = Window.GetWindow(this);
             changePassword.Show();

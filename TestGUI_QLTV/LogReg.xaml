@@ -11,7 +11,7 @@
         AllowsTransparency="True" Background="Transparent"
         WindowStyle="None" ResizeMode="NoResize"
         MouseDown="Window_MouseDown"
-        
+        WindowStartupLocation="CenterScreen"
         >
     <!--Panel-->
     <Grid>
