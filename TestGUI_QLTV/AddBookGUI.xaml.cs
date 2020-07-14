@@ -50,6 +50,7 @@ namespace TestGUI_QLTV
         //allow it's owner to be clickable
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Window.GetWindow(this).Owner.Focus();
             Window.GetWindow(this).Owner.IsHitTestVisible = true;
         }
 

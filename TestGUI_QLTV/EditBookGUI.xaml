@@ -140,6 +140,11 @@
                     Content="EDIT BOOK" FontWeight="Bold" FontSize="15" Click="EditButton_Click"
                     IsEnabled="False">
             </Button>
+            <Button x:Name="DeleteButton" Width="120" Height="50"
+                    Canvas.Bottom="20" Canvas.Right="20"
+                    Content="DELETE" FontWeight="Bold" FontSize="15" Click="DeleteButton_Click"
+                     Canvas.Left="596" Canvas.Top="490">
+            </Button>
             <TextBlock Text="Không để trống các ô thông tin"                       
                        Canvas.Bottom="30" 
                        Canvas.Left="350" 

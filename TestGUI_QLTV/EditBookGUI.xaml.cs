@@ -53,11 +53,15 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).Close();
         }
 
-        private void EditButton_Click(object sender, RoutedEventArgs e)
+        private void edit_book()
         {
             admin_control.delete_book(selected_book.BID);
-            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseYearTextBox.Text), 
-                CategoryComboBox.Text, DescTextBox.Text,""/*cover page*/, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
+            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseYearTextBox.Text),
+                CategoryComboBox.Text, DescTextBox.Text, ""/*cover page*/, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
+        }
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            edit_book();
             //create a new popup window to notify success
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
             popup.PopUpTB.Text = "Updated";
@@ -70,6 +74,7 @@ namespace TestGUI_QLTV
         //allow it's owner to be clickable
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Window.GetWindow(this).Owner.Focus();
             Window.GetWindow(this).Owner.IsHitTestVisible = true;
         }
 
@@ -151,7 +156,18 @@ namespace TestGUI_QLTV
             array[6] = check_string_availability(AmountTextBox.Text);
             enable_add_button();
         }
+
         #endregion
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            admin_control.delete_book(selected_book.BID);
+            TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
+            popup.PopUpTB.Text = "Deleted";
+            popup.Owner = Window.GetWindow(this.Owner);
+            this.Close();
+            Window.GetWindow(this.Owner).IsHitTestVisible = false;
+            popup.Show();
+        }
     }
 }

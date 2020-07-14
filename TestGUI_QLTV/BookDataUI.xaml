@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestGUI_QLTV"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             FontFamily="Comic Sans MS">
+             FontFamily="Comic Sans MS" IsHitTestVisibleChanged="UserControl_IsHitTestVisibleChanged">
     <Grid  Height="630" Width="1280">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -37,6 +37,7 @@
 
                     </Button>
                     <TextBox
+                        x:Name="ListViewSearchBar"
                         Grid.Column="1"
                         Margin="0 5 15 2"
                         Height="30"
@@ -45,7 +46,8 @@
                         BorderThickness="0"
                         Width="320"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
+                        HorizontalAlignment="Center" PreviewKeyDown="ListViewSearchBar_PreviewKeyDown"
+                        />
 
                 </Grid>
             </materialDesign:ColorZone>
@@ -72,9 +74,12 @@
                             <GridViewColumn Width="100"
                             DisplayMemberBinding="{Binding BID}"
                             Header="Mã Sách" />
-                            <GridViewColumn Width="300"
+                            <GridViewColumn Width="200"
                             DisplayMemberBinding="{Binding name}"
                             Header="Tên Sách" />
+                            <GridViewColumn Width="100"
+                            DisplayMemberBinding="{Binding release_year}"
+                            Header="Năm XB"/>
                             <GridViewColumn Width="150"
                             DisplayMemberBinding="{Binding author}"
                             Header="Tác Giả" />

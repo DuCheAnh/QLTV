@@ -17,12 +17,15 @@
         WindowStyle="None" 
         ResizeMode="NoResize"
         Background="White"
-        BorderBrush="Black">
+        BorderBrush="Black"
+        BorderThickness="1">
         
     <Grid>
         <StackPanel Margin="50">
             <TextBlock x:Name="PopUpTB" Text="Done" FontSize="30" Margin="20" HorizontalAlignment="Center"/>
             <Button x:Name="OkayButton" FontSize="20" Click="OkayButton_Click" Content="Okay" Margin="60 0 60 0" />
         </StackPanel>
+        
     </Grid>
+    
 </Window>
