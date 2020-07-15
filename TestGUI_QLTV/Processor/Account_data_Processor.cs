@@ -8,9 +8,9 @@ using Newtonsoft.Json;
 
 namespace TestGUI_QLTV.Processor
 {
-    public class Account_data_Processor
-    { 
-
+    public static class Account_data_Processor
+    {
+        #region Get method
         public static async Task<Account_Data> GetAccount(string id)
         {
             try
@@ -31,19 +31,77 @@ namespace TestGUI_QLTV.Processor
             catch (Exception) { }
             return null;
         }
+        #endregion
 
-       public static async void Authentication(UserCred usercred)
+        #region Post method
+
+        public static async Task<bool> Check_current_password(string UID, string OldPassword)
         {
-            string url = $"http://localhost:5000/api/account/authentication";
+            string url = APIInit.URL + $"api/account/{UID}/checkoldPassword";
 
-            using (HttpResponseMessage response = await APIInit.Apiclient.PostAsJsonAsync(url, usercred))
+            HttpResponseMessage response = await APIInit.Apiclient.PostAsJsonAsync(url, OldPassword);
+
+            bool IsMatch = response.Content.ReadAsAsync<bool>().Result;
+            return IsMatch;
+        }
+
+        public static async Task<bool> Register(string username, string password, string email)
+        {
+            string url = APIInit.URL + $"api/Account";
+
+            UserRegister register = new UserRegister() { Username = username, Password = password, Email = email };
+            HttpResponseMessage response = await APIInit.Apiclient.PostAsJsonAsync(url, register);
+
+            bool Created = response.Content.ReadAsAsync<bool>().Result;
+
+            return Created;
+        }
+        #region authentication
+        public static async Task<bool> Authentication(UserCred usercred)
+        {
+            try
+
             {
-                if (response.IsSuccessStatusCode)
+                string url = APIInit.URL + $"api/account/authenticate";
+
+                using (HttpResponseMessage response = await APIInit.Apiclient.PostAsJsonAsync(url, usercred))
                 {
-                    var token = response.Content.ReadAsAsync<string>().Result;
-                    APIInit.Token = token;
+                    if (response.IsSuccessStatusCode)
+                    {
+                        var content = response.Content.ReadAsAsync<UserToken>().Result;
+                        Data_Context.currentUID  = content.ID;
+
+                        Data_Context.Token = content.token.ToString();
+
+                        return true;
+                    }
+
                 }
             }
+            catch (Exception) { }
+            return false;
         }
+        #endregion
+        #endregion
+
+        #region Put method
+        public static async void PUT_change_email(string UID, string newEmail)
+        {
+            string url = APIInit.URL + $"api/account/{UID}/changeEmail";
+
+            HttpResponseMessage response = await APIInit.Apiclient.PutAsJsonAsync(url, newEmail);
+
+            Data_Context.currentAccount = await Account_data_Processor.GetAccount(Data_Context.currentUID);
+        }
+
+        public static async void PUT_change_password(string UID, string newPassword)
+        {
+            string url = APIInit.URL + $"api/account/{UID}/changePassword";
+
+            HttpResponseMessage response = await APIInit.Apiclient.PutAsJsonAsync(url, newPassword);
+
+            Data_Context.currentAccount = await Account_data_Processor.GetAccount(Data_Context.currentUID);
+        }
+        #endregion
     }
 }

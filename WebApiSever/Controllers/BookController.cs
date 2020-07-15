@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using DTO_QuanLy;
+using BUS_QuanLy;
 
 namespace WebApiSever.Controllers
 {
@@ -11,36 +13,80 @@ namespace WebApiSever.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+        #region Get method
         // GET: api/Book
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Book_Data> Get()
         {
-            return new string[] { "value1", "value2" };
+            IEnumerable<Book_Data> books = BUS_Book.Get_all_books();
+            return books;
         }
 
         // GET: api/Book/5
-        [HttpGet("{id}/author/{authid}", Name = "GetBook")]
-        public int Get(int id, int authid)
+        [HttpGet("{id}", Name = "GetBook")]
+        public IActionResult Get(string id)
         {
-            return id+authid;
+            Book_Data book = BUS_Book.Retrive_book_data(id.ToString());
+
+            if (book == null)
+                return NotFound();
+
+            return Ok(book);
+
         }
 
+        // get: api/Book/Search:text
+        [HttpGet("Search:{text}")]
+        public IEnumerable<Book_Data> Search(string text)
+        {
+            IEnumerable<Book_Data> books = BUS_Book.Search(text);
+
+            return books;
+        }
+        #endregion
+
+        #region Post method
         // POST: api/Book
         [HttpPost]
-        public void Post([FromBody] string value)
+        public IActionResult Post([FromBody] Book_Data data)
         {
+            bool created = BUS_Book.Create_new_book(data);
+            if(created)
+            {
+                return Ok();
+            }
+            return NotFound();
+        }
+
+        //post: api/book/{id}
+        //method not allowed
+        #endregion
+
+        #region Put method
+        //put : api/Book
+        //bulk update on all books
+        [HttpPut]
+         public void Put([FromBody] IEnumerable<Book_Data> books)
+        {
+
         }
 
         // PUT: api/Book/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put([FromBody] Book_Data book)
         {
+           
+            return Ok(BUS_Book.Update_on_book(book));
         }
+        #endregion
 
+        #region Delete method
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public void Delete(string id)
         {
+            BUS_Book.Delete_specific_book(id);
         }
+        #endregion
     }
 }

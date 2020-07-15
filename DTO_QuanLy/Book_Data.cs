@@ -18,7 +18,7 @@ namespace DTO_QuanLy
         public int price { get; set; }
         public int amount { get; set; }
         public string added_by { get; set; }
-        public string add_date { get; set; }
+        public DateTime add_date { get; set; }
         public Book_Data()
         {
         }

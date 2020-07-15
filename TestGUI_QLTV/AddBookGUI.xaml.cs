@@ -1,5 +1,4 @@
-﻿using BUS_QuanLy;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
-
+using DTO_QuanLy;
+using TestGUI_QLTV.Processor;
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -21,7 +21,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class AddBookGUI : Window
     {
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
+
         public AddBookGUI()
         {
             InitializeComponent();
@@ -32,15 +32,20 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).Close();
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, DateTime.Today, CategoryComboBox.Text, DescTextBox.Text, "", 1, Convert.ToInt32(AmountTextBox.Text));
+            Book_Data book = new Book_Data() { name = NameTextBox.Text, author = AuthorTextBox.Text, add_date = DateTime.Today, category = CategoryComboBox.Text, description = DescTextBox.Text, cover_page = "", price = 1, amount = Convert.ToInt32(AmountTextBox.Text) };
             //create a new popup window to notify success
-            TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
-            popup.PopUpTB.Text = "Added a new book";
-            popup.Owner = Window.GetWindow(this);
-            Window.GetWindow(this).IsHitTestVisible = false;
-            popup.Show();
+            APIInit.InitClient();
+
+            if ( await Book_data_Processor.Add_new_books(book))
+            {
+                TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
+                popup.PopUpTB.Text = "Added a new book";
+                popup.Owner = Window.GetWindow(this);
+                Window.GetWindow(this).IsHitTestVisible = false;
+                popup.Show();
+            }
         }
 
 

@@ -1,5 +1,4 @@
-﻿using BUS_QuanLy;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -21,12 +21,12 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class BookDataUI : UserControl
     {
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BookDataUI()
         {
             
             InitializeComponent();
-            lvBooksData.ItemsSource = admin_control.all_books_data();
+            loadbooks();
+
         }
 
         private void btnAddBook(object sender, RoutedEventArgs e)
@@ -35,6 +35,13 @@ namespace TestGUI_QLTV
             addBookGUI.Owner = Window.GetWindow(this);
             Window.GetWindow(this).IsHitTestVisible = false;
             addBookGUI.Show();
+        }
+
+        private async void loadbooks()
+        {
+            APIInit.InitClient();
+            Data_Context.currentBooksdataUI = await Book_data_Processor.Get_all_books();
+            lvBooksData.ItemsSource = Data_Context.currentBooksdataUI;
         }
     }
 }

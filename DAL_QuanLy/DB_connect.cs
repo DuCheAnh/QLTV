@@ -12,8 +12,8 @@ namespace DAL_QuanLy
     {
         public IFirebaseConfig config = new FirebaseConfig
         {
-            AuthSecret = "zIdueuwp4ixQMyEVF28jJEfgtp1embwR4GoKmggg",
-            BasePath = "https://qltv-690d3.firebaseio.com/"
+            AuthSecret = "XpDorf2nT85qnkwL2ggO1xJGEEbuXsfLxODzKXyp",
+            BasePath = "https://qltv-f1103.firebaseio.com/"
         };
     }
 }

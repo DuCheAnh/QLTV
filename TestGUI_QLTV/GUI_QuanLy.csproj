@@ -94,6 +94,7 @@
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Processor\Book_data_Processor.cs" />
     <Compile Include="Register.xaml.cs" />
     <Compile Include="Products.cs" />
     <Compile Include="UserDataUI.xaml.cs">

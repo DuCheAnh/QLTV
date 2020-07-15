@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BUS_QuanLy;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -20,7 +20,6 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window2 : Window
     {
-        Register Bus_register = new Register();
         public Window2()
         {
             InitializeComponent();
@@ -53,13 +52,14 @@ namespace TestGUI_QLTV
             this.Close();
         }
 
-        private void Register(object sender, RoutedEventArgs e)
+        private async void Register(object sender, RoutedEventArgs e)
         {
-            if (Bus_register.RegisterIn(Username.Text, Password.Password,Email.Text))
+            APIInit.InitClient();
+
+            if (await Account_data_Processor.Register(Username.Text, Password.Password, Email.Text))
             {
                 MessageBox.Show("Dang ki thanh cong");
                 this.Back(sender,e);
-                
             }
 
         }

@@ -23,27 +23,10 @@ namespace TestGUI_QLTV
         public MainPage()
         {
             InitializeComponent();
-            if (Data_Context.currentHomePageBook.Count > 0)
-                IBook.ItemsSource = Data_Context.currentHomePageBook;
+            if (Data_Context.currentBooksdataUI.Count > 0)
+                IBook.ItemsSource = Data_Context.currentBooksdataUI;
         }
 
-/*        private List<Products> GetProducts()
-        {
-            return new List<Products>()
-            {
-                new Products("Chiken with a knife 1", "a.png" ,"1"),
-                new Products("Chiken with a knife 2", "a.png" ,"2"),
-                new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
-                new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
-                new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
-                new Products("Chiken with a knife 1", "a.png" ,"chuch"),
-                new Products("Chiken with a knife 2", "a.png" ,"ahuch"),
-                new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
-                new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
-                new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
-                
-            };
-        }*/
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             
