@@ -77,7 +77,7 @@ namespace TestGUI_QLTV
             if (BookDataListView.SelectedItems.Count > 0)
             {
                 if (BookDataListView.SelectedItems.Count > 1)
-                    EditBookButton.Content = "DELETE";
+                    EditBookButton.Content = "DELETE " + BookDataListView.SelectedItems.Count.ToString();
                 else EditBookButton.Content = "EDIT";
                 EditBookButton.IsEnabled = true;
             }
