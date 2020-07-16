@@ -64,6 +64,12 @@ namespace BUS_QuanLy
             Book_DAL.init_client();
             return Book_DAL.update_book_info(sBID,sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
         }
+
+        public Book_Data retrieve_book_data(string sBID)
+        {
+            Book_DAL.init_client();
+            return Book_DAL.retrieve_book_data(sBID);
+        }
         public bool delete_book(string sBID)
         {
             Book_DAL.init_client();

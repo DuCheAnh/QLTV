@@ -44,22 +44,17 @@ namespace TestGUI_QLTV
         public void Book_Click(object sender, RoutedEventArgs e)
         {
             //variable to store newly found book
-            Book_Data book_clicked=new Book_Data();
+            List<Label> label_list = new List<Label>();
+            Book_Data book_clicked =new Book_Data();
             Image img=new Image();
             //get the selected book
             Button btn = (Button)sender;
             Canvas canv = (Canvas)btn.Content;
             foreach (Label lab in canv.Children.OfType<Label>())
             {
-                List<Book_Data> book_list =  admin_control.all_books_data();
-                foreach(Book_Data data in book_list)
-                {
-                    if (data.BID==lab.Content.ToString())
-                    {
-                        book_clicked = data;
-                    }
-                }
+                label_list.Add(lab);
             }
+            book_clicked = admin_control.retrieve_book_data(label_list[0].Content.ToString());
             foreach (Image data in canv.Children.OfType<Image>())
             {
                 img = data;
