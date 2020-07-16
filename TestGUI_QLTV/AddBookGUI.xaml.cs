@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using DTO_QuanLy;
 using TestGUI_QLTV.Processor;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -22,8 +23,8 @@ namespace TestGUI_QLTV
     public partial class AddBookGUI : Window
     {
         bool[] array=new bool[7];
-        int count = -1;
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
+
+
         public AddBookGUI()
         {
             InitializeComponent();
@@ -37,13 +38,15 @@ namespace TestGUI_QLTV
         private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
 
-            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseDateTextBox.Text), 
-            CategoryComboBox.Text, DescTextBox.Text,""/*cover page*/, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
-            Book_Data book = new Book_Data() { name = NameTextBox.Text, author = AuthorTextBox.Text, add_date = DateTime.Today, category = CategoryComboBox.Text, description = DescTextBox.Text, cover_page = "", price = 1, amount = Convert.ToInt32(AmountTextBox.Text) };
+            /*            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseDateTextBox.Text), 
+                        CategoryComboBox.Text, DescTextBox.Text,""*//*cover page*//*, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));*/
+
+            Book_Data book = new Book_Data() { name = NameTextBox.Text, author = AuthorTextBox.Text, release_year = Convert.ToInt32(ReleaseDateTextBox.Text), category = CategoryComboBox.Text, description = DescTextBox.Text, cover_page = "", price = Convert.ToInt32(PriceTextBox.Text), amount = Convert.ToInt32(AmountTextBox.Text) };
+
             //create a new popup window to notify success
             APIInit.InitClient();
 
-            if ( await Book_data_Processor.Add_new_books(book))
+            if (await Book_data_Processor.Add_new_book(book))
             {
                 TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
                 popup.PopUpTB.Text = "Added a new book";

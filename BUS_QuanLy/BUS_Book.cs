@@ -27,7 +27,7 @@ namespace BUS_QuanLy
         public static bool Create_new_book(Book_Data data)
         {
             DAL_method.init_client();
-            if (DAL_method.add_new_book(data.name, data.author, data.release_date, data.category, data.description, data.cover_page, data.price, data.amount))
+            if (DAL_method.add_new_book(data.name, data.author, data.release_year, data.category, data.description, data.cover_page, data.price, data.amount))
                 return true;
             return false;
         }

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestGUI_QLTV
 {
+    // put this http client as static to make sure only one port is being open at one specifictime no overlaps
     public static class APIInit
     {
         public static HttpClient Apiclient { get; set; }

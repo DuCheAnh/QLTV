@@ -56,14 +56,14 @@ namespace TestGUI_QLTV.Processor
 
         #region Post method
         //post method
-        public static async Task<bool> Add_new_books(Book_Data book)
+        public static async Task<bool> Add_new_book(Book_Data book)
         {
 
             try
             {
                 string url = APIInit.URL + $"api/Book";
 
-                using (HttpResponseMessage response = await APIInit.Apiclient.PostAsJsonAsync(url,book))
+                using (HttpResponseMessage response = await APIInit.Apiclient.PostAsJsonAsync(url, book))
                 {
                     if (response.IsSuccessStatusCode)
                     {
@@ -77,6 +77,24 @@ namespace TestGUI_QLTV.Processor
 
             return false;
         }
+        #endregion
+
+        #region Put method
+        #endregion
+
+        #region Delete method
+
+        public static async Task Delete_specific_Book(string BID)
+        {
+            try
+            {
+                string url = APIInit.URL + $"api/Book/{BID}";
+
+                using (HttpResponseMessage response = await APIInit.Apiclient.DeleteAsync(url)) ;
+            }
+            catch (Exception) { }
+        }
+
         #endregion
     }
 }
