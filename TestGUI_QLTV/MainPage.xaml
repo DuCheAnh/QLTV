@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestGUI_QLTV"
-             FontFamily="Comic Sans MS">
+             FontFamily="Comic Sans MS" >
     <Grid Height="630" Width="1280">
         <Grid.RowDefinitions>
             <RowDefinition Height="580"></RowDefinition>
@@ -18,9 +18,10 @@
                             <StackPanel.Resources>
                                 <local:Base64ImageConverter x:Key="Base64ImageConverter"/>
                             </StackPanel.Resources>
-                            <Button Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Button_Click" >
+                            <Button x:Name="Book" Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Book_Click">
                                 <Canvas Height="120" Width="260">
                                     <Image x:Name="Pic" Height="120" Width="90" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Source="{Binding cover_page, Converter={StaticResource Base64ImageConverter}}" />
+                                    <Label Content="{Binding BID}" Visibility="Hidden"/>
                                     <Label Name="lbBookName" Content="{Binding name}" Canvas.Left="95" FontSize="16"/>
                                     <Label Content="{Binding author}" Canvas.Left="95" Canvas.Top="30"/>
                                 </Canvas>

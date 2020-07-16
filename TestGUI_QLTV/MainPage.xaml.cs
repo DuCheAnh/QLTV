@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.IO;
+using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -22,45 +23,14 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class MainPage : UserControl
     {
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public MainPage()
         {
             InitializeComponent();
             if (Data_Context.currentHomePageBook.Count > 0)
-                IBook.ItemsSource = Data_Context.currentHomePageBook;
-            /*
-            foreach (Book_Data item in IBook.Items)
-            {
-                byte[] binaryData = Convert.FromBase64String(item.cover_page);
-
-                BitmapImage bi = new BitmapImage();
-                bi.BeginInit();
-                bi.StreamSource = new MemoryStream(binaryData);
-                bi.EndInit();
-                
-                //Pic.Source = bi;
-            }*/
+                IBook.ItemsSource = Data_Context.currentHomePageBook;         
         }
-       
-
-
-
-        /*        private List<Products> GetProducts()
-                {
-                    return new List<Products>()
-                    {
-                        new Products("Chiken with a knife 1", "a.png" ,"1"),
-                        new Products("Chiken with a knife 2", "a.png" ,"2"),
-                        new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
-                        new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
-                        new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
-                        new Products("Chiken with a knife 1", "a.png" ,"chuch"),
-                        new Products("Chiken with a knife 2", "a.png" ,"ahuch"),
-                        new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
-                        new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
-                        new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
-
-                    };
-                }*/
+      
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             
@@ -71,42 +41,42 @@ namespace TestGUI_QLTV
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Book_Click(object sender, RoutedEventArgs e)
         {
-
-
-/*
-            ListBoxItem myListBoxItem = (ListBoxItem)(IBook.ItemContainerGenerator.ContainerFromItem(IBook.Items.CurrentItem));
-
-            ContentPresenter myContentPresenter = FindVisualChild<ContentPresenter>(myListBoxItem);
-
-            DataTemplate myDataTemplate = myContentPresenter.ContentTemplate;
-
-            Label myTextBlock = (Label)myDataTemplate.FindName("Actor", myContentPresenter);
-
-            MessageBox.Show("The text of the TextBlock of the selected list item: " + myTextBlock.Content);*/
-        }
-
-  
-
- /*       private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
-        {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
+            //variable to store newly found book
+            Book_Data book_clicked=new Book_Data();
+            Image img=new Image();
+            //get the selected book
+            Button btn = (Button)sender;
+            Canvas canv = (Canvas)btn.Content;
+            foreach (Label lab in canv.Children.OfType<Label>())
             {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
+                List<Book_Data> book_list =  admin_control.all_books_data();
+                foreach(Book_Data data in book_list)
                 {
-                    return (childItem)child;
-                }
-                else
-                {
-                    childItem childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                        return childOfChild;
+                    if (data.BID==lab.Content.ToString())
+                    {
+                        book_clicked = data;
+                    }
                 }
             }
-            return null;
-        }*/
+            foreach (Image data in canv.Children.OfType<Image>())
+            {
+                img = data;
+            }
+
+                //init new book page
+            BookPage book_page = new BookPage();
+            book_page.NameTextBlock.Text = book_clicked.name;
+            book_page.AuthorTextBlock.Text = book_clicked.author;
+            book_page.AmountLeftTextBlock.Text = book_clicked.left.ToString() + " in stocks";
+            book_page.ReleaseYearTextBlock.Text = "xuất bản " + book_clicked.release_year.ToString();
+            book_page.DescriptionTextBlock.Text = book_clicked.description;
+            book_page.BookImageBrush.ImageSource = img.Source;
+            if (book_clicked.left < 1) book_page.BorrowButton.IsEnabled = false;
+            bookList.Children.Clear();
+            bookList.Children.Add(book_page);
+        }
     }
     public class Base64ImageConverter : IValueConverter
     {

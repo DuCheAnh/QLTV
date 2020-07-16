@@ -14,16 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using BUS_QuanLy;
+using System.Windows.Automation.Peers;
+using DTO_QuanLy;
 
 namespace TestGUI_QLTV
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
         User_Control_BUS Bus_method = new User_Control_BUS();
-
 
         public MainWindow()
         {   
@@ -41,10 +43,13 @@ namespace TestGUI_QLTV
             spMain.Children.Clear();
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
+           
             spMenu.Children.Clear();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
         }
+
+   
 
         private void bthSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -64,7 +69,7 @@ namespace TestGUI_QLTV
             spMain.Children.Add(bData);
         }
 
-        private void btnCart_Click(object sender, RoutedEventArgs e)
+        public void btnCart_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
             BookPage bPage = new BookPage();

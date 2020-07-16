@@ -24,5 +24,10 @@ namespace TestGUI_QLTV
         {
             InitializeComponent();
         }
+
+        private void AmountLeftTextBlock_TargetUpdated(object sender, DataTransferEventArgs e)
+        {
+            AmountLeftTextBlock.Text += " in stock";
+        }
     }
 }
