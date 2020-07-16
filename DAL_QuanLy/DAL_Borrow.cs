@@ -57,7 +57,7 @@ namespace DAL_QuanLy
                 data.BrID = create_new_id();
                 //minus 1 book from the database
                 Book_Data bookdata = book.retrieve_book_data(sBID);
-                bookdata.amount -= 1;
+                bookdata.left -= 1;
                 book.update_book_data(bookdata);
                 //update user brid
                 Account_Data user = account.retrieve_user_data(sUID);

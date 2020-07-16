@@ -38,7 +38,7 @@ namespace TestGUI_QLTV
             {
                 Account_data_Processor.PUT_change_password(Data_Context.currentUID, New_password_Txb.Text);
             }
-            Close();
+            Window.GetWindow(this).Hide();
         }
 
         private async void Check(object sender, RoutedEventArgs e)

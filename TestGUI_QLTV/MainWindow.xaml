@@ -73,7 +73,7 @@
                             Style="{DynamicResource MaterialDesignToolButton}"
                             Margin="10 0 10 0"
                             Click="bthSearch_Click"
-                            IsDefault="True">
+                           >
                             <materialDesign:PackIcon Width="25" Height="25" VerticalAlignment="Center" HorizontalAlignment="Center" Kind="Magnify" Opacity=".56" />
 
                         </Button>

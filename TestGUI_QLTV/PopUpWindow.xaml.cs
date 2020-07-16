@@ -19,6 +19,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class PopUpWindow : Window
     {
+        
         public PopUpWindow()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace TestGUI_QLTV
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            Window.GetWindow(this).Owner.Focus();
             Window.GetWindow(this).Owner.IsHitTestVisible = true;
         }
 
@@ -33,5 +35,7 @@ namespace TestGUI_QLTV
         {
             Window.GetWindow(this).Close();
         }
+
+  
     }
 }

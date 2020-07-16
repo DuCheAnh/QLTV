@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,44 +14,60 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using DTO_QuanLy;
-using TestGUI_QLTV.Processor;
 namespace TestGUI_QLTV
 {
     /// <summary>
     /// Interaction logic for AddBookGUI.xaml
     /// </summary>
-    public partial class AddBookGUI : Window
+    public partial class EditBookGUI : Window
     {
         bool[] array=new bool[7];
-        int count = -1;
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
-        public AddBookGUI()
+        Book_Data selected_book;
+        public EditBookGUI()
         {
             InitializeComponent();
         }
+        public void set_value_from_item(Book_Data data)
+        {
+            this.selected_book = data;
+            this.NameTextBox.Text = selected_book.name;
+            this.AuthorTextBox.Text = selected_book.author;
+            this.ReleaseYearTextBox.Text = selected_book.release_year.ToString();
+            for (int i = 0; i < this.CategoryComboBox.Items.Count; i++)
+            {
+                if (this.CategoryComboBox.Items[i].ToString().Contains(selected_book.category))
+                {       
+                    this.CategoryComboBox.SelectedIndex = i;
+                    array[3] = check_string_availability(CategoryComboBox.Text);
+                    enable_add_button();
+                }
+            }
 
+            this.DescTextBox.Text = selected_book.description;
+            this.PriceTextBox.Text = selected_book.price.ToString();
+            this.AmountTextBox.Text = selected_book.amount.ToString();
+        }
         private void btnClose(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
         }
 
-        private async void AddButton_Click(object sender, RoutedEventArgs e)
+        private void edit_book()
         {
-
-            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseDateTextBox.Text), 
-            CategoryComboBox.Text, DescTextBox.Text,""/*cover page*/, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
-            Book_Data book = new Book_Data() { name = NameTextBox.Text, author = AuthorTextBox.Text, add_date = DateTime.Today, category = CategoryComboBox.Text, description = DescTextBox.Text, cover_page = "", price = 1, amount = Convert.ToInt32(AmountTextBox.Text) };
+            admin_control.delete_book(selected_book.BID);
+            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseYearTextBox.Text),
+                CategoryComboBox.Text, DescTextBox.Text, ""/*cover page*/, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
+        }
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            edit_book();
             //create a new popup window to notify success
-            APIInit.InitClient();
-
-            if ( await Book_data_Processor.Add_new_books(book))
-            {
-                TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
-                popup.PopUpTB.Text = "Added a new book";
-                popup.Owner = Window.GetWindow(this);
-                Window.GetWindow(this).IsHitTestVisible = false;
-                popup.Show();
-            }
+            TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
+            popup.PopUpTB.Text = "Updated";
+            popup.Owner = Window.GetWindow(this);
+            Window.GetWindow(this).IsHitTestVisible = false;
+            popup.Show();
         }
 
 
@@ -88,8 +105,8 @@ namespace TestGUI_QLTV
                 {
                     if (array[i] == false) bCheck = false;
                 }
-            if (bCheck == true) AddButton.IsEnabled = true;
-            else AddButton.IsEnabled = false;
+            if (bCheck == true) EditButton.IsEnabled = true;
+            else EditButton.IsEnabled = false;
         }
         private bool check_string_availability(string value)
         {
@@ -112,7 +129,7 @@ namespace TestGUI_QLTV
 
         private void ReleaseDateTextBox_TextChanged(object sender, RoutedEventArgs e)
         {
-            array[2] = check_string_availability(ReleaseDateTextBox.Text);
+            array[2] = check_string_availability(ReleaseYearTextBox.Text);
             enable_add_button();
         }
 
@@ -139,7 +156,18 @@ namespace TestGUI_QLTV
             array[6] = check_string_availability(AmountTextBox.Text);
             enable_add_button();
         }
+
         #endregion
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            admin_control.delete_book(selected_book.BID);
+            TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
+            popup.PopUpTB.Text = "Deleted";
+            popup.Owner = Window.GetWindow(this.Owner);
+            this.Close();
+            Window.GetWindow(this.Owner).IsHitTestVisible = false;
+            popup.Show();
+        }
     }
 }

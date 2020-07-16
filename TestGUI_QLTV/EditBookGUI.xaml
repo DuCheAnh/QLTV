@@ -1,4 +1,4 @@
-﻿<Window x:Class="TestGUI_QLTV.AddBookGUI"
+﻿<Window x:Class="TestGUI_QLTV.EditBookGUI"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -70,7 +70,7 @@
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontSize="18"
                      TextChanged="AuthorTextBox_TextChanged"/>
-            <TextBox x:Name="ReleaseDateTextBox" Width="250" Height="50"
+            <TextBox x:Name="ReleaseYearTextBox" Width="250" Height="50"
                      Canvas.Left="350" Canvas.Top="160"
                      materialDesign:HintAssist.Hint="Năm xuất bản"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
@@ -135,10 +135,15 @@
                      TextChanged="AmountTextBox_TextChanged"
                      PreviewKeyDown="TextBox_PreviewKeyDown"
                      PreviewTextInput="TextBox_PreviewTextInput" />
-            <Button x:Name="AddButton" Width="120" Height="50"
+            <Button x:Name="EditButton" Width="120" Height="50"
                     Canvas.Bottom="20" Canvas.Right="20"
-                    Content="ADD BOOK" FontWeight="Bold" FontSize="15" Click="AddButton_Click"
+                    Content="EDIT BOOK" FontWeight="Bold" FontSize="15" Click="EditButton_Click"
                     IsEnabled="False">
+            </Button>
+            <Button x:Name="DeleteButton" Width="120" Height="50"
+                    Canvas.Bottom="20" Canvas.Right="20"
+                    Content="DELETE" FontWeight="Bold" FontSize="15" Click="DeleteButton_Click"
+                     Canvas.Left="596" Canvas.Top="490">
             </Button>
             <TextBlock Text="Không để trống các ô thông tin"                       
                        Canvas.Bottom="30" 
