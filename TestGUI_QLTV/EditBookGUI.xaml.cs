@@ -14,6 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using DTO_QuanLy;
+using System.IO;
+using Microsoft.Win32;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -24,6 +27,7 @@ namespace TestGUI_QLTV
         bool[] array=new bool[7];
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Book_Data selected_book;
+        string img = null;
         public EditBookGUI()
         {
             InitializeComponent();
@@ -43,10 +47,17 @@ namespace TestGUI_QLTV
                     enable_add_button();
                 }
             }
-
             this.DescTextBox.Text = selected_book.description;
             this.PriceTextBox.Text = selected_book.price.ToString();
             this.AmountTextBox.Text = selected_book.amount.ToString();
+
+            byte[] binaryData = Convert.FromBase64String(selected_book.cover_page);
+
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = new MemoryStream(binaryData);
+            bi.EndInit();
+            PictureX.Source = bi;
         }
         private void btnClose(object sender, RoutedEventArgs e)
         {
@@ -57,7 +68,7 @@ namespace TestGUI_QLTV
         {
             admin_control.delete_book(selected_book.BID);
             admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseYearTextBox.Text),
-                CategoryComboBox.Text, DescTextBox.Text, ""/*cover page*/, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
+                CategoryComboBox.Text, DescTextBox.Text, img, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
         }
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
@@ -168,6 +179,17 @@ namespace TestGUI_QLTV
             this.Close();
             Window.GetWindow(this.Owner).IsHitTestVisible = false;
             popup.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog open = new OpenFileDialog();
+            open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            if (open.ShowDialog() == true)
+            {
+                PictureX.Source = new BitmapImage(new Uri(open.FileName));
+                img = Convert.ToBase64String(File.ReadAllBytes(open.FileName));
+            }
         }
     }
 }

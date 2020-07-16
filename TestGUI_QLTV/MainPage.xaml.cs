@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace TestGUI_QLTV
 {
@@ -25,25 +27,40 @@ namespace TestGUI_QLTV
             InitializeComponent();
             if (Data_Context.currentHomePageBook.Count > 0)
                 IBook.ItemsSource = Data_Context.currentHomePageBook;
-        }
-
-/*        private List<Products> GetProducts()
-        {
-            return new List<Products>()
+            /*
+            foreach (Book_Data item in IBook.Items)
             {
-                new Products("Chiken with a knife 1", "a.png" ,"1"),
-                new Products("Chiken with a knife 2", "a.png" ,"2"),
-                new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
-                new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
-                new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
-                new Products("Chiken with a knife 1", "a.png" ,"chuch"),
-                new Products("Chiken with a knife 2", "a.png" ,"ahuch"),
-                new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
-                new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
-                new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
+                byte[] binaryData = Convert.FromBase64String(item.cover_page);
+
+                BitmapImage bi = new BitmapImage();
+                bi.BeginInit();
+                bi.StreamSource = new MemoryStream(binaryData);
+                bi.EndInit();
                 
-            };
-        }*/
+                //Pic.Source = bi;
+            }*/
+        }
+       
+
+
+
+        /*        private List<Products> GetProducts()
+                {
+                    return new List<Products>()
+                    {
+                        new Products("Chiken with a knife 1", "a.png" ,"1"),
+                        new Products("Chiken with a knife 2", "a.png" ,"2"),
+                        new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
+                        new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
+                        new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
+                        new Products("Chiken with a knife 1", "a.png" ,"chuch"),
+                        new Products("Chiken with a knife 2", "a.png" ,"ahuch"),
+                        new Products("Chiken with a knife 3", "a.png" ,"bhuch"),
+                        new Products("Chiken with a knife 4", "a.png" ,"dhuch"),
+                        new Products("Chiken with a knife 5", "a.png" ,"ehuch"),
+
+                    };
+                }*/
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
             
@@ -90,5 +107,27 @@ namespace TestGUI_QLTV
             }
             return null;
         }*/
+    }
+    public class Base64ImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string s = value as string;
+
+            if (s == null)
+                return null;
+
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = new MemoryStream(System.Convert.FromBase64String(s));
+            bi.EndInit();
+
+            return bi;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
