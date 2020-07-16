@@ -1,5 +1,4 @@
-﻿using BUS_QuanLy;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DTO_QuanLy;
+using TestGUI_QLTV.Processor;
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -21,14 +21,17 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class BookDataUI : UserControl
     {
-      
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
+
         public BookDataUI()
         {
             
             InitializeComponent();
             init_datasource("");
+            loadbooks();
+
         }
+        
         public void init_datasource(string sKey)
         {
             List<Book_Data> book_list = new List<Book_Data>();
@@ -39,6 +42,7 @@ namespace TestGUI_QLTV
             }
             BookDataListView.ItemsSource = book_list;
         }
+        
         private void btnAddBook(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.AddBookGUI addBookGUI = new TestGUI_QLTV.AddBookGUI();
@@ -97,6 +101,12 @@ namespace TestGUI_QLTV
             {
                 init_datasource(ListViewSearchBar.Text);
             }
+            
+        private async void loadbooks()
+        {
+            APIInit.InitClient();
+            Data_Context.currentBooksdataUI = await Book_data_Processor.Get_all_books();
+            lvBooksData.ItemsSource = Data_Context.currentBooksdataUI;
         }
     }
 }
