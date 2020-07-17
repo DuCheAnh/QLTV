@@ -13,6 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BUS_QuanLy;
+using System.Windows.Automation.Peers;
+using DTO_QuanLy;
 using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
@@ -20,9 +23,9 @@ namespace TestGUI_QLTV
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+
     public partial class MainWindow : Window
     {
-
 
         public MainWindow()
         {
@@ -48,6 +51,7 @@ namespace TestGUI_QLTV
             spMain.Children.Clear();
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
+           
             spMenu.Children.Clear();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
@@ -79,7 +83,7 @@ namespace TestGUI_QLTV
             spMain.Children.Add(bData);
         }
 
-        private void btnCart_Click(object sender, RoutedEventArgs e)
+        public void btnCart_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
             BookPage bPage = new BookPage();

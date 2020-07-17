@@ -47,13 +47,12 @@
             <Image Source="a.png" />
         </Button>
         <Canvas>
-            <Grid Width="180" Height="240" Canvas.Top="50" Canvas.Left="50">
-                <Grid.Background>
-                    <ImageBrush ImageSource="a.png"></ImageBrush>
-                </Grid.Background>
-            </Grid>
+            <Border Width="180" Height="240" Canvas.Top="50" Canvas.Left="50" BorderThickness="1" BorderBrush="Black" >
+                <Image Name="PictureV" Width="180" Height="240"  Stretch="Fill" ></Image>
+            </Border>
             <Button Width="200" Height="50" 
                     Canvas.Left="40" Canvas.Top="320"
+                    Name="btnChoose" Click="btnChoose_Click"
                     Content="CHOOSE PICTURE" FontWeight="Bold" FontSize="18"/>
             <TextBox x:Name="NameTextBox" Width="400" Height="60"
                      Canvas.Left="350" Canvas.Top="30"
