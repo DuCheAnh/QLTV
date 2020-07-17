@@ -23,7 +23,7 @@ namespace TestGUI_QLTV
         public MainPage()
         {
             InitializeComponent();
-            if (Data_Context.currentBooksdataUI.Count > 0)
+            if (Data_Context.currentBooksdataUI != null)
                 IBook.ItemsSource = Data_Context.currentBooksdataUI;
         }
 
