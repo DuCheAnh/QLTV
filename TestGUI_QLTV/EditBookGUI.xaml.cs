@@ -1,5 +1,4 @@
-﻿using BUS_QuanLy;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,6 +15,7 @@ using System.Text.RegularExpressions;
 using DTO_QuanLy;
 using System.IO;
 using Microsoft.Win32;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -25,7 +25,6 @@ namespace TestGUI_QLTV
     public partial class EditBookGUI : Window
     {
         bool[] array=new bool[7];
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Book_Data selected_book;
         string img = null;
         public EditBookGUI()
@@ -64,11 +63,21 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).Close();
         }
 
-        private void edit_book()
+        private async void edit_book()
         {
-            admin_control.delete_book(selected_book.BID);
-            admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseYearTextBox.Text),
-                CategoryComboBox.Text, DescTextBox.Text, img, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
+            Book_Data book = new Book_Data()
+            {
+                name = NameTextBox.Text,
+                author = AuthorTextBox.Text,
+                release_year = Convert.ToInt32(ReleaseYearTextBox.Text),
+                category = CategoryComboBox.Text,
+                description = DescTextBox.Text,
+                cover_page = "" /* coverpage */,
+                price = Convert.ToInt32(PriceTextBox.Text),
+                amount = Convert.ToInt32(AmountTextBox.Text)
+            };
+            await Book_data_Processor.Delete_specific_Book(selected_book.BID);
+            await Book_data_Processor.Add_new_book(book);
         }
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
@@ -170,9 +179,10 @@ namespace TestGUI_QLTV
 
         #endregion
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            admin_control.delete_book(selected_book.BID);
+            await Book_data_Processor.Delete_specific_Book(selected_book.BID);
+
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
             popup.PopUpTB.Text = "Deleted";
             popup.Owner = Window.GetWindow(this.Owner);

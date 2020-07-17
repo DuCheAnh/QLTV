@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using BUS_QuanLy;
 using System.Windows.Automation.Peers;
 using DTO_QuanLy;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -25,18 +26,25 @@ namespace TestGUI_QLTV
 
     public partial class MainWindow : Window
     {
-        User_Control_BUS Bus_method = new User_Control_BUS();
 
         public MainWindow()
-        {   
+        {
+            APIInit.InitClient();
             InitializeComponent();
-            Data_Context.currentHomePageBook = Bus_method.Get_all_Books();
+
+            GetAllBooks();
+
+        }
+
+        private async void GetAllBooks()
+        {
+            Data_Context.currentBooksdataUI = await Book_data_Processor.Get_all_books();
+
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
         }
-
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
@@ -49,14 +57,20 @@ namespace TestGUI_QLTV
             spMenu.Children.Add(mMenu);
         }
 
-   
-
-        private void bthSearch_Click(object sender, RoutedEventArgs e)
+        private async void bthSearch_Click(object sender, RoutedEventArgs e)
         {
-            Data_Context.currentHomePageBook = Bus_method.Search_for_book(Search_box.Text);
+            Data_Context.currentBooksdataUI = await Book_data_Processor.Search_Books(Search_box.Text);
+            ;
             spMain.Children.Clear();
-            if (Data_Context.currentHomePageBook.Count != 0)
+            if (Data_Context.currentBooksdataUI != null)
             {
+                MainPage mPage = new MainPage();
+                spMain.Children.Add(mPage);
+            }
+            else
+            {
+                Data_Context.currentBooksdataUI = await Book_data_Processor.Get_all_books();
+
                 MainPage mPage = new MainPage();
                 spMain.Children.Add(mPage);
             }

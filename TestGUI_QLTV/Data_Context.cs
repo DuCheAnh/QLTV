@@ -8,9 +8,12 @@ namespace TestGUI_QLTV
 {
     public static class Data_Context
     {
-        public static string currentUID { get; set; }
+        public static string Token;
+
+        public static string currentUID;
+
         public static Account_Data currentAccount;
 
-        public static List<Book_Data> currentHomePageBook;
+        public static List<Book_Data> currentBooksdataUI;
     }
 }
