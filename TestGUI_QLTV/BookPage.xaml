@@ -16,28 +16,36 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
+            <Grid Grid.Column="0" Margin="0">
                 <Grid Width="210" Height="280" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid.Background>
-                        <ImageBrush ImageSource="a.png"></ImageBrush>
+                        <ImageBrush x:Name="BookImageBrush" ImageSource="a.png"></ImageBrush>
                     </Grid.Background>
                 </Grid>
             </Grid>
             <Canvas Grid.Column="1">
-                <Label Canvas.Top="20" Canvas.Left="20" FontSize="50" Content="Chiken With a Knife" FontFamily="Comic Sans MS"/>
-                <Label Canvas.Top="100" Canvas.Left="20" FontSize="25" Content="by" FontFamily="Comic Sans MS"/>
-                <Label Canvas.Top="100" Canvas.Left="60" FontSize="25" Content="Chuch" FontFamily="Comic Sans MS"/>
-                <Button Canvas.Bottom="20" Canvas.Left="20" Width="250" Height="80" Background="#ffc440">
+                <TextBlock x:Name="NameTextBlock" Canvas.Top="20" Canvas.Left="20" FontSize="50" Text="Chiken With a Knife" FontFamily="Comic Sans MS"/>
+                <TextBlock Canvas.Top="100" Canvas.Left="20" FontSize="25" Text="by" FontFamily="Comic Sans MS"/>
+                <TextBlock x:Name="AuthorTextBlock" Canvas.Top="100" Canvas.Left="60" FontSize="25" Text="Chuch" FontFamily="Comic Sans MS"/>
+                <TextBlock x:Name="ReleaseYearTextBlock" Canvas.Top="145" Canvas.Left="20" FontSize="25" Text="nawm xb" FontFamily="Comic Sans MS"/>
+                <Button x:Name="BorrowButton" Canvas.Bottom="0" Canvas.Left="20" Width="250" Height="80" Background="#ffc440">
                     <Button.Content>
-                        <Label Content="BORROW" FontSize="35" FontFamily="Comic Sans MS" FontWeight="Bold"></Label>
+                        <TextBlock Text="BORROW" FontSize="35" FontFamily="Comic Sans MS" FontWeight="Bold"></TextBlock>
                     </Button.Content>
                 </Button>
-                <Label Canvas.Bottom="45" Canvas.Left="350" Content="in stock" FontSize="15" FontFamily="Comic Sans MS"></Label>
+                <TextBlock  x:Name="AmountLeftTextBlock" Canvas.Bottom="45" Canvas.Left="350" Text="1" FontSize="20" FontFamily="Comic Sans MS" TargetUpdated="AmountLeftTextBlock_TargetUpdated"></TextBlock>
             </Canvas>
         </Grid>
         <Grid Grid.Row="1">
-            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Grid.Column="1">
+                <TextBlock x:Name="DescriptionTextBlock"  Text="Description section" FontSize="25" FontFamily="Comic Sans MS" Margin="20 10 30 10"
+                       TextWrapping="WrapWithOverflow"/>
+            </ScrollViewer>
         </Grid>
-        
+
     </Grid>
 </UserControl>

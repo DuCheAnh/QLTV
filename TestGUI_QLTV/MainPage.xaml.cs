@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DTO_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -20,6 +23,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class MainPage : UserControl
     {
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public MainPage()
         {
             InitializeComponent();
@@ -37,41 +41,58 @@ namespace TestGUI_QLTV
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        public void Book_Click(object sender, RoutedEventArgs e)
         {
+            //variable to store newly found book
+            List<Label> label_list = new List<Label>();
+            Book_Data book_clicked =new Book_Data();
+            Image img=new Image();
+            //get the selected book
+            Button btn = (Button)sender;
+            Canvas canv = (Canvas)btn.Content;
+            foreach (Label lab in canv.Children.OfType<Label>())
+            {
+                label_list.Add(lab);
+            }
+            book_clicked = admin_control.retrieve_book_data(label_list[0].Content.ToString());
+            foreach (Image data in canv.Children.OfType<Image>())
+            {
+                img = data;
+            }
 
+                //init new book page
+            BookPage book_page = new BookPage();
+            book_page.NameTextBlock.Text = book_clicked.name;
+            book_page.AuthorTextBlock.Text = book_clicked.author;
+            book_page.AmountLeftTextBlock.Text = book_clicked.left.ToString() + " in stocks";
+            book_page.ReleaseYearTextBlock.Text = "xuất bản " + book_clicked.release_year.ToString();
+            book_page.DescriptionTextBlock.Text = book_clicked.description;
+            book_page.BookImageBrush.ImageSource = img.Source;
+            if (book_clicked.left < 1) book_page.BorrowButton.IsEnabled = false;
+            bookList.Children.Clear();
+            bookList.Children.Add(book_page);
+        }
+    }
+    public class Base64ImageConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            string s = value as string;
 
-/*
-            ListBoxItem myListBoxItem = (ListBoxItem)(IBook.ItemContainerGenerator.ContainerFromItem(IBook.Items.CurrentItem));
+            if (s == null)
+                return null;
 
-            ContentPresenter myContentPresenter = FindVisualChild<ContentPresenter>(myListBoxItem);
+            BitmapImage bi = new BitmapImage();
+            bi.BeginInit();
+            bi.StreamSource = new MemoryStream(System.Convert.FromBase64String(s));
+            bi.EndInit();
 
-            DataTemplate myDataTemplate = myContentPresenter.ContentTemplate;
-
-            Label myTextBlock = (Label)myDataTemplate.FindName("Actor", myContentPresenter);
-
-            MessageBox.Show("The text of the TextBlock of the selected list item: " + myTextBlock.Content);*/
+            return bi;
         }
 
-  
-
- /*       private childItem FindVisualChild<childItem>(DependencyObject obj) where childItem : DependencyObject
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            for (int i = 0; i < VisualTreeHelper.GetChildrenCount(obj); i++)
-            {
-                DependencyObject child = VisualTreeHelper.GetChild(obj, i);
-                if (child != null && child is childItem)
-                {
-                    return (childItem)child;
-                }
-                else
-                {
-                    childItem childOfChild = FindVisualChild<childItem>(child);
-                    if (childOfChild != null)
-                        return childOfChild;
-                }
-            }
-            return null;
-        }*/
+            throw new NotImplementedException();
+        }
     }
 }
