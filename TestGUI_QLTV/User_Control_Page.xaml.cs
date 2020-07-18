@@ -36,10 +36,12 @@ namespace GUI_QuanLy
             passwordBox.IsEnabled = false;
             this.DataContext = Data_Context.currentAccount;
             InitializeComponent();
+
             changeEmail.Closed += new EventHandler(changeEmail_Closed);
             changePassword.Closed += new EventHandler(changePassword_Closed);
         }
         #region when form closed event
+
         private void changePassword_Closed(object sender, EventArgs e)
         {
             this.DataContext = Data_Context.currentAccount;
@@ -60,6 +62,7 @@ namespace GUI_QuanLy
 
         private void Change_Email(object sender, RoutedEventArgs e)
         {
+            Window.GetWindow(this).IsHitTestVisible = false;
             changePassword.Hide();
             changeEmail = new TestGUI_QLTV.ChangeEmail();
             changeEmail.Owner = Window.GetWindow(this);
@@ -68,7 +71,7 @@ namespace GUI_QuanLy
 
         private void Change_Password(object sender, RoutedEventArgs e)
         {
-
+            Window.GetWindow(this).IsHitTestVisible = false;
             changeEmail.Hide();
             changePassword = new TestGUI_QLTV.ChangePassword();
             changePassword.Owner = Window.GetWindow(this);

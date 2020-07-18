@@ -29,7 +29,7 @@ namespace TestGUI_QLTV
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -37,8 +37,12 @@ namespace TestGUI_QLTV
             if (MatchCheck)
             {
                 BUS_method.change_user_password(Data_Context.currentUID, New_password_Txb.Text);
+                Data_Context.currentAccount.password = New_password_Txb.Text;
             }
-            Window.GetWindow(this).Hide();
+
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
+            Window.GetWindow(this).Close();
         }
 
         private void Check(object sender, RoutedEventArgs e)
@@ -50,6 +54,14 @@ namespace TestGUI_QLTV
             }
             else
                 MessageBox.Show("WrongPassword");
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
+
+            this.Owner.DataContext = Data_Context.currentAccount;
         }
     }
 }

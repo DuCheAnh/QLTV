@@ -69,7 +69,7 @@
                 <Label Content="Email:"
                     FontSize="20" Width="130" VerticalAlignment="Center" Height="40"/>
                 <Label x:Name="UserMail_label"
-                   Content="{Binding email, Mode=TwoWay, UpdateSourceTrigger=Explicit}"
+                   Content="{Binding email, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                          Width="600" VerticalAlignment="Bottom" Height="35"
                    FontSize="20"/>
                 <Button Margin="0" Width="200" VerticalAlignment="Bottom" Click="Change_Email">

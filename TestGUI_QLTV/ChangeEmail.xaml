@@ -11,7 +11,8 @@
         AllowsTransparency="True"
         Background="Transparent"
         WindowStartupLocation="CenterOwner" Height="200" Width="540"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Closing="Window_Closing">
     <Grid Margin="20" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="79*"/>

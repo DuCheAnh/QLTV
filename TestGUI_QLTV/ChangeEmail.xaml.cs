@@ -37,7 +37,15 @@ namespace TestGUI_QLTV
         private void Save(object sender, RoutedEventArgs e)
         {
             BUS_method.change_user_Email(Data_Context.currentUID, New_email_txb.Text);
-            this.Close();
+            Window.GetWindow(this).Hide();
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
         }
     }
 }
