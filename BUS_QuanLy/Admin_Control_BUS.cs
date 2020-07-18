@@ -21,7 +21,7 @@ namespace BUS_QuanLy
         public void Get_User_Info(DataGrid Info_grid)
         {
             Account_DAL.init_client();
-           // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
+            // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
         }
 
         /// <summary>
@@ -34,5 +34,39 @@ namespace BUS_QuanLy
             Account_DAL.init_client();
             //Acount_DAL.Update_Users_data(Updated_Users);
         }
+        List<Account_Data> possible_account = new List<Account_Data>();
+        public bool LoginMethod(string username, string Password)
+        {
+            Account_DAL.init_client();
+            possible_account = Account_DAL.retrieve_all_user();
+
+            foreach (Account_Data account in possible_account)
+            {
+                if (account.account == username && account.password == Password)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool RegisterIn(string Account, string Password, string Email)
+        {
+
+            Account_DAL.init_client();
+            possible_account = Account_DAL.retrieve_all_user();
+
+            if (Account_DAL.search_for_username(Account) == null)
+            {
+                return Account_DAL.Create_new_user(Account, Password, Email);
+            }
+            else
+            {
+                MessageBox.Show("");
+
+            }
+            return false;
+
+        }
     }
 }
+

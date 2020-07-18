@@ -20,12 +20,29 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window2 : Window
     {
-        Register Bus_register = new Register();
+        bool[] array = new bool[3];
+
+        User_Control_BUS RegisterIn = new User_Control_BUS();
         public Window2()
         {
             InitializeComponent();
         }
-
+        private void enable_signup_button()
+        {
+            bool bCheck = true;
+            for (int i = 0; i < 3; i++)
+            {
+                if (array[i] == false) bCheck = false;
+            }
+            if (bCheck == true) Signup.IsEnabled = true;
+            else Signup.IsEnabled = false;
+        }
+        private bool check_string_availability(string value)
+        {
+            if (value == "" || value.Trim() == "")
+                return false;
+            else return true;
+        }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -55,13 +72,66 @@ namespace TestGUI_QLTV
 
         private void Register(object sender, RoutedEventArgs e)
         {
-            if (Bus_register.RegisterIn(Username.Text, Password.Password,Email.Text))
+            if (Password.Password == ConfirmPassword.Password)
+                
             {
-                MessageBox.Show("Dang ki thanh cong");
-                this.Back(sender,e);
+                if (RegisterIn.RegisterIn(Username.Text, Password.Password, Email.Text))
+                {
+                    MessageBox.Show("Đăng kí thành công");
+                    this.Back(sender, e);
+                }
                 
             }
+            else
+            {
+                MessageBox.Show("Confirm Password không trùng với Password");
+            }
 
+        }
+
+        private void Email_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }    
+
+        }
+
+
+        private void Username_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(e.Text != null
+       && e.Text.Length > 0
+       && (char.IsLetterOrDigit(e.Text[0]))); 
+           
+
+    }
+
+        private void Password_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Username_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            array[0] = check_string_availability(Username.Text);
+            enable_signup_button();
+        }
+
+        private void Password_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            array[1] = check_string_availability(Password.Password);
+            enable_signup_button();
+        }
+
+        private void ConfirmPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            array[2] = check_string_availability(ConfirmPassword.Password);
+            enable_signup_button();
         }
     }
 }

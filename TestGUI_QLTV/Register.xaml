@@ -58,7 +58,7 @@
                     <!--Mail-->
                     <TextBox 
                         x:Name="Email"
-  materialDesign:HintAssist.Hint="Email"
+  materialDesign:HintAssist.Hint="Email (Optional)"
                         FontFamily="Comic Sans MS"
                         FontWeight="Light"
                         FontSize="15"
@@ -68,7 +68,8 @@
                         Opacity="0.5"
                         Height="44"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,-0.4" 
-                        Width="397" BorderBrush="Black"  />
+                        Width="397" BorderBrush="Black" 
+                        PreviewKeyDown="Email_PreviewKeyDown"/>
                 </StackPanel>
                 <!--Username-->
                 <StackPanel>
@@ -84,7 +85,10 @@
                         Opacity="0.5"
                         Height="44"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,0,-0.4" 
-                        Width="397" BorderBrush="Black"  />
+                        Width="397" BorderBrush="Black" 
+                        PreviewTextInput="Username_PreviewTextInput"
+                        PreviewKeyDown="Password_PreviewKeyDown"
+                        TextChanged="Username_TextChanged"/>
                 </StackPanel>
                 <StackPanel>
                     <PasswordBox
@@ -98,7 +102,25 @@
                         Opacity="0.5"
                         Height="44"
   materialDesign:HintAssist.Hint="Password"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="400" BorderBrush="Black" />
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="400" 
+                        BorderBrush="Black"
+                        PreviewKeyDown="Password_PreviewKeyDown"
+                        PasswordChanged="Password_PasswordChanged"/>
+                    <PasswordBox
+  x:Name="ConfirmPassword"
+                FontFamily="Comic Sans MS"
+                        FontWeight="Light"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        Foreground="Black"
+                        HorizontalContentAlignment="Stretch"
+                        Opacity="0.5"
+                        Height="44"
+  materialDesign:HintAssist.Hint="Confirm Password"
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" 
+                        Width="400" BorderBrush="Black"
+                        PreviewKeyDown="Password_PreviewKeyDown"
+                        PasswordChanged="ConfirmPassword_PasswordChanged"/>
                 </StackPanel>
                 <Canvas  Margin="0,60,0,0">
                     <Button Canvas.Bottom="0" Canvas.Left="0"
@@ -115,6 +137,7 @@
                         _Back
                     </Button>
                     <Button Canvas.Bottom="0" Canvas.Right="0"
+                            x:Name="Signup"
     Style="{StaticResource MaterialDesignRaisedButton}"
     ToolTip="Resource name: MaterialDesignRaisedButton"  
                                 Background="Transparent" 
@@ -125,6 +148,7 @@
                                 Canvas.Top="-36" 
                                 FontSize="25"
                                 Click="Register"
+                            IsEnabled="False"
                         >
                         _Sign up
                     </Button>

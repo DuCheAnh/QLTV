@@ -22,7 +22,8 @@ namespace TestGUI_QLTV
     public partial class MainWindow : Window
     {
         public MainWindow()
-        {        
+        {
+            Application.Current.MainWindow = this;
             InitializeComponent();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
@@ -67,7 +68,16 @@ namespace TestGUI_QLTV
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
-            
+            this.Hide();
+            Window mainwidow = Application.Current.MainWindow;
+            mainwidow.Close();
+            Window2 Log = new Window2();
+            Log.Show();
+            this.Close();
+
         }
+
+        
+
     }
 }

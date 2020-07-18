@@ -23,7 +23,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window1 : Window
     {
-        private Login Bus_method = new Login();
+        User_Control_BUS LoginMethod = new User_Control_BUS();
         public Window1()
         {
             InitializeComponent();
@@ -62,7 +62,7 @@ namespace TestGUI_QLTV
 
         private void OpenMain(object sender, RoutedEventArgs e)
         {
-            if(Bus_method.LoginMethod(Username.Text, Password.Password))
+            if(LoginMethod.LoginUser(Username.Text, Password.Password))
             {
                 MainWindow mn = new MainWindow();
                 mn.Show();
@@ -76,7 +76,18 @@ namespace TestGUI_QLTV
             
         }
 
-       
+        private void Username_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !(e.Text != null
+      && e.Text.Length > 0
+      && (char.IsLetterOrDigit(e.Text[0])));
+
+        }
+
+        private void Username_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
   
     
