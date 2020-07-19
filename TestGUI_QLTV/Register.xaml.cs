@@ -1,17 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BUS_QuanLy;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -48,18 +38,18 @@ namespace TestGUI_QLTV
 
         private void Back(object sender, RoutedEventArgs e)
         {
-            Window1 Rg =new Window1();
+            Window1 Rg = new Window1();
             Rg.Show();
             this.Close();
         }
 
         private void Register(object sender, RoutedEventArgs e)
         {
-            if (Bus_register.RegisterIn(Username.Text, Password.Password,Email.Text))
+            if (Bus_register.RegisterIn(Username.Text, Password.Password, Email.Text))
             {
                 MessageBox.Show("Dang ki thanh cong");
-                this.Back(sender,e);
-                
+                this.Back(sender, e);
+
             }
 
         }

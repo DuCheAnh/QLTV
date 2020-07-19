@@ -1,21 +1,7 @@
-﻿using GUI_QuanLy;
+﻿using BUS_QuanLy;
+using GUI_QuanLy;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BUS_QuanLy;
-using System.Windows.Automation.Peers;
-using DTO_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -28,7 +14,7 @@ namespace TestGUI_QLTV
         User_Control_BUS Bus_method = new User_Control_BUS();
 
         public MainWindow()
-        {   
+        {
             InitializeComponent();
             Data_Context.currentHomePageBook = Bus_method.Get_all_Books();
             MainMenu mMenu = new MainMenu();
@@ -43,13 +29,13 @@ namespace TestGUI_QLTV
             spMain.Children.Clear();
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
-           
+
             spMenu.Children.Clear();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
         }
 
-   
+
 
         private void bthSearch_Click(object sender, RoutedEventArgs e)
         {
@@ -89,7 +75,7 @@ namespace TestGUI_QLTV
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        { 
+        {
             Environment.Exit(Environment.ExitCode);
         }
     }

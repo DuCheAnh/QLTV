@@ -1,18 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BUS_QuanLy;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using DTO_QuanLy;
-using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -25,12 +12,12 @@ namespace TestGUI_QLTV
         public ChangeEmail()
         {
             InitializeComponent();
-            
+
         }
 
         private void Close(object sender, RoutedEventArgs e)
         {
-        
+
             Close();
         }
 

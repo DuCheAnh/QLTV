@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL_QuanLy;
+﻿using DAL_QuanLy;
 using DTO_QuanLy;
-using System.Windows;
+using System;
+using System.Collections.Generic;
 using System.Windows.Controls;
 
 namespace BUS_QuanLy
@@ -22,7 +18,7 @@ namespace BUS_QuanLy
         public void Get_User_Info(DataGrid Info_grid)
         {
             Account_DAL.init_client();
-           // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
+            // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
         }
 
         /// <summary>
@@ -62,7 +58,7 @@ namespace BUS_QuanLy
                                         string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
             Book_DAL.init_client();
-            return Book_DAL.update_book_info(sBID,sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+            return Book_DAL.update_book_info(sBID, sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
         }
 
         public Book_Data retrieve_book_data(string sBID)

@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO_QuanLy
+﻿namespace DTO_QuanLy
 {
     public class Book_Data
     {
@@ -28,7 +22,7 @@ namespace DTO_QuanLy
         {
             this.name = sName;
             this.author = sAuthor;
-            this.release_year=nReleaseYear;
+            this.release_year = nReleaseYear;
             this.category = sCategory;
             this.description = sDescription;
             this.cover_page = sCover_Page;

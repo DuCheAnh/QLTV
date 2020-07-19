@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL_QuanLy;
+﻿using DAL_QuanLy;
 using DTO_QuanLy;
-using System.Windows;
+using System.Collections.Generic;
 
 namespace BUS_QuanLy
 {
@@ -42,7 +37,7 @@ namespace BUS_QuanLy
         public bool Checking(string UID, string OldPassword)
         {
             UserData.init_client();
-            Account_Data data =  UserData.retrieve_user_data(UID);
+            Account_Data data = UserData.retrieve_user_data(UID);
             if (data.password == OldPassword)
                 return true;
             return false;
@@ -59,14 +54,14 @@ namespace BUS_QuanLy
             bookdata.init_client();
             List<Book_Data> bookdatas = bookdata.retrieve_all_books();
             List<Book_Data> searchingBooks = new List<Book_Data>();
-            foreach(Book_Data books in bookdatas)
+            foreach (Book_Data books in bookdatas)
             {
                 if (books.name.Contains(text) || books.author.Contains(text) || books.category.Contains(text) || books.description.Contains(text))
                     searchingBooks.Add(books);
             }
             return searchingBooks;
         }
-       
+
         /// <summary>
         /// Get account password for signing in by user account
         /// <list type="bullet">
@@ -99,7 +94,7 @@ namespace BUS_QuanLy
         /// <param name="sUID"></param>
         /// <param name="sNewPassword"></param>
         /// <returns></returns>
-        public bool change_user_password(string sUID,string sNewPassword)
+        public bool change_user_password(string sUID, string sNewPassword)
         {
             UserData.init_client();
 
