@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddLibCardGUI.xaml.cs">
+      <DependentUpon>AddLibCardGUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditBookGUI.xaml.cs">
       <DependentUpon>EditBookGUI.xaml</DependentUpon>
     </Compile>
@@ -85,6 +88,9 @@
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data_Context.cs" />
+    <Compile Include="LibCardDataUI.xaml.cs">
+      <DependentUpon>LibCardDataUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
@@ -97,6 +103,10 @@
     <Compile Include="User_Control_Page.xaml.cs">
       <DependentUpon>User_Control_Page.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddLibCardGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="EditBookGUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,6 +136,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibCardDataUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

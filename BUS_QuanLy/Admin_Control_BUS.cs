@@ -48,6 +48,12 @@ namespace BUS_QuanLy
             return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);
         }
 
+        public List<LibCard_Data> all_libcard_data()
+        {
+            Libcard_DAL.init_client();
+            return Libcard_DAL.retrieve_all_libcard();
+        }
+
         public bool add_new_book(string sName, string sAuthor, int nReleaseYear, string sCategory,
                                  string sDescription, string sCoverPage, int nPrice, int nAmount)
         {

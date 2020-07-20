@@ -55,7 +55,7 @@ namespace TestGUI_QLTV
             {
                 User_Control_BUS UserData = new User_Control_BUS();
                 Data_Context.currentAccount = UserData.search_for_account(Username.Text);
-                Data_Context.currentUID = UserData.search_for_account(Username.Text).UID;
+                Data_Context.currentUID = Data_Context.currentAccount.UID;
                 MainWindow mn = new MainWindow();
                 mn.Show();
                 this.Close();

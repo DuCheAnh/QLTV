@@ -65,14 +65,15 @@
   materialDesign:HintAssist.Hint="Username"
                         FontFamily="Comic Sans MS"
                         FontWeight="Light"
-                        FontSize="15"
-                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
                         Foreground="Black"
                         HorizontalContentAlignment="Stretch"
                         Opacity="0.5"
-                        Height="44"
-  Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,3,0,2.6" 
-                        Width="370" BorderBrush="Black"  />
+                        Height="50"
+  Style="{StaticResource MaterialDesignFloatingHintTextBox}" 
+                        Width="370" BorderBrush="Black" Margin="0,-1,0,0"  />
                 </StackPanel>
                 <!--Password-->
                 <StackPanel>
@@ -81,13 +82,12 @@
                 FontFamily="Comic Sans MS"
                         FontWeight="Light"
                         FontSize="20"
-                        HorizontalAlignment="Left"
                         Foreground="Black"
                         HorizontalContentAlignment="Stretch"
                         Opacity="0.5"
-                        Height="44"
+                        Height="50"
   materialDesign:HintAssist.Hint="Password"
-  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" Width="370" BorderBrush="Black" />
+  Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" BorderBrush="Black" Margin="0,0,30,0" />
                 </StackPanel>
                 <!--Log,Reg,Forgot-->
                 <StackPanel  Orientation="Vertical" Margin="0,0,0,0">

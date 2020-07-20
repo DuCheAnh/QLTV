@@ -58,8 +58,8 @@ namespace TestGUI_QLTV
         public void btnCart_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            BookPage bPage = new BookPage();
-            spMain.Children.Add(bPage);
+            LibCardDataUI libcardData = new LibCardDataUI();
+            spMain.Children.Add(libcardData);
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
