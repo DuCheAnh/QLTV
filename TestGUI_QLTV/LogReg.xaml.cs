@@ -12,7 +12,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window1 : Window
     {
-        private Login Bus_method = new Login();
+        private User_Control_BUS Login = new User_Control_BUS();
         public Window1()
         {
             InitializeComponent();
@@ -46,12 +46,12 @@ namespace TestGUI_QLTV
         {
             Window2 Rg = new Window2();
             Rg.Show();
-            this.Hide();
+            this.Close();
         }
 
         private void OpenMain(object sender, RoutedEventArgs e)
         {
-            if (Bus_method.LoginMethod(Username.Text, Password.Password))
+            if (Login.LoginMethod(Username.Text, Password.Password))
             {
                 User_Control_BUS UserData = new User_Control_BUS();
                 Data_Context.currentAccount = UserData.search_for_account(Username.Text);

@@ -2,6 +2,7 @@
 using DTO_QuanLy;
 using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace BUS_QuanLy
@@ -11,6 +12,7 @@ namespace BUS_QuanLy
         DAL_Account Account_DAL = new DAL_Account();
         DAL_Libcard Libcard_DAL = new DAL_Libcard();
         DAL_Book Book_DAL = new DAL_Book();
+        List<Account_Data> possible_account = new List<Account_Data>();
         /// <summary>
         /// gan data tu DAl => grid trong GUI
         /// </summary>
@@ -86,6 +88,39 @@ namespace BUS_QuanLy
         {
             Book_DAL.init_client();
             return Book_DAL.update_book_data(data);
+        }
+        
+        public bool LoginMethod(string username, string Password)
+        {
+            Account_DAL.init_client();
+            possible_account = Account_DAL.retrieve_all_user();
+
+            foreach (Account_Data account in possible_account)
+            {
+                if (account.account == username && account.password == Password)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool RegisterIn(string Account, string Password, string Email)
+        {
+
+            Account_DAL.init_client();
+            possible_account = Account_DAL.retrieve_all_user();
+
+            if (Account_DAL.search_for_account(Account) == null)
+            {
+                return Account_DAL.create_new_user(Account, Password, Email);
+            }
+            else
+            {
+                MessageBox.Show("");
+
+            }
+            return false;
+
         }
     }
 }

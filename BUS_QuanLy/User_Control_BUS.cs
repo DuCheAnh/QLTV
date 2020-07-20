@@ -1,6 +1,7 @@
 ﻿using DAL_QuanLy;
 using DTO_QuanLy;
 using System.Collections.Generic;
+using System.Windows;
 
 namespace BUS_QuanLy
 {
@@ -8,6 +9,7 @@ namespace BUS_QuanLy
     {
         DAL_Account UserData = new DAL_Account();
         DAL_Book bookdata = new DAL_Book();
+        List<Account_Data> possible_account = new List<Account_Data>();
         public User_Control_BUS()
         {
         }
@@ -99,6 +101,37 @@ namespace BUS_QuanLy
             UserData.init_client();
 
             return UserData.update_user_password(sUID, sNewPassword);
+        }
+        public bool LoginMethod(string username, string Password)
+        {
+            UserData.init_client();
+            possible_account = UserData.retrieve_all_user();
+
+            foreach (Account_Data account in possible_account)
+            {
+                if (account.account == username && account.password == Password)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool RegisterIn(string Account, string Password, string Email)
+        {
+
+            UserData.init_client();
+            possible_account = UserData.retrieve_all_user();
+
+            if (UserData.search_for_account(Account) == null)
+            {
+                return UserData.create_new_user(Account, Password, Email);
+            }
+            else
+            {
+                MessageBox.Show("");
+
+            }
+            return false;
         }
     }
 
