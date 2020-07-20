@@ -42,7 +42,7 @@ namespace BUS_QuanLy
         /// <param name="bGender"></param>
         /// <returns></returns>
         public bool create_new_libcard(string sAccountType, string sIdentityCard
-                    , string sName, DateTime dDOB, bool bGender)
+                    , string sName, string dDOB, bool bGender)
         {
             Libcard_DAL.init_client();
             return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);

@@ -31,7 +31,7 @@ namespace DAL_QuanLy
         /// <param name="bGender"></param>
         /// <returns></returns>
         public bool create_new_libcard(string sAccountType, string sIdentityCard
-                    , string sName, DateTime dDOB, bool bGender)
+                    , string sName, string dDOB, bool bGender)
         {
             try
             {

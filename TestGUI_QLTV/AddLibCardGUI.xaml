@@ -60,18 +60,25 @@
                      materialDesign:HintAssist.FloatingScale="0.50"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                      FontSize="25" FontWeight="SemiBold" 
+                     TextChanged="IDTextBox_TextChanged"
                      />
             <TextBox x:Name="NameTextBox" Width="250" Height="50"
                      Canvas.Left="50" Canvas.Top="100"
                      materialDesign:HintAssist.Hint="Name"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     FontSize="18"/>
+                     FontSize="18"
+                     TextChanged="NameTextBox_TextChanged"/>
+            <DatePicker x:Name="DOBPicker" Canvas.Left="300"
+                        Canvas.Top="180" Height="30" 
+                        SelectedDateFormat="Short"
+                        SelectedDateChanged="DOBPicker_SelectedDateChanged"
+                        />
             <TextBox x:Name="DOBTextBox" Width="250" Height="50"
                      Canvas.Left="50" Canvas.Top="160"
                      materialDesign:HintAssist.Hint="Date of birth"
                      Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                     FontSize="18"
-                     />
+                     FontSize="18" IsReadOnly="True"
+                     TextChanged="DOBTextBox_TextChanged"/>
             <ComboBox
                 x:Name="AccountTypeComboBox"
                 Canvas.Top="220" Canvas.Left="50"
@@ -79,6 +86,7 @@
                 IsEditable="False"
                 materialDesign:HintAssist.Hint="Account Type"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                LostFocus="AccountTypeComboBox_LostFocus"
                 >
                 <ComboBoxItem Content="Silver"/>
                 <ComboBoxItem Content="Gold"/>
@@ -91,6 +99,7 @@
                 IsEditable="False"
                 materialDesign:HintAssist.Hint="Gender"
                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                LostFocus="GenderComboBox_LostFocus"
                 >
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>

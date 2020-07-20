@@ -15,7 +15,7 @@ namespace TestGUI_QLTV
         public LibCardDataUI()
         {
             InitializeComponent();
-           // init_datasource("");
+            init_datasource("");
         }
         private void init_datasource(string key)
         {

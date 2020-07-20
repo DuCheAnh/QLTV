@@ -8,13 +8,13 @@ namespace DTO_QuanLy
         public string account_type { get; set; }
         public string identity_card { get; set; }
         public string name { get; set; }
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
         public bool gender { get; set; }
         public DateTime created_date { get; set; }
         public bool expired { get; set; }
         public bool used { get; set; }
         public LibCard_Data(string sAccountType, string sIdentityCard, string sName
-                            , DateTime dDOB, bool bGender)
+                            , string dDOB, bool bGender)
         {
             this.account_type = sAccountType;
             this.identity_card = sIdentityCard;
