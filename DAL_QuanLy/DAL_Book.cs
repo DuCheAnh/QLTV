@@ -143,7 +143,7 @@ namespace DAL_QuanLy
         /// <returns></returns>
         public Book_Data retrieve_book_data(string sBID)
         {
-            var retrieve_response = client.Get(sBookTable_path + sBID);
+            FirebaseResponse retrieve_response = client.Get(sBookTable_path + sBID);
             Book_Data data = retrieve_response.ResultAs<Book_Data>();
             return data;
         }

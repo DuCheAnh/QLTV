@@ -38,7 +38,6 @@ namespace TestGUI_QLTV
         {
             //variable to store newly found book
             List<Label> label_list = new List<Label>();
-            Book_Data book_clicked = new Book_Data();
             Image img = new Image();
             //get the selected book
             Button btn = (Button)sender;
@@ -47,7 +46,7 @@ namespace TestGUI_QLTV
             {
                 label_list.Add(lab);
             }
-            book_clicked = admin_control.retrieve_book_data(label_list[0].Content.ToString());
+            Data_Context.selected_book = admin_control.retrieve_book_data(label_list[0].Content.ToString());
             foreach (Image data in canv.Children.OfType<Image>())
             {
                 img = data;
@@ -55,16 +54,10 @@ namespace TestGUI_QLTV
 
             //init new book page
             BookPage book_page = new BookPage();
-            book_page.NameTextBlock.Text = book_clicked.name;
-            book_page.AuthorTextBlock.Text = book_clicked.author;
-            book_page.AmountLeftTextBlock.Text = book_clicked.left.ToString() + " in stocks";
-            book_page.ReleaseYearTextBlock.Text = "xuất bản " + book_clicked.release_year.ToString();
-            book_page.DescriptionTextBlock.Text = book_clicked.description;
             book_page.BookImageBrush.ImageSource = img.Source;
-            if (book_clicked.left < 1) book_page.BorrowButton.IsEnabled = false;
             bookList.Children.Clear();
             bookList.Children.Add(book_page);
-        }
+        }    
     }
     public class Base64ImageConverter : IValueConverter
     {

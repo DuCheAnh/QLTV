@@ -49,6 +49,8 @@ namespace DAL_QuanLy
                 var data = new Borrow_Data(sBID, sUID, dtBorrowDate);
                 DAL_Account account = new DAL_Account();
                 DAL_Book book = new DAL_Book();
+                book.init_client();
+                account.init_client();
                 data.borrow_date = DateTime.Now;
                 data.BrID = create_new_id();
                 //minus 1 book from the database
@@ -56,9 +58,7 @@ namespace DAL_QuanLy
                 bookdata.left -= 1;
                 book.update_book_data(bookdata);
                 //update user brid
-                Account_Data user = account.retrieve_user_data(sUID);
-                user.BrID.Add(data.BrID);
-                account.update_user_data(user);
+                account.add_brid(sUID, data.BrID);
                 //add new borrow info
                 SetResponse response = client.Set(sBorrowTable_path + data.BrID, data);
                 Borrow_Data result = response.ResultAs<Borrow_Data>();

@@ -1,5 +1,6 @@
 ﻿using DAL_QuanLy;
 using DTO_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.Windows;
 
@@ -10,6 +11,7 @@ namespace BUS_QuanLy
         DAL_Account UserData = new DAL_Account();
         DAL_Book bookdata = new DAL_Book();
         List<Account_Data> possible_account = new List<Account_Data>();
+        DAL_Borrow borrowdata = new DAL_Borrow();
         public User_Control_BUS()
         {
         }
@@ -18,6 +20,12 @@ namespace BUS_QuanLy
         {
             UserData.init_client();
             return UserData.retrieve_user_data(sUID);
+        }
+
+        public bool add_borrow_data(string sBID, string sUID, DateTime dBorrowDate)
+        {
+            borrowdata.init_client();
+            return borrowdata.add_new_borrow(sBID, sUID, dBorrowDate);
         }
         /// <summary>
         /// Get users password by UID (UID must exist)
@@ -28,6 +36,9 @@ namespace BUS_QuanLy
         {
             return UserData.retrieve_user_data(sUID).password;
         }
+
+
+
 
         public List<Book_Data> Get_all_Books()
         {

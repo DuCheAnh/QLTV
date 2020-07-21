@@ -28,7 +28,7 @@
                 <TextBlock Canvas.Top="100" Canvas.Left="20" FontSize="25" Text="by" FontFamily="Comic Sans MS"/>
                 <TextBlock x:Name="AuthorTextBlock" Canvas.Top="100" Canvas.Left="60" FontSize="25" Text="Chuch" FontFamily="Comic Sans MS"/>
                 <TextBlock x:Name="ReleaseYearTextBlock" Canvas.Top="145" Canvas.Left="20" FontSize="25" Text="nawm xb" FontFamily="Comic Sans MS"/>
-                <Button x:Name="BorrowButton" Canvas.Bottom="0" Canvas.Left="20" Width="250" Height="80" Background="#ffc440">
+                <Button x:Name="BorrowButton" Canvas.Bottom="0" Canvas.Left="20" Width="250" Height="80" Background="#ffc440" Click="BorrowButton_Click">
                     <Button.Content>
                         <TextBlock Text="BORROW" FontSize="35" FontFamily="Comic Sans MS" FontWeight="Bold"></TextBlock>
                     </Button.Content>

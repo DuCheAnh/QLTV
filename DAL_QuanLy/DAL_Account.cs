@@ -80,6 +80,12 @@ namespace DAL_QuanLy
             return false;
         }
 
+        public void add_brid(string sUID,string sBrID)
+        {
+            Account_Data data = retrieve_user_data(sUID);
+            data.BrID.Add(sBrID);
+            FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
+        }
 
         /// <summary>
         /// Update users email by uid and email
