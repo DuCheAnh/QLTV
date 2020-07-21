@@ -79,9 +79,10 @@ namespace BUS_QuanLy
                     data.Add(libcard);
             }
 
- 
 
             return data;
+        }
+
         public List<LibCard_Data> all_libcard_data()
         {
             Libcard_DAL.init_client();
@@ -89,7 +90,7 @@ namespace BUS_QuanLy
         }
 
         public bool add_new_book(string sName, string sAuthor, int nReleaseYear, string sCategory,
-                                 string sDescription, string sCoverPage, int nPrice, int nAmount)
+                                    string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
             Book_DAL.init_client();
             return Book_DAL.add_new_book(sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
@@ -133,7 +134,7 @@ namespace BUS_QuanLy
             Account_DAL.init_client();
             return Account_DAL.retrieve_all_user();
         }
-        
+
         public bool LoginMethod(string username, string Password)
         {
             Account_DAL.init_client();
@@ -167,4 +168,5 @@ namespace BUS_QuanLy
 
         }
     }
-}
+} 
+

@@ -90,6 +90,7 @@
     <Compile Include="Data_Context.cs" />
     <Compile Include="EditUserGUI.xaml.cs">
       <DependentUpon>EditUserGUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LibCardDataUI.xaml.cs">
       <DependentUpon>LibCardDataUI.xaml</DependentUpon>
     </Compile>
@@ -142,6 +143,9 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditUserGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LibCardDataUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
