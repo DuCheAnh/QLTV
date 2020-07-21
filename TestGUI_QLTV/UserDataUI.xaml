@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestGUI_QLTV"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             FontFamily="Comic Sans MS">
+             FontFamily="Comic Sans MS" IsHitTestVisibleChanged="UserControl_IsHitTestVisibleChanged">
+    
     <Grid  Height="630" Width="1280">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -37,6 +38,7 @@
 
                     </Button>
                     <TextBox
+                        x:Name="ListViewSearchBar"
                         Grid.Column="1"
                         Margin="0 5 15 2"
                         Height="30"
@@ -45,47 +47,62 @@
                         BorderThickness="0"
                         Width="320"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center"/>
+                        HorizontalAlignment="Center"
+                        PreviewKeyDown="ListViewSearchBar_PreviewKeyDown"/>
 
                 </Grid>
             </materialDesign:ColorZone>
-            <Button Content="ADD USER" Height="40" Width="200"
+            
+            <Button x:Name="EditUserbtn" Content="EDIT" Height="40" Width="200"
                     Canvas.Top="20" Canvas.Left="1000"
-                    FontWeight="Bold" FontSize="20"/>
+                    FontWeight="Bold" FontSize="20"
+                    IsEnabled="False"
+                    Click="EditUserButton_Click"/>
         </Canvas>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="250"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ScrollViewer Grid.Column="1">
-                <ListView>
-                    ItemsSource="{Binding Items1}">
+            <ScrollViewer Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView x:Name="UserDataListView" SelectionChanged="UserDataListView_SelectionChanged" >
                     <ListView.View>
                         <GridView>
-                            <GridViewColumn Width="150"
-                            DisplayMemberBinding="{Binding Code}"
+
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding UID}"
                             Header="Mã Người Dùng" />
-                            <GridViewColumn Width="250"
-                            DisplayMemberBinding="{Binding Name}"
+
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding account}"
+                            Header="tài khoản"/>
+
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding password}"
+                            Header="mật khẩu"/>
+
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding name}"
                             Header="Tên Người Dùng" />
-                            <GridViewColumn Width="150"
+
+                            <GridViewColumn 
                             DisplayMemberBinding="{Binding DOB}"
                             Header="Năm Sinh"/>
-                            <GridViewColumn Width="100"
-                            DisplayMemberBinding="{Binding Type}"
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding gender}"
                             Header="Giới Tính" />
-                            <GridViewColumn Width="80"
-                            DisplayMemberBinding="{Binding numBorrowed}"
-                            Header="Địa Chỉ" />
-                            <GridViewColumn Width="80"
-                            DisplayMemberBinding="{Binding numBorrowed}"
-                            Header="Loại" />
-                            <GridViewColumn Width="100"
-                            DisplayMemberBinding="{Binding numBorrowed}"
-                            Header="Đang Mượn" />
 
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding email}"
+                            Header="Email"/>
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding account_type}"
+                            Header="Loại Tài Khoản" />
+
+                            <GridViewColumn 
+                            DisplayMemberBinding="{Binding BrID}"
+                            Header="Đang Mượn" />
                         </GridView>
                     </ListView.View>
                 </ListView>

@@ -65,8 +65,9 @@ namespace TestGUI_QLTV
         private void btnBell_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            BookDataUI bData = new BookDataUI();
-            spMain.Children.Add(bData);
+            //BookDataUI bData = new BookDataUI();
+            UserDataUI uData = new UserDataUI();
+            spMain.Children.Add(uData);
         }
 
         public void btnCart_Click(object sender, RoutedEventArgs e)

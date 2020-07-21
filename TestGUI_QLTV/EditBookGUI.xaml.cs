@@ -28,10 +28,12 @@ namespace TestGUI_QLTV
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Book_Data selected_book;
         string img = null;
+
         public EditBookGUI()
         {
             InitializeComponent();
         }
+
         public void set_value_from_item(Book_Data data)
         {
             this.selected_book = data;
@@ -59,6 +61,7 @@ namespace TestGUI_QLTV
             bi.EndInit();
             PictureX.Source = bi;
         }
+
         private void btnClose(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
@@ -70,6 +73,7 @@ namespace TestGUI_QLTV
             admin_control.add_new_book(NameTextBox.Text, AuthorTextBox.Text, Convert.ToInt32(ReleaseYearTextBox.Text),
                 CategoryComboBox.Text, DescTextBox.Text, img, Convert.ToInt32(PriceTextBox.Text), Convert.ToInt32(AmountTextBox.Text));
         }
+
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             edit_book();
@@ -125,7 +129,6 @@ namespace TestGUI_QLTV
                 return false;
             else return true;
         }
-
         private void NameTextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             array[0] = check_string_availability(NameTextBox.Text);

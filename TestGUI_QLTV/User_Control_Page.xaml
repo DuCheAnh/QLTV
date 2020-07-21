@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="GUI_QuanLy.User_Control_Page"
+﻿ <UserControl x:Class="GUI_QuanLy.User_Control_Page"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -103,11 +103,15 @@
             </StackPanel>
         </StackPanel>
 
-        <Button Margin="30,280,30,0" Height="40" Click="Borrowed_Book" VerticalAlignment="Top">
+        <Button Margin="37,351,23,0" Height="40" Click="Borrowed_Book" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS">
                 BORROWED BOOK
             </TextBlock>
         </Button>
-        
+
+        <Button Margin="37,274,23,0" Height="40" Click="Change_profile_picture" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Change Profile Picture"/></TextBlock>
+        </Button>
+
     </Grid>
 </UserControl>

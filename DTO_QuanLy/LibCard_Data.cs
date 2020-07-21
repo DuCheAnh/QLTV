@@ -17,6 +17,7 @@ namespace DTO_QuanLy
         public DateTime created_date { get; set; }
         public bool expired { get; set; }
         public bool used { get; set; }
+
         public LibCard_Data(string sAccountType, string sIdentityCard, string sName
                             , DateTime dDOB, bool bGender)
         {

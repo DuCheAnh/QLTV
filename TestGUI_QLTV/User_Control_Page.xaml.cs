@@ -91,6 +91,11 @@ namespace GUI_QuanLy
             TextBox textBox = sender as TextBox;
             textBox.IsReadOnly = true;
         }
+
+        private void Change_profile_picture(object sender, RoutedEventArgs e)
+        {
+            //undone
+        }
     }
     #region bool to gender converter
     public class BooltoGenderConverter : IValueConverter

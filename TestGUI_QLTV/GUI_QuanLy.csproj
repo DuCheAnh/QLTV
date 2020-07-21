@@ -85,6 +85,9 @@
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data_Context.cs" />
+    <Compile Include="EditUserGUI.xaml.cs">
+      <DependentUpon>EditUserGUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LogReg.xaml.cs" />
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
@@ -126,6 +129,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditUserGUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

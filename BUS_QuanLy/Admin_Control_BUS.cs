@@ -15,6 +15,7 @@ namespace BUS_QuanLy
         DAL_Account Account_DAL = new DAL_Account();
         DAL_Libcard Libcard_DAL = new DAL_Libcard();
         DAL_Book Book_DAL = new DAL_Book();
+
         /// <summary>
         /// gan data tu DAl => grid trong GUI
         /// </summary>
@@ -25,12 +26,18 @@ namespace BUS_QuanLy
            // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
         }
 
+        public void Delete_account(string uID)
+        {
+            Account_DAL.init_client();
+            Account_DAL.delete_user(uID);
+        }
+
         /// <summary>
         /// 1) dang le phai check kieu data truoc khi truyen xuong dal
         /// 2) truyen list nhung user can phai update xuong dal
         /// </summary>
         /// <param name="Updated_Users"></param>
-        public void Update_User_Info(List<Account_Data> Updated_Users)
+        public void Update_Users_Info(List<Account_Data> Updated_Users)
         {
             Account_DAL.init_client();
             //Acount_DAL.Update_Users_data(Updated_Users);
@@ -52,6 +59,33 @@ namespace BUS_QuanLy
             return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);
         }
 
+        public List<LibCard_Data> Get_all_unused_libcard(string UID)
+        {
+            Libcard_DAL.init_client();
+            Account_DAL.init_client();
+            List<LibCard_Data> libcards = new List<LibCard_Data>();
+
+            libcards = Libcard_DAL.retrieve_all_libcard();
+
+            List<LibCard_Data> data = new List<LibCard_Data>();
+
+            foreach (LibCard_Data libcard in libcards)
+            {
+                if (libcard.LCID == Account_DAL.retrieve_user_data(UID).LCID)
+                    data.Add(libcard);
+            }
+
+            foreach (LibCard_Data libcard in libcards)
+            {
+                if (libcard.used == false)
+                    data.Add(libcard);
+            }
+
+ 
+
+            return data;
+        }
+
         public bool add_new_book(string sName, string sAuthor, int nReleaseYear, string sCategory,
                                  string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
@@ -63,6 +97,12 @@ namespace BUS_QuanLy
         {
             Book_DAL.init_client();
             return Book_DAL.update_book_info(sBID,sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+        }
+
+        public void Update_User_data(Account_Data data)
+        {
+            Account_DAL.init_client();
+            Account_DAL.update_user_data(data);
         }
 
         public Book_Data retrieve_book_data(string sBID)
@@ -84,6 +124,12 @@ namespace BUS_QuanLy
         {
             Book_DAL.init_client();
             return Book_DAL.update_book_data(data);
+        }
+
+        public List<Account_Data> all_accounts_data()
+        {
+            Account_DAL.init_client();
+            return Account_DAL.retrieve_all_user();
         }
     }
 }

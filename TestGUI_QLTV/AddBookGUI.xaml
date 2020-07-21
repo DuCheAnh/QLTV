@@ -21,7 +21,7 @@
                 VerticalAlignment="Bottom" 
                 Click="btnClose">
             <Button.Style>
-                <Style TargetType="{x:Type Button}">
+                <Style TargetType= "{x:Type Button}">
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="Template">
                         <Setter.Value>

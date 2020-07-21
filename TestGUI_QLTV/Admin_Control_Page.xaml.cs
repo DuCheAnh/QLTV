@@ -53,7 +53,7 @@ namespace GUI_QuanLy
 
             if (Is_Datagrid_Filled)
             {
-                Admin_BUS.Update_User_Info(Updated_Users);
+                //Admin_BUS.Update_User_Info(Updated_Users);
                 //MessageBox.Show(User.Update_User_Info(User_Info_Datagrid));
             }
             else
