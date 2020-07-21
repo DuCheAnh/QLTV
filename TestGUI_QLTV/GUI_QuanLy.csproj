@@ -66,6 +66,9 @@
     <Compile Include="AddLibCardGUI.xaml.cs">
       <DependentUpon>AddLibCardGUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BorrowedHistoryUI.xaml.cs">
+      <DependentUpon>BorrowedHistoryUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditBookGUI.xaml.cs">
       <DependentUpon>EditBookGUI.xaml</DependentUpon>
     </Compile>
@@ -100,7 +103,7 @@
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Register.xaml.cs" >
+    <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
     <Compile Include="Products.cs" />
@@ -114,6 +117,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="BorrowedHistoryUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EditBookGUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -122,7 +129,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-
     <Page Include="BookDataUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

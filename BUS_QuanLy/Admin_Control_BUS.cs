@@ -12,6 +12,7 @@ namespace BUS_QuanLy
         DAL_Account Account_DAL = new DAL_Account();
         DAL_Libcard Libcard_DAL = new DAL_Libcard();
         DAL_Book Book_DAL = new DAL_Book();
+        DAL_Borrow Borrow_DAL = new DAL_Borrow();
 
         List<Account_Data> possible_account = new List<Account_Data>();
         /// <summary>
@@ -128,7 +129,36 @@ namespace BUS_QuanLy
             Book_DAL.init_client();
             return Book_DAL.update_book_data(data);
         }
-
+        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.add_new_borrow(sBID, sUID, dtBorrowDate);
+        }
+        public bool delete_borrow(string sBrID)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.delete_borrow(sBrID);
+        }
+        public Borrow_Data retrieve_borrow_data(string sBrID)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.retrieve_borrow_data(sBrID);
+        }
+        public List<Borrow_Data> retrieve_all_borrows()
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.retrieve_all_borrows();
+        }
+        public List<Borrow_Data> search_for_UID(string sUID)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.search_for_UID(sUID);
+        }
+        public List<Borrow_Data> search_for_BID(string sBID)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.search_for_BID(sBID);
+        }
         public List<Account_Data> all_accounts_data()
         {
             Account_DAL.init_client();
