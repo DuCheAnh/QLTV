@@ -94,11 +94,15 @@
     <Compile Include="LibCardDataUI.xaml.cs">
       <DependentUpon>LibCardDataUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LogReg.xaml.cs" />
+    <Compile Include="LogReg.xaml.cs">
+      <DependentUpon>LogReg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Register.xaml.cs" />
+    <Compile Include="Register.xaml.cs" >
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products.cs" />
     <Compile Include="UserDataUI.xaml.cs">
       <DependentUpon>UserDataUI.xaml</DependentUpon>
@@ -118,10 +122,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Admin_Control_Page.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+
     <Page Include="BookDataUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -166,7 +167,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Admin_Control_Page.xaml.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
