@@ -22,6 +22,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class EditUserGUI : Window
     {
+        string oldLCID;
         bool[] array = new bool[3];
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Account_Data selected_Account;
@@ -42,15 +43,17 @@ namespace TestGUI_QLTV
             UserMail_txb.Text = selected_Account.email;
             PasswordBox.Text = selected_Account.password;
 
-            if(selected_Account.LCID != null)
-            for (int i = 0; i < this.libcardCombobox.Items.Count; i++)
+            if (selected_Account.LCID != null)
             {
-                if (!string.IsNullOrEmpty(((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString()) ? (((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString().Contains(selected_Account.LCID)) : false)
+                oldLCID = selected_Account.LCID;
+                for (int i = 0; i < this.libcardCombobox.Items.Count; i++)
                 {
-                    libcardCombobox.SelectedIndex = i;
+                    if (!string.IsNullOrEmpty(((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString()) ? (((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString().Contains(selected_Account.LCID)) : false)
+                    {
+                        libcardCombobox.SelectedIndex = i;
+                    }
                 }
             }
-
             #region set profile picture
             /*            byte[] binaryData = Convert.FromBase64String(selected_Account.profile_picture);
 
@@ -102,6 +105,19 @@ namespace TestGUI_QLTV
             data.LCID = ((ComboBoxItem)libcardCombobox.SelectedItem).Tag.ToString();
 
             admin_control.Update_User_data(data);
+
+            if (!string.IsNullOrEmpty(oldLCID))
+            {
+                LibCard_Data oldlibcard = admin_control.Retrive_libcard_data(oldLCID);
+                oldlibcard.used = false;
+                admin_control.update_libcard_useable(oldlibcard, oldlibcard.used);
+            }
+            if (!string.IsNullOrEmpty(data.LCID))
+            {
+                LibCard_Data newlibcard = admin_control.Retrive_libcard_data(data.LCID);
+                newlibcard.used = true;
+                admin_control.update_libcard_useable(newlibcard, newlibcard.used);
+            }
 
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
             popup.PopUpTB.Text = "Updated";

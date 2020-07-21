@@ -53,7 +53,7 @@ namespace TestGUI_QLTV
         {
             spMain.Children.Clear();
             //BookDataUI bData = new BookDataUI();
-            BorrowedHistoryUI uData = new BorrowedHistoryUI();
+            UserDataUI uData = new UserDataUI();
             spMain.Children.Add(uData);
         }
 

@@ -103,6 +103,18 @@ namespace BUS_QuanLy
             return Book_DAL.update_book_info(sBID, sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
         }
 
+        public void update_libcard_useable(LibCard_Data libcard, bool value)
+        {
+            Libcard_DAL.init_client();
+            Libcard_DAL.update_libcard_usedable(libcard, value);
+        }
+
+        public LibCard_Data Retrive_libcard_data(string LCID)
+        {
+            Libcard_DAL.init_client();
+            return Libcard_DAL.retrieve_libcard_data(LCID);
+        }
+
         public void Update_User_data(Account_Data data)
         {
             Account_DAL.init_client();

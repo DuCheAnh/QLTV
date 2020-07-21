@@ -118,6 +118,15 @@ namespace DAL_QuanLy
             else return false;
         }
 
+        public bool update_libcard_usedable(LibCard_Data libcard, bool value)
+        {
+            libcard.used = value;
+            FirebaseResponse response = client.Update(sLibCardTable_path + libcard.LCID, libcard);
+            LibCard_Data data = response.ResultAs<LibCard_Data>();
+            if (data != null) return true;
+            else return false;
+        }
+
         /// <summary>
         /// Search for libcard name, then return if found
         /// </summary>
