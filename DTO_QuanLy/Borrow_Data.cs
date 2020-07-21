@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO_QuanLy
 {
@@ -18,7 +14,7 @@ namespace DTO_QuanLy
         public Borrow_Data()
         {
         }
-        public Borrow_Data(string sBID, string sUID,DateTime dtBorrowDate)
+        public Borrow_Data(string sBID, string sUID, DateTime dtBorrowDate)
         {
             this.BID = sBID;
             this.UID = sUID;

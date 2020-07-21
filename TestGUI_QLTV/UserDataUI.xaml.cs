@@ -1,4 +1,4 @@
-﻿using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DTO_QuanLy;
 using BUS_QuanLy;
+﻿using System.Windows.Controls;
 
 namespace TestGUI_QLTV
 {

@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DTO_QuanLy
 {
@@ -13,7 +10,7 @@ namespace DTO_QuanLy
         public string password { get; set; }
         public string profile_picture { get; set; }
         public string name { get; set; }
-        public DateTime DOB { get; set; }
+        public string DOB { get; set; }
         public bool gender { get; set; }
         public string email { get; set; }
         public string identity_card { get; set; }
@@ -26,7 +23,7 @@ namespace DTO_QuanLy
             this.password = sPassword;
             this.email = sEmail;
         }
-        public Account_Data(string sName, DateTime dtDOB, bool bGender, string sIdentifyCard,
+        public Account_Data(string sName, string dtDOB, bool bGender, string sIdentifyCard,
                             string sAccountType)
         {
             this.name = sName;

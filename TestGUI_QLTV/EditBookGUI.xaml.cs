@@ -1,21 +1,12 @@
 ﻿using BUS_QuanLy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
 using DTO_QuanLy;
-using System.IO;
 using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
+using System.Windows;
+using System.Windows.Input;
+using System.Windows.Media.Imaging;
 
 namespace TestGUI_QLTV
 {
@@ -24,7 +15,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class EditBookGUI : Window
     {
-        bool[] array=new bool[7];
+        bool[] array = new bool[7];
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Book_Data selected_book;
         string img = null;
@@ -43,7 +34,7 @@ namespace TestGUI_QLTV
             for (int i = 0; i < this.CategoryComboBox.Items.Count; i++)
             {
                 if (this.CategoryComboBox.Items[i].ToString().Contains(selected_book.category))
-                {       
+                {
                     this.CategoryComboBox.SelectedIndex = i;
                     array[3] = check_string_availability(CategoryComboBox.Text);
                     enable_add_button();
@@ -112,14 +103,14 @@ namespace TestGUI_QLTV
 
         #region Enable and disable add button base on input
 
-       
+
         private void enable_add_button()
-        {         
-                bool bCheck = true;
-                for (int i = 0; i < 7;i++)
-                {
-                    if (array[i] == false) bCheck = false;
-                }
+        {
+            bool bCheck = true;
+            for (int i = 0; i < 7; i++)
+            {
+                if (array[i] == false) bCheck = false;
+            }
             if (bCheck == true) EditButton.IsEnabled = true;
             else EditButton.IsEnabled = false;
         }

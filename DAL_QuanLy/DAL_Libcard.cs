@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Response;
-using FireSharp.Config;
+﻿using DTO_QuanLy;
 using FireSharp.Interfaces;
-using DTO_QuanLy;
-using System.Data;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
 
 namespace DAL_QuanLy
 {
@@ -36,7 +31,7 @@ namespace DAL_QuanLy
         /// <param name="bGender"></param>
         /// <returns></returns>
         public bool create_new_libcard(string sAccountType, string sIdentityCard
-                    , string sName, DateTime dDOB, bool bGender)
+                    , string sName, string dDOB, bool bGender)
         {
             try
             {

@@ -91,11 +91,16 @@
 
                     </Grid>
                 </materialDesign:ColorZone>
-                <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
-                    <Button x:Name="btnBell" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
-                    Style="{DynamicResource MaterialDesignToolForegroundButton}"
-                    Click="btnBell_Click">
-                        <materialDesign:PackIcon Kind="BellRing" Width="35" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                <materialDesign:Badged  Badge="6" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                    <Button x:Name="btnBell" Click="btnBell_Click" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Style="{DynamicResource MaterialDesignToolForegroundButton}">
+                        <materialDesign:PackIcon Kind="Bell" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            </materialDesign:PackIcon>
+                        <!--<StackPanel Width="250" >
+                            <TextBlock Text="Test1 chua biet" FontSize="20"/>
+                            <TextBlock Text="Test2 chua biet" FontSize="20" />
+                            <TextBlock Text="Text3 chua biet" FontSize="20"/>
+                        </StackPanel>-->
                     </Button>
                 </materialDesign:Badged>
                 <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">

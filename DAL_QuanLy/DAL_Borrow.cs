@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Response;
-using FireSharp.Config;
+﻿using DTO_QuanLy;
 using FireSharp.Interfaces;
-using DTO_QuanLy;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
 
 namespace DAL_QuanLy
 {
@@ -45,12 +41,12 @@ namespace DAL_QuanLy
         /// <param name="sBID"></param>
         /// <param name="sUID"></param>
         /// <returns></returns>
-        public bool add_new_borrow(string sBID, string sUID,DateTime dtBorrowDate)
+        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate)
         {
             try
             {
                 //setups
-                var data = new Borrow_Data(sBID, sUID,dtBorrowDate);
+                var data = new Borrow_Data(sBID, sUID, dtBorrowDate);
                 DAL_Account account = new DAL_Account();
                 DAL_Book book = new DAL_Book();
                 data.borrow_date = DateTime.Now;

@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DAL_QuanLy;
+﻿using DAL_QuanLy;
 using DTO_QuanLy;
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,6 +13,7 @@ namespace BUS_QuanLy
         DAL_Libcard Libcard_DAL = new DAL_Libcard();
         DAL_Book Book_DAL = new DAL_Book();
 
+        List<Account_Data> possible_account = new List<Account_Data>();
         /// <summary>
         /// gan data tu DAl => grid trong GUI
         /// </summary>
@@ -23,7 +21,7 @@ namespace BUS_QuanLy
         public void Get_User_Info(DataGrid Info_grid)
         {
             Account_DAL.init_client();
-           // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
+            // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
         }
 
         public void Delete_account(string uID)
@@ -53,7 +51,7 @@ namespace BUS_QuanLy
         /// <param name="bGender"></param>
         /// <returns></returns>
         public bool create_new_libcard(string sAccountType, string sIdentityCard
-                    , string sName, DateTime dDOB, bool bGender)
+                    , string sName, string dDOB, bool bGender)
         {
             Libcard_DAL.init_client();
             return Libcard_DAL.create_new_libcard(sAccountType, sIdentityCard, sName, dDOB, bGender);
@@ -84,6 +82,10 @@ namespace BUS_QuanLy
  
 
             return data;
+        public List<LibCard_Data> all_libcard_data()
+        {
+            Libcard_DAL.init_client();
+            return Libcard_DAL.retrieve_all_libcard();
         }
 
         public bool add_new_book(string sName, string sAuthor, int nReleaseYear, string sCategory,
@@ -96,7 +98,7 @@ namespace BUS_QuanLy
                                         string sDescription, string sCoverPage, int nPrice, int nAmount)
         {
             Book_DAL.init_client();
-            return Book_DAL.update_book_info(sBID,sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
+            return Book_DAL.update_book_info(sBID, sName, sAuthor, nReleaseYear, sCategory, sDescription, sCoverPage, nPrice, nAmount);
         }
 
         public void Update_User_data(Account_Data data)
@@ -130,6 +132,39 @@ namespace BUS_QuanLy
         {
             Account_DAL.init_client();
             return Account_DAL.retrieve_all_user();
+        }
+        
+        public bool LoginMethod(string username, string Password)
+        {
+            Account_DAL.init_client();
+            possible_account = Account_DAL.retrieve_all_user();
+
+            foreach (Account_Data account in possible_account)
+            {
+                if (account.account == username && account.password == Password)
+                    return true;
+            }
+
+            return false;
+        }
+
+        public bool RegisterIn(string Account, string Password, string Email)
+        {
+
+            Account_DAL.init_client();
+            possible_account = Account_DAL.retrieve_all_user();
+
+            if (Account_DAL.search_for_account(Account) == null)
+            {
+                return Account_DAL.create_new_user(Account, Password, Email);
+            }
+            else
+            {
+                MessageBox.Show("");
+
+            }
+            return false;
+
         }
     }
 }

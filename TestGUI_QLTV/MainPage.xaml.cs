@@ -1,20 +1,13 @@
-﻿using DTO_QuanLy;
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.IO;
-using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -28,12 +21,12 @@ namespace TestGUI_QLTV
         {
             InitializeComponent();
             if (Data_Context.currentHomePageBook.Count > 0)
-                IBook.ItemsSource = Data_Context.currentHomePageBook;         
+                IBook.ItemsSource = Data_Context.currentHomePageBook;
         }
-      
+
         private void btnNextPage_Click(object sender, RoutedEventArgs e)
         {
-            
+
         }
 
         private void btnPreviousPage_Click(object sender, RoutedEventArgs e)
@@ -45,8 +38,8 @@ namespace TestGUI_QLTV
         {
             //variable to store newly found book
             List<Label> label_list = new List<Label>();
-            Book_Data book_clicked =new Book_Data();
-            Image img=new Image();
+            Book_Data book_clicked = new Book_Data();
+            Image img = new Image();
             //get the selected book
             Button btn = (Button)sender;
             Canvas canv = (Canvas)btn.Content;
@@ -60,7 +53,7 @@ namespace TestGUI_QLTV
                 img = data;
             }
 
-                //init new book page
+            //init new book page
             BookPage book_page = new BookPage();
             book_page.NameTextBlock.Text = book_clicked.name;
             book_page.AuthorTextBlock.Text = book_clicked.author;

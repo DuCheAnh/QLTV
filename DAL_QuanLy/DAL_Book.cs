@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Config;
-using FireSharp.Response;
+﻿using DTO_QuanLy;
 using FireSharp.Interfaces;
-using System.Dynamic;
-using DTO_QuanLy;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
 
 namespace DAL_QuanLy
 {
