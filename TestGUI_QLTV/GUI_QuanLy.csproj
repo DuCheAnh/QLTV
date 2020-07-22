@@ -91,6 +91,9 @@
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data_Context.cs" />
+    <Compile Include="EditLibCardGUI.xaml.cs">
+      <DependentUpon>EditLibCardGUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditUserGUI.xaml.cs">
       <DependentUpon>EditUserGUI.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="EditLibCardGUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

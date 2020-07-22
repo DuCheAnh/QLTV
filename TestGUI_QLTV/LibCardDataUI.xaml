@@ -60,7 +60,7 @@
             <Button x:Name="EditLibCardButton" Content="EDIT" Height="40" Width="200"
                     Canvas.Top="20" Canvas.Left="1000"
                     FontWeight="Bold" FontSize="20"
-                    IsEnabled="False"
+                    IsEnabled="False" Click="EditLibCardButton_Click"
                     />
         </Canvas>
         <Grid Grid.Row="1">
@@ -70,7 +70,7 @@
                 <ColumnDefinition Width="100"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="1">
-                <ListView x:Name="LibCardListView" >
+                <ListView x:Name="LibCardListView" SelectionChanged="LibCardListView_SelectionChanged" >
 
                     <ListView.View>
                         <GridView >

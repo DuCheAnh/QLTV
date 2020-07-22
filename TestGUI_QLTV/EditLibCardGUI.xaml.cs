@@ -1,22 +1,50 @@
 ﻿using BUS_QuanLy;
+using DTO_QuanLy;
 using System.Windows;
 using System.Windows.Controls;
 namespace TestGUI_QLTV
 {
     /// <summary>
-    /// Interaction logic for AddLibCardGUI.xaml
+    /// Interaction logic for EditLibCardGUI.xaml
     /// </summary>
-    public partial class AddLibCardGUI : Window
+    public partial class EditLibCardGUI : Window
     {
-        bool[] bCheck = new bool[5];
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
-        public AddLibCardGUI()
+        public LibCard_Data selected_libcard = new LibCard_Data();
+        public EditLibCardGUI()
         {
             InitializeComponent();
         }
+        bool[] bCheck = new bool[5];
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
 
-
-
+        public void set_value_from_item(LibCard_Data data)
+        {
+            this.selected_libcard = data;
+            IDTextBox.Text = selected_libcard.identity_card;
+            NameTextBox.Text = selected_libcard.name;
+            DOBTextBox.Text = selected_libcard.DOB;
+            for (int i = 0; i < this.AccountTypeComboBox.Items.Count; i++)
+            {
+                if (this.AccountTypeComboBox.Items[i].ToString().Contains(selected_libcard.account_type))
+                {
+                    this.AccountTypeComboBox.SelectedIndex = i;
+                    bCheck[3] = true;
+                    enable_addbutton();
+                }
+            }
+            for (int i = 0; i < this.GenderComboBox.Items.Count; i++)
+            {
+                string sGender;
+                if (selected_libcard.gender) sGender = "Male";
+                else sGender = "Female";
+                if (this.GenderComboBox.Items[i].ToString().Contains(sGender))
+                {
+                    this.GenderComboBox.SelectedIndex = i;
+                    bCheck[4] = true;
+                    enable_addbutton();
+                }
+            }
+        }
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
