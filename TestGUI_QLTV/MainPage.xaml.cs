@@ -20,8 +20,8 @@ namespace TestGUI_QLTV
         public MainPage()
         {
             InitializeComponent();
-            if (Data_Context.currentHomePageBook.Count > 0)
-                IBook.ItemsSource = Data_Context.currentHomePageBook;
+            if (Data_Context.currentBooksdataUI != null)
+                IBook.ItemsSource = Data_Context.currentBooksdataUI;
         }
 
         private void btnNextPage_Click(object sender, RoutedEventArgs e)

@@ -43,8 +43,14 @@
     <Reference Include="MaterialDesignThemes.Wpf, Version=3.1.3.1513, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.3.1.3\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,6 +84,8 @@
     <Compile Include="BookDataUI.xaml.cs">
       <DependentUpon>BookDataUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Processor\Account_data_Processor.cs" />
+    <Compile Include="APIInit.cs" />
     <Compile Include="BookPage.xaml.cs">
       <DependentUpon>BookPage.xaml</DependentUpon>
     </Compile>
@@ -103,6 +111,7 @@
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Processor\Book_data_Processor.cs" />
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -232,13 +241,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\QLTV\BUS_QuanLy\BUS_QuanLy.csproj">
-      <Project>{472a52b8-05fc-4f79-a6d1-b43909b45911}</Project>
-      <Name>BUS_QuanLy</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\QLTV\DTO_QuanLy\DTO_QuanLy.csproj">
       <Project>{39692b7c-5900-496c-a2b5-9fffcc98d99d}</Project>
       <Name>DTO_QuanLy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BUS_QuanLy\BUS_QuanLy.csproj">
+      <Project>{472a52b8-05fc-4f79-a6d1-b43909b45911}</Project>
+      <Name>BUS_QuanLy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

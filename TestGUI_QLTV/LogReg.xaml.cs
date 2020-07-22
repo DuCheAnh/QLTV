@@ -3,6 +3,11 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using DTO_QuanLy;
+using MaterialDesignThemes.Wpf;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -22,6 +27,7 @@ namespace TestGUI_QLTV
         {
 
         }
+
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -49,13 +55,20 @@ namespace TestGUI_QLTV
             this.Close();
         }
 
-        private void OpenMain(object sender, RoutedEventArgs e)
+        private async void OpenMain(object sender, RoutedEventArgs e)
         {
-            if (Login.LoginMethod(Username.Text, Password.Password))
+            APIInit.InitClient();
+            UserCred usercred = new UserCred();
+
+            usercred.Username = Username.Text;
+            usercred.Password = Password.Password;
+
+            if (await Account_data_Processor.Authentication(usercred))
             {
-                User_Control_BUS UserData = new User_Control_BUS();
-                Data_Context.currentAccount = UserData.search_for_account(Username.Text);
-                Data_Context.currentUID = Data_Context.currentAccount.UID;
+                // attach user account to datacontext
+                Data_Context.currentAccount = await Account_data_Processor.GetAccount(Data_Context.currentUID);
+
+                //showing window
                 MainWindow mn = new MainWindow();
                 mn.Show();
                 this.Close();

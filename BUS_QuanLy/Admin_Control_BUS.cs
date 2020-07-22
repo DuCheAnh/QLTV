@@ -39,7 +39,7 @@ namespace BUS_QuanLy
         public void Update_Users_Info(List<Account_Data> Updated_Users)
         {
             Account_DAL.init_client();
-            //Acount_DAL.Update_Users_data(Updated_Users);
+            //Account_DAL.Update_Users_data(Updated_Users);
         }
 
         /// <summary>

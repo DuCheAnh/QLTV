@@ -1,11 +1,22 @@
 ﻿using BUS_QuanLy;
 using System;
 using System.Globalization;
+using System.Linq;
+using System.Net;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using DTO_QuanLy;
 using TestGUI_QLTV;
+using TestGUI_QLTV.Processor;
+
 namespace GUI_QuanLy
 {
     /// <summary>
@@ -13,23 +24,22 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
-        string sUID = Data_Context.currentUID;
-        User_Control_BUS User_BUS = new User_Control_BUS();
+
         TestGUI_QLTV.ChangePassword changePassword = new TestGUI_QLTV.ChangePassword();
         TestGUI_QLTV.ChangeEmail changeEmail = new TestGUI_QLTV.ChangeEmail();
 
         public User_Control_Page()
         {
-            Data_Context.currentUID = sUID;
-            Data_Context.currentAccount = User_BUS.Get_Single_UserInfo(Data_Context.currentUID);
             PasswordBox passwordBox = new PasswordBox();
             passwordBox.IsEnabled = false;
+
             this.DataContext = Data_Context.currentAccount;
             InitializeComponent();
 
             changeEmail.Closed += new EventHandler(changeEmail_Closed);
             changePassword.Closed += new EventHandler(changePassword_Closed);
         }
+
         #region when form closed event
 
         private void changePassword_Closed(object sender, EventArgs e)
@@ -72,7 +82,6 @@ namespace GUI_QuanLy
         {
             TextBox textBox = sender as TextBox;
             textBox.IsReadOnly = false;
-            //textBox.CaretIndex = textBox.Text.Count();
             textBox.Select(50, 50);
         }
 
@@ -87,6 +96,7 @@ namespace GUI_QuanLy
             //undone
         }
     }
+
     #region bool to gender converter
     public class BooltoGenderConverter : IValueConverter
     {
@@ -115,6 +125,7 @@ namespace GUI_QuanLy
         }
     }
     #endregion
+
     #region password binding assistant
     public static class PasswordBoxAssistant
     {

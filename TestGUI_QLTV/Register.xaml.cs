@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using BUS_QuanLy;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -22,7 +22,7 @@ namespace TestGUI_QLTV
     {
         bool[] array = new bool[3];
 
-        User_Control_BUS RegisterIn = new User_Control_BUS();
+
         public Window2()
         {
             InitializeComponent();
@@ -70,7 +70,7 @@ namespace TestGUI_QLTV
             this.Close();
         }
 
-        private void Register(object sender, RoutedEventArgs e)
+        private async void Register(object sender, RoutedEventArgs e)
         {
             if (Password.Password == ConfirmPassword.Password)
 
@@ -113,6 +113,16 @@ namespace TestGUI_QLTV
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
+                }
+                }
+                
+                
+            APIInit.InitClient();
+
+            if (await Account_data_Processor.Register(Username.Text, Password.Password, Email.Text))
+            {
+                MessageBox.Show("Dang ki thanh cong");
+                this.Back(sender,e);
             }
         }
 

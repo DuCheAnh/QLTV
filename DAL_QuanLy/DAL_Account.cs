@@ -13,6 +13,14 @@ namespace DAL_QuanLy
         public IFirebaseClient client;
         string sAccountTable_path = "LibAccounts/";
         #endregion
+
+        //constructor
+        public DAL_Account()
+        {
+            init_client();
+        }
+
+
         //Connect to the database, run this before all the funcs below
         public void init_client()
         {

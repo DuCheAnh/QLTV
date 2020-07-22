@@ -1,5 +1,13 @@
 ﻿using BUS_QuanLy;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Shapes;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -9,7 +17,7 @@ namespace TestGUI_QLTV
     public partial class ChangePassword : Window
     {
         bool MatchCheck = false;
-        User_Control_BUS BUS_method = new User_Control_BUS();
+
         public ChangePassword()
         {
             InitializeComponent();
@@ -24,8 +32,7 @@ namespace TestGUI_QLTV
         {
             if (MatchCheck)
             {
-                BUS_method.change_user_password(Data_Context.currentUID, New_password_Txb.Text);
-                Data_Context.currentAccount.password = New_password_Txb.Text;
+                Account_data_Processor.PUT_change_password(Data_Context.currentUID, New_password_Txb.Text);
             }
 
             Window.GetWindow(this).Owner.Focus();
@@ -33,15 +40,15 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).Close();
         }
 
-        private void Check(object sender, RoutedEventArgs e)
+        private async void Check(object sender, RoutedEventArgs e)
         {
-            if (BUS_method.Checking(Data_Context.currentUID, Old_password_txb.Text))
+            if (await Account_data_Processor.Check_current_password(Data_Context.currentUID, Old_password_txb.Text)) 
             {
                 MessageBox.Show("Match!");
                 MatchCheck = true;
             }
             else
-                MessageBox.Show("WrongPassword");
+                MessageBox.Show("WrongPassword, try again!");
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)

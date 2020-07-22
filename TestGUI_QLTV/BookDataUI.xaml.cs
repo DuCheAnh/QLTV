@@ -1,9 +1,17 @@
 ﻿using BUS_QuanLy;
 using DTO_QuanLy;
+﻿using System;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using DTO_QuanLy;
+using TestGUI_QLTV.Processor;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -12,23 +20,28 @@ namespace TestGUI_QLTV
     public partial class BookDataUI : UserControl
     {
 
+
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BookDataUI()
         {
 
             InitializeComponent();
             init_datasource("");
+/*            loadbooks();*/
+
         }
-        public void init_datasource(string sKey)
+
+        public async void init_datasource(string sKey)
         {
             List<Book_Data> book_list = new List<Book_Data>();
-            foreach (Book_Data data in admin_control.all_books_data())
+            foreach (Book_Data data in await Book_data_Processor.Get_all_books())
             {
                 if (data.name.Contains(sKey) || data.category.Contains(sKey) || data.author.Contains(sKey) || data.description.Contains(sKey))
                     book_list.Add(data);
             }
             BookDataListView.ItemsSource = book_list;
         }
+
         private void btnAddBook(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.AddBookGUI addBookGUI = new TestGUI_QLTV.AddBookGUI();
@@ -44,7 +57,8 @@ namespace TestGUI_QLTV
             {
                 foreach (Book_Data data in BookDataListView.SelectedItems)
                 {
-                    admin_control.delete_book(data.BID);
+                    Book_data_Processor.Delete_specific_Book(data.BID);
+                    /*admin_control.delete_book(data.BID);*/
                 }
                 TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
                 popup.PopUpTB.Text = "Deleted";
@@ -87,6 +101,15 @@ namespace TestGUI_QLTV
             {
                 init_datasource(ListViewSearchBar.Text);
             }
+
+
         }
+        private async void loadbooks()
+        {
+            APIInit.InitClient();
+            Data_Context.currentBooksdataUI = await Book_data_Processor.Get_all_books();
+            BookDataListView.ItemsSource = Data_Context.currentBooksdataUI;
+        }
+
     }
-}
+} 
