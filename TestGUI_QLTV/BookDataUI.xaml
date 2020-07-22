@@ -10,6 +10,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition Height="20"></RowDefinition>
         </Grid.RowDefinitions>
         <Canvas Grid.Row="0">
             <materialDesign:ColorZone
@@ -51,11 +52,14 @@
 
                 </Grid>
             </materialDesign:ColorZone>
-            <Button Content="ADD BOOK" Height="40" Width="200"
+            <Button Content="PRINT" Height="40" Width="150"
+                    Canvas.Top="20" Canvas.Left="1100" x:Name="btnPrint"
+                    FontWeight="Bold" FontSize="20" Click="btnPrint_Click"/>
+            <Button Content="ADD BOOK" Height="40" Width="150"
                     Canvas.Top="20" Canvas.Left="700"
                     FontWeight="Bold" FontSize="20" Click="btnAddBook"/>
-            <Button x:Name="EditBookButton" Content="EDIT" Height="40" Width="200"
-                    Canvas.Top="20" Canvas.Left="1000"
+            <Button x:Name="EditBookButton" Content="EDIT" Height="40" Width="150"
+                    Canvas.Top="20" Canvas.Left="900"
                     FontWeight="Bold" FontSize="20"
                     IsEnabled="False"
                     Click="EditBookButton_Click"/>
@@ -92,7 +96,7 @@
                             <GridViewColumn Width="100"
                             DisplayMemberBinding="{Binding left}"
                             Header="Còn lại" />
-                            <GridViewColumn Width="100"
+                            <GridViewColumn Width="80"
                             DisplayMemberBinding="{Binding amount}"
                             Header="Tổng" />
                         </GridView>
