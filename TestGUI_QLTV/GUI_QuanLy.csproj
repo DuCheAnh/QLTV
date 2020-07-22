@@ -69,6 +69,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AddLibCardGUI.xaml.cs">
+      <DependentUpon>AddLibCardGUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BorrowedHistoryUI.xaml.cs">
+      <DependentUpon>BorrowedHistoryUI.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditBookGUI.xaml.cs">
       <DependentUpon>EditBookGUI.xaml</DependentUpon>
     </Compile>
@@ -93,12 +99,22 @@
       <DependentUpon>ChangePassword.xaml</DependentUpon>
     </Compile>
     <Compile Include="Data_Context.cs" />
-    <Compile Include="LogReg.xaml.cs" />
+    <Compile Include="EditUserGUI.xaml.cs">
+      <DependentUpon>EditUserGUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LibCardDataUI.xaml.cs">
+      <DependentUpon>LibCardDataUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogReg.xaml.cs">
+      <DependentUpon>LogReg.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Processor\Book_data_Processor.cs" />
-    <Compile Include="Register.xaml.cs" />
+    <Compile Include="Register.xaml.cs">
+      <DependentUpon>Register.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Products.cs" />
     <Compile Include="UserDataUI.xaml.cs">
       <DependentUpon>UserDataUI.xaml</DependentUpon>
@@ -106,6 +122,14 @@
     <Compile Include="User_Control_Page.xaml.cs">
       <DependentUpon>User_Control_Page.xaml</DependentUpon>
     </Compile>
+    <Page Include="AddLibCardGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BorrowedHistoryUI.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="EditBookGUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -113,10 +137,6 @@
     <Page Include="AddBookGUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Admin_Control_Page.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="BookDataUI.xaml">
       <SubType>Designer</SubType>
@@ -138,6 +158,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditUserGUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LibCardDataUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LogReg.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -154,7 +182,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="Admin_Control_Page.xaml.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

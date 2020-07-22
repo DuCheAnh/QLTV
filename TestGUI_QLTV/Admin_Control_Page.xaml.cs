@@ -1,20 +1,8 @@
-﻿using System;
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
 using System.Collections.Generic;
-using System.Data;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BUS_QuanLy;
-using DTO_QuanLy;
 
 namespace GUI_QuanLy
 {
@@ -26,7 +14,7 @@ namespace GUI_QuanLy
         Admin_Control_BUS Admin_BUS = new Admin_Control_BUS();
         bool Is_Datagrid_Filled = false;
         List<Account_Data> Updated_Users = new List<Account_Data>();
-    
+
         public Admin_Control_Page()
         {
             InitializeComponent();
@@ -53,7 +41,7 @@ namespace GUI_QuanLy
 
             if (Is_Datagrid_Filled)
             {
-                Admin_BUS.Update_User_Info(Updated_Users);
+                //Admin_BUS.Update_User_Info(Updated_Users);
                 //MessageBox.Show(User.Update_User_Info(User_Info_Datagrid));
             }
             else

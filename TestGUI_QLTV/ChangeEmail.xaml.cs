@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BUS_QuanLy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,20 +20,29 @@ namespace TestGUI_QLTV
         public ChangeEmail()
         {
             InitializeComponent();
-            
+
         }
 
         private void Close(object sender, RoutedEventArgs e)
         {
-        
+
             Close();
         }
 
         private void Save(object sender, RoutedEventArgs e)
         {
+            BUS_method.change_user_Email(Data_Context.currentUID, New_email_txb.Text);
+            Window.GetWindow(this).Hide();
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
             Account_data_Processor.PUT_change_email(Data_Context.currentUID, New_email_txb.Text);
             this.Close();
+        }
 
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
         }
     }
 }

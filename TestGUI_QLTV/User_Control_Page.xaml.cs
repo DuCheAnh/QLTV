@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using BUS_QuanLy;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Net;
@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -42,6 +41,7 @@ namespace GUI_QuanLy
         }
 
         #region when form closed event
+
         private void changePassword_Closed(object sender, EventArgs e)
         {
             this.DataContext = Data_Context.currentAccount;
@@ -62,6 +62,7 @@ namespace GUI_QuanLy
 
         private void Change_Email(object sender, RoutedEventArgs e)
         {
+            Window.GetWindow(this).IsHitTestVisible = false;
             changePassword.Hide();
             changeEmail = new TestGUI_QLTV.ChangeEmail();
             changeEmail.Owner = Window.GetWindow(this);
@@ -70,7 +71,7 @@ namespace GUI_QuanLy
 
         private void Change_Password(object sender, RoutedEventArgs e)
         {
-
+            Window.GetWindow(this).IsHitTestVisible = false;
             changeEmail.Hide();
             changePassword = new TestGUI_QLTV.ChangePassword();
             changePassword.Owner = Window.GetWindow(this);
@@ -88,6 +89,11 @@ namespace GUI_QuanLy
         {
             TextBox textBox = sender as TextBox;
             textBox.IsReadOnly = true;
+        }
+
+        private void Change_profile_picture(object sender, RoutedEventArgs e)
+        {
+            //undone
         }
     }
 

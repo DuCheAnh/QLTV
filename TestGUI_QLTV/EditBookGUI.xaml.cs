@@ -1,14 +1,16 @@
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
+using Microsoft.Win32;
+using System;
+using System.IO;
+using System.Text.RegularExpressions;
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
@@ -24,13 +26,16 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class EditBookGUI : Window
     {
-        bool[] array=new bool[7];
+        bool[] array = new bool[7];
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Book_Data selected_book;
         string img = null;
+
         public EditBookGUI()
         {
             InitializeComponent();
         }
+
         public void set_value_from_item(Book_Data data)
         {
             this.selected_book = data;
@@ -40,7 +45,7 @@ namespace TestGUI_QLTV
             for (int i = 0; i < this.CategoryComboBox.Items.Count; i++)
             {
                 if (this.CategoryComboBox.Items[i].ToString().Contains(selected_book.category))
-                {       
+                {
                     this.CategoryComboBox.SelectedIndex = i;
                     array[3] = check_string_availability(CategoryComboBox.Text);
                     enable_add_button();
@@ -58,6 +63,7 @@ namespace TestGUI_QLTV
             bi.EndInit();
             PictureX.Source = bi;
         }
+
         private void btnClose(object sender, RoutedEventArgs e)
         {
             Window.GetWindow(this).Close();
@@ -79,6 +85,7 @@ namespace TestGUI_QLTV
             await Book_data_Processor.Delete_specific_Book(selected_book.BID);
             await Book_data_Processor.Add_new_book(book);
         }
+
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             edit_book();
@@ -117,14 +124,14 @@ namespace TestGUI_QLTV
 
         #region Enable and disable add button base on input
 
-       
+
         private void enable_add_button()
-        {         
-                bool bCheck = true;
-                for (int i = 0; i < 7;i++)
-                {
-                    if (array[i] == false) bCheck = false;
-                }
+        {
+            bool bCheck = true;
+            for (int i = 0; i < 7; i++)
+            {
+                if (array[i] == false) bCheck = false;
+            }
             if (bCheck == true) EditButton.IsEnabled = true;
             else EditButton.IsEnabled = false;
         }
@@ -134,7 +141,6 @@ namespace TestGUI_QLTV
                 return false;
             else return true;
         }
-
         private void NameTextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             array[0] = check_string_availability(NameTextBox.Text);

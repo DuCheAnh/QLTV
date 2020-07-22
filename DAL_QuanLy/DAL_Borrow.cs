@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Response;
-using FireSharp.Config;
+﻿using DTO_QuanLy;
 using FireSharp.Interfaces;
-using DTO_QuanLy;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
 
 namespace DAL_QuanLy
 {
@@ -45,14 +41,16 @@ namespace DAL_QuanLy
         /// <param name="sBID"></param>
         /// <param name="sUID"></param>
         /// <returns></returns>
-        public bool add_new_borrow(string sBID, string sUID,DateTime dtBorrowDate)
+        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate)
         {
             try
             {
                 //setups
-                var data = new Borrow_Data(sBID, sUID,dtBorrowDate);
+                var data = new Borrow_Data(sBID, sUID, dtBorrowDate);
                 DAL_Account account = new DAL_Account();
                 DAL_Book book = new DAL_Book();
+                book.init_client();
+                account.init_client();
                 data.borrow_date = DateTime.Now;
                 data.BrID = create_new_id();
                 //minus 1 book from the database
@@ -60,9 +58,7 @@ namespace DAL_QuanLy
                 bookdata.left -= 1;
                 book.update_book_data(bookdata);
                 //update user brid
-                Account_Data user = account.retrieve_user_data(sUID);
-                user.BrID.Add(data.BrID);
-                account.update_user_data(user);
+                account.add_brid(sUID, data.BrID);
                 //add new borrow info
                 SetResponse response = client.Set(sBorrowTable_path + data.BrID, data);
                 Borrow_Data result = response.ResultAs<Borrow_Data>();

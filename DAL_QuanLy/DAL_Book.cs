@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Config;
-using FireSharp.Response;
+﻿using DTO_QuanLy;
 using FireSharp.Interfaces;
-using System.Dynamic;
-using DTO_QuanLy;
+using FireSharp.Response;
+using System;
+using System.Collections.Generic;
 
 namespace DAL_QuanLy
 {
@@ -148,7 +143,7 @@ namespace DAL_QuanLy
         /// <returns></returns>
         public Book_Data retrieve_book_data(string sBID)
         {
-            var retrieve_response = client.Get(sBookTable_path + sBID);
+            FirebaseResponse retrieve_response = client.Get(sBookTable_path + sBID);
             Book_Data data = retrieve_response.ResultAs<Book_Data>();
             return data;
         }

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="TestGUI_QLTV.UserDataUI"
+﻿<UserControl x:Class="TestGUI_QLTV.BorrowedHistoryUI"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,6 @@
              xmlns:local="clr-namespace:TestGUI_QLTV"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              FontFamily="Comic Sans MS" IsHitTestVisibleChanged="UserControl_IsHitTestVisibleChanged">
-    
     <Grid  Height="630" Width="1280">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -47,62 +46,49 @@
                         BorderThickness="0"
                         Width="320"
                         VerticalAlignment="Center"
-                        HorizontalAlignment="Center"
-                        PreviewKeyDown="ListViewSearchBar_PreviewKeyDown"/>
-
+                        HorizontalAlignment="Center" PreviewKeyDown="ListViewSearchBar_PreviewKeyDown"
+                        />
                 </Grid>
             </materialDesign:ColorZone>
-            
-            <Button x:Name="EditUserbtn" Content="EDIT" Height="40" Width="200"
+            <Button x:Name="EditBookButton" Content="EDIT" Height="40" Width="200"
                     Canvas.Top="20" Canvas.Left="1000"
                     FontWeight="Bold" FontSize="20"
-                    IsEnabled="False"
-                    Click="EditUserButton_Click"/>
+                    IsEnabled="False"/>
         </Canvas>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ScrollViewer Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                <ListView x:Name="UserDataListView" SelectionChanged="UserDataListView_SelectionChanged" >
+            <ScrollViewer Grid.Column="1">
+                <ListView x:Name="BookDataListView" SelectionChanged="BookDataListView_SelectionChanged">
+
                     <ListView.View>
-                        <GridView>
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding UID}"
-                            Header="Mã Người Dùng" />
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding account}"
-                            Header="tài khoản"/>
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding password}"
-                            Header="mật khẩu"/>
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding name}"
-                            Header="Tên Người Dùng" />
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding DOB}"
-                            Header="Năm Sinh"/>
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding gender}"
-                            Header="Giới Tính" />
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding email}"
-                            Header="Email"/>
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding account_type}"
-                            Header="Loại Tài Khoản" />
-
-                            <GridViewColumn 
+                        <GridView >
+   
+                            <GridViewColumn Width="150"
                             DisplayMemberBinding="{Binding BrID}"
-                            Header="Đang Mượn" />
+                            Header="Mã mượn" />
+                            <GridViewColumn Width="200"
+                                            DisplayMemberBinding="{Binding UID}"
+                                            Header="Mã người mượn"/>
+                            <GridViewColumn Width="150"
+                            DisplayMemberBinding="{Binding BID}"
+                            Header="Mã sách " />
+                            <GridViewColumn Width="150"
+                            DisplayMemberBinding="{Binding borrow_date}"
+                            Header="Ngày mượn"/>
+                            <GridViewColumn Width="150"
+                                            DisplayMemberBinding="{Binding return_date}"
+                                            Header="Ngày trả"/>
+                            <GridViewColumn Width="100"
+                                            DisplayMemberBinding="{Binding overdue_by}"
+                                            Header="Hết hạn"/>
+                            <GridViewColumn Width="100"
+                                            DisplayMemberBinding="{Binding returned}"
+                                            Header="Đã trả"/>
+
                         </GridView>
                     </ListView.View>
                 </ListView>

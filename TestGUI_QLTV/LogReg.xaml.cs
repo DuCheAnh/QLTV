@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BUS_QuanLy;
+using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +17,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window1 : Window
     {
+        private User_Control_BUS Login = new User_Control_BUS();
         public Window1()
         {
             InitializeComponent();
@@ -57,7 +52,7 @@ namespace TestGUI_QLTV
         {
             Window2 Rg = new Window2();
             Rg.Show();
-            this.Hide();
+            this.Close();
         }
 
         private async void OpenMain(object sender, RoutedEventArgs e)
@@ -83,11 +78,11 @@ namespace TestGUI_QLTV
             {
                 MessageBox.Show("sai tai khoan hoac khong co");
             }
-            
+
         }
 
-       
+
     }
-  
-    
+
+
 }

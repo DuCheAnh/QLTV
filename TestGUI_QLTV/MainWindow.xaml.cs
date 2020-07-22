@@ -1,9 +1,6 @@
-﻿using GUI_QuanLy;
+﻿using BUS_QuanLy;
+using GUI_QuanLy;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -26,6 +23,8 @@ namespace TestGUI_QLTV
 
     public partial class MainWindow : Window
     {
+        User_Control_BUS Bus_method = new User_Control_BUS();
+        bool IsLogout = false;
 
         public MainWindow()
         {
@@ -44,6 +43,7 @@ namespace TestGUI_QLTV
             spMenu.Children.Add(mMenu);
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
+            
         }
 
         private void btnHome_Click(object sender, RoutedEventArgs e)
@@ -51,7 +51,7 @@ namespace TestGUI_QLTV
             spMain.Children.Clear();
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
-           
+
             spMenu.Children.Clear();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
@@ -79,15 +79,16 @@ namespace TestGUI_QLTV
         private void btnBell_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            BookDataUI bData = new BookDataUI();
-            spMain.Children.Add(bData);
+            //BookDataUI bData = new BookDataUI();
+            UserDataUI uData = new UserDataUI();
+            spMain.Children.Add(uData);
         }
 
         public void btnCart_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            BookPage bPage = new BookPage();
-            spMain.Children.Add(bPage);
+            LibCardDataUI libcardData = new LibCardDataUI();
+            spMain.Children.Add(libcardData);
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
@@ -99,12 +100,37 @@ namespace TestGUI_QLTV
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("Đăng xuất ?", "Question", MessageBoxButton.OKCancel);
+            switch (result)
+            {
+                case MessageBoxResult.OK:
+                User_Control_BUS control_BUS = new User_Control_BUS();
+            Data_Context.currentAccount = null;
+            Data_Context.currentUID = null;
+            Data_Context.currentHomePageBook = null;
+            IsLogout = true;
+            Window1 Login = new Window1();
+            Window.GetWindow(this).Close();
+            Login.Show();
+                    break;
+                case MessageBoxResult.Cancel:
+                    break;
 
         }
+        }
+        
+        
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        { 
-            Environment.Exit(Environment.ExitCode);
+        {
+            if (IsLogout == true)
+            {
+                IsLogout = false;
+            }
+            else
+            {
+                Environment.Exit(Environment.ExitCode);
+            }
         }
     }
 }

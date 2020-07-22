@@ -1,13 +1,8 @@
+using DTO_QuanLy;
+using FireSharp.Interfaces;
+using FireSharp.Response;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FireSharp.Response;
-using FireSharp.Config;
-using FireSharp.Interfaces;
-using DTO_QuanLy;
-using Microsoft.Win32;
 
 namespace DAL_QuanLy
 {
@@ -93,6 +88,12 @@ namespace DAL_QuanLy
             return false;
         }
 
+        public void add_brid(string sUID,string sBrID)
+        {
+            Account_Data data = retrieve_user_data(sUID);
+            data.BrID.Add(sBrID);
+            FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
+        }
 
         /// <summary>
         /// Update users email by uid and email

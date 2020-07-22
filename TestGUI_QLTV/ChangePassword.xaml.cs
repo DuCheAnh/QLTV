@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BUS_QuanLy;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -29,7 +25,7 @@ namespace TestGUI_QLTV
 
         private void Close(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void Save(object sender, RoutedEventArgs e)
@@ -38,7 +34,10 @@ namespace TestGUI_QLTV
             {
                 Account_data_Processor.PUT_change_password(Data_Context.currentUID, New_password_Txb.Text);
             }
-            Window.GetWindow(this).Hide();
+
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
+            Window.GetWindow(this).Close();
         }
 
         private async void Check(object sender, RoutedEventArgs e)
@@ -50,6 +49,14 @@ namespace TestGUI_QLTV
             }
             else
                 MessageBox.Show("WrongPassword, try again!");
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            Window.GetWindow(this).Owner.Focus();
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
+
+            this.Owner.DataContext = Data_Context.currentAccount;
         }
     }
 }

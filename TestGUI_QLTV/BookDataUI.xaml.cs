@@ -1,12 +1,9 @@
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -23,6 +20,8 @@ namespace TestGUI_QLTV
     public partial class BookDataUI : UserControl
     {
 
+
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BookDataUI()
         {
 
