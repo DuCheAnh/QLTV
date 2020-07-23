@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DTO_QuanLy;
-using BUS_QuanLy;
-using System.IO;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -24,7 +14,6 @@ namespace TestGUI_QLTV
     {
         string oldLCID;
         bool[] array = new bool[3];
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Account_Data selected_Account;
         string img = null;
 
@@ -43,17 +32,7 @@ namespace TestGUI_QLTV
             UserMail_txb.Text = selected_Account.email;
             PasswordBox.Text = selected_Account.password;
 
-            if (selected_Account.LCID != null)
-            {
-                oldLCID = selected_Account.LCID;
-                for (int i = 0; i < this.libcardCombobox.Items.Count; i++)
-                {
-                    if (!string.IsNullOrEmpty(((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString()) ? (((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString().Contains(selected_Account.LCID)) : false)
-                    {
-                        libcardCombobox.SelectedIndex = i;
-                    }
-                }
-            }
+
             #region set profile picture
             /*            byte[] binaryData = Convert.FromBase64String(selected_Account.profile_picture);
 
@@ -67,24 +46,37 @@ namespace TestGUI_QLTV
 
 
 
-        private void set_libcard_combobox()
+        private async void set_libcard_combobox()
         {
-            List<LibCard_Data> libcards = admin_control.Get_all_unused_libcard(selected_Account.UID);
+            List<LibCard_Data> libcards = await LibCard_data_Processor.Get_all_unused_libcard(selected_Account.UID);
 
             foreach (LibCard_Data libcard in libcards)
             {
-                ComboBoxItem item = new ComboBoxItem();
-                item.Content = libcard.name;
-                item.Tag = libcard.LCID;
+                ComboBoxItem item = new ComboBoxItem
+                {
+                    Content = libcard.name,
+                    Tag = libcard.LCID
+                };
                 libcardCombobox.Items.Add(item);
             }
 
+            if (selected_Account.LCID != null)
+            {
+                oldLCID = selected_Account.LCID;
+                for (int i = 0; i < this.libcardCombobox.Items.Count; i++)
+                {
+                    if (!string.IsNullOrEmpty(((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString()) ? (((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString().Contains(selected_Account.LCID)) : false)
+                    {
+                        libcardCombobox.SelectedIndex = i;
+                    }
+                }
+            }
         }
 
         #region delete click
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        private async void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-            admin_control.Delete_account(selected_Account.UID);
+            await Account_data_Processor.Delete_account(selected_Account.UID);
 
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
             popup.PopUpTB.Text = "Deleted";
@@ -96,7 +88,7 @@ namespace TestGUI_QLTV
         #endregion
 
         #region Edit click
-        private void Edit_user(object sender, RoutedEventArgs e)
+        private async void Edit_user(object sender, RoutedEventArgs e)
         {
             Account_Data data = selected_Account;
             data.account = UserAccount_txb.Text;
@@ -104,19 +96,22 @@ namespace TestGUI_QLTV
             data.email = UserMail_txb.Text;
             data.LCID = ((ComboBoxItem)libcardCombobox.SelectedItem).Tag.ToString();
 
-            admin_control.Update_User_data(data);
+            Account_data_Processor.Update_User_data(data);
+            /*admin_control.Update_User_data(data);*/
 
             if (!string.IsNullOrEmpty(oldLCID))
             {
-                LibCard_Data oldlibcard = admin_control.Retrive_libcard_data(oldLCID);
+                await LibCard_data_Processor.Update_LibCard_Usable(oldLCID, false);
+/*                LibCard_Data oldlibcard = admin_control.Retrive_libcard_data(oldLCID);
                 oldlibcard.used = false;
-                admin_control.update_libcard_useable(oldlibcard, oldlibcard.used);
+                admin_control.update_libcard_useable(oldlibcard, oldlibcard.used);*/
             }
             if (!string.IsNullOrEmpty(data.LCID))
             {
-                LibCard_Data newlibcard = admin_control.Retrive_libcard_data(data.LCID);
+                await LibCard_data_Processor.Update_LibCard_Usable(data.LCID, true);
+                /*LibCard_Data newlibcard = admin_control.Retrive_libcard_data(data.LCID);
                 newlibcard.used = true;
-                admin_control.update_libcard_useable(newlibcard, newlibcard.used);
+                admin_control.update_libcard_useable(newlibcard, newlibcard.used);*/
             }
 
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();

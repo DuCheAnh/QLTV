@@ -1,22 +1,11 @@
-﻿using BUS_QuanLy;
-using DTO_QuanLy;
+﻿using DTO_QuanLy;
 using Microsoft.Win32;
 using System;
 using System.IO;
 using System.Text.RegularExpressions;
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using System.Text.RegularExpressions;
-using DTO_QuanLy;
-using System.IO;
-using Microsoft.Win32;
 using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
@@ -27,7 +16,6 @@ namespace TestGUI_QLTV
     public partial class EditBookGUI : Window
     {
         bool[] array = new bool[7];
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         Book_Data selected_book;
         string img = null;
 

@@ -1,8 +1,9 @@
-﻿using BUS_QuanLy;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using TestGUI_QLTV.Processor;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -11,7 +12,6 @@ namespace TestGUI_QLTV
     public partial class BookPage : UserControl
     {
 
-        User_Control_BUS user_control = new User_Control_BUS();
         public BookPage()
         {
             InitializeComponent();
@@ -33,9 +33,10 @@ namespace TestGUI_QLTV
             if (Data_Context.selected_book.left < 1) this.BorrowButton.IsEnabled = false;
         }
 
-        private void BorrowButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        private async void BorrowButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            user_control.add_borrow_data(Data_Context.selected_book.BID, Data_Context.currentUID, DateTime.Now);
+            await Borrow_data_Processor.add_borrow_data(Data_Context.selected_book.BID, Data_Context.currentUID, DateTime.Now);
+            /*user_control.add_borrow_data(Data_Context.selected_book.BID, Data_Context.currentUID, DateTime.Now);*/
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
             popup.PopUpTB.Text = "added";
             popup.Owner = Window.GetWindow(this);

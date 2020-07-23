@@ -1,7 +1,7 @@
-﻿using BUS_QuanLy;
-using System;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+using TestGUI_QLTV.Processor;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -10,22 +10,19 @@ namespace TestGUI_QLTV
     public partial class AddLibCardGUI : Window
     {
         bool[] bCheck = new bool[5];
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public AddLibCardGUI()
         {
             InitializeComponent();
         }
 
-
-
-
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private async void AddButton_Click(object sender, RoutedEventArgs e)
         {
             bool bGender;
             if (GenderComboBox.SelectedItem.ToString().Contains("Male"))
                 bGender = true;
             else bGender = false;
-            if (admin_control.create_new_libcard(AccountTypeComboBox.Text, IDTextBox.Text, 
+
+            if (await LibCard_data_Processor.create_new_libcard(AccountTypeComboBox.Text, IDTextBox.Text, 
                                    NameTextBox.Text, DOBPicker.Text, bGender))
             {
                 PopUpWindow popup = new PopUpWindow();

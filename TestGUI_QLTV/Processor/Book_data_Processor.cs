@@ -52,6 +52,26 @@ namespace TestGUI_QLTV.Processor
 
             return books_retrived;
         }
+
+        public static async Task<Book_Data> retrieve_book_data(string BID)
+        {
+            string url = APIInit.URL + $"api/Book/{BID}";
+            Book_Data Book = new Book_Data();
+
+            try
+            {
+                using (HttpResponseMessage response = await APIInit.Apiclient.GetAsync(url))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        Book = response.Content.ReadAsAsync<Book_Data>().Result;
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return Book;
+        }
         #endregion
 
         #region Post method

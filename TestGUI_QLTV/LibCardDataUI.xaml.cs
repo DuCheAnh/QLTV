@@ -1,8 +1,9 @@
-﻿using BUS_QuanLy;
-using DTO_QuanLy;
+﻿using DTO_QuanLy;
 using System.Collections.Generic;
 using System.Windows.Controls;
 using System.Windows;
+using TestGUI_QLTV.Processor;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -10,17 +11,16 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class LibCardDataUI : UserControl
     {
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
 
         public LibCardDataUI()
         {
             InitializeComponent();
             init_datasource("");
         }
-        private void init_datasource(string key)
+        private async void init_datasource(string key)
         {
             List<LibCard_Data> libcard_list = new List<LibCard_Data>();
-            foreach (LibCard_Data data in admin_control.all_libcard_data())
+            foreach (LibCard_Data data in await LibCard_data_Processor.Get_all_libcard_data() /*admin_control.all_libcard_data()*/)
             {
                 if (data.name.Contains(key) || data.LCID.Contains(key) || data.identity_card.Contains(key))
                 {

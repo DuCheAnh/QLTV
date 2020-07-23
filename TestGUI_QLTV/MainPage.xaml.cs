@@ -1,6 +1,4 @@
-﻿using BUS_QuanLy;
-using DTO_QuanLy;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,6 +6,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -16,7 +15,6 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class MainPage : UserControl
     {
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public MainPage()
         {
             InitializeComponent();
@@ -34,7 +32,7 @@ namespace TestGUI_QLTV
 
         }
 
-        public void Book_Click(object sender, RoutedEventArgs e)
+        public async void Book_Click(object sender, RoutedEventArgs e)
         {
             //variable to store newly found book
             List<Label> label_list = new List<Label>();
@@ -46,7 +44,8 @@ namespace TestGUI_QLTV
             {
                 label_list.Add(lab);
             }
-            Data_Context.selected_book = admin_control.retrieve_book_data(label_list[0].Content.ToString());
+
+            Data_Context.selected_book = await Book_data_Processor.retrieve_book_data(label_list[0].Content.ToString());
             foreach (Image data in canv.Children.OfType<Image>())
             {
                 img = data;

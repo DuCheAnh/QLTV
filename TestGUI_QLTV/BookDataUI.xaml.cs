@@ -1,15 +1,8 @@
-﻿using BUS_QuanLy;
-using DTO_QuanLy;
-﻿using System;
+﻿using DTO_QuanLy;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DTO_QuanLy;
 using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
@@ -20,8 +13,6 @@ namespace TestGUI_QLTV
     public partial class BookDataUI : UserControl
     {
 
-
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BookDataUI()
         {
 
@@ -50,14 +41,14 @@ namespace TestGUI_QLTV
             addBookGUI.Show();
         }
 
-        private void EditBookButton_Click(object sender, RoutedEventArgs e)
+        private async void EditBookButton_Click(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.EditBookGUI editBookGUI = new TestGUI_QLTV.EditBookGUI();
             if (BookDataListView.SelectedItems.Count > 1)
             {
                 foreach (Book_Data data in BookDataListView.SelectedItems)
                 {
-                    Book_data_Processor.Delete_specific_Book(data.BID);
+                    await Book_data_Processor.Delete_specific_Book(data.BID);
                     /*admin_control.delete_book(data.BID);*/
                 }
                 TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();

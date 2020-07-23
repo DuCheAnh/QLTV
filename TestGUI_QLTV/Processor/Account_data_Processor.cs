@@ -31,6 +31,26 @@ namespace TestGUI_QLTV.Processor
             catch (Exception) { }
             return null;
         }
+
+        public static async Task<List<Account_Data>> all_accounts_data()
+        {
+            List<Account_Data> accounts = new List<Account_Data>();
+            try
+            {
+                string url = APIInit.URL + $"api/account";
+
+                using (HttpResponseMessage response = await APIInit.Apiclient.GetAsync(url))
+                {
+                    if (response.IsSuccessStatusCode)
+                    {
+                        accounts = response.Content.ReadAsAsync<List<Account_Data>>().Result;
+                    }
+                }
+            }
+            catch (Exception) { }
+
+            return accounts;
+        }
         #endregion
 
         #region Post method
@@ -56,6 +76,7 @@ namespace TestGUI_QLTV.Processor
 
             return Created;
         }
+
         #region authentication
         public static async Task<bool> Authentication(UserCred usercred)
         {
@@ -81,6 +102,7 @@ namespace TestGUI_QLTV.Processor
             catch (Exception) { }
             return false;
         }
+
         #endregion
         #endregion
 
@@ -101,6 +123,24 @@ namespace TestGUI_QLTV.Processor
             HttpResponseMessage response = await APIInit.Apiclient.PutAsJsonAsync(url, newPassword);
 
             Data_Context.currentAccount = await Account_data_Processor.GetAccount(Data_Context.currentUID);
+        }
+
+        public static async void Update_User_data(Account_Data data)
+        {
+            string url = APIInit.URL + $"api/account/{data.UID}";
+
+            HttpResponseMessage response = await APIInit.Apiclient.PutAsJsonAsync(url, data);
+
+        }
+        #endregion
+
+        #region Delete method 
+
+        public static async Task Delete_account(string uID)
+        {
+            string url = APIInit.URL + $"api/Account/{uID}";
+
+            HttpResponseMessage response = await APIInit.Apiclient.DeleteAsync(url);
         }
         #endregion
     }

@@ -1,18 +1,6 @@
-﻿using BUS_QuanLy;
-using GUI_QuanLy;
+﻿using GUI_QuanLy;
 using System;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BUS_QuanLy;
-using System.Windows.Automation.Peers;
-using DTO_QuanLy;
 using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
@@ -23,7 +11,6 @@ namespace TestGUI_QLTV
 
     public partial class MainWindow : Window
     {
-        User_Control_BUS Bus_method = new User_Control_BUS();
         bool IsLogout = false;
 
         public MainWindow()
@@ -79,9 +66,10 @@ namespace TestGUI_QLTV
         private void btnBell_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            //BookDataUI bData = new BookDataUI();
-            UserDataUI uData = new UserDataUI();
-            spMain.Children.Add(uData);
+            //BookDataUI Data = new BookDataUI();
+            BorrowedHistoryUI Data = new BorrowedHistoryUI();
+            //UserDataUI Data = new UserDataUI();
+            spMain.Children.Add(Data);
         }
 
         public void btnCart_Click(object sender, RoutedEventArgs e)
@@ -104,19 +92,20 @@ namespace TestGUI_QLTV
             switch (result)
             {
                 case MessageBoxResult.OK:
-                User_Control_BUS control_BUS = new User_Control_BUS();
-            Data_Context.currentAccount = null;
-            Data_Context.currentUID = null;
-            Data_Context.currentHomePageBook = null;
-            IsLogout = true;
-            Window1 Login = new Window1();
-            Window.GetWindow(this).Close();
-            Login.Show();
-                    break;
+                    Data_Context.currentAccount = null;
+                    Data_Context.currentUID = null;
+                    Data_Context.currentHomePageBook = null;
+                    Data_Context.Token = null;
+
+                    IsLogout = true;
+                    Window1 Login = new Window1();
+                    Window.GetWindow(this).Close();
+                    Login.Show();
+                            break;
                 case MessageBoxResult.Cancel:
                     break;
 
-        }
+            }
         }
         
         

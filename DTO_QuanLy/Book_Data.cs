@@ -1,4 +1,6 @@
-﻿namespace DTO_QuanLy
+﻿using System;
+
+namespace DTO_QuanLy
 {
     public class Book_Data
     {

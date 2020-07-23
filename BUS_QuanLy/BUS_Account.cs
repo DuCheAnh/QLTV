@@ -35,7 +35,7 @@ namespace BUS_QuanLy
         public static bool Update_account(Account_Data account)
         {
             DAL_method.init_client();
-            if (DAL_method.update_user_email(account.UID, account.email) || DAL_method.update_user_password(account.UID, account.password))
+            if (DAL_method.update_user_data(account))
                 return false;
             return true;
 

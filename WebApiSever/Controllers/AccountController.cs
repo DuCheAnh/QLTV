@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using WebApiSever.Interface;
-using WebApiSever.Model;
 using BUS_QuanLy;
 using DTO_QuanLy;
-using System.Net.Http;
 
 namespace WebApiSever.Controllers
 {
@@ -30,7 +24,7 @@ namespace WebApiSever.Controllers
 
         // GET: api/Account/5
         // get specific account /by id
-        [HttpGet("{id}", Name = "Get")]
+        [HttpGet("{id}", Name = "Get_account")]
         public IActionResult Get(string id)
         {
 
@@ -118,11 +112,12 @@ namespace WebApiSever.Controllers
         [HttpPut("{id}")]
         public IActionResult Put([FromBody] Account_Data account)
         {
+            if(BUS_Account.Update_account(account))
+            {
+                return Ok(BUS_Account.Update_account(account));
+            }
 
-            BUS_Account.Update_account(account);// need bool
-            return Ok(BUS_Account.Update_account(account));
-
-            // need return value
+            return NotFound();
         }
         #endregion
 

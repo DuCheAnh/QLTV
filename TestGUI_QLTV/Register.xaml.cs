@@ -75,7 +75,7 @@ namespace TestGUI_QLTV
             if (Password.Password == ConfirmPassword.Password)
 
             {
-                if (RegisterIn.RegisterIn(Username.Text, Password.Password, Email.Text))
+                if (true /*RegisterIn.RegisterIn(Username.Text, Password.Password, Email.Text)*/)
                 {
                     MessageBox.Show("Đăng kí thành công");
                     this.Back(sender, e);
@@ -108,13 +108,12 @@ namespace TestGUI_QLTV
 
         }
 
-        private void Password_PreviewKeyDown(object sender, KeyEventArgs e)
+        private async void Password_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Space)
             {
                 e.Handled = true;
-                }
-                }
+            }
                 
                 
             APIInit.InitClient();

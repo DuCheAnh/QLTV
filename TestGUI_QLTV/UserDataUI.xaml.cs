@@ -1,20 +1,9 @@
-﻿﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DTO_QuanLy;
-using BUS_QuanLy;
-﻿using System.Windows.Controls;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -23,7 +12,6 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class UserDataUI : UserControl
     {
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
 
         public UserDataUI()
         {
@@ -31,16 +19,16 @@ namespace TestGUI_QLTV
             init_datasource();
         }
 
-        public void init_datasource()
+        public async void init_datasource()
         { 
-            UserDataListView.ItemsSource = admin_control.all_accounts_data();
+            UserDataListView.ItemsSource = await Account_data_Processor.all_accounts_data();
         }
 
-        public void Search_for(string sKey)
+        public async void Search_for(string sKey)
         {
             List<Account_Data> account_list = new List<Account_Data>();
 
-            foreach(Account_Data data in admin_control.all_accounts_data())
+            foreach(Account_Data data in await Account_data_Processor.all_accounts_data())
             {
                 if ((!string.IsNullOrEmpty(data.email) ? data.email.Contains(sKey) : false)
                     || (!string.IsNullOrEmpty(data.account) ? data.account.Contains(sKey) : false)
@@ -71,7 +59,7 @@ namespace TestGUI_QLTV
             init_datasource();
         }
 
-        private void EditUserButton_Click(object sender, RoutedEventArgs e)
+        private async void EditUserButton_Click(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.EditUserGUI editUserGUI = new TestGUI_QLTV.EditUserGUI();
 
@@ -79,7 +67,8 @@ namespace TestGUI_QLTV
             {
                 foreach (Account_Data data in UserDataListView.SelectedItems) 
                 {
-                    admin_control.Delete_account(data.UID);
+                    await Account_data_Processor.Delete_account(data.UID);
+                    /*admin_control.Delete_account(data.UID)*/;
                 }
 
                 TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();

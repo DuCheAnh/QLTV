@@ -1,19 +1,9 @@
-﻿using BUS_QuanLy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DTO_QuanLy;
+using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
 {
@@ -23,21 +13,20 @@ namespace TestGUI_QLTV
     public partial class BorrowedHistoryUI : UserControl
     {
       
-        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BorrowedHistoryUI()
         {
 
             InitializeComponent();
             init_datasource("");
         }
-        public void init_datasource(string sKey)
+        public async void init_datasource(string sKey)
         {
             List<Borrow_Data> borrow_list = new List<Borrow_Data>();
-            foreach (Borrow_Data data in admin_control.retrieve_all_borrows())
+            foreach (Borrow_Data data in await Borrow_data_Processor.retrieve_all_borrows())
             {
                 if ((!string.IsNullOrEmpty(data.BrID) ? data.BrID.Contains(sKey) : false)
                     || (!string.IsNullOrEmpty(data.BrID) ? data.BID.Contains(sKey) : false)
-                    || (!string.IsNullOrEmpty(data.BrID) ?data.UID.Contains(sKey) : false))
+                    || (!string.IsNullOrEmpty(data.BrID) ? data.UID.Contains(sKey) : false))
                     borrow_list.Add(data);
                 else
                 { }

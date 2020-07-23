@@ -1,12 +1,8 @@
-﻿using BUS_QuanLy;
-using System;
+﻿using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using DTO_QuanLy;
-using MaterialDesignThemes.Wpf;
 using TestGUI_QLTV.Processor;
 
 namespace TestGUI_QLTV
@@ -17,7 +13,6 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window1 : Window
     {
-        private User_Control_BUS Login = new User_Control_BUS();
         public Window1()
         {
             InitializeComponent();
@@ -73,15 +68,14 @@ namespace TestGUI_QLTV
                 mn.Show();
                 this.Close();
             }
-
             else
             {
-                MessageBox.Show("sai tai khoan hoac khong co");
+                MessageBox.Show("sai tai khoan hoac chua dang ki");
             }
 
         }
 
-
+        
     }
 
 

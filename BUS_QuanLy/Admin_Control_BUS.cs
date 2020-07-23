@@ -106,7 +106,7 @@ namespace BUS_QuanLy
         public void update_libcard_useable(LibCard_Data libcard, bool value)
         {
             Libcard_DAL.init_client();
-            Libcard_DAL.update_libcard_usedable(libcard, value);
+            //Libcard_DAL.update_libcard_usedable(libcard, value);
         }
 
         public LibCard_Data Retrive_libcard_data(string LCID)

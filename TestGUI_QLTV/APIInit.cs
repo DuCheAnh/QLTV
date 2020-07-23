@@ -12,7 +12,7 @@ namespace TestGUI_QLTV
     {
         public static HttpClient Apiclient { get; set; }
 
-        public static string URL = "https://qqhasagi.herokuapp.com/";
+        public static string URL = "http://localhost:5000/" /*"https://qqhasagi.herokuapp.com/"*/;
 
         public static void InitClient()
         {
