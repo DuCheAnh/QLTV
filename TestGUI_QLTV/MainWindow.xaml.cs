@@ -105,5 +105,10 @@ namespace TestGUI_QLTV
                 Environment.Exit(Environment.ExitCode);
             }
         }
+
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }

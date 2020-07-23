@@ -8,14 +8,19 @@
         mc:Ignorable="d"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
-        Title="QLTV" Height="720" Width="1280" Closing="Window_Closing" WindowStyle="ThreeDBorderWindow" BorderBrush="Cyan">
+        Title="QLTV" Height="720" Width="1280" Closing="Window_Closing" WindowStyle="None" BorderBrush="#FF4F4F4F" BorderThickness="3">
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="20"></RowDefinition>
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <materialDesign:DrawerHost Grid.RowSpan="2" Panel.ZIndex="2">
+            <Button Width="19" Height="19" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,0,1" Click="btnClose_Click" Content="X" Background="#FF5B5B5B" BorderBrush="#FF5D5D5D"/>
+            <Grid Grid.Row="0" Background="#FF4F4F4F">
+                <!--<materialDesign:PackIcon Kind="Close" Margin="1258,0,0,0"/>-->
+            </Grid>
+            <materialDesign:DrawerHost Grid.Row="1" Grid.RowSpan="2" Panel.ZIndex="2">
                 <materialDesign:DrawerHost.LeftDrawerContent  >
                     <StackPanel x:Name="spMenu" Width="200" Background="LightGray">
                     </StackPanel>
@@ -28,7 +33,7 @@
 
 
 
-            <Grid x:Name="pControl" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Stretch" Panel.ZIndex="1">
+            <Grid x:Name="pControl" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Panel.ZIndex="1">
 
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="150" MinWidth="50"></ColumnDefinition>
@@ -95,7 +100,7 @@
                     <Button x:Name="btnBell" Click="btnBell_Click" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}">
                         <materialDesign:PackIcon Kind="Bell" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
-                            </materialDesign:PackIcon>
+                        </materialDesign:PackIcon>
                         <!--<StackPanel Width="250" >
                             <TextBlock Text="Test1 chua biet" FontSize="20"/>
                             <TextBlock Text="Test2 chua biet" FontSize="20" />
@@ -123,7 +128,7 @@
                     <materialDesign:PackIcon Kind="Logout" Width="45" Height="45" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
                 </Button>
             </Grid>
-            <Grid Grid.Row="1" Grid.Column="1" Background="LightGray">
+            <Grid Grid.Row="2" Grid.Column="1" Background="LightGray">
                 <StackPanel Name="spMain"  Background="White" Height="660">
 
                 </StackPanel>

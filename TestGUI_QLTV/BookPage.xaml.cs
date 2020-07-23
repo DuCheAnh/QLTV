@@ -10,10 +10,11 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class BookPage : UserControl
     {
-
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         User_Control_BUS user_control = new User_Control_BUS();
         public BookPage()
         {
+            Data_Context.BorrowedBook = admin_control.search_for_UID(Data_Context.currentUID);
             InitializeComponent();
             init_book_page();
         }
@@ -30,7 +31,7 @@ namespace TestGUI_QLTV
             this.AmountLeftTextBlock.Text = Data_Context.selected_book.left.ToString() + " in stocks";
             this.ReleaseYearTextBlock.Text = "xuất bản " + Data_Context.selected_book.release_year.ToString();
             this.DescriptionTextBlock.Text = Data_Context.selected_book.description;
-            if (Data_Context.selected_book.left < 1) this.BorrowButton.IsEnabled = false;
+            if (Data_Context.selected_book.left < 1 || Data_Context.BorrowedBook.Count > 9) this.BorrowButton.IsEnabled = false;
         }
 
         private void BorrowButton_Click(object sender, System.Windows.RoutedEventArgs e)

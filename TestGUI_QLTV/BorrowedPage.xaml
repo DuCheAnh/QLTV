@@ -12,20 +12,20 @@
         Background="Transparent"
         WindowStartupLocation="CenterOwner" Height="600" Width="1000" >
     <Grid Margin="20" Background="white" >
-        <StackPanel x:Name="bookList" Grid.Row="0">
-            <ItemsControl x:Name="IBook" ItemsSource="{Binding Products}">
+        <StackPanel x:Name="borrowedList" Grid.Row="0">
+            <ItemsControl x:Name="IBook" >
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="300" Height="165" Background="White" Margin="10 10">
-                            <Button Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Button_Click" >
-                                <Canvas Height="155" Width="260">
-                                    <StackPanel Height="155" Width="100" Canvas.Left="0" Canvas.Top="0">
-                                        <StackPanel.Background>
-                                            <ImageBrush ImageSource="{Binding bImage}"></ImageBrush>
-                                        </StackPanel.Background>
-                                    </StackPanel>
-                                    <Label Name="lbBookName" Content="{Binding bName}" Canvas.Left="95" FontSize="16"/>
-                                    <Label Content="{Binding bActor}" Canvas.Left="95" Canvas.Top="30"/>
+                        <StackPanel Width="280" Height="130" Background="White" Margin="15 5">
+                            <StackPanel.Resources>
+                                <local:Base64ImageConverter x:Key="Base64ImageConverter"/>
+                            </StackPanel.Resources>
+                            <Button x:Name="Book" Height="auto" Width="auto" Background="White" BorderBrush="Black" BorderThickness="1" Click="Borrowed_Click">
+                                <Canvas Height="120" Width="260">
+                                    <Image x:Name="Pic" Height="120" Width="90" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Source="{Binding cover_page, Converter={StaticResource Base64ImageConverter}}" />
+                                    <Label Content="{Binding BID}" Visibility="Hidden"/>
+                                    <Label Name="lbBookName" Content="{Binding name}" Canvas.Left="95" FontSize="16"/>
+                                    <Label Content="{Binding author}" Canvas.Left="95" Canvas.Top="30"/>
                                 </Canvas>
                             </Button>
                         </StackPanel>

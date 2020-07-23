@@ -14,5 +14,6 @@ namespace TestGUI_QLTV
         public static List<Book_Data> currentHomePageBook;
 
         public static Book_Data selected_book;
+        public static List<Borrow_Data> BorrowedBook;
     }
 }

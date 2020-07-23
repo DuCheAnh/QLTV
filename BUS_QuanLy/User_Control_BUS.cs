@@ -21,7 +21,11 @@ namespace BUS_QuanLy
             UserData.init_client();
             return UserData.retrieve_user_data(sUID);
         }
-
+        public Borrow_Data retrieve_borrow_data(string sBrID)
+        {
+            borrowdata.init_client();
+            return borrowdata.retrieve_borrow_data(sBrID);
+        }
         public bool add_borrow_data(string sBID, string sUID, DateTime dBorrowDate)
         {
             borrowdata.init_client();
@@ -36,10 +40,11 @@ namespace BUS_QuanLy
         {
             return UserData.retrieve_user_data(sUID).password;
         }
-
-
-
-
+        public Book_Data retrieve_book_data(string sBID)
+        {
+            bookdata.init_client();
+            return bookdata.retrieve_book_data(sBID);
+        }
         public List<Book_Data> Get_all_Books()
         {
             bookdata.init_client();

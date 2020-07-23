@@ -69,6 +69,9 @@
     <Compile Include="BorrowedHistoryUI.xaml.cs">
       <DependentUpon>BorrowedHistoryUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="BrwBookPage.xaml.cs">
+      <DependentUpon>BrwBookPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="EditBookGUI.xaml.cs">
       <DependentUpon>EditBookGUI.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
     <Page Include="BorrowedHistoryUI.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="BrwBookPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EditBookGUI.xaml">
       <Generator>MSBuild:Compile</Generator>
