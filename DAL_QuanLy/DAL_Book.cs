@@ -28,7 +28,6 @@ namespace DAL_QuanLy
             {
                 if (value[i].ToString() == " ")
                 {
-                    Console.WriteLine("succeeded");
                     result += value[i + 1].ToString();
                 }
             }

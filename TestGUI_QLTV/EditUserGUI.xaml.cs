@@ -43,17 +43,7 @@ namespace TestGUI_QLTV
             UserMail_txb.Text = selected_Account.email;
             PasswordBox.Text = selected_Account.password;
 
-            if (selected_Account.LCID != null)
-            {
-                oldLCID = selected_Account.LCID;
-                for (int i = 0; i < this.libcardCombobox.Items.Count; i++)
-                {
-                    if (!string.IsNullOrEmpty(((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString()) ? (((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString().Contains(selected_Account.LCID)) : false)
-                    {
-                        libcardCombobox.SelectedIndex = i;
-                    }
-                }
-            }
+
             #region set profile picture
             /*            byte[] binaryData = Convert.FromBase64String(selected_Account.profile_picture);
 
@@ -77,6 +67,18 @@ namespace TestGUI_QLTV
                 item.Content = libcard.name;
                 item.Tag = libcard.LCID;
                 libcardCombobox.Items.Add(item);
+            }
+
+            if (selected_Account.LCID != null)
+            {
+                oldLCID = selected_Account.LCID;
+                for (int i = 0; i < this.libcardCombobox.Items.Count; i++)
+                {
+                    if (!string.IsNullOrEmpty(((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString()) ? (((ComboBoxItem)libcardCombobox.Items[i]).Tag.ToString().Contains(selected_Account.LCID)) : false)
+                    {
+                        libcardCombobox.SelectedIndex = i;
+                    }
+                }
             }
 
         }

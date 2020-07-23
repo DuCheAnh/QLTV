@@ -46,14 +46,15 @@ namespace TestGUI_QLTV
             }
         }
 
-        private void AddButton_Click(object sender, RoutedEventArgs e)
+        private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            admin_control.delete_libcard(this.selected_libcard.LCID);
             bool bGender;
             if (GenderComboBox.SelectedItem.ToString().Contains("Male"))
                 bGender = true;
             else bGender = false;
             if (admin_control.create_new_libcard(AccountTypeComboBox.Text, IDTextBox.Text,
-                                   NameTextBox.Text, DOBPicker.Text, bGender))
+                                   NameTextBox.Text, DOBTextBox.Text, bGender))
             {
                 PopUpWindow popup = new PopUpWindow();
                 Window.GetWindow(this).IsHitTestVisible = false;
@@ -63,11 +64,6 @@ namespace TestGUI_QLTV
             }
         }
 
-        private void DOBPicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DatePicker dp = sender as DatePicker;
-            DOBTextBox.Text = dp.Text;
-        }
 
 
         #region Closing action
@@ -92,9 +88,15 @@ namespace TestGUI_QLTV
                 if (bCheck[i] == false)
                     all_filled = false;
             }
-            if (all_filled) AddButton.IsEnabled = true;
-            else AddButton.IsEnabled = false;
+            if (all_filled) EditButton.IsEnabled = true;
+            else EditButton.IsEnabled = false;
         }
+        private void DOBPicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DatePicker dp = sender as DatePicker;
+            DOBTextBox.Text = dp.Text;
+        }
+
         private void IDTextBox_TextChanged(object sender, RoutedEventArgs e)
         {
             if (IDTextBox.Text.Trim() == "")

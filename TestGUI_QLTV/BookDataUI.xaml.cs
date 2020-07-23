@@ -77,7 +77,6 @@ namespace TestGUI_QLTV
         private void UserControl_IsHitTestVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             init_datasource("");
-
         }
 
 

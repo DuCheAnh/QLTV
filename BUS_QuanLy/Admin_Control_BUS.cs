@@ -25,6 +25,12 @@ namespace BUS_QuanLy
             // Info_grid.ItemsSource = Account_DAL.retrieve_all_user_data();
         }
 
+        public bool delete_libcard(string sLCID)
+        {
+            Libcard_DAL.init_client();
+            return Libcard_DAL.delete_libcard(sLCID);
+        }
+
         public void Delete_account(string uID)
         {
             Account_DAL.init_client();
@@ -65,12 +71,13 @@ namespace BUS_QuanLy
             List<LibCard_Data> libcards = new List<LibCard_Data>();
 
             libcards = Libcard_DAL.retrieve_all_libcard();
+            Account_Data user = Account_DAL.retrieve_user_data(UID);
 
             List<LibCard_Data> data = new List<LibCard_Data>();
 
             foreach (LibCard_Data libcard in libcards)
             {
-                if (libcard.LCID == Account_DAL.retrieve_user_data(UID).LCID)
+                if (libcard.LCID == user.LCID)
                     data.Add(libcard);
             }
 

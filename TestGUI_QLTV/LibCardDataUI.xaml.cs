@@ -61,5 +61,10 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).IsHitTestVisible = false;
             edit_libcard_gui.Show();
         }
+
+        private void UserControl_IsHitTestVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            init_datasource("");
+        }
     }
 }

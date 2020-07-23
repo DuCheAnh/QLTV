@@ -104,11 +104,11 @@
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>
             </ComboBox>
-            <Button x:Name="AddButton" Width="120" Height="50"
+            <Button x:Name="EditButton" Width="120" Height="50"
                     Canvas.Top="340" Canvas.Left="230"
-                    Content="ADD" FontWeight="Bold" FontSize="15"
+                    Content="EDIT" FontWeight="Bold" FontSize="15"
                     IsEnabled="False"
-                    Click="AddButton_Click">
+                    Click="EditButton_Click">
             </Button>
         </Canvas>
         <Grid.Effect>
