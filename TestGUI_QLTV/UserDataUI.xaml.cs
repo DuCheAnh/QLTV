@@ -107,5 +107,6 @@ namespace TestGUI_QLTV
                     Search_for(ListViewSearchBar.Text);
             }
         }
+
     }
 }

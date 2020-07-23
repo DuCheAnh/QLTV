@@ -63,7 +63,7 @@
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="100"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView x:Name="UserDataListView" SelectionChanged="UserDataListView_SelectionChanged" >
@@ -77,10 +77,6 @@
                             <GridViewColumn 
                             DisplayMemberBinding="{Binding account}"
                             Header="tài khoản"/>
-
-                            <GridViewColumn 
-                            DisplayMemberBinding="{Binding password}"
-                            Header="mật khẩu"/>
 
                             <GridViewColumn 
                             DisplayMemberBinding="{Binding name}"

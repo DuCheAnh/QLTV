@@ -13,6 +13,19 @@ namespace TestGUI_QLTV
     {
         User_Control_BUS Bus_method = new User_Control_BUS();
         bool IsLogout = false;
+        public bool IsAdmin = true;
+        void AdminLogin()
+        {
+            bCart.Visibility = Visibility.Hidden;
+            btnManage.Visibility = Visibility.Visible;
+            pbtnManage.Visibility = Visibility.Visible;
+        }
+        void UserLogin()
+        {
+            bCart.Visibility = Visibility.Visible;
+            btnManage.Visibility = Visibility.Hidden;
+            pbtnManage.Visibility = Visibility.Hidden;
+        }
         public MainWindow()
         {
             InitializeComponent();
@@ -21,7 +34,11 @@ namespace TestGUI_QLTV
             spMenu.Children.Add(mMenu);
             MainPage mPage = new MainPage();
             spMain.Children.Add(mPage);
-            
+
+            if (IsAdmin == false)
+                UserLogin();
+            else AdminLogin();
+
         }
 
 
@@ -109,6 +126,34 @@ namespace TestGUI_QLTV
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void btnManage_Click(object sender, RoutedEventArgs e)
+        {
+            spMain.Children.Clear();
+            BookDataUI bData = new BookDataUI();
+            spMain.Children.Add(bData);
+        }
+
+        private void btnUserData_Click(object sender, RoutedEventArgs e)
+        {
+            spMain.Children.Clear();
+            UserDataUI bData = new UserDataUI();
+            spMain.Children.Add(bData);
+        }
+
+        private void btnBookData_Click(object sender, RoutedEventArgs e)
+        {
+            spMain.Children.Clear();
+            BookDataUI bData = new BookDataUI();
+            spMain.Children.Add(bData);
+        }
+
+        private void btnBorrowData_Click(object sender, RoutedEventArgs e)
+        {
+            spMain.Children.Clear();
+            BorrowedHistoryUI bData = new BorrowedHistoryUI();
+            spMain.Children.Add(bData);
         }
     }
 }

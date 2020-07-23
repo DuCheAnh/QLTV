@@ -66,7 +66,7 @@
 
                     <ListView.View>
                         <GridView >
-   
+
                             <GridViewColumn Width="150"
                             DisplayMemberBinding="{Binding BrID}"
                             Header="Mã mượn" />

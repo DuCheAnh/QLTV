@@ -72,7 +72,7 @@
             </Grid.ColumnDefinitions>
             <ScrollViewer Grid.Column="1">
                 <ListView x:Name="BookDataListView" SelectionChanged="BookDataListView_SelectionChanged">
-                    
+
                     <ListView.View>
                         <GridView >
                             <GridViewColumn Width="100"

@@ -96,10 +96,10 @@
 
                     </Grid>
                 </materialDesign:ColorZone>
-                <materialDesign:Badged  Badge="6" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3">
+                <materialDesign:Badged  Badge="6" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Width="35" Height="35">
                     <Button x:Name="btnBell" Click="btnBell_Click" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}">
-                        <materialDesign:PackIcon Kind="Bell" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <materialDesign:PackIcon Kind="Bell" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
                         </materialDesign:PackIcon>
                         <!--<StackPanel Width="250" >
                             <TextBlock Text="Test1 chua biet" FontSize="20"/>
@@ -108,13 +108,19 @@
                         </StackPanel>-->
                     </Button>
                 </materialDesign:Badged>
-                <materialDesign:Badged Badge="6"  HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4">
+                <materialDesign:Badged Badge="6"  x:Name="bCart" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Width="35" Height="35">
                     <Button x:Name="btnCart" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}"
                     Click="btnCart_Click">
-                        <materialDesign:PackIcon Kind="Cart" Width="40" Height="40" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <materialDesign:PackIcon Kind="Cart" Width="35" Height="35" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                     </Button>
                 </materialDesign:Badged>
+                <Button x:Name="btnManage" Width="45" Height="45" Grid.Column="4" VerticalAlignment="Center" HorizontalContentAlignment="Center"
+                        Style="{DynamicResource MaterialDesignToolForegroundButton}"
+                        Click="btnManage_Click"
+                        Panel.ZIndex="0">
+                    <materialDesign:PackIcon Kind="FolderMultiple" Width="37" Height="37" VerticalAlignment="Center" HorizontalAlignment="Center" />
+                </Button>
                 <Button x:Name="btnUser" Grid.Column="5" Width="50" Height="50" VerticalAlignment="Center" HorizontalAlignment="Center" 
                             Style="{DynamicResource MaterialDesignToolForegroundButton}"
                             Click="btnUser_Click"
@@ -130,9 +136,26 @@
             </Grid>
             <Grid Grid.Row="2" Grid.Column="1" Background="LightGray">
                 <StackPanel Name="spMain"  Background="White" Height="660">
-
                 </StackPanel>
             </Grid>
         </Grid>
+        <materialDesign:PopupBox HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"
+                                 Canvas.Bottom="20" Canvas.Left="10"
+                                 Margin="25" Grid.Row="1"
+                                 PlacementMode="TopAndAlignCentres"
+                                 x:Name="pbtnManage">
+            <StackPanel>
+                <Button  x:Name="btnUserData" Click="btnUserData_Click">
+                    <materialDesign:PackIcon Kind="AccountCircle" Height="20" Width="20" />
+                </Button>
+                <Button  x:Name="btnBookData" Click="btnBookData_Click">
+                    <materialDesign:PackIcon Kind="Book"/>
+                </Button>
+                <Button Name="btnBorrowData" Click="btnBorrowData_Click">
+                    <materialDesign:PackIcon Kind="History" />
+                </Button>
+            </StackPanel>
+        </materialDesign:PopupBox>
     </Grid>
 </Window>
