@@ -126,7 +126,7 @@
                                 BorderBrush="Black" 
                                 Height="40" 
                                 Width="130" 
-                                Canvas.Left="80" 
+                                Canvas.Left="0" 
                                 Canvas.Top="-50" 
                                 FontSize="25"
                                 Click="OpenForm"

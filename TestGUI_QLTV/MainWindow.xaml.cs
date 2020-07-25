@@ -13,7 +13,7 @@ namespace TestGUI_QLTV
     {
         User_Control_BUS Bus_method = new User_Control_BUS();
         bool IsLogout = false;
-        public bool IsAdmin = true;
+        public bool IsAdmin = false;
         void AdminLogin()
         {
             bCart.Visibility = Visibility.Hidden;
@@ -77,8 +77,8 @@ namespace TestGUI_QLTV
         public void btnCart_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            LibCardDataUI libcardData = new LibCardDataUI();
-            spMain.Children.Add(libcardData);
+            Cart cart = new Cart();
+            spMain.Children.Add(cart);
         }
 
         private void btnUser_Click(object sender, RoutedEventArgs e)
@@ -154,6 +154,11 @@ namespace TestGUI_QLTV
             spMain.Children.Clear();
             BorrowedHistoryUI bData = new BorrowedHistoryUI();
             spMain.Children.Add(bData);
+        }
+
+        private void Grid_Movewindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DragMove();
         }
     }
 }

@@ -16,11 +16,10 @@
                 <RowDefinition Height="60"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            <Button Width="19" Height="19" Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,0,1" Click="btnClose_Click" Content="X" Background="#FF5B5B5B" BorderBrush="#FF5D5D5D"/>
-            <Grid Grid.Row="0" Background="#FF4F4F4F">
-                <!--<materialDesign:PackIcon Kind="Close" Margin="1258,0,0,0"/>-->
+            <Grid Grid.Row="0" Background="#FF4F4F4F" MouseLeftButtonDown="Grid_Movewindow">
+                <materialDesign:PackIcon Kind="Close" Margin="1256,1,0,0"/>
             </Grid>
-            <materialDesign:DrawerHost Grid.Row="1" Grid.RowSpan="2" Panel.ZIndex="2">
+            <materialDesign:DrawerHost Grid.Row="1" Grid.RowSpan="2" Panel.ZIndex="2" FontFamily="Sitka Subheading">
                 <materialDesign:DrawerHost.LeftDrawerContent  >
                     <StackPanel x:Name="spMenu" Width="200" Background="LightGray">
                     </StackPanel>
@@ -138,6 +137,7 @@
                 <StackPanel Name="spMain"  Background="White" Height="660">
                 </StackPanel>
             </Grid>
+            <Button Width="18" Height="18" Grid.Row="0" Click="btnClose_Click" Background="Transparent" Foreground="Aqua" BorderBrush="#FF5D5D5D" Margin="1255,0,0,1"/>
         </Grid>
         <materialDesign:PopupBox HorizontalAlignment="Right" VerticalAlignment="Bottom"
                 Style="{StaticResource MaterialDesignMultiFloatingActionAccentPopupBox}"

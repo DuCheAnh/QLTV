@@ -13,6 +13,7 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
+   
         string sUID = Data_Context.currentUID;
         User_Control_BUS User_BUS = new User_Control_BUS();
         TestGUI_QLTV.ChangePassword changePassword = new TestGUI_QLTV.ChangePassword();
@@ -44,7 +45,7 @@ namespace GUI_QuanLy
         #endregion
 
         private void Borrowed_Book(object sender, RoutedEventArgs e)
-        {
+        { 
             TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
             borrowedPage.Owner = Window.GetWindow(this);
             borrowedPage.Show();
