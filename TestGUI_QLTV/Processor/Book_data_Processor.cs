@@ -15,6 +15,7 @@ namespace TestGUI_QLTV.Processor
         // get method
         public static async Task<List<Book_Data>> Get_all_books()
         {
+            APIInit.InitClient();
             string url = APIInit.URL + "api/Book";
             List<Book_Data> books_retrived = new List<Book_Data>();
             try
@@ -55,6 +56,7 @@ namespace TestGUI_QLTV.Processor
 
         public static async Task<Book_Data> retrieve_book_data(string BID)
         {
+            APIInit.InitClient();
             string url = APIInit.URL + $"api/Book/{BID}";
             Book_Data Book = new Book_Data();
 

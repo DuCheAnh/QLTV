@@ -103,8 +103,7 @@ namespace WebApiSever.Controllers
         // Bulk Update on all account
         [HttpPut]
         public void Put([FromBody] IEnumerable<Account_Data> accounts)
-        {
-            // need update all account data one by one account_DAL
+        { 
         }
 
         // PUT: api/Account/5

@@ -18,10 +18,14 @@ namespace TestGUI_QLTV
         {
             Apiclient = new HttpClient();
             Apiclient.BaseAddress = new Uri("http://localhost:5000/");//44331
-            Apiclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Data_Context.Token);
-
             Apiclient.DefaultRequestHeaders.Accept.Clear();
+            //Apiclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Data_Context.Token);
+            //Apiclient.DefaultRequestHeaders.TryAddWithoutValidation("Authorization", $"{Data_Context.Token}");
+/*            if (Data_Context.Token != null) 
+            Apiclient.DefaultRequestHeaders.Add("Authorization", "Bearer " + Data_Context.Token);*/
             Apiclient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            Apiclient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", Data_Context.Token);
+            
         }
 
     }

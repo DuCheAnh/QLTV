@@ -2,9 +2,11 @@
 using Microsoft.AspNetCore.Mvc;
 using DTO_QuanLy;
 using BUS_QuanLy;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebApiSever.Controllers
 {
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class BorrowHistoryController : ControllerBase
