@@ -34,7 +34,7 @@ namespace TestGUI_QLTV
         {
             try
             {
-                Close();
+                Environment.Exit(Environment.ExitCode);
             }
             catch (Exception mes)
             {

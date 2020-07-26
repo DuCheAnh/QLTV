@@ -2,6 +2,7 @@
 using DTO_QuanLy;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace BUS_QuanLy
@@ -12,6 +13,7 @@ namespace BUS_QuanLy
         DAL_Book bookdata = new DAL_Book();
         List<Account_Data> possible_account = new List<Account_Data>();
         DAL_Borrow borrowdata = new DAL_Borrow();
+        DAL_Libcard libcard_data = new DAL_Libcard();
         public User_Control_BUS()
         {
         }
@@ -30,6 +32,11 @@ namespace BUS_QuanLy
         {
             borrowdata.init_client();
             return borrowdata.add_new_borrow(sBID, sUID, dBorrowDate);
+        }
+        public List<string> get_user_BrID(Account_Data user)
+        {
+            UserData.init_client();
+            return UserData.get_user_BrID(user);
         }
         /// <summary>
         /// Get users password by UID (UID must exist)
@@ -79,7 +86,20 @@ namespace BUS_QuanLy
             }
             return searchingBooks;
         }
-
+        public LibCard_Data Search_for_LCID(string sLCID)
+        {
+            libcard_data.init_client();
+            foreach (LibCard_Data data in libcard_data.retrieve_all_libcard())
+            {
+                if (sLCID == data.LCID) return data;
+            }
+            return null;
+        }
+        public bool set_libcard_to_user(string sLCID, string sUID)
+        {
+            UserData.init_client();
+            return UserData.set_libcard_to_user(sUID, sLCID);
+        }
         /// <summary>
         /// Get account password for signing in by user account
         /// <list type="bullet">

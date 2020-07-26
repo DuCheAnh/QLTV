@@ -16,14 +16,12 @@ namespace DTO_QuanLy
         public string identity_card { get; set; }
         public string account_type { get; set; }
         public string LCID { get; set; }
-        public List<string> BrID = new List<string>();
+        public string BrID { get; set; }
         public Account_Data(string sAccount, string sPassword, string sEmail)
         {
             this.account = sAccount;
             this.password = sPassword;
             this.email = sEmail;
-            this.BrID = new List<string>();
-
         }
         public Account_Data(string sName, string dtDOB, bool bGender, string sIdentifyCard,
                             string sAccountType)

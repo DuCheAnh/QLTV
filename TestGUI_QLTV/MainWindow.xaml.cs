@@ -13,7 +13,7 @@ namespace TestGUI_QLTV
     {
         User_Control_BUS Bus_method = new User_Control_BUS();
         bool IsLogout = false;
-        public bool IsAdmin = false;
+        public bool IsAdmin = true;
         void AdminLogin()
         {
             bCart.Visibility = Visibility.Hidden;

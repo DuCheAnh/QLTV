@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:GUI_QuanLy"
              mc:Ignorable="d" 
              xmlns:ff="clr-namespace:GUI_QuanLy"
-             d:DesignHeight="660" d:DesignWidth="1280">
+             d:DesignHeight="660" d:DesignWidth="1280"
+              FontFamily="Comic Sans MS">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -15,7 +16,7 @@
         
         <Button Name ="Profile_picture" Grid.Column="0"
                 Background="Black"
-                Margin="50,50,50,0" Height="{Binding ElementName=Profile_picture, Path=ActualWidth}" VerticalAlignment="Top">
+                Margin="50,30,50,0" Height="{Binding ElementName=Profile_picture, Path=ActualWidth}" VerticalAlignment="Top">
             <Button.Template>
                 <ControlTemplate>
                     <Image Source="a.png"/>
@@ -103,15 +104,19 @@
             </StackPanel>
         </StackPanel>
 
-        <Button Margin="37,351,23,0" Height="40" Click="Borrowed_Book" VerticalAlignment="Top">
+        <Button Margin="50 280 50 0" Height="40" Click="Change_profile_picture" VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Change Avatar"/></TextBlock>
+        </Button>
+        <Button Margin="50 350 50 0" Height="40" Click="Borrowed_Book" VerticalAlignment="Top">
             <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS">
-                BORROWED BOOK
+                Borrowed Books
             </TextBlock>
         </Button>
-
-        <Button Margin="37,274,23,0" Height="40" Click="Change_profile_picture" VerticalAlignment="Top">
-            <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Change Profile Picture"/></TextBlock>
+        <Button x:Name="RedeemButton" Margin="50 420 50 0" Height="40" Click="RedeemButton_Click"  VerticalAlignment="Top">
+            <TextBlock TextAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Comic Sans MS"><Run Text="Redeem Libcard"/></TextBlock>
         </Button>
+
+        
 
     </Grid>
 </UserControl>

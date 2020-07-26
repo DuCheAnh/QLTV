@@ -3,6 +3,8 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Xml.Schema;
 
 namespace DAL_QuanLy
 {
@@ -82,11 +84,27 @@ namespace DAL_QuanLy
 
         public void add_brid(string sUID,string sBrID)
         {
+            char seperator ='-';
             Account_Data data = retrieve_user_data(sUID);
-            data.BrID.Add(sBrID);
+            data.BrID += seperator + sBrID;
             FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
         }
-
+        public List<string> get_user_BrID(Account_Data data)
+        {
+            string sBrID=null;
+            List<string> list = new List<string>();
+            if(data.BrID.Trim()!="")
+            for (int i=1;i<data.BrID.Length;i++)
+            {
+                if (data.BrID[i] == '-')
+                {
+                    list.Add(sBrID);
+                    sBrID = null;
+                }
+                else sBrID += data.BrID[i];        
+            }
+            return list;
+        }
         /// <summary>
         /// Update users email by uid and email
         /// <list type="bullet">

@@ -18,15 +18,15 @@ namespace TestGUI_QLTV
     {
         List<Book_Data> brwedbook = new List<Book_Data>();
         User_Control_BUS User_Control = new User_Control_BUS();
+
         public BorrowedPage()
         {
             InitializeComponent();
-            List<string> BrID_List= Data_Context.currentAccount.BrID;
+            List<string> BrID_List= User_Control.get_user_BrID(Data_Context.currentAccount);
             foreach(string Data in BrID_List)
             {
                 Borrow_Data Brwdata = User_Control.retrieve_borrow_data(Data);
                 brwedbook.Add(User_Control.retrieve_book_data(Brwdata.BID));
-                Console.WriteLine(Brwdata.BID);
             }
             if (brwedbook.Count > 0)
                 IBook.ItemsSource = brwedbook;

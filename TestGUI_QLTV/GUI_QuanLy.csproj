@@ -114,6 +114,9 @@
     <Compile Include="PopUpWindow.xaml.cs">
       <DependentUpon>PopUpWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RedeemLibCardWindow.xaml.cs">
+      <DependentUpon>RedeemLibCardWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Register.xaml.cs">
       <DependentUpon>Register.xaml</DependentUpon>
     </Compile>
@@ -211,6 +214,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PopUpWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RedeemLibCardWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

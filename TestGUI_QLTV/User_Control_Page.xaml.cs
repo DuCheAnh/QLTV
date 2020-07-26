@@ -77,6 +77,8 @@ namespace GUI_QuanLy
             textBox.Select(50, 50);
         }
 
+
+
         private void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             TextBox textBox = sender as TextBox;
@@ -86,6 +88,14 @@ namespace GUI_QuanLy
         private void Change_profile_picture(object sender, RoutedEventArgs e)
         {
             //undone
+        }
+
+        private void RedeemButton_Click(object sender, RoutedEventArgs e)
+        {
+            RedeemLibCardWindow redeemwindow = new RedeemLibCardWindow();
+            redeemwindow.Owner=Window.GetWindow(this);
+            Window.GetWindow(this).IsHitTestVisible = false;
+            redeemwindow.Show();
         }
     }
     #region bool to gender converter
