@@ -8,15 +8,16 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class AddLibCardGUI : Window
     {
+        #region variables
         bool[] bCheck = new bool[5];
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
+        #endregion
         public AddLibCardGUI()
         {
             InitializeComponent();
         }
 
-
-
+        #region button clicks
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -34,13 +35,7 @@ namespace TestGUI_QLTV
                 popup.Show();
             }
         }
-
-        private void DOBPicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-            DatePicker dp = sender as DatePicker;
-            DOBTextBox.Text = dp.Text;
-        }
-
+        #endregion
 
         #region Closing action
         private void Close_Click(object sender, RoutedEventArgs e)
@@ -54,6 +49,7 @@ namespace TestGUI_QLTV
             Window.GetWindow(this.Owner).IsHitTestVisible = true;
         }
         #endregion
+
         #region enable and disable the add button
 
         private void enable_addbutton()
@@ -66,6 +62,11 @@ namespace TestGUI_QLTV
             }
             if (all_filled) AddButton.IsEnabled = true;
             else AddButton.IsEnabled = false;
+        }
+        private void DOBPicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DatePicker dp = sender as DatePicker;
+            DOBTextBox.Text = dp.Text;
         }
         private void IDTextBox_TextChanged(object sender, RoutedEventArgs e)
         {

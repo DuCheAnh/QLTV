@@ -47,7 +47,26 @@ namespace DAL_QuanLy
             return false;
         }
 
-
+        public bool update_libcard(string sLCID, string sAccountType, string sIdentityCard
+                    , string sName, string dDOB, bool bGender)
+        {
+            try
+            {
+                //get libcard from LCID
+                LibCard_Data data = retrieve_libcard_data(sLCID);
+                data.account_type = sAccountType;
+                data.identity_card = sIdentityCard;
+                data.name = sName;
+                data.DOB = dDOB;
+                data.gender = bGender;
+                //update Libcard info
+                FirebaseResponse update_response = client.Update(sLibCardTable_path + sLCID, data);
+                LibCard_Data result = update_response.ResultAs<LibCard_Data>();
+                if (result != null) return true;
+            }
+            catch (Exception) { }
+            return false;
+        }
         /// <summary>
         /// Delete a specific sLCID from the table
         /// </summary>

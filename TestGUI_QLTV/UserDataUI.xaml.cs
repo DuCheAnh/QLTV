@@ -1,20 +1,9 @@
-﻿﻿using System;
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using DTO_QuanLy;
-using BUS_QuanLy;
-﻿using System.Windows.Controls;
 
 namespace TestGUI_QLTV
 {
@@ -32,7 +21,7 @@ namespace TestGUI_QLTV
         }
 
         public void init_datasource()
-        { 
+        {
             UserDataListView.ItemsSource = admin_control.all_accounts_data();
         }
 
@@ -40,7 +29,7 @@ namespace TestGUI_QLTV
         {
             List<Account_Data> account_list = new List<Account_Data>();
 
-            foreach(Account_Data data in admin_control.all_accounts_data())
+            foreach (Account_Data data in admin_control.all_accounts_data())
             {
                 if ((!string.IsNullOrEmpty(data.email) ? data.email.Contains(sKey) : false)
                     || (!string.IsNullOrEmpty(data.account) ? data.account.Contains(sKey) : false)
@@ -66,18 +55,15 @@ namespace TestGUI_QLTV
             else EditUserbtn.IsEnabled = false;
         }
 
-        private void UserControl_IsHitTestVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            init_datasource();
-        }
+        
 
         private void EditUserButton_Click(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.EditUserGUI editUserGUI = new TestGUI_QLTV.EditUserGUI();
 
-            if(UserDataListView.SelectedItems.Count > 1)
+            if (UserDataListView.SelectedItems.Count > 1)
             {
-                foreach (Account_Data data in UserDataListView.SelectedItems) 
+                foreach (Account_Data data in UserDataListView.SelectedItems)
                 {
                     admin_control.Delete_account(data.UID);
                 }

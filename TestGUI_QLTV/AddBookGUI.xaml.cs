@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -24,7 +25,6 @@ namespace TestGUI_QLTV
 
             InitializeComponent();
         }
-
         #region button_clicks
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
@@ -56,6 +56,7 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).Owner.Focus();
             Window.GetWindow(this).Owner.IsHitTestVisible = true;
         }
+
 
         private void btnClose(object sender, RoutedEventArgs e)
         {

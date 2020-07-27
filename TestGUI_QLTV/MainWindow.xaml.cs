@@ -1,6 +1,7 @@
 ﻿using BUS_QuanLy;
 using GUI_QuanLy;
 using System;
+using System.Linq;
 using System.Windows;
 
 namespace TestGUI_QLTV
@@ -13,18 +14,19 @@ namespace TestGUI_QLTV
     {
         User_Control_BUS Bus_method = new User_Control_BUS();
         bool IsLogout = false;
-        public bool IsAdmin = true;
+        public bool IsAdmin;
+        MainPage mPage;
         void AdminLogin()
         {
-            bCart.Visibility = Visibility.Hidden;
+            bCart.Visibility = Visibility.Collapsed;
             btnManage.Visibility = Visibility.Visible;
             pbtnManage.Visibility = Visibility.Visible;
         }
         void UserLogin()
         {
             bCart.Visibility = Visibility.Visible;
-            btnManage.Visibility = Visibility.Hidden;
-            pbtnManage.Visibility = Visibility.Hidden;
+            btnManage.Visibility = Visibility.Collapsed;
+            pbtnManage.Visibility = Visibility.Collapsed;
         }
         public MainWindow()
         {
@@ -32,9 +34,11 @@ namespace TestGUI_QLTV
             Data_Context.currentHomePageBook = Bus_method.Get_all_Books();
             MainMenu mMenu = new MainMenu();
             spMenu.Children.Add(mMenu);
-            MainPage mPage = new MainPage();
+            mPage = new MainPage();
+            Data_Context.isAdmin = (Data_Context.currentUID[0] == 'M');
+            IsAdmin = Data_Context.isAdmin;
+            Console.WriteLine(IsAdmin);
             spMain.Children.Add(mPage);
-
             if (IsAdmin == false)
                 UserLogin();
             else AdminLogin();
@@ -45,12 +49,10 @@ namespace TestGUI_QLTV
         private void btnHome_Click(object sender, RoutedEventArgs e)
         {
             spMain.Children.Clear();
-            MainPage mPage = new MainPage();
-            spMain.Children.Add(mPage);
+            mPage = new MainPage();
 
-            spMenu.Children.Clear();
-            MainMenu mMenu = new MainMenu();
-            spMenu.Children.Add(mMenu);
+            spMain.Children.Add(mPage);
+           
         }
 
 
@@ -70,7 +72,8 @@ namespace TestGUI_QLTV
         {
             spMain.Children.Clear();
             //BookDataUI Data = new BookDataUI();
-           UserDataUI Data = new UserDataUI();
+            //UserDataUI Data = new UserDataUI();
+            LibCardDataUI Data = new LibCardDataUI();
             spMain.Children.Add(Data);
         }
 

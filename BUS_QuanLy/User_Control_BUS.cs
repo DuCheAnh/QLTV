@@ -2,42 +2,36 @@
 using DTO_QuanLy;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 
 namespace BUS_QuanLy
 {
     public class User_Control_BUS
     {
+        #region Variables
         DAL_Account UserData = new DAL_Account();
         DAL_Book bookdata = new DAL_Book();
         List<Account_Data> possible_account = new List<Account_Data>();
         DAL_Borrow borrowdata = new DAL_Borrow();
         DAL_Libcard libcard_data = new DAL_Libcard();
+        #endregion
+
         public User_Control_BUS()
         {
         }
-
+        #region Account related
         public Account_Data Get_Single_UserInfo(string sUID)
         {
             UserData.init_client();
             return UserData.retrieve_user_data(sUID);
         }
-        public Borrow_Data retrieve_borrow_data(string sBrID)
-        {
-            borrowdata.init_client();
-            return borrowdata.retrieve_borrow_data(sBrID);
-        }
-        public bool add_borrow_data(string sBID, string sUID, DateTime dBorrowDate)
-        {
-            borrowdata.init_client();
-            return borrowdata.add_new_borrow(sBID, sUID, dBorrowDate);
-        }
+
         public List<string> get_user_BrID(Account_Data user)
         {
             UserData.init_client();
             return UserData.get_user_BrID(user);
         }
+
         /// <summary>
         /// Get users password by UID (UID must exist)
         /// </summary>
@@ -46,17 +40,6 @@ namespace BUS_QuanLy
         public string get_user_password(string sUID)
         {
             return UserData.retrieve_user_data(sUID).password;
-        }
-        public Book_Data retrieve_book_data(string sBID)
-        {
-            bookdata.init_client();
-            return bookdata.retrieve_book_data(sBID);
-        }
-        public List<Book_Data> Get_all_Books()
-        {
-            bookdata.init_client();
-            List<Book_Data> Books = bookdata.retrieve_all_books();
-            return Books;
         }
 
         public bool Checking(string UID, string OldPassword)
@@ -74,27 +57,7 @@ namespace BUS_QuanLy
             UserData.update_user_email(currentUID, newEmail);
         }
 
-        public List<Book_Data> Search_for_book(string text)
-        {
-            bookdata.init_client();
-            List<Book_Data> bookdatas = bookdata.retrieve_all_books();
-            List<Book_Data> searchingBooks = new List<Book_Data>();
-            foreach (Book_Data books in bookdatas)
-            {
-                if (books.name.Contains(text) || books.author.Contains(text) || books.category.Contains(text) || books.description.Contains(text))
-                    searchingBooks.Add(books);
-            }
-            return searchingBooks;
-        }
-        public LibCard_Data Search_for_LCID(string sLCID)
-        {
-            libcard_data.init_client();
-            foreach (LibCard_Data data in libcard_data.retrieve_all_libcard())
-            {
-                if (sLCID == data.LCID) return data;
-            }
-            return null;
-        }
+
         public bool set_libcard_to_user(string sLCID, string sUID)
         {
             UserData.init_client();
@@ -169,6 +132,60 @@ namespace BUS_QuanLy
             }
             return false;
         }
+        #endregion
+
+        #region Borrow related
+        public Borrow_Data retrieve_borrow_data(string sBrID)
+        {
+            borrowdata.init_client();
+            return borrowdata.retrieve_borrow_data(sBrID);
+        }
+        public bool add_borrow_data(string sBID, string sUID, DateTime dBorrowDate)
+        {
+            borrowdata.init_client();
+            return borrowdata.add_new_borrow(sBID, sUID, dBorrowDate);
+        }
+        #endregion
+
+        #region Book related
+        public Book_Data retrieve_book_data(string sBID)
+        {
+            bookdata.init_client();
+            return bookdata.retrieve_book_data(sBID);
+        }
+        public List<Book_Data> Get_all_Books()
+        {
+            bookdata.init_client();
+            List<Book_Data> Books = bookdata.retrieve_all_books();
+            return Books;
+        }
+
+
+        public List<Book_Data> Search_for_book(string text)
+        {
+            bookdata.init_client();
+            List<Book_Data> bookdatas = bookdata.retrieve_all_books();
+            List<Book_Data> searchingBooks = new List<Book_Data>();
+            foreach (Book_Data books in bookdatas)
+            {
+                if (books.name.Contains(text) || books.author.Contains(text) || books.category.Contains(text) || books.description.Contains(text))
+                    searchingBooks.Add(books);
+            }
+            return searchingBooks;
+        }
+        #endregion
+
+        #region Libcard related
+        public LibCard_Data Search_for_LCID(string sLCID)
+        {
+            libcard_data.init_client();
+            foreach (LibCard_Data data in libcard_data.retrieve_all_libcard())
+            {
+                if (sLCID == data.LCID) return data;
+            }
+            return null;
+        }
+        #endregion
     }
 
 }

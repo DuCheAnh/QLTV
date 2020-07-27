@@ -62,9 +62,6 @@ namespace TestGUI_QLTV
             edit_libcard_gui.Show();
         }
 
-        private void UserControl_IsHitTestVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            init_datasource("");
-        }
+       
     }
 }

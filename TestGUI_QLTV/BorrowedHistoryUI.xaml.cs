@@ -1,19 +1,8 @@
 ﻿using BUS_QuanLy;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using DTO_QuanLy;
+using System.Collections.Generic;
+using System.Windows.Controls;
+using System.Windows.Input;
 
 namespace TestGUI_QLTV
 {
@@ -22,7 +11,8 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class BorrowedHistoryUI : UserControl
     {
-      
+
+        //variables
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BorrowedHistoryUI()
         {
@@ -30,6 +20,7 @@ namespace TestGUI_QLTV
             InitializeComponent();
             init_datasource("");
         }
+        #region initiation
         public void init_datasource(string sKey)
         {
             List<Borrow_Data> borrow_list = new List<Borrow_Data>();
@@ -37,14 +28,15 @@ namespace TestGUI_QLTV
             {
                 if ((!string.IsNullOrEmpty(data.BrID) ? data.BrID.Contains(sKey) : false)
                     || (!string.IsNullOrEmpty(data.BrID) ? data.BID.Contains(sKey) : false)
-                    || (!string.IsNullOrEmpty(data.BrID) ?data.UID.Contains(sKey) : false))
+                    || (!string.IsNullOrEmpty(data.BrID) ? data.UID.Contains(sKey) : false))
                     borrow_list.Add(data);
                 else
                 { }
             }
             BookDataListView.ItemsSource = borrow_list;
         }
-
+        #endregion
+        #region change selection and search
         private void BookDataListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (BookDataListView.SelectedItems.Count > 0)
@@ -57,12 +49,6 @@ namespace TestGUI_QLTV
             else EditBookButton.IsEnabled = false;
         }
 
-        private void UserControl_IsHitTestVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            init_datasource("");
-
-        }
-
 
         private void ListViewSearchBar_PreviewKeyDown(object sender, KeyEventArgs e)
         {
@@ -71,5 +57,6 @@ namespace TestGUI_QLTV
                 init_datasource(ListViewSearchBar.Text);
             }
         }
+        #endregion
     }
 }

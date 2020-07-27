@@ -15,5 +15,6 @@ namespace TestGUI_QLTV
 
         public static Book_Data selected_book;
         public static List<Borrow_Data> BorrowedBook;
+        public static bool isAdmin;
     }
 }

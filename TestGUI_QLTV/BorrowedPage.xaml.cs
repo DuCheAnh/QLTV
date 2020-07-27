@@ -1,4 +1,6 @@
-﻿using System;
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,8 +8,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Media.Imaging;
-using BUS_QuanLy;
-using DTO_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -22,8 +22,8 @@ namespace TestGUI_QLTV
         public BorrowedPage()
         {
             InitializeComponent();
-            List<string> BrID_List= User_Control.get_user_BrID(Data_Context.currentAccount);
-            foreach(string Data in BrID_List)
+            List<string> BrID_List = User_Control.get_user_BrID(Data_Context.currentAccount);
+            foreach (string Data in BrID_List)
             {
                 Borrow_Data Brwdata = User_Control.retrieve_borrow_data(Data);
                 brwedbook.Add(User_Control.retrieve_book_data(Brwdata.BID));

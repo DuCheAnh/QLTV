@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TestGUI_QLTV"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             FontFamily="Comic Sans MS" IsHitTestVisibleChanged="UserControl_IsHitTestVisibleChanged">
+             FontFamily="Comic Sans MS">
     <Grid  Height="630" Width="1280">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>

@@ -48,12 +48,11 @@ namespace TestGUI_QLTV
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            admin_control.delete_libcard(this.selected_libcard.LCID);
             bool bGender;
             if (GenderComboBox.SelectedItem.ToString().Contains("Male"))
                 bGender = true;
             else bGender = false;
-            if (admin_control.create_new_libcard(AccountTypeComboBox.Text, IDTextBox.Text,
+            if (admin_control.edit_libcard(this.selected_libcard.LCID,AccountTypeComboBox.Text, IDTextBox.Text,
                                    NameTextBox.Text, DOBTextBox.Text, bGender))
             {
                 PopUpWindow popup = new PopUpWindow();

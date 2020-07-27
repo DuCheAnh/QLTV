@@ -27,7 +27,7 @@ namespace GUI_QuanLy
             passwordBox.IsEnabled = false;
             this.DataContext = Data_Context.currentAccount;
             InitializeComponent();
-
+            if (Data_Context.currentAccount.LCID != null) User_BUS.set_libcard_to_user(Data_Context.currentAccount.LCID,sUID);
             changeEmail.Closed += new EventHandler(changeEmail_Closed);
             changePassword.Closed += new EventHandler(changePassword_Closed);
         }

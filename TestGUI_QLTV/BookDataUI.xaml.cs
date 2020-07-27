@@ -11,7 +11,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class BookDataUI : UserControl
     {
-
+        //Variables
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BookDataUI()
         {
@@ -19,6 +19,7 @@ namespace TestGUI_QLTV
             InitializeComponent();
             init_datasource("");
         }
+        #region initiation
         public void init_datasource(string sKey)
         {
             List<Book_Data> book_list = new List<Book_Data>();
@@ -29,6 +30,8 @@ namespace TestGUI_QLTV
             }
             BookDataListView.ItemsSource = book_list;
         }
+        #endregion
+        #region Button clicks
         private void btnAddBook(object sender, RoutedEventArgs e)
         {
             TestGUI_QLTV.AddBookGUI addBookGUI = new TestGUI_QLTV.AddBookGUI();
@@ -61,25 +64,6 @@ namespace TestGUI_QLTV
             }
 
         }
-
-        private void BookDataListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (BookDataListView.SelectedItems.Count > 0)
-            {
-                if (BookDataListView.SelectedItems.Count > 1)
-                    EditBookButton.Content = "DELETE " + BookDataListView.SelectedItems.Count.ToString();
-                else EditBookButton.Content = "EDIT";
-                EditBookButton.IsEnabled = true;
-            }
-            else EditBookButton.IsEnabled = false;
-        }
-
-        private void UserControl_IsHitTestVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
-        {
-            init_datasource("");
-        }
-
-
         private void ListViewSearchBar_PreviewKeyDown(object sender, KeyEventArgs e)
         {
             if (e.Key == Key.Enter)
@@ -87,7 +71,6 @@ namespace TestGUI_QLTV
                 init_datasource(ListViewSearchBar.Text);
             }
         }
-
         private void btnPrint_Click(object sender, RoutedEventArgs e)
         {
             string td = "Danh sách Sách";
@@ -99,6 +82,20 @@ namespace TestGUI_QLTV
                 BookDataListView.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
                 printDlg.PrintVisual(BookDataListView, td);
             }
+        }
+        #endregion
+
+        //change editbuton content
+        private void BookDataListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (BookDataListView.SelectedItems.Count > 0)
+            {
+                if (BookDataListView.SelectedItems.Count > 1)
+                    EditBookButton.Content = "DELETE " + BookDataListView.SelectedItems.Count.ToString();
+                else EditBookButton.Content = "EDIT";
+                EditBookButton.IsEnabled = true;
+            }
+            else EditBookButton.IsEnabled = false;
         }
     }
 }

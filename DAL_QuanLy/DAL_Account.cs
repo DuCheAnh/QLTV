@@ -3,8 +3,6 @@ using FireSharp.Interfaces;
 using FireSharp.Response;
 using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Xml.Schema;
 
 namespace DAL_QuanLy
 {
@@ -82,27 +80,27 @@ namespace DAL_QuanLy
             return false;
         }
 
-        public void add_brid(string sUID,string sBrID)
+        public void add_brid(string sUID, string sBrID)
         {
-            char seperator ='-';
+            char seperator = '-';
             Account_Data data = retrieve_user_data(sUID);
             data.BrID += seperator + sBrID;
             FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
         }
         public List<string> get_user_BrID(Account_Data data)
         {
-            string sBrID=null;
+            string sBrID = null;
             List<string> list = new List<string>();
-            if(data.BrID.Trim()!="")
-            for (int i=1;i<data.BrID.Length;i++)
-            {
-                if (data.BrID[i] == '-')
+            if (data.BrID.Trim() != "")
+                for (int i = 1; i < data.BrID.Length; i++)
                 {
-                    list.Add(sBrID);
-                    sBrID = null;
+                    if (data.BrID[i] == '-')
+                    {
+                        list.Add(sBrID);
+                        sBrID = null;
+                    }
+                    else sBrID += data.BrID[i];
                 }
-                else sBrID += data.BrID[i];        
-            }
             return list;
         }
         /// <summary>
@@ -200,12 +198,16 @@ namespace DAL_QuanLy
                 var libcard_response = client.Get(Libcard_rep.sLibCardTable_path + sLCID);
                 LibCard_Data libcard_data = libcard_response.ResultAs<LibCard_Data>();
                 //set new data
+                if (libcard_data.used == true) return false;
+                else libcard_data.used = true;
                 user_data.name = libcard_data.name;
                 user_data.DOB = libcard_data.DOB;
                 user_data.gender = libcard_data.gender;
                 user_data.identity_card = libcard_data.identity_card;
                 user_data.account_type = libcard_data.account_type;
+                user_data.LCID = libcard_data.LCID;
                 //send it to the database
+                FirebaseResponse libcard_resp = client.Update("LibCards/" + sLCID, libcard_data);
                 FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, user_data);
                 Account_Data result = update_response.ResultAs<Account_Data>();
                 if (result != null) return true;
@@ -213,7 +215,6 @@ namespace DAL_QuanLy
             catch (Exception) { }
             return false;
         }
-
 
         /// <summary>
         /// Remove libcard info from user

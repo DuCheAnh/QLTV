@@ -24,13 +24,14 @@ namespace TestGUI_QLTV
             {
                 if (user_control.Search_for_LCID(sLibCardID) != null)
                 {
-                    user_control.set_libcard_to_user(sLibCardID, Data_Context.currentUID);
-                    open_popup("succeeded");
+                    if (user_control.set_libcard_to_user(sLibCardID, Data_Context.currentUID))
+                        open_popup("Succeeded");
+                    else open_popup("Libcard already used");
                 }
-                else open_popup("not found");
+                else open_popup("Libcard not found");
             }
             else
-                open_popup("cant be null");
+                open_popup("Can't be null");
         }
         private void open_popup(string message)
         {
