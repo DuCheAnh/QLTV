@@ -155,6 +155,9 @@
                 <Button Name="btnBorrowData" Click="btnBorrowData_Click">
                     <materialDesign:PackIcon Kind="History" />
                 </Button>
+                <Button Name="btnLibCard" Click="btnLibCard_Click">
+                    <materialDesign:PackIcon Kind="CardAccountDetails" />
+                </Button>
             </StackPanel>
         </materialDesign:PopupBox>
     </Grid>

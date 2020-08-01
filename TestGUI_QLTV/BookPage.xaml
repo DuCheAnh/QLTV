@@ -7,11 +7,11 @@
              >
     <Grid Background="White" Height="660" Width="1280">
         <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
             <RowDefinition Height="280"/>
             <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
@@ -36,7 +36,7 @@
                 <TextBlock  x:Name="AmountLeftTextBlock" Canvas.Bottom="45" Canvas.Left="350" Text="1" FontSize="20" FontFamily="Comic Sans MS" TargetUpdated="AmountLeftTextBlock_TargetUpdated"></TextBlock>
             </Canvas>
         </Grid>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="2*"/>

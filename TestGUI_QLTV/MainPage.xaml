@@ -41,7 +41,7 @@
             </ScrollViewer>
 
         </DockPanel>
-        <Canvas Grid.Row="1">
+        <Canvas Grid.Row="1" x:Name="page">
             <Button  x:Name="btnNextPage" Width="150" Content="Trang sau" Canvas.Right="467.5" Click="btnNextPage_Click" />
             <TextBlock x:Name="PageNumberTextBlock" Text="1" Canvas.Left="627" Margin="0 10 0 0"/>
             <Button x:Name="btnPreviousPage" Width="150" Content="Trang trước" Canvas.Left="450" Click="btnPreviousPage_Click"></Button>

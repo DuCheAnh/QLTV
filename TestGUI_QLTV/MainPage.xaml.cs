@@ -66,6 +66,7 @@ namespace TestGUI_QLTV
             book_page.BookImageBrush.ImageSource = img.Source;
             bookList.Children.Clear();
             bookList.Children.Add(book_page);
+            page.Children.Clear();
         }
     }
 

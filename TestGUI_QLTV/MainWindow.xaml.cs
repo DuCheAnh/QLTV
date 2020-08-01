@@ -70,10 +70,7 @@ namespace TestGUI_QLTV
 
         private void btnBell_Click(object sender, RoutedEventArgs e)
         {
-            spMain.Children.Clear();
-
-            LibCardDataUI Data = new LibCardDataUI();
-            spMain.Children.Add(Data);
+  
         }
 
         public void btnCart_Click(object sender, RoutedEventArgs e)
@@ -161,6 +158,13 @@ namespace TestGUI_QLTV
         private void Grid_Movewindow(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DragMove();
+        }
+
+        private void btnLibCard_Click(object sender, RoutedEventArgs e)
+        {
+            spMain.Children.Clear();
+            LibCardDataUI Data = new LibCardDataUI();
+            spMain.Children.Add(Data);
         }
     }
 }
