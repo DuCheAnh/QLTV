@@ -62,6 +62,18 @@ namespace TestGUI_QLTV
             edit_libcard_gui.Show();
         }
 
-       
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            string td = "Danh sách Sách";
+            System.Windows.Controls.PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
+            if ((bool)printDlg.ShowDialog().GetValueOrDefault())
+            {
+                Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
+                LibCardListView.Measure(pageSize);
+                LibCardListView.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
+                printDlg.PrintVisual(LibCardListView, td);
+            }
+        }
+
     }
 }

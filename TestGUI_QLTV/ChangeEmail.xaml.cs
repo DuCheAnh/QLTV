@@ -17,7 +17,6 @@ namespace TestGUI_QLTV
 
         private void Close(object sender, RoutedEventArgs e)
         {
-
             Close();
         }
 

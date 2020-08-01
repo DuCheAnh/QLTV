@@ -52,9 +52,13 @@
 
                 </Grid>
             </materialDesign:ColorZone>
+            <Button x:Name="PrintButton" Content="PRINT" Height="40" Width="200"
+                    Canvas.Top="20" Canvas.Left="1000"
+                    FontWeight="Bold" FontSize="20"
+                    IsEnabled="True" Click="btnPrint_Click"/>
             
             <Button x:Name="EditUserbtn" Content="EDIT" Height="40" Width="200"
-                    Canvas.Top="20" Canvas.Left="1000"
+                    Canvas.Top="20" Canvas.Left="700"
                     FontWeight="Bold" FontSize="20"
                     IsEnabled="False"
                     Click="EditUserButton_Click"/>

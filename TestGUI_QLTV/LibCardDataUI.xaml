@@ -53,13 +53,18 @@
 
                 </Grid>
             </materialDesign:ColorZone>
+            <Button x:Name="PrintButton"
+                    Content="PRINT" Height="40" Width="200"
+                    Canvas.Top="20" Canvas.Left="1050"
+                    FontWeight="Bold" FontSize="20"
+                    Click="btnPrint_Click"/>
             <Button x:Name="AddLibCardButton"
                     Content="ADD LIBCARD" Height="40" Width="200"
-                    Canvas.Top="20" Canvas.Left="700"
+                    Canvas.Top="20" Canvas.Left="830"
                     FontWeight="Bold" FontSize="20"
                     Click="AddLibCardButton_Click"/>
             <Button x:Name="EditLibCardButton" Content="EDIT" Height="40" Width="200"
-                    Canvas.Top="20" Canvas.Left="1000"
+                    Canvas.Top="20" Canvas.Left="605"
                     FontWeight="Bold" FontSize="20"
                     IsEnabled="False" Click="EditLibCardButton_Click"
                     />

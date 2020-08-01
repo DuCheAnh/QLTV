@@ -1,6 +1,7 @@
 ﻿using BUS_QuanLy;
 using DTO_QuanLy;
 using System.Collections.Generic;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -58,5 +59,18 @@ namespace TestGUI_QLTV
             }
         }
         #endregion
+
+        private void btnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            string td = "Danh sách Sách";
+            System.Windows.Controls.PrintDialog printDlg = new System.Windows.Controls.PrintDialog();
+            if ((bool)printDlg.ShowDialog().GetValueOrDefault())
+            {
+                Size pageSize = new Size(printDlg.PrintableAreaWidth, printDlg.PrintableAreaHeight);
+                BookDataListView.Measure(pageSize);
+                BookDataListView.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
+                printDlg.PrintVisual(BookDataListView, td);
+            }
+        }
     }
 }

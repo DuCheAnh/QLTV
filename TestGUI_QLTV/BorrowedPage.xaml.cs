@@ -53,13 +53,12 @@ namespace TestGUI_QLTV
             {
                 img = data;
             }
-
-            //init new book page
             BrwBookPage brwbook_page = new BrwBookPage();
             brwbook_page.BookImageBrush.ImageSource = img.Source;
             borrowedList.Children.Clear();
             borrowedList.Children.Add(brwbook_page);
         }
+
         public class Base64ImageConverter : IValueConverter
         {
             public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
