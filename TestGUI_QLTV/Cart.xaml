@@ -28,13 +28,13 @@
                                 <StackPanel.Resources>
                                     <local:Base64ImageConverter x:Key="Base64ImageConverter"/>
                                 </StackPanel.Resources>
-                                <Button x:Name="Book" HorizontalAlignment="Left" Height="130" Width="750" Background="White" BorderBrush="Black" BorderThickness="1">
+                                <Button x:Name="Book" HorizontalAlignment="Left" Height="130" Width="770" Background="White" BorderBrush="Black" BorderThickness="1">
                                     <Canvas Height="120" Width="auto">
-                                        <Image x:Name="Pic" HorizontalAlignment="Left" Height="120" Width="90" Canvas.Left="-360" Canvas.Top="0" Stretch="Fill" Source="{Binding cover_page, Converter={StaticResource Base64ImageConverter}}" />
+                                        <Image x:Name="Pic" HorizontalAlignment="Left" Height="120" Width="90" Canvas.Left="-365" Canvas.Top="0" Stretch="Fill" Source="{Binding cover_page, Converter={StaticResource Base64ImageConverter}}" />
                                         <Label Content="{Binding BID}" Visibility="Hidden"/>
-                                        <Label Name="lbBookName" Content="{Binding name}" HorizontalAlignment="Left" Canvas.Left="-255" FontSize="24" FontWeight="Bold"/>
-                                        <Label Content="{Binding author}" HorizontalAlignment="Left" Canvas.Left="-255" Canvas.Top="40" FontStyle="Italic"/>
-                                        <Button Content="Delete" Canvas.Left="250" Canvas.Top="95" BorderBrush="Black"/>
+                                        <Label Name="lbBookName" Content="{Binding name}" HorizontalAlignment="Left" Canvas.Left="-260" FontSize="24" FontWeight="Bold"/>
+                                        <Label Content="{Binding author}" HorizontalAlignment="Left" Canvas.Left="-260" Canvas.Top="40" FontStyle="Italic"/>
+                                        <Button Content="Delete" Canvas.Left="270" Canvas.Top="95" BorderBrush="Black"/>
                                     </Canvas>
                                 </Button>
                             </StackPanel>
