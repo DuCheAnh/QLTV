@@ -1,9 +1,5 @@
-﻿using System;
+﻿using DTO_QuanLy;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DTO_QuanLy;
 namespace TestGUI_QLTV
 {
     public static class Data_Context
@@ -15,6 +11,7 @@ namespace TestGUI_QLTV
 
         public static Book_Data selected_book;
         public static List<Borrow_Data> BorrowedBook;
+        public static List<Book_Data> onWishList = new List<Book_Data>();
         public static bool isAdmin;
     }
 }

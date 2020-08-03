@@ -57,6 +57,8 @@
     <Compile Include="DAL_Book.cs" />
     <Compile Include="DAL_Borrow.cs" />
     <Compile Include="DAL_Libcard.cs" />
+    <Compile Include="DAL_Library.cs" />
+    <Compile Include="DAL_UserType.cs" />
     <Compile Include="DB_connect.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

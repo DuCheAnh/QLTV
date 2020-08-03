@@ -1,18 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using BUS_QuanLy;
+using DTO_QuanLy;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -20,9 +8,28 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Cart : UserControl
     {
+        User_Control_BUS User_Control = new User_Control_BUS();
         public Cart()
         {
             InitializeComponent();
+            init();
+        }
+        void init()
+        {
+            ICart.ItemsSource = Data_Context.onWishList;
+        }
+
+        private void BorrowButton_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            foreach (Book_Data data in Data_Context.onWishList)
+            {
+                User_Control.add_borrow_data(data.BID, Data_Context.currentUID, Date_picker.DisplayDate);
+            }
+        }
+
+        private void Date_picker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            BorrowButton.IsEnabled = true;
         }
     }
 }

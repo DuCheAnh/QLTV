@@ -11,6 +11,7 @@ namespace DTO_QuanLy
         public DateTime return_date { get; set; }
         public int overdue_by { get; set; }
         public bool returned { get; set; }
+        public bool packed { get; set; }
         public Borrow_Data()
         {
         }

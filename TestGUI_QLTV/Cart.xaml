@@ -16,34 +16,42 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel x:Name="CartList" Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
-            <ItemsControl x:Name="ICart" Width="960">
-                <StackPanel Width="auto" Height="140" Background="White">
-                    <Button x:Name="Book" Height="140" Width="930" Background="White" BorderBrush="Black" BorderThickness="1">
-                        <Canvas>
-                            <Image x:Name="Pic" Height="130" Width="190" Canvas.Left="-455" Canvas.Top="-66" Stretch="Fill" Source="a.png"/>
-                            <Label Name="lbBookName" Content="Tên sách: Chicken with a knife" Canvas.Left="-260" FontSize="26" Width="500" Canvas.Top="-66"/>
-                            <Label Content="Tác Giả: Chuch" Canvas.Left="-260" Canvas.Top="-20" Width="500" FontSize="20"/>
-                            <Label Content="In Stock" Canvas.Left="-260" FontSize="12" FontStyle="Oblique" Canvas.Top="20" Width="500" FontWeight="Light"/>
-                            <Button Background="Transparent" BorderThickness="0" Canvas.Left="380" Canvas.Top="30" FontStyle="Italic">Delete</Button>
-                        </Canvas>
-                    </Button>
-                </StackPanel>
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
-            </ItemsControl>
-        </StackPanel>
-        <Button Grid.Column="1" Grid.Row="1" Margin="5" Height="auto" Width="200" HorizontalAlignment="Right">
+        <DockPanel x:Name="CartList" Grid.Column="1" Grid.Row="0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="ICart" Width="960">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Width="auto" Height="auto" Background="White" Margin="15 5">
+                                <StackPanel.Resources>
+                                    <local:Base64ImageConverter x:Key="Base64ImageConverter"/>
+                                </StackPanel.Resources>
+                                <Button x:Name="Book" HorizontalAlignment="Left" Height="130" Width="800" Background="White" BorderBrush="Black" BorderThickness="1">
+                                    <Canvas Height="120" Width="auto">
+                                        <Image x:Name="Pic" HorizontalAlignment="Left" Height="120" Width="90" Canvas.Left="0" Canvas.Top="0" Stretch="Fill" Source="{Binding cover_page, Converter={StaticResource Base64ImageConverter}}" />
+                                        <Label Content="{Binding BID}" Visibility="Hidden"/>
+                                        <Label Name="lbBookName" Content="{Binding name}" HorizontalAlignment="Left" Canvas.Left="95" FontSize="16"/>
+                                        <Label Content="{Binding author}" HorizontalAlignment="Left" Canvas.Left="95" Canvas.Top="30"/>
+                                    </Canvas>
+                                </Button>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+                </ItemsControl>
+            </ScrollViewer>
+        </DockPanel>
+        <Button x:Name="BorrowButton" IsEnabled="False" Click="BorrowButton_Click" Grid.Column="1" Grid.Row="1" Margin="5" Height="auto" Width="200" HorizontalAlignment="Right">
             <TextBlock TextAlignment="Center" FontSize="24" FontWeight="Bold">
                 Borrow Books
             </TextBlock>
         </Button>
         <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal" Margin="285,0,210,0">
             <Label Content="Ngày mượn:" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"></Label>
-            <DatePicker SelectedDateFormat="Long" Width="345" FontSize="20" Height="38" Margin="0,10,0,9"></DatePicker>
+            <DatePicker x:Name="Date_picker" SelectedDateChanged="Date_picker_SelectedDateChanged"  SelectedDateFormat="Short" Width="345" FontSize="20" Height="38" Margin="0,10,0,9"></DatePicker>
         </StackPanel>
 
     </Grid>

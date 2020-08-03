@@ -1,4 +1,5 @@
 ﻿using BUS_QuanLy;
+using DTO_QuanLy;
 using System;
 using System.Windows;
 using System.Windows.Input;
@@ -12,7 +13,7 @@ namespace TestGUI_QLTV
     /// </summary>
     public partial class Window1 : Window
     {
-        private User_Control_BUS Login = new User_Control_BUS();
+        private User_Control_BUS user_control = new User_Control_BUS();
         public Window1()
         {
             InitializeComponent();
@@ -51,11 +52,12 @@ namespace TestGUI_QLTV
 
         private void OpenMain(object sender, RoutedEventArgs e)
         {
-            if (Login.LoginMethod(Username.Text, Password.Password))
+            Account_Data user = user_control.search_for_account(Username.Text);
+
+            if (user!=null && user.password==Password.Password)
             {
-                User_Control_BUS UserData = new User_Control_BUS();
-                Data_Context.currentAccount = UserData.search_for_account(Username.Text);
-                Data_Context.currentUID = Data_Context.currentAccount.UID;
+                Data_Context.currentAccount = user;
+                Data_Context.currentUID = user.UID;
                 MainWindow mn = new MainWindow();
                 mn.Show();
                 this.Close();

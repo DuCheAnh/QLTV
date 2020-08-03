@@ -25,8 +25,17 @@ namespace TestGUI_QLTV
             List<string> BrID_List = User_Control.get_user_BrID(Data_Context.currentAccount);
             foreach (string Data in BrID_List)
             {
+
                 Borrow_Data Brwdata = User_Control.retrieve_borrow_data(Data);
-                brwedbook.Add(User_Control.retrieve_book_data(Brwdata.BID));
+                try
+                {
+                    Book_Data data = User_Control.retrieve_book_data(Brwdata.BID);
+                    brwedbook.Add(data);
+                }
+                catch (Exception)
+                {
+
+                }
             }
             if (brwedbook.Count > 0)
                 IBook.ItemsSource = brwedbook;
@@ -53,12 +62,16 @@ namespace TestGUI_QLTV
             {
                 img = data;
             }
+
+            Data_Context.selected_book = new Book_Data();
+            //init new book page
+            if (label_list[0].Content!=null)
+                Data_Context.selected_book = User_Control.retrieve_book_data(label_list[0].Content.ToString());
             BrwBookPage brwbook_page = new BrwBookPage();
             brwbook_page.BookImageBrush.ImageSource = img.Source;
             borrowedList.Children.Clear();
             borrowedList.Children.Add(brwbook_page);
         }
-
         public class Base64ImageConverter : IValueConverter
         {
             public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -71,6 +84,8 @@ namespace TestGUI_QLTV
                 BitmapImage bi = new BitmapImage();
                 bi.BeginInit();
                 bi.StreamSource = new MemoryStream(System.Convert.FromBase64String(s));
+                bi.DecodePixelWidth = 270;
+                bi.DecodePixelHeight = 360;
                 bi.EndInit();
 
                 return bi;

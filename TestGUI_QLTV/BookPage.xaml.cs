@@ -34,16 +34,17 @@ namespace TestGUI_QLTV
             this.AmountLeftTextBlock.Text = Data_Context.selected_book.left.ToString() + " in stocks";
             this.ReleaseYearTextBlock.Text = "xuất bản " + Data_Context.selected_book.release_year.ToString();
             this.DescriptionTextBlock.Text = Data_Context.selected_book.description;
-            if (Data_Context.selected_book.left < 1 || Data_Context.BorrowedBook.Count > 9) this.BorrowButton.IsEnabled = false;
+            if (Data_Context.selected_book.left < 1) this.BorrowButton.IsEnabled = false;
         }
         #endregion
 
         #region button clicks
         private void BorrowButton_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            user_control.add_borrow_data(Data_Context.selected_book.BID, Data_Context.currentUID, DateTime.Now);
+            //user_control.add_borrow_data(Data_Context.selected_book.BID, Data_Context.currentUID, DateTime.Now);
+            Data_Context.onWishList.Add(Data_Context.selected_book);
             TestGUI_QLTV.PopUpWindow popup = new TestGUI_QLTV.PopUpWindow();
-            popup.PopUpTB.Text = "added";
+            popup.PopUpTB.Text = "added to wishlist";
             popup.Owner = Window.GetWindow(this);
             Window.GetWindow(this).IsHitTestVisible = false;
             popup.Show();

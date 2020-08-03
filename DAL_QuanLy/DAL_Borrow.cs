@@ -97,8 +97,12 @@ namespace DAL_QuanLy
         public Borrow_Data retrieve_borrow_data(string sBrID)
         {
             var retrieve_response = client.Get(sBorrowTable_path + sBrID);
-            Borrow_Data data = retrieve_response.ResultAs<Borrow_Data>();
-            return data;
+            if (retrieve_response.Body!="null")
+            {
+                Borrow_Data data = retrieve_response.ResultAs<Borrow_Data>();
+                return data;
+            }
+            return null;
         }
 
 

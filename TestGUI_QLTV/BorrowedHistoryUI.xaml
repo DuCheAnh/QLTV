@@ -71,27 +71,30 @@
                     <ListView.View>
                         <GridView >
 
-                            <GridViewColumn Width="150"
+                            <GridViewColumn Width="100"
                             DisplayMemberBinding="{Binding BrID}"
-                            Header="Mã mượn" />
+                            Header="BrID" />
                             <GridViewColumn Width="200"
                                             DisplayMemberBinding="{Binding UID}"
-                                            Header="Mã người mượn"/>
+                                            Header="User ID"/>
                             <GridViewColumn Width="150"
                             DisplayMemberBinding="{Binding BID}"
-                            Header="Mã sách " />
+                            Header="Book ID " />
                             <GridViewColumn Width="150"
                             DisplayMemberBinding="{Binding borrow_date}"
-                            Header="Ngày mượn"/>
+                            Header="Borrow date"/>
                             <GridViewColumn Width="150"
                                             DisplayMemberBinding="{Binding return_date}"
-                                            Header="Ngày trả"/>
-                            <GridViewColumn Width="100"
+                                            Header="Return date"/>
+                            <GridViewColumn Width="120"
                                             DisplayMemberBinding="{Binding overdue_by}"
-                                            Header="Hết hạn"/>
+                                            Header="Overdue by"/>
+                            <GridViewColumn Width="100"
+                                            DisplayMemberBinding="{Binding packed}"
+                                            Header="Packed"/>
                             <GridViewColumn Width="100"
                                             DisplayMemberBinding="{Binding returned}"
-                                            Header="Đã trả"/>
+                                            Header="Returned"/>
 
                         </GridView>
                     </ListView.View>

@@ -70,7 +70,7 @@ namespace DAL_QuanLy
                 data.password = sPassword;
                 //update users info
                 FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
-                Account_Data result = update_response.ResultAs<Account_Data>();
+                Account_Data  result = update_response.ResultAs<Account_Data>();
                 if (result != null) return true;
             }
             catch (Exception)
@@ -91,15 +91,19 @@ namespace DAL_QuanLy
         {
             string sBrID = null;
             List<string> list = new List<string>();
-            if (data.BrID.Trim() != "")
-                for (int i = 1; i < data.BrID.Length; i++)
+            if (data.BrID != null)
+                if (data.BrID.Trim() != "")
                 {
-                    if (data.BrID[i] == '-')
+                    string temp = data.BrID += "-";
+                    for (int i = 1; i < temp.Length; i++)
                     {
-                        list.Add(sBrID);
-                        sBrID = null;
+                        if (temp[i] == '-')
+                        {
+                            list.Add(sBrID);
+                            sBrID = null;
+                        }
+                        else sBrID += temp[i];
                     }
-                    else sBrID += data.BrID[i];
                 }
             return list;
         }
@@ -177,8 +181,12 @@ namespace DAL_QuanLy
         public Account_Data retrieve_user_data(string sUID)
         {
             var retrieve_response = client.Get(sAccountTable_path + sUID);
-            Account_Data data = retrieve_response.ResultAs<Account_Data>();
-            return data;
+            if (retrieve_response.Body!="null")
+            {
+                Account_Data data = retrieve_response.ResultAs<Account_Data>();
+                return data;
+            }
+            return null;
         }
 
 
