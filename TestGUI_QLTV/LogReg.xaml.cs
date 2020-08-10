@@ -14,6 +14,8 @@ namespace TestGUI_QLTV
     public partial class Window1 : Window
     {
         private User_Control_BUS user_control = new User_Control_BUS();
+        bool loggingin = false;
+        bool signingup = false;
         public Window1()
         {
             InitializeComponent();
@@ -35,7 +37,7 @@ namespace TestGUI_QLTV
         {
             try
             {
-                Environment.Exit(Environment.ExitCode);
+                Window.GetWindow(this).Close();
             }
             catch (Exception mes)
             {
@@ -47,30 +49,38 @@ namespace TestGUI_QLTV
         {
             Window2 Rg = new Window2();
             Rg.Show();
+            signingup = true;
             this.Close();
+
         }
 
         private void OpenMain(object sender, RoutedEventArgs e)
         {
             Account_Data user = user_control.search_for_account(Username.Text);
 
-            if (user!=null && user.password==Password.Password)
+            if (user != null && user.password == Password.Password)
             {
                 Data_Context.currentAccount = user;
                 Data_Context.currentUID = user.UID;
                 MainWindow mn = new MainWindow();
                 mn.Show();
+                loggingin = true;
                 this.Close();
             }
 
             else
             {
+                loggingin = false;
                 MessageBox.Show("sai tai khoan hoac khong co");
             }
 
         }
 
-
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if(!loggingin && !signingup)
+                Environment.Exit(Environment.ExitCode);
+        }
     }
 
 

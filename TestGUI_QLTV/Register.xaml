@@ -12,7 +12,8 @@
         MouseDown="Window_MouseDown"
         FontWeight="Light"
         FontFamily="Comic San MS"
-        WindowStartupLocation="CenterScreen">
+        WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing">
     <!--Panel-->
     <Grid>
         <Grid.ColumnDefinitions>

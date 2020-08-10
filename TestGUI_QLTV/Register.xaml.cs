@@ -21,7 +21,7 @@ namespace TestGUI_QLTV
     public partial class Window2 : Window
     {
         bool[] array = new bool[3];
-
+        bool succeeded = false;
         User_Control_BUS user_control = new User_Control_BUS();
         public Window2()
         {
@@ -81,6 +81,7 @@ namespace TestGUI_QLTV
                         if (user_control.RegisterIn(Username.Text, Password.Password, Email.Text))
                         {
                             MessageBox.Show("Đăng kí thành công");
+                            succeeded = true;
                             this.Back(sender, e);
                         }
 
@@ -145,6 +146,12 @@ namespace TestGUI_QLTV
         {
             array[2] = check_string_availability(ConfirmPassword.Password);
             enable_signup_button();
+        }
+
+        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (!succeeded)
+                Environment.Exit(Environment.ExitCode);
         }
     }
 }

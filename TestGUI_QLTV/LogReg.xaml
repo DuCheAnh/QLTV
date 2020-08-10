@@ -12,6 +12,7 @@
         WindowStyle="None" ResizeMode="NoResize"
         MouseDown="Window_MouseDown"
         WindowStartupLocation="CenterScreen"
+        Closing="Window_Closing"
         >
     <!--Panel-->
     <Grid>
