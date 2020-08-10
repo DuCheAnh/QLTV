@@ -29,7 +29,7 @@ namespace TestGUI_QLTV
             }
             //clear all books
             Data_Context.onWishList.Clear();
-            ICart.Items.Clear();
+            ICart.ItemsSource = null;
             PopUpWindow popup = new PopUpWindow();
             popup.PopUpTB.Text = "Borrow data sent";
             popup.Owner=Window.GetWindow(this);
