@@ -41,20 +41,27 @@ namespace TestGUI_QLTV
         }
         private void PackedButton_Click(object sender, RoutedEventArgs e)
         {
-            
+            admin_control.update_packed_to(true, data);
+            popup_message("Packed");
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             admin_control.delete_account_brid(data.UID, data.BrID);
             admin_control.delete_borrow(data.BrID);
+            popup_message("Deleted");
+            
+        }
+        void popup_message(string sMessage)
+        {
             PopUpWindow popup = new PopUpWindow();
-            popup.PopUpTB.Text = "Deleted";
+            popup.PopUpTB.Text = sMessage;
             Window.GetWindow(this).IsHitTestVisible = false;
             popup.Owner = Window.GetWindow(this);
             popup.Closing += Popup_Closing;
             popup.Show();
         }
+        #region closing actions
 
         private void Popup_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -72,5 +79,6 @@ namespace TestGUI_QLTV
             Window.GetWindow(this).Owner.IsHitTestVisible = true;
             Window.GetWindow(this).Owner.Focus();
         }
+        #endregion
     }
 }

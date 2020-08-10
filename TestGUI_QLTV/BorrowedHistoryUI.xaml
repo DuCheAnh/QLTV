@@ -50,13 +50,19 @@
                         />
                 </Grid>
             </materialDesign:ColorZone>
+            <Button x:Name="AddBorrowButton" Content="ADD" Height="40" Width="200"
+                    Canvas.Top="20" Canvas.Left="590"
+                    FontWeight="Bold" FontSize="20"
+                    IsEnabled="False"
+                    Click="AddBorrowButton_Click"/>
             <Button x:Name="EditBorrowButton" Content="EDIT" Height="40" Width="200"
-                    Canvas.Top="20" Canvas.Left="700"
+                    Canvas.Top="20" Canvas.Left="820"
                     FontWeight="Bold" FontSize="20"
                     IsEnabled="False"
                     Click="EditBorrowButton_Click"/>
+            
             <Button x:Name="PrintButton" Content="PRINT" Height="40" Width="200"
-                    Canvas.Top="20" Canvas.Left="1000"
+                    Canvas.Top="20" Canvas.Left="1050"
                     FontWeight="Bold" FontSize="20"
                     IsEnabled="True" Click="btnPrint_Click"/>
         </Canvas>

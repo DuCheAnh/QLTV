@@ -1,8 +1,6 @@
 ﻿using DTO_QuanLy;
-using FireSharp.Extensions;
 using FireSharp.Interfaces;
 using FireSharp.Response;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 
@@ -146,8 +144,8 @@ namespace DAL_QuanLy
         {
             Book_Data data = new Book_Data();
             FirebaseResponse retrieve_response = client.Get(sBookTable_path + sBID);
-            if (retrieve_response.Body!="null")
-            {    
+            if (retrieve_response.Body != "null")
+            {
                 data = retrieve_response.ResultAs<Book_Data>();
                 return data;
             }
@@ -165,7 +163,11 @@ namespace DAL_QuanLy
             List<Book_Data> book_list = new List<Book_Data>();
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sBookTable_path);
-            Dictionary<string, Book_Data> all_data = response.ResultAs<Dictionary<string, Book_Data>>();
+            Dictionary<string, Book_Data> all_data = new Dictionary<string, Book_Data>();
+            if (response.Body != "null")
+            {
+                all_data = response.ResultAs<Dictionary<string, Book_Data>>();
+            }
             foreach (var book in all_data)
             {
                 book_list.Add(book.Value);

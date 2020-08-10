@@ -245,6 +245,11 @@ namespace BUS_QuanLy
             Borrow_DAL.init_client();
             return Borrow_DAL.search_for_BID(sBID);
         }
+        public bool update_packed_to(bool bValue, Borrow_Data data)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.update_packed_to(bValue, data);
+        }
 
         #endregion
 

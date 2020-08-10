@@ -53,7 +53,11 @@ namespace DAL_QuanLy
             List<Library_Data> libraryinfo_list = new List<Library_Data>();
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sLibraryTable_Path);
-            Dictionary<string, Library_Data> all_data = response.ResultAs<Dictionary<string, Library_Data>>();
+            Dictionary<string, Library_Data> all_data = new Dictionary<string, Library_Data>();
+            if (response.Body != "null")
+            {
+                all_data = response.ResultAs<Dictionary<string, Library_Data>>();
+            }
             foreach (var user in all_data)
             {
                 libraryinfo_list.Add(user.Value);

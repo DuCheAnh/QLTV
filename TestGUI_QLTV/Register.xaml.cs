@@ -1,17 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BUS_QuanLy;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using BUS_QuanLy;
 
 namespace TestGUI_QLTV
 {
@@ -22,6 +13,7 @@ namespace TestGUI_QLTV
     {
         bool[] array = new bool[3];
         bool succeeded = false;
+        bool turningback = false;
         User_Control_BUS user_control = new User_Control_BUS();
         public Window2()
         {
@@ -65,6 +57,7 @@ namespace TestGUI_QLTV
 
         private void Back(object sender, RoutedEventArgs e)
         {
+            turningback = true;
             Window1 Rg = new Window1();
             Rg.Show();
             this.Close();
@@ -72,8 +65,8 @@ namespace TestGUI_QLTV
 
         private void Register(object sender, RoutedEventArgs e)
         {
-            if (!(Password.Password.Length<8 || Username.Text.Length<8))
-                {
+            if (!(Password.Password.Length < 8 || Username.Text.Length < 8))
+            {
                 if (Password.Password == ConfirmPassword.Password)
                 {
                     if (user_control.search_for_account(Username.Text) == null)
@@ -94,7 +87,7 @@ namespace TestGUI_QLTV
                 else
                 {
                     MessageBox.Show("xác nhận mật khẩu sai");
-                } 
+                }
             }
             else
             {
@@ -150,7 +143,7 @@ namespace TestGUI_QLTV
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (!succeeded)
+            if (!succeeded && !turningback)
                 Environment.Exit(Environment.ExitCode);
         }
     }

@@ -1,6 +1,7 @@
 ﻿using BUS_QuanLy;
 using DTO_QuanLy;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,6 +14,7 @@ namespace TestGUI_QLTV
     {
 
         //variables
+        List<Borrow_Data> borrow_list = new List<Borrow_Data>();
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
         public BorrowedHistoryUI()
         {
@@ -23,7 +25,6 @@ namespace TestGUI_QLTV
         #region initiation
         public void init_datasource(string sKey)
         {
-            List<Borrow_Data> borrow_list = new List<Borrow_Data>();
             foreach (Borrow_Data data in admin_control.retrieve_all_borrows())
             {
                 if ((!string.IsNullOrEmpty(data.BrID) ? data.BrID.Contains(sKey) : false)
@@ -33,6 +34,7 @@ namespace TestGUI_QLTV
                 else
                 { }
             }
+            borrow_list = borrow_list.OrderBy(x => x.packed).ToList();
             BookDataListView.ItemsSource = borrow_list;
         }
         #endregion
@@ -42,7 +44,7 @@ namespace TestGUI_QLTV
             if (BookDataListView.SelectedItems.Count > 0)
             {
                 if (BookDataListView.SelectedItems.Count > 1)
-                    EditBorrowButton.Content = "DELETE " + BookDataListView.SelectedItems.Count.ToString();
+                    EditBorrowButton.Content = "EDIT " + BookDataListView.SelectedItems.Count.ToString();
                 else EditBorrowButton.Content = "EDIT";
                 EditBorrowButton.IsEnabled = true;
             }
@@ -74,12 +76,27 @@ namespace TestGUI_QLTV
 
         private void EditBorrowButton_Click(object sender, RoutedEventArgs e)
         {
-            EditBorrowData borrowdata_popup = new EditBorrowData();
-            borrowdata_popup.Owner= Window.GetWindow(this);
+
             Window.GetWindow(this).IsHitTestVisible = false;
-            if (BookDataListView.SelectedItems.Count>0)
+            if (BookDataListView.SelectedItems.Count == 1)
+            {
+                EditBorrowData borrowdata_popup = new EditBorrowData();
+                borrowdata_popup.Owner = Window.GetWindow(this);
                 borrowdata_popup.set_value_from_item((Borrow_Data)BookDataListView.SelectedItems[0]);
-            borrowdata_popup.Show();
+                borrowdata_popup.Show();
+            }
+            else if (BookDataListView.SelectedItems.Count > 1)
+            {
+                EditMultipleBorrow multipleborrows_popup = new EditMultipleBorrow();
+                multipleborrows_popup.Owner = Window.GetWindow(this);
+                multipleborrows_popup.set_data_up(BookDataListView.SelectedItems.Count, BookDataListView.SelectedItems.Cast<Borrow_Data>().ToList());
+                multipleborrows_popup.Show();
+            }
+        }
+
+        private void AddBorrowButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

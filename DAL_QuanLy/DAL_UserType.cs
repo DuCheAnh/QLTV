@@ -59,7 +59,11 @@ namespace DAL_QuanLy
             List<UserType_Data> usertype_list = new List<UserType_Data>();
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sUserTypeTable_Path);
-            Dictionary<string, UserType_Data> all_data = response.ResultAs<Dictionary<string, UserType_Data>>();
+            Dictionary<string, UserType_Data> all_data = new Dictionary<string, UserType_Data>();
+            if (response.Body != "null")
+            {
+                all_data = response.ResultAs<Dictionary<string, UserType_Data>>();
+            }
             foreach (var user in all_data)
             {
                 usertype_list.Add(user.Value);

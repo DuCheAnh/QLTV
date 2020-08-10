@@ -97,7 +97,7 @@ namespace DAL_QuanLy
         public Borrow_Data retrieve_borrow_data(string sBrID)
         {
             var retrieve_response = client.Get(sBorrowTable_path + sBrID);
-            if (retrieve_response.Body!="null")
+            if (retrieve_response.Body != "null")
             {
                 Borrow_Data data = retrieve_response.ResultAs<Borrow_Data>();
                 return data;
@@ -118,7 +118,11 @@ namespace DAL_QuanLy
             List<Borrow_Data> borrow_list = new List<Borrow_Data>();
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sBorrowTable_path);
-            Dictionary<string, Borrow_Data> all_data = response.ResultAs<Dictionary<string, Borrow_Data>>();
+            Dictionary<string, Borrow_Data> all_data = new Dictionary<string, Borrow_Data>();
+            if (response.Body!="null")
+                all_data = response.ResultAs<Dictionary<string, Borrow_Data>>();
+
+    
             foreach (var user in all_data)
             {
                 borrow_list.Add(user.Value);
@@ -126,6 +130,14 @@ namespace DAL_QuanLy
             return borrow_list;
         }
 
+
+        public bool update_packed_to(bool bBool, Borrow_Data brData)
+        {
+            brData.packed = true;
+            FirebaseResponse update_response = client.Update(sBorrowTable_path + brData.BrID, brData);
+            if (update_response != null) return true;
+            else return false;
+        }
 
         /// <summary>
         /// Search for a specific sUID then return all new found Borrow data to a list

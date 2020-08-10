@@ -87,7 +87,7 @@ namespace DAL_QuanLy
             string replacement = "-";
             if (user.BrID.Contains(rep))
                 user.BrID = user.BrID.Replace(rep, replacement);
-            if (user.BrID[user.BrID.Length - 1] == '-') user.BrID=user.BrID.Remove(user.BrID.Length-1,1);
+            if (user.BrID[user.BrID.Length - 1] == '-') user.BrID = user.BrID.Remove(user.BrID.Length - 1, 1);
             FirebaseResponse update_response = client.Update(sAccountTable_path + user.UID, user);
 
         }
@@ -266,7 +266,11 @@ namespace DAL_QuanLy
             List<Account_Data> account_list = new List<Account_Data>();
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sAccountTable_path);
-            Dictionary<string, Account_Data> all_data = response.ResultAs<Dictionary<string, Account_Data>>();
+            Dictionary<string, Account_Data> all_data = new Dictionary<string, Account_Data>();
+            if (response.Body != "null")
+            {
+                all_data = response.ResultAs<Dictionary<string, Account_Data>>();
+            }
             foreach (var user in all_data)
             {
                 account_list.Add(user.Value);

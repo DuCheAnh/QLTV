@@ -112,7 +112,11 @@ namespace DAL_QuanLy
             List<LibCard_Data> libcard_list = new List<LibCard_Data>();
             //retrieve all info and then store it into libcard_list
             FirebaseResponse response = client.Get(sLibCardTable_path);
-            Dictionary<string, LibCard_Data> all_data = response.ResultAs<Dictionary<string, LibCard_Data>>();
+            Dictionary<string, LibCard_Data> all_data = new Dictionary<string, LibCard_Data>();
+            if (response.Body != "null")
+            {
+                all_data = response.ResultAs<Dictionary<string, LibCard_Data>>();
+            }
             foreach (var libcard in all_data)
             {
                 update_libcard_expiration(libcard.Value, still_available(libcard.Value));
