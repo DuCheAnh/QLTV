@@ -23,6 +23,7 @@ namespace TestGUI_QLTV
         {
             InitializeComponent();
             List<string> BrID_List = User_Control.get_user_BrID(Data_Context.currentAccount);
+            Console.WriteLine(Data_Context.currentAccount.BrID);
             foreach (string Data in BrID_List)
             {
 
@@ -43,6 +44,7 @@ namespace TestGUI_QLTV
 
         private void Close(object sender, RoutedEventArgs e)
         {
+            Window.GetWindow(this).Owner.IsHitTestVisible = true;
             Close();
         }
 

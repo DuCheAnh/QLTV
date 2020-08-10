@@ -70,7 +70,7 @@ namespace DAL_QuanLy
                 data.password = sPassword;
                 //update users info
                 FirebaseResponse update_response = client.Update(sAccountTable_path + sUID, data);
-                Account_Data  result = update_response.ResultAs<Account_Data>();
+                Account_Data result = update_response.ResultAs<Account_Data>();
                 if (result != null) return true;
             }
             catch (Exception)
@@ -79,7 +79,18 @@ namespace DAL_QuanLy
             }
             return false;
         }
+        public void delete_brid(string sUID, string sBrID)
+        {
+            Account_Data user = retrieve_user_data(sUID);
+            user.BrID += '-';
+            string rep = '-' + sBrID + '-';
+            string replacement = "-";
+            if (user.BrID.Contains(rep))
+                user.BrID = user.BrID.Replace(rep, replacement);
+            if (user.BrID[user.BrID.Length - 1] == '-') user.BrID=user.BrID.Remove(user.BrID.Length-1,1);
+            FirebaseResponse update_response = client.Update(sAccountTable_path + user.UID, user);
 
+        }
         public void add_brid(string sUID, string sBrID)
         {
             char seperator = '-';
@@ -94,10 +105,10 @@ namespace DAL_QuanLy
             if (data.BrID != null)
                 if (data.BrID.Trim() != "")
                 {
-                    string temp = data.BrID += "-";
+                    string temp = data.BrID + "-";
                     for (int i = 1; i < temp.Length; i++)
                     {
-                        if (temp[i] == '-')
+                        if (temp[i] == '-' && sBrID != "")
                         {
                             list.Add(sBrID);
                             sBrID = null;
@@ -181,7 +192,7 @@ namespace DAL_QuanLy
         public Account_Data retrieve_user_data(string sUID)
         {
             var retrieve_response = client.Get(sAccountTable_path + sUID);
-            if (retrieve_response.Body!="null")
+            if (retrieve_response.Body != "null")
             {
                 Account_Data data = retrieve_response.ResultAs<Account_Data>();
                 return data;

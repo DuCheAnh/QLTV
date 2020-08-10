@@ -22,7 +22,7 @@ namespace TestGUI_QLTV
     {
         bool[] array = new bool[3];
 
-        User_Control_BUS RegisterIn = new User_Control_BUS();
+        User_Control_BUS user_control = new User_Control_BUS();
         public Window2()
         {
             InitializeComponent();
@@ -72,19 +72,32 @@ namespace TestGUI_QLTV
 
         private void Register(object sender, RoutedEventArgs e)
         {
-            if (Password.Password == ConfirmPassword.Password)
-
-            {
-                if (RegisterIn.RegisterIn(Username.Text, Password.Password, Email.Text))
+            if (!(Password.Password.Length<8 || Username.Text.Length<8))
                 {
-                    MessageBox.Show("Đăng kí thành công");
-                    this.Back(sender, e);
-                }
+                if (Password.Password == ConfirmPassword.Password)
+                {
+                    if (user_control.search_for_account(Username.Text) == null)
+                    {
+                        if (user_control.RegisterIn(Username.Text, Password.Password, Email.Text))
+                        {
+                            MessageBox.Show("Đăng kí thành công");
+                            this.Back(sender, e);
+                        }
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Trùng tài khoản");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("xác nhận mật khẩu sai");
+                } 
             }
             else
             {
-                MessageBox.Show("Confirm Password không trùng với Password");
+                MessageBox.Show("mk va tk phai dai hon 8 ky tu");
             }
 
         }

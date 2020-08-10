@@ -50,10 +50,11 @@
                         />
                 </Grid>
             </materialDesign:ColorZone>
-            <Button x:Name="EditBookButton" Content="RETURNED" Height="40" Width="200"
+            <Button x:Name="EditBorrowButton" Content="EDIT" Height="40" Width="200"
                     Canvas.Top="20" Canvas.Left="700"
                     FontWeight="Bold" FontSize="20"
-                    IsEnabled="False"/>
+                    IsEnabled="False"
+                    Click="EditBorrowButton_Click"/>
             <Button x:Name="PrintButton" Content="PRINT" Height="40" Width="200"
                     Canvas.Top="20" Canvas.Left="1000"
                     FontWeight="Bold" FontSize="20"

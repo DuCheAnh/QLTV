@@ -51,7 +51,11 @@ namespace BUS_QuanLy
             Account_DAL.init_client();
             Account_DAL.update_user_data(data);
         }
-
+        public void delete_account_brid(string sUID, string sBrID)
+        {
+            Account_DAL.init_client();
+            Account_DAL.delete_brid(sUID, sBrID);
+        }
         public List<Borrow_Data> search_for_UID(string sUID)
         {
             Borrow_DAL.init_client();

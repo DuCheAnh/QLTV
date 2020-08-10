@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -43,11 +42,11 @@ namespace TestGUI_QLTV
             if (BookDataListView.SelectedItems.Count > 0)
             {
                 if (BookDataListView.SelectedItems.Count > 1)
-                    EditBookButton.Content = "DELETE " + BookDataListView.SelectedItems.Count.ToString();
-                else EditBookButton.Content = "EDIT";
-                EditBookButton.IsEnabled = true;
+                    EditBorrowButton.Content = "DELETE " + BookDataListView.SelectedItems.Count.ToString();
+                else EditBorrowButton.Content = "EDIT";
+                EditBorrowButton.IsEnabled = true;
             }
-            else EditBookButton.IsEnabled = false;
+            else EditBorrowButton.IsEnabled = false;
         }
 
 
@@ -71,6 +70,16 @@ namespace TestGUI_QLTV
                 BookDataListView.Arrange(new Rect(5, 5, pageSize.Width, pageSize.Height));
                 printDlg.PrintVisual(BookDataListView, td);
             }
+        }
+
+        private void EditBorrowButton_Click(object sender, RoutedEventArgs e)
+        {
+            EditBorrowData borrowdata_popup = new EditBorrowData();
+            borrowdata_popup.Owner= Window.GetWindow(this);
+            Window.GetWindow(this).IsHitTestVisible = false;
+            if (BookDataListView.SelectedItems.Count>0)
+                borrowdata_popup.set_value_from_item((Borrow_Data)BookDataListView.SelectedItems[0]);
+            borrowdata_popup.Show();
         }
     }
 }

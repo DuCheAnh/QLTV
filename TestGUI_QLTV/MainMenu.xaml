@@ -8,35 +8,35 @@
              d:DesignHeight="450" d:DesignWidth="200">
     <Grid>
         <TreeView Width="200">
-            <TreeViewItem Header="Văn Học">
-                <TreeViewItem Header="Tiểu Thuyết"/>
-                <TreeViewItem Header="Truyện ngắn"/>
-                <TreeViewItem Header="Ngôn Tình"/>
+            <TreeViewItem Header="Văn Học" MouseUp="TreeViewItem_MouseUp">
+                <TreeViewItem Header="Tiểu Thuyết" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Truyện ngắn" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Ngôn Tình" MouseUp="TreeViewItem_MouseUp"/>
             </TreeViewItem>
-            <TreeViewItem Header="Kinh Tế">
-                <TreeViewItem Header="Bài Học Kinh Doanh"/>
-                <TreeViewItem Header="Quản Trị - Lãnh Đạo"/>
-                <TreeViewItem Header="Marketing"/>
+            <TreeViewItem Header="Kinh Tế" MouseUp="TreeViewItem_MouseUp">
+                <TreeViewItem Header="Bài Học Kinh Doanh" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Quản Trị - Lãnh Đạo" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Marketing" MouseUp="TreeViewItem_MouseUp"/>
             </TreeViewItem>
-            <TreeViewItem Header="Đời Sống">
-                <TreeViewItem Header="Kỹ Năng Sống"/>
-                <TreeViewItem Header="Tâm Lý Tuổi Mới Lớn"/>
-                <TreeViewItem Header="Rèn Luyện Nhân Cách"/>
-                <TreeViewItem Header="Văn Hóa - Tôn Giáo"/>
-                <TreeViewItem Header="Ẩm Thực"/>
+            <TreeViewItem Header="Đời Sống" MouseUp="TreeViewItem_MouseUp">
+                <TreeViewItem Header="Kỹ Năng Sống" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tâm Lý Tuổi Mới Lớn" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Rèn Luyện Nhân Cách" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Văn Hóa - Tôn Giáo" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Ẩm Thực" MouseUp="TreeViewItem_MouseUp"/>
             </TreeViewItem>
-            <TreeViewItem Header="Học Tập - Tham Khảo">
-                <TreeViewItem Header="Luyện Thi Đại Học"/>
-                <TreeViewItem Header="Triết Học" />
-                <TreeViewItem Header="Tiểu Sử - Hồi Ký"/>
+            <TreeViewItem Header="Học Tập - Tham Khảo" MouseUp="TreeViewItem_MouseUp">
+                <TreeViewItem Header="Luyện Thi Đại Học" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Triết Học" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tiểu Sử - Hồi Ký" MouseUp="TreeViewItem_MouseUp"/>
             </TreeViewItem>
-            <TreeViewItem Header="Ngoại Ngữ">
-                <TreeViewItem Header="Tiếng Anh"/>
-                <TreeViewItem Header="Tiếng Nhật"/>
-                <TreeViewItem Header="Tiếng Pháp"/>
-                <TreeViewItem Header="Tiếng Đức"/>
-                <TreeViewItem Header="Tiếng Trung"/>
-                <TreeViewItem Header="Tiếng Hàn"/>
+            <TreeViewItem Header="Ngoại Ngữ" MouseUp="TreeViewItem_MouseUp">
+                <TreeViewItem Header="Tiếng Anh" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tiếng Nhật" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tiếng Pháp" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tiếng Đức" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tiếng Trung" MouseUp="TreeViewItem_MouseUp"/>
+                <TreeViewItem Header="Tiếng Hàn" MouseUp="TreeViewItem_MouseUp"/>
             </TreeViewItem>
         </TreeView>
     </Grid>

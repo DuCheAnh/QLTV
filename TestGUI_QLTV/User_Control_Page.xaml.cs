@@ -48,6 +48,7 @@ namespace GUI_QuanLy
         { 
             TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
             borrowedPage.Owner = Window.GetWindow(this);
+            Window.GetWindow(this).IsHitTestVisible = false;
             borrowedPage.Show();
         }
 
