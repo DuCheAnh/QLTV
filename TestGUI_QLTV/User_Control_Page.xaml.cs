@@ -13,7 +13,7 @@ namespace GUI_QuanLy
     /// </summary>
     public partial class User_Control_Page : UserControl
     {
-   
+
         string sUID = Data_Context.currentUID;
         User_Control_BUS User_BUS = new User_Control_BUS();
         Admin_Control_BUS admin_control = new Admin_Control_BUS();
@@ -28,10 +28,10 @@ namespace GUI_QuanLy
             passwordBox.IsEnabled = false;
             this.DataContext = Data_Context.currentAccount;
             InitializeComponent();
-            if (Data_Context.currentAccount.LCID != null) User_BUS.set_libcard_to_user(Data_Context.currentAccount.LCID,sUID);
+            if (Data_Context.currentAccount.LCID != null) User_BUS.set_libcard_to_user(Data_Context.currentAccount.LCID, sUID);
             int expiration_time = User_BUS.retrieve_usertype(Data_Context.currentAccount.account_type).expiration_time;
-            if (Data_Context.currentAccount.account_type!=null)
-                Remaining.Content =  (admin_control.Retrive_libcard_data(Data_Context.currentAccount.LCID).created_date.AddDays(expiration_time)-DateTime.Now).TotalDays;
+            if (Data_Context.currentAccount.account_type != null)
+                Remaining.Content = (admin_control.Retrive_libcard_data(Data_Context.currentAccount.LCID).created_date.AddDays(expiration_time) - DateTime.Now).TotalDays;
             changeEmail.Closed += new EventHandler(changeEmail_Closed);
             changePassword.Closed += new EventHandler(changePassword_Closed);
         }
@@ -49,7 +49,7 @@ namespace GUI_QuanLy
         #endregion
 
         private void Borrowed_Book(object sender, RoutedEventArgs e)
-        { 
+        {
             TestGUI_QLTV.BorrowedPage borrowedPage = new TestGUI_QLTV.BorrowedPage();
             borrowedPage.Owner = Window.GetWindow(this);
             Window.GetWindow(this).IsHitTestVisible = false;
@@ -92,16 +92,24 @@ namespace GUI_QuanLy
 
         private void Change_profile_picture(object sender, RoutedEventArgs e)
         {
-            //undone
+            //OpenFileDialog open = new OpenFileDialog();
+            //open.Filter = "Image Files(*.jpg; *.jpeg; *.gif; *.bmp)|*.jpg; *.jpeg; *.gif; *.bmp";
+            //if (open.ShowDialog() == true)
+            //{
+            //    profileim= new BitmapImage(new Uri(open.FileName));
+            //    img = Convert.ToBase64String(File.ReadAllBytes(open.FileName));
+            //}
         }
 
         private void RedeemButton_Click(object sender, RoutedEventArgs e)
         {
             RedeemLibCardWindow redeemwindow = new RedeemLibCardWindow();
-            redeemwindow.Owner=Window.GetWindow(this);
+            redeemwindow.Owner = Window.GetWindow(this);
             Window.GetWindow(this).IsHitTestVisible = false;
             redeemwindow.Show();
         }
+
+
     }
     #region bool to gender converter
     public class BooltoGenderConverter : IValueConverter

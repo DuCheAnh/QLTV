@@ -22,6 +22,19 @@
             <materialDesign:DrawerHost Grid.Row="1" Grid.RowSpan="2" Panel.ZIndex="2" FontFamily="Sitka Subheading">
                 <materialDesign:DrawerHost.LeftDrawerContent  >
                     <StackPanel x:Name="spMenu" Width="200" Background="LightGray">
+                        <TextBlock Text="This software was made by:
+                                   
+                                   - Du Che Anh
+                                   - Do Ngoc Thanh
+                                   - Nguyen Tran Hoang Hieu
+                                   - Do Ngoc Cuong
+                                   - Nguyen Duc Chien
+                                   - Luu Duc Bao
+                                   
+                                   Contact:
+                                   teamworkftwuit@gmail.com"
+                                   TextWrapping="WrapWithOverflow"
+                                   FontSize="15"/>
                     </StackPanel>
                 </materialDesign:DrawerHost.LeftDrawerContent>
 
@@ -95,7 +108,7 @@
 
                     </Grid>
                 </materialDesign:ColorZone>
-                <materialDesign:Badged  Badge="6" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Width="35" Height="35">
+                <materialDesign:Badged   HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="3" Width="35" Height="35">
                     <Button x:Name="btnBell" Click="btnBell_Click" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}">
                         <materialDesign:PackIcon Kind="Bell" Width="35" Height="35" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -107,7 +120,7 @@
                         </StackPanel>-->
                     </Button>
                 </materialDesign:Badged>
-                <materialDesign:Badged Badge="6"  x:Name="bCart" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Width="35" Height="35">
+                <materialDesign:Badged   x:Name="bCart" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="4" Width="35" Height="35">
                     <Button x:Name="btnCart" Width="40" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center"
                     Style="{DynamicResource MaterialDesignToolForegroundButton}"
                     Click="btnCart_Click">

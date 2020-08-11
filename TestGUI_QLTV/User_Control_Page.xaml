@@ -17,8 +17,8 @@
         <Button Name ="Profile_picture" Grid.Column="0"
                 Background="Black"
                 Margin="50,30,50,0" Height="{Binding ElementName=Profile_picture, Path=ActualWidth}" VerticalAlignment="Top">
-            <Button.Template>
-                <ControlTemplate>
+            <Button.Template >
+                <ControlTemplate >
                     <Image Source="a.png"/>
                 </ControlTemplate>
             </Button.Template>

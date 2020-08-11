@@ -32,8 +32,8 @@ namespace TestGUI_QLTV
         {
             InitializeComponent();
             Data_Context.currentHomePageBook = Bus_method.Get_all_Books();
-            MainMenu mMenu = new MainMenu();
-            spMenu.Children.Add(mMenu);
+            //MainMenu mMenu = new MainMenu();
+            //spMenu.Children.Add(mMenu);
             mPage = new MainPage();
             Data_Context.isAdmin = (Data_Context.currentUID[0] == 'M');
             IsAdmin = Data_Context.isAdmin;
