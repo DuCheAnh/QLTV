@@ -41,17 +41,16 @@ namespace DAL_QuanLy
         /// <param name="sBID"></param>
         /// <param name="sUID"></param>
         /// <returns></returns>
-        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate)
+        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate, int returnafter)
         {
             try
             {
                 //setups
-                var data = new Borrow_Data(sBID, sUID, dtBorrowDate);
+                var data = new Borrow_Data(sBID, sUID, dtBorrowDate, returnafter);
                 DAL_Account account = new DAL_Account();
                 DAL_Book book = new DAL_Book();
                 book.init_client();
                 account.init_client();
-                data.borrow_date = DateTime.Now;
                 data.BrID = create_new_id();
                 //minus 1 book from the database
                 Book_Data bookdata = book.retrieve_book_data(sBID);
@@ -119,10 +118,10 @@ namespace DAL_QuanLy
             //get all the data, then transfer them to a dictionnary variable
             FirebaseResponse response = client.Get(sBorrowTable_path);
             Dictionary<string, Borrow_Data> all_data = new Dictionary<string, Borrow_Data>();
-            if (response.Body!="null")
+            if (response.Body != "null")
                 all_data = response.ResultAs<Dictionary<string, Borrow_Data>>();
 
-    
+
             foreach (var user in all_data)
             {
                 borrow_list.Add(user.Value);

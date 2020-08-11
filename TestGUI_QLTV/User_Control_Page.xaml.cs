@@ -16,6 +16,7 @@ namespace GUI_QuanLy
    
         string sUID = Data_Context.currentUID;
         User_Control_BUS User_BUS = new User_Control_BUS();
+        Admin_Control_BUS admin_control = new Admin_Control_BUS();
         TestGUI_QLTV.ChangePassword changePassword = new TestGUI_QLTV.ChangePassword();
         TestGUI_QLTV.ChangeEmail changeEmail = new TestGUI_QLTV.ChangeEmail();
 
@@ -28,6 +29,9 @@ namespace GUI_QuanLy
             this.DataContext = Data_Context.currentAccount;
             InitializeComponent();
             if (Data_Context.currentAccount.LCID != null) User_BUS.set_libcard_to_user(Data_Context.currentAccount.LCID,sUID);
+            int expiration_time = User_BUS.retrieve_usertype(Data_Context.currentAccount.account_type).expiration_time;
+            if (Data_Context.currentAccount.account_type!=null)
+                Remaining.Content =  (admin_control.Retrive_libcard_data(Data_Context.currentAccount.LCID).created_date.AddDays(expiration_time)-DateTime.Now).TotalDays;
             changeEmail.Closed += new EventHandler(changeEmail_Closed);
             changePassword.Closed += new EventHandler(changePassword_Closed);
         }

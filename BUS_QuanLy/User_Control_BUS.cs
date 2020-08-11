@@ -14,6 +14,7 @@ namespace BUS_QuanLy
         List<Account_Data> possible_account = new List<Account_Data>();
         DAL_Borrow borrowdata = new DAL_Borrow();
         DAL_Libcard libcard_data = new DAL_Libcard();
+        DAL_UserType usertype_libcard = new DAL_UserType();
         #endregion
 
         public User_Control_BUS()
@@ -140,10 +141,10 @@ namespace BUS_QuanLy
             borrowdata.init_client();
             return borrowdata.retrieve_borrow_data(sBrID);
         }
-        public bool add_borrow_data(string sBID, string sUID, DateTime dBorrowDate)
+        public bool add_borrow_data(string sBID, string sUID, DateTime dBorrowDate,int returnafter)
         {
             borrowdata.init_client();
-            return borrowdata.add_new_borrow(sBID, sUID, dBorrowDate);
+            return borrowdata.add_new_borrow(sBID, sUID, dBorrowDate,returnafter);
         }
         #endregion
 
@@ -186,6 +187,11 @@ namespace BUS_QuanLy
             return null;
         }
         #endregion
+        public UserType_Data retrieve_usertype(string sName)
+        {
+            usertype_libcard.init_client();
+            return usertype_libcard.retrieve_usertype_data(sName);
+        }
     }
 
 }

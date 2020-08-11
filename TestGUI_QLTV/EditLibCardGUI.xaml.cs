@@ -1,7 +1,10 @@
 ﻿using BUS_QuanLy;
 using DTO_QuanLy;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+
 namespace TestGUI_QLTV
 {
     /// <summary>
@@ -52,13 +55,23 @@ namespace TestGUI_QLTV
             if (GenderComboBox.SelectedItem.ToString().Contains("Male"))
                 bGender = true;
             else bGender = false;
-            if (admin_control.edit_libcard(this.selected_libcard.LCID,AccountTypeComboBox.Text, IDTextBox.Text,
+            List<Account_Data> account_list = admin_control.all_accounts_data().Where(x => x.LCID == selected_libcard.LCID).ToList();
+            if (account_list.Count > 0)
+            {
+                account_list[0].DOB = selected_libcard.DOB;
+                account_list[0].name = selected_libcard.name;
+                account_list[0].account_type = selected_libcard.account_type;
+                account_list[0].gender = selected_libcard.gender;
+                account_list[0].identity_card = selected_libcard.identity_card;
+                admin_control.Update_User_data(account_list[0]);
+            }
+            if (admin_control.edit_libcard(this.selected_libcard.LCID, AccountTypeComboBox.Text, IDTextBox.Text,
                                    NameTextBox.Text, DOBTextBox.Text, bGender))
             {
                 PopUpWindow popup = new PopUpWindow();
                 Window.GetWindow(this).IsHitTestVisible = false;
                 popup.Owner = Window.GetWindow(this);
-                popup.PopUpTB.Text = "created";
+                popup.PopUpTB.Text = "Created";
                 popup.Show();
             }
         }

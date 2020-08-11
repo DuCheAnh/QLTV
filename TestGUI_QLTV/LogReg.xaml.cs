@@ -4,7 +4,7 @@ using System;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
-
+using System.Collections.Generic;
 namespace TestGUI_QLTV
 {
 
@@ -62,6 +62,7 @@ namespace TestGUI_QLTV
             {
                 Data_Context.currentAccount = user;
                 Data_Context.currentUID = user.UID;
+                Data_Context.onWishList = new List<Book_Data>();
                 MainWindow mn = new MainWindow();
                 mn.Show();
                 loggingin = true;

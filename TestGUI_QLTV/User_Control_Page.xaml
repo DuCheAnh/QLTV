@@ -102,6 +102,13 @@
                    Content="{Binding account_type}"
                    FontSize="20" Width="600"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Days until Libcard ends: "
+                    FontSize="20" Width="auto"/>
+                <Label x:Name="Remaining"
+                   Content=""
+                   FontSize="20" Width="600"/>
+            </StackPanel>
         </StackPanel>
 
         <Button Margin="50 280 50 0" Height="40" Click="Change_profile_picture" VerticalAlignment="Top">

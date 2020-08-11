@@ -37,7 +37,7 @@ namespace DAL_QuanLy
             {
                 string sLCID = DateTime.Now.Ticks.ToString().Substring(1);
                 var data = new LibCard_Data(sAccountType, sIdentityCard, sName, dDOB, bGender);
-                data.created_date = new DateTime(2010, 3, 20);
+                data.created_date = DateTime.Now;
                 data.LCID = sLCID;
                 SetResponse response = client.Set(sLibCardTable_path + sLCID, data);
                 LibCard_Data result = response.ResultAs<LibCard_Data>();

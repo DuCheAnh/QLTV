@@ -6,10 +6,10 @@ using System.Collections.Generic;
 
 namespace DAL_QuanLy
 {
-    class DAL_UserType : DB_connect
+    public class DAL_UserType : DB_connect
     {
         public IFirebaseClient client;
-        string sUserTypeTable_Path = "Library/UserType/";
+        string sUserTypeTable_Path = "UserTypes/";
         public void init_client()
         {
             client = new FireSharp.FirebaseClient(config);
