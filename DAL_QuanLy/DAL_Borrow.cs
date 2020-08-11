@@ -137,7 +137,13 @@ namespace DAL_QuanLy
             if (update_response != null) return true;
             else return false;
         }
-
+        public bool update_returned_to(bool bBool, Borrow_Data brData)
+        {
+            brData.returned = true;
+            FirebaseResponse update_response = client.Update(sBorrowTable_path + brData.BrID, brData);
+            if (update_response != null) return true;
+            else return false;
+        }
         /// <summary>
         /// Search for a specific sUID then return all new found Borrow data to a list
         /// </summary>

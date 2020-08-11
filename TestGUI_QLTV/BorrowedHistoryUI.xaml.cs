@@ -25,6 +25,7 @@ namespace TestGUI_QLTV
         #region initiation
         public void init_datasource(string sKey)
         {
+            borrow_list = new List<Borrow_Data>();
             foreach (Borrow_Data data in admin_control.retrieve_all_borrows())
             {
                 if ((!string.IsNullOrEmpty(data.BrID) ? data.BrID.Contains(sKey) : false)
@@ -43,6 +44,8 @@ namespace TestGUI_QLTV
         {
             if (BookDataListView.SelectedItems.Count > 0)
             {
+                AddBorrowButton.IsEnabled = true;
+                AddBorrowButton.Content = "RETURNED " + BookDataListView.SelectedItems.Count.ToString();
                 if (BookDataListView.SelectedItems.Count > 1)
                     EditBorrowButton.Content = "EDIT " + BookDataListView.SelectedItems.Count.ToString();
                 else EditBorrowButton.Content = "EDIT";
@@ -96,7 +99,11 @@ namespace TestGUI_QLTV
 
         private void AddBorrowButton_Click(object sender, RoutedEventArgs e)
         {
-
+            List<Borrow_Data> borrowl = BookDataListView.SelectedItems.Cast<Borrow_Data>().ToList();
+            foreach (Borrow_Data data in borrowl)
+                admin_control.update_returned_to(true, data);
+            BookDataListView.Items.Refresh();
+            init_datasource("");
         }
     }
 }

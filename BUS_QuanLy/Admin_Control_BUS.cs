@@ -219,10 +219,10 @@ namespace BUS_QuanLy
         #endregion
 
         #region Borrow related
-        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate,int returnafter)
+        public bool add_new_borrow(string sBID, string sUID, DateTime dtBorrowDate, int returnafter)
         {
             Borrow_DAL.init_client();
-            return Borrow_DAL.add_new_borrow(sBID, sUID, dtBorrowDate,returnafter);
+            return Borrow_DAL.add_new_borrow(sBID, sUID, dtBorrowDate, returnafter);
         }
         public bool delete_borrow(string sBrID)
         {
@@ -239,7 +239,11 @@ namespace BUS_QuanLy
             Borrow_DAL.init_client();
             return Borrow_DAL.retrieve_all_borrows();
         }
-
+        public bool update_returned_to(bool bValue, Borrow_Data data)
+        {
+            Borrow_DAL.init_client();
+            return Borrow_DAL.update_returned_to(bValue, data);
+        }
         public List<Borrow_Data> search_for_BID(string sBID)
         {
             Borrow_DAL.init_client();
